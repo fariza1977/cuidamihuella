@@ -32,10 +32,10 @@
         <img src="https://i.imgur.com/7YvZJkR.png" alt="CuidaMiHuella" class="logo-img">
       </div>
       <ul class="nav-tabs">
-        <li><a href="#registro" data-key="nav-register">Registro</a></li>
-        <li><a href="#servicios" data-key="nav-services">Servicios</a></li>
-        <li><a href="#como-funciona" data-key="nav-how">Cómo funciona</a></li>
-        <li><a href="#contacto" data-key="nav-contact">Contacto</a></li>
+        <li><a href="#registro" class="nav-link" data-key="nav-register">Registro</a></li>
+        <li><a href="#servicios" class="nav-link" data-key="nav-services">Servicios</a></li>
+        <li><a href="#como-funciona" class="nav-link" data-key="nav-how">Cómo funciona</a></li>
+        <li><a href="#contacto" class="nav-link" data-key="nav-contact">Contacto</a></li>
       </ul>
     </nav>
     <div class="hero-content container">
@@ -161,6 +161,15 @@
     </div>
   </section>
 
+  <!-- CTA final -->
+  <section id="contacto" class="cta-section">
+    <div class="container">
+      <h2 data-key="cta-title">Listo para empezar?</h2>
+      <p data-key="cta-subtitle">Regístrate gratis y únete a una comunidad que cuida con el corazón.</p>
+      <a href="#registro" class="btn-primary" data-key="cta-btn1">Crear cuenta</a>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -217,6 +226,21 @@
   </div>
 
   <script>
+    // Función para hacer scroll suave a una sección
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
     // Gestión de idioma con bandera
     let currentFlag = '🇪🇸';
     const flagMap = {
@@ -280,7 +304,7 @@
       document.querySelector('.current-flag').textContent = currentFlag;
     });
 
-    // Función setLanguage (deberás incluirla desde lang.js)
+    // Función setLanguage (deberá estar definida en lang.js)
     function setLanguage(lang) {
       document.documentElement.lang = lang;
       const elements = document.querySelectorAll('[data-key]');
