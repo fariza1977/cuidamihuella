@@ -420,4 +420,28 @@ footer p {
   font-size: 1.05rem;
 }
 .btn-submit {
-  background: var
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+.btn-submit:hover {
+  background: #4a7090;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 2.5rem; }
+  .hero-content p { font-size: 1.2rem; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  nav { flex-direction: column; gap: 15px; }
+  .nav-tabs { flex-wrap: wrap; justify-content: center; }
+  .footer-content { flex-direction: column; text-align: center; }
+  .steps, .services-grid, .register-types { grid-template-columns: 1fr; }
+}
