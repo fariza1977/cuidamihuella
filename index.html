@@ -4,261 +4,187 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CuidaMiHuella – Cuidado y adopción responsable</title>
-  <link rel="stylesheet" href="style-cuidamihuella-final.css" />
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <style>
+    /* Estilos mínimos integrados para que funcione sin style.css */
+    :root {
+      --color-primary: #5d8aa8;
+      --color-secondary: #e6a87c;
+      --shadow: 0 8px 20px rgba(93,138,168,0.15);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      color: #333;
+      background: #fdfdfd;
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517524387118-e20f0f9e3a55?auto=format&fit=crop&w=1920&h=600&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    .logo { font-size: 2.5rem; font-weight: bold; margin-bottom: 20px; }
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.9); padding: 15px 0; }
+    .nav-links { display: flex; justify-content: center; gap: 25px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #333; font-weight: 600; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; margin-bottom: 20px; }
+    p { font-size: 1.3rem; max-width: 700px; margin-bottom: 30px; }
+    .btn { display: inline-block; padding: 12px 30px; background: var(--color-primary); color: white; text-decoration: none; border-radius: 30px; margin: 0 10px 10px 0; }
+    section { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 50px; }
+    .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; }
+    .lang-selector {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .lang-btn {
+      background: white;
+      border: 1px solid #ddd;
+      width: 40px;
+      height: 30px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2px;
+    }
+    footer { background: #1a202c; color: white; text-align: center; padding: 30px 0; margin-top: 60px; }
+  </style>
 </head>
 <body>
   <!-- Selector de idioma con banderas -->
   <div class="lang-selector">
-    <button class="lang-toggle" aria-label="Seleccionar idioma">
-      <span class="current-flag">🇪🇸</span>
-    </button>
-    <div class="lang-dropdown">
-      <button class="lang-btn" data-lang="es"><span>🇪🇸</span> Español</button>
-      <button class="lang-btn" data-lang="fr"><span>🇫🇷</span> Français</button>
-      <button class="lang-btn" data-lang="en"><span>🇬🇧</span> English</button>
-      <button class="lang-btn" data-lang="de"><span>🇩🇪</span> Deutsch</button>
-      <button class="lang-btn" data-lang="it"><span>🇮🇹</span> Italiano</button>
-    </div>
+    <button class="lang-btn" data-lang="es">🇪🇸</button>
+    <button class="lang-btn" data-lang="fr">🇫🇷</button>
+    <button class="lang-btn" data-lang="en">🇬🇧</button>
+    <button class="lang-btn" data-lang="de">🇩🇪</button>
+    <button class="lang-btn" data-lang="it">🇮🇹</button>
   </div>
 
-  <!-- Header con foto de animales adoptables -->
-  <header class="hero">
-    <div class="overlay"></div>
-    <nav class="container">
-      <div class="logo-container">
-        <img src="https://i.imgur.com/7YvZJkR.png" alt="CuidaMiHuella" class="logo-img">
-      </div>
-      <ul class="nav-tabs">
-        <li><a href="#registro" class="nav-link" data-key="nav-register">Registro</a></li>
-        <li><a href="#servicios" class="nav-link" data-key="nav-services">Servicios</a></li>
-        <li><a href="#como-funciona" class="nav-link" data-key="nav-how">Cómo funciona</a></li>
-        <li><a href="#contacto" class="nav-link" data-key="nav-contact">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="hero-content container">
-      <h1 data-key="hero-title">CuidaMiHuella</h1>
-      <p data-key="hero-subtitle">Tu mascota merece lo mejor — Cuidado de confianza, adopción responsable y una comunidad que entiende el vínculo humano-animal.</p>
-      <div class="hero-buttons">
-        <a href="#registro" class="btn-primary" data-key="hero-btn1">Empieza ahora</a>
-        <a href="mailto:partners@cuidamihuella.com" class="btn-secondary" data-key="hero-btn2">Soy refugio o asociación</a>
-      </div>
-    </div>
+  <!-- Header -->
+  <header>
+    <div class="logo" data-key="logo">CuidaMiHuella</div>
+    <h1 data-key="hero-title">Tu mascota merece lo mejor</h1>
+    <p data-key="hero-subtitle">Cuidado de confianza, adopción responsable y una comunidad que entiende el vínculo humano-animal.</p>
+    <a href="#registro" class="btn" data-key="btn-register">Empieza ahora</a>
   </header>
 
+  <!-- Navegación fija -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#registro" class="nav-link" data-key="nav-register">Registro</a></li>
+      <li><a href="#servicios" class="nav-link" data-key="nav-services">Servicios</a></li>
+      <li><a href="#como-funciona" class="nav-link" data-key="nav-how">Cómo funciona</a></li>
+      <li><a href="#contacto" class="nav-link" data-key="nav-contact">Contacto</a></li>
+    </ul>
+  </nav>
+
   <!-- Registro -->
-  <section id="registro" class="section">
+  <section id="registro">
     <div class="container">
       <div class="section-header">
         <h2 data-key="register-title">Únete a la comunidad</h2>
         <p data-key="register-subtitle">Elige tu rol y empieza a cuidar o ser cuidado.</p>
       </div>
-      <div class="register-types">
-        <div class="register-card" onclick="openRegisterModal('cuidador')">
-          <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=600&h=400&q=80" alt="Cuidador con perro">
-          <div class="register-overlay">
-            <h3 data-key="type1">Cuidador</h3>
-            <p data-key="type1-desc">Gana cuidando con amor y responsabilidad.</p>
-          </div>
-        </div>
-        <div class="register-card" onclick="openRegisterModal('dueno')">
-          <img src="https://images.unsplash.com/photo-1517524387118-e20f0f9e3a55?auto=format&fit=crop&w=600&h=400&q=80" alt="Niña con perro">
-          <div class="register-overlay">
-            <h3 data-key="type2">Dueño</h3>
-            <p data-key="type2-desc">Deja a tu mascota en las mejores manos.</p>
-          </div>
-        </div>
-        <div class="register-card" onclick="openRegisterModal('refugio')">
-          <img src="https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600&h=400&q=80" alt="Refugio con perros">
-          <div class="register-overlay">
-            <h3 data-key="type3">Refugio / Asociación</h3>
-            <p data-key="type3-desc">Gestiona adopciones, donaciones y visibilidad.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- Servicios -->
-  <section id="servicios" class="section bg-cream">
+  <section id="servicios" style="background: #fdf8f0;">
     <div class="container">
       <div class="section-header">
         <h2 data-key="services-title">Nuestros servicios</h2>
         <p data-key="services-subtitle">Elige el nivel de cuidado perfecto para tu compañero</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&h=400&q=80" alt="Perro en casa">
-          <div class="service-body">
-            <span class="service-badge basic" data-key="basic">Básico</span>
-            <p class="price" data-key="price-basic">10 €/día</p>
-            <ul>
-              <li data-key="basic-1">Alimentación y paseo</li>
-              <li data-key="basic-2">Compañía afectuosa</li>
-            </ul>
-            <p class="service-note" data-key="service-note">💬 Chat tras pago</p>
-          </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 25px;">
+        <div style="background: white; padding: 25px; border-radius: 16px; box-shadow: var(--shadow);">
+          <h3 data-key="basic">Básico</h3>
+          <p class="price" data-key="price-basic">10 €/día</p>
+          <p data-key="service-note">💬 Chat tras pago</p>
         </div>
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=600&h=400&q=80" alt="Gato cómodo">
-          <div class="service-body">
-            <span class="service-badge standard" data-key="standard">Estándar</span>
-            <p class="price" data-key="price-standard">15 €/día</p>
-            <ul>
-              <li data-key="std-1">Seguimiento con fotos</li>
-              <li data-key="std-2">Notificaciones diarias</li>
-            </ul>
-            <p class="service-note" data-key="service-note">💬 Chat tras pago</p>
-          </div>
+        <div style="background: white; padding: 25px; border-radius: 16px; box-shadow: var(--shadow);">
+          <h3 data-key="standard">Estándar</h3>
+          <p class="price" data-key="price-standard">15 €/día</p>
+          <p data-key="service-note">💬 Chat tras pago</p>
         </div>
-        <div class="service-card premium">
-          <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&h=400&q=80" alt="Perro feliz en jardín">
-          <div class="service-body">
-            <span class="service-badge premium" data-key="premium">Premium</span>
-            <p class="price" data-key="price-premium">20 €/día</p>
-            <ul>
-              <li data-key="prem-1">Recogida a domicilio</li>
-              <li data-key="prem-2">Guardián verificado (4.8★+)</li>
-            </ul>
-            <p class="service-note" data-key="service-note">💬 Chat tras pago</p>
-          </div>
+        <div style="background: white; padding: 25px; border-radius: 16px; box-shadow: var(--shadow);">
+          <h3 data-key="premium">Premium</h3>
+          <p class="price" data-key="price-premium">20 €/día</p>
+          <p data-key="service-note">💬 Chat tras pago</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Cómo funciona -->
-  <section id="como-funciona" class="section bg-soft">
+  <section id="como-funciona">
     <div class="container">
       <div class="section-header">
         <h2 data-key="how-title">Así de simple</h2>
         <p data-key="how-subtitle">Conexión, confianza y cuidado</p>
       </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3 data-key="step1">Regístrate y explora</h3>
-          <p data-key="step1-desc">Accede a todos los perfiles y fotos. El contacto está bloqueado hasta el pago.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3 data-key="step2">Elige y paga</h3>
-          <p data-key="step2-desc">Selecciona un servicio y realiza el pago seguro.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3 data-key="step3">Chatea y coordina</h3>
-          <p data-key="step3-desc">Acceso inmediato a un chat privado para organizar todo.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">4</div>
-          <h3 data-key="step4">Cuida con confianza</h3>
-          <p data-key="step4-desc">Seguimiento, reseñas y soporte durante todo el proceso.</p>
-        </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 30px;">
+        <div><h3 data-key="step1">Regístrate y explora</h3><p data-key="step1-desc">Accede a todos los perfiles y fotos. El contacto está bloqueado hasta el pago.</p></div>
+        <div><h3 data-key="step2">Elige y paga</h3><p data-key="step2-desc">Selecciona un servicio y realiza el pago seguro.</p></div>
+        <div><h3 data-key="step3">Chatea y coordina</h3><p data-key="step3-desc">Acceso inmediato a un chat privado para organizar todo.</p></div>
+        <div><h3 data-key="step4">Cuida con confianza</h3><p data-key="step4-desc">Seguimiento, reseñas y soporte durante todo el proceso.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA final -->
-  <section id="contacto" class="cta-section">
+  <!-- Contacto -->
+  <section id="contacto" style="background: linear-gradient(to right, var(--color-primary), var(--color-secondary)); color: white; text-align: center;">
     <div class="container">
       <h2 data-key="cta-title">¿Listo para empezar?</h2>
       <p data-key="cta-subtitle">Regístrate gratis y únete a una comunidad que cuida con el corazón.</p>
-      <a href="#registro" class="btn-primary" data-key="cta-btn1">Crear cuenta</a>
+      <a href="#registro" class="btn" style="background: white; color: var(--color-primary);">Crear cuenta</a>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="https://i.imgur.com/7YvZJkR.png" alt="CuidaMiHuella" class="footer-logo-img">
-          <p data-key="footer-copyright">© 2025 CuidaMiHuella – Donde cada huella cuenta.</p>
-        </div>
-        <div class="footer-links">
-          <h4 data-key="nav-register">Registro</h4>
-          <h4 data-key="nav-services">Servicios</h4>
-          <h4 data-key="nav-how">Cómo funciona</h4>
-          <h4 data-key="nav-contact">Contacto</h4>
-        </div>
-      </div>
+      <p data-key="footer-copyright">© 2025 CuidaMiHuella – Donde cada huella cuenta.</p>
       <p data-key="footer-availability">Disponible en toda España | Próximamente en Europa</p>
     </div>
   </footer>
 
-  <!-- Modal de registro -->
-  <div id="registerModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeRegisterModal()">&times;</span>
-      <h2 id="modalTitle">Registro</h2>
-      <form id="registerForm">
-        <input type="hidden" id="userType">
-        <div class="form-group">
-          <label for="nombre">Nombre *</label>
-          <input type="text" id="nombre" required>
-        </div>
-        <div class="form-group">
-          <label for="apellidos">Apellidos *</label>
-          <input type="text" id="apellidos" required>
-        </div>
-        <div class="form-group">
-          <label for="direccion">Dirección completa *</label>
-          <input type="text" id="direccion" required>
-        </div>
-        <div class="form-group">
-          <label for="dni">DNI / NIE / Pasaporte *</label>
-          <input type="text" id="dni" required>
-        </div>
-        <div class="form-group">
-          <label for="telefonoMovil">Teléfono móvil *</label>
-          <input type="tel" id="telefonoMovil" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email *</label>
-          <input type="email" id="email" required>
-        </div>
-        <button type="submit" class="btn-submit">Enviar código de activación</button>
-      </form>
-    </div>
-  </div>
-
   <script>
-    // === TRADUCCIONES INTEGRADAS (sin localStorage, sin archivos externos) ===
+    // === TRADUCCIONES ===
     const translations = {
       es: {
+        "logo": "CuidaMiHuella",
+        "hero-title": "Tu mascota merece lo mejor",
+        "hero-subtitle": "Cuidado de confianza, adopción responsable y una comunidad que entiende el vínculo humano-animal.",
+        "btn-register": "Empieza ahora",
         "nav-register": "Registro",
         "nav-services": "Servicios",
         "nav-how": "Cómo funciona",
         "nav-contact": "Contacto",
-        "hero-title": "CuidaMiHuella",
-        "hero-subtitle": "Tu mascota merece lo mejor — Cuidado de confianza, adopción responsable y una comunidad que entiende el vínculo humano-animal.",
-        "hero-btn1": "Empieza ahora",
-        "hero-btn2": "Soy refugio o asociación",
         "register-title": "Únete a la comunidad",
         "register-subtitle": "Elige tu rol y empieza a cuidar o ser cuidado.",
-        "type1": "Cuidador",
-        "type1-desc": "Gana cuidando con amor y responsabilidad.",
-        "type2": "Dueño",
-        "type2-desc": "Deja a tu mascota en las mejores manos.",
-        "type3": "Refugio / Asociación",
-        "type3-desc": "Gestiona adopciones, donaciones y visibilidad.",
         "services-title": "Nuestros servicios",
         "services-subtitle": "Elige el nivel de cuidado perfecto para tu compañero",
         "basic": "Básico",
         "price-basic": "10 €/día",
-        "basic-1": "Alimentación y paseo",
-        "basic-2": "Compañía afectuosa",
         "standard": "Estándar",
         "price-standard": "15 €/día",
-        "std-1": "Seguimiento con fotos",
-        "std-2": "Notificaciones diarias",
         "premium": "Premium",
         "price-premium": "20 €/día",
-        "prem-1": "Recogida a domicilio",
-        "prem-2": "Guardián verificado (4.8★+)",
         "service-note": "💬 Chat tras pago",
         "how-title": "Así de simple",
         "how-subtitle": "Conexión, confianza y cuidado",
@@ -272,41 +198,28 @@
         "step4-desc": "Seguimiento, reseñas y soporte durante todo el proceso.",
         "cta-title": "¿Listo para empezar?",
         "cta-subtitle": "Regístrate gratis y únete a una comunidad que cuida con el corazón.",
-        "cta-btn1": "Crear cuenta",
         "footer-copyright": "© 2025 CuidaMiHuella – Donde cada huella cuenta.",
         "footer-availability": "Disponible en toda España | Próximamente en Europa"
       },
       fr: {
+        "logo": "CuidaMiHuella",
+        "hero-title": "Votre animal mérite le meilleur",
+        "hero-subtitle": "Soins de confiance, adoption responsable et communauté qui comprend le lien humain-animal.",
+        "btn-register": "Commencez maintenant",
         "nav-register": "Inscription",
         "nav-services": "Services",
         "nav-how": "Comment ça marche ?",
         "nav-contact": "Contact",
-        "hero-title": "CuidaMiHuella",
-        "hero-subtitle": "Votre animal mérite le meilleur — Soins de confiance, adoption responsable et communauté humaine.",
-        "hero-btn1": "Commencez maintenant",
-        "hero-btn2": "Je suis refuge ou association",
         "register-title": "Rejoignez la communauté",
         "register-subtitle": "Choisissez votre rôle et commencez à prendre soin ou être pris en charge.",
-        "type1": "Gardien",
-        "type1-desc": "Gagnez en prenant soin avec amour et responsabilité.",
-        "type2": "Propriétaire",
-        "type2-desc": "Confiez votre animal aux meilleures mains.",
-        "type3": "Refuge / Association",
-        "type3-desc": "Gérez adoptions, dons et visibilité.",
         "services-title": "Nos services",
         "services-subtitle": "Choisissez le niveau de soin parfait pour votre compagnon",
         "basic": "Service de base",
         "price-basic": "10 €/jour",
-        "basic-1": "Nourriture et promenade",
-        "basic-2": "Compagnie affectueuse",
         "standard": "Standard",
         "price-standard": "15 €/jour",
-        "std-1": "Suivi avec photos",
-        "std-2": "Notifications quotidiennes",
         "premium": "Premium",
         "price-premium": "20 €/jour",
-        "prem-1": "Récupération à domicile",
-        "prem-2": "Gardien vérifié (4,8★+)",
         "service-note": "💬 Chat après paiement",
         "how-title": "Aussi simple que ça",
         "how-subtitle": "Connexion, confiance et soin",
@@ -320,41 +233,28 @@
         "step4-desc": "Suivi, avis et assistance pendant tout le processus.",
         "cta-title": "Prêt à commencer ?",
         "cta-subtitle": "Inscrivez-vous gratuitement et rejoignez une communauté qui prend soin avec le cœur.",
-        "cta-btn1": "Créer un compte",
         "footer-copyright": "© 2025 CuidaMiHuella – Là où chaque empreinte compte.",
         "footer-availability": "Disponible en Espagne | Bientôt en Europe"
       },
       en: {
+        "logo": "CuidaMiHuella",
+        "hero-title": "Your pet deserves the best",
+        "hero-subtitle": "Trusted care, responsible adoption, and a community that understands the human-animal bond.",
+        "btn-register": "Get started",
         "nav-register": "Register",
         "nav-services": "Services",
         "nav-how": "How it works",
         "nav-contact": "Contact",
-        "hero-title": "CuidaMiHuella",
-        "hero-subtitle": "Your pet deserves the best — Trusted care, responsible adoption, and a community that understands the human-animal bond.",
-        "hero-btn1": "Get started",
-        "hero-btn2": "I'm a shelter or association",
         "register-title": "Join the community",
         "register-subtitle": "Choose your role and start caring or being cared for.",
-        "type1": "Caregiver",
-        "type1-desc": "Earn by caring with love and responsibility.",
-        "type2": "Owner",
-        "type2-desc": "Leave your pet in the best hands.",
-        "type3": "Shelter / Association",
-        "type3-desc": "Manage adoptions, donations, and visibility.",
         "services-title": "Our services",
         "services-subtitle": "Choose the perfect care level for your companion",
         "basic": "Basic",
         "price-basic": "10 €/day",
-        "basic-1": "Feeding and walk",
-        "basic-2": "Affectionate companionship",
         "standard": "Standard",
         "price-standard": "15 €/day",
-        "std-1": "Photo updates",
-        "std-2": "Daily notifications",
         "premium": "Premium",
         "price-premium": "20 €/day",
-        "prem-1": "Home pickup",
-        "prem-2": "Verified caregiver (4.8★+)",
         "service-note": "💬 Chat after payment",
         "how-title": "That simple",
         "how-subtitle": "Connection, trust, and care",
@@ -368,41 +268,28 @@
         "step4-desc": "Tracking, reviews, and support throughout the process.",
         "cta-title": "Ready to start?",
         "cta-subtitle": "Sign up for free and join a community that cares with heart.",
-        "cta-btn1": "Create account",
         "footer-copyright": "© 2025 CuidaMiHuella – Where every pawprint matters.",
         "footer-availability": "Available across Spain | Coming soon to Europe"
       },
       de: {
+        "logo": "CuidaMiHuella",
+        "hero-title": "Ihr Haustier verdient das Beste",
+        "hero-subtitle": "Vertrauensvolle Betreuung, verantwortungsvolle Adoption und eine Gemeinschaft, die die Mensch-Tier-Beziehung versteht.",
+        "btn-register": "Jetzt starten",
         "nav-register": "Registrieren",
         "nav-services": "Dienstleistungen",
         "nav-how": "Wie funktioniert es?",
         "nav-contact": "Kontakt",
-        "hero-title": "CuidaMiHuella",
-        "hero-subtitle": "Ihr Haustier verdient das Beste — Vertrauensvolle Betreuung, verantwortungsvolle Adoption und eine Gemeinschaft, die die Mensch-Tier-Beziehung versteht.",
-        "hero-btn1": "Jetzt starten",
-        "hero-btn2": "Ich bin ein Tierheim oder Verein",
         "register-title": "Treten Sie der Gemeinschaft bei",
         "register-subtitle": "Wählen Sie Ihre Rolle und beginnen Sie zu betreuen oder betreut zu werden.",
-        "type1": "Betreuer",
-        "type1-desc": "Verdienen Sie, indem Sie mit Liebe und Verantwortung betreuen.",
-        "type2": "Besitzer",
-        "type2-desc": "Lassen Sie Ihr Tier in den besten Händen.",
-        "type3": "Tierheim / Verein",
-        "type3-desc": "Verwalten Sie Adoptionen, Spenden und Sichtbarkeit.",
         "services-title": "Unsere Dienstleistungen",
         "services-subtitle": "Wählen Sie die perfekte Pflegestufe für Ihren Begleiter",
         "basic": "Basis",
         "price-basic": "10 €/Tag",
-        "basic-1": "Fütterung und Spaziergang",
-        "basic-2": "Liebevolle Gesellschaft",
         "standard": "Standard",
         "price-standard": "15 €/Tag",
-        "std-1": "Foto-Updates",
-        "std-2": "Tägliche Benachrichtigungen",
         "premium": "Premium",
         "price-premium": "20 €/Tag",
-        "prem-1": "Abholung zu Hause",
-        "prem-2": "Verifizierter Betreuer (4,8★+)",
         "service-note": "💬 Chat nach Zahlung",
         "how-title": "So einfach",
         "how-subtitle": "Verbindung, Vertrauen und Fürsorge",
@@ -416,41 +303,28 @@
         "step4-desc": "Verfolgung, Bewertungen und Unterstützung während des gesamten Prozesses.",
         "cta-title": "Bereit zu starten?",
         "cta-subtitle": "Registrieren Sie sich kostenlos und treten Sie einer Gemeinschaft bei, die mit Herz sorgt.",
-        "cta-btn1": "Konto erstellen",
         "footer-copyright": "© 2025 CuidaMiHuella – Wo jeder Pfotenabdruck zählt.",
         "footer-availability": "In ganz Spanien verfügbar | Bald in Europa"
       },
       it: {
+        "logo": "CuidaMiHuella",
+        "hero-title": "Il tuo animale merita il meglio",
+        "hero-subtitle": "Cura affidabile, adozione responsabile e una comunità che capisce il legame uomo-animale.",
+        "btn-register": "Inizia ora",
         "nav-register": "Registrati",
         "nav-services": "Servizi",
         "nav-how": "Come funziona",
         "nav-contact": "Contatto",
-        "hero-title": "CuidaMiHuella",
-        "hero-subtitle": "Il tuo animale merita il meglio — Cura affidabile, adozione responsabile e una comunità che capisce il legame uomo-animale.",
-        "hero-btn1": "Inizia ora",
-        "hero-btn2": "Sono un rifugio o un'associazione",
         "register-title": "Unisciti alla comunità",
         "register-subtitle": "Scegli il tuo ruolo e inizia a prenderti cura o essere curato.",
-        "type1": "Custode",
-        "type1-desc": "Guadagna prendendoti cura con amore e responsabilità.",
-        "type2": "Proprietario",
-        "type2-desc": "Affida il tuo animale alle migliori mani.",
-        "type3": "Rifugio / Associazione",
-        "type3-desc": "Gestisci adozioni, donazioni e visibilità.",
         "services-title": "I nostri servizi",
         "services-subtitle": "Scegli il livello di cura perfetto per il tuo compagno",
         "basic": "Base",
         "price-basic": "10 €/giorno",
-        "basic-1": "Alimentazione e passeggiata",
-        "basic-2": "Compagnia affettuosa",
         "standard": "Standard",
         "price-standard": "15 €/giorno",
-        "std-1": "Aggiornamenti con foto",
-        "std-2": "Notifiche giornaliere",
         "premium": "Premium",
         "price-premium": "20 €/giorno",
-        "prem-1": "Ritiro a domicilio",
-        "prem-2": "Custode verificato (4,8★+)",
         "service-note": "💬 Chat dopo il pagamento",
         "how-title": "Così semplice",
         "how-subtitle": "Connessione, fiducia e cura",
@@ -464,7 +338,6 @@
         "step4-desc": "Tracciamento, recensioni e supporto durante tutto il processo.",
         "cta-title": "Pronto a iniziare?",
         "cta-subtitle": "Registrati gratis e unisciti a una comunità che cura con il cuore.",
-        "cta-btn1": "Crea account",
         "footer-copyright": "© 2025 CuidaMiHuella – Dove ogni impronta conta.",
         "footer-availability": "Disponibile in tutta la Spagna | Prossimamente in Europa"
       }
@@ -473,72 +346,33 @@
     // === FUNCIONES ===
     function setLanguage(lang) {
       document.documentElement.lang = lang;
-      const elements = document.querySelectorAll('[data-key]');
-      elements.forEach(el => {
+      document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
-        if (translations[lang] && translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
         }
       });
     }
 
     // Scroll suave
-    document.querySelectorAll('.nav-link').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        if (targetSection) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
           window.scrollTo({
-            top: targetSection.offsetTop - 80,
+            top: target.offsetTop - 70,
             behavior: 'smooth'
           });
         }
       });
     });
 
-    // Modal
-    function openRegisterModal(type) {
-      const modal = document.getElementById('registerModal');
-      const title = document.getElementById('modalTitle');
-      const userType = document.getElementById('userType');
-      
-      const titles = {
-        cuidador: "Registro como Cuidador",
-        dueno: "Registro como Dueño",
-        refugio: "Registro como Asociación / Refugio"
-      };
-      
-      title.textContent = titles[type];
-      userType.value = type;
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeRegisterModal() {
-      document.getElementById('registerModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-      document.getElementById('registerForm').reset();
-    }
-
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert(`¡Código de activación enviado a ${document.getElementById('email').value}!`);
-      closeRegisterModal();
-    });
-
-    window.onclick = function(event) {
-      const modal = document.getElementById('registerModal');
-      if (event.target === modal) closeRegisterModal();
-    }
-
-    // Selector de idioma
-    const flagMap = { es: '🇪🇸', fr: '🇫🇷', en: '🇬🇧', de: '🇩🇪', it: '🇮🇹' };
+    // Cambio de idioma
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.getAttribute('data-lang');
         setLanguage(lang);
-        document.querySelector('.current-flag').textContent = flagMap[lang] || '🇪🇸';
       });
     });
 
