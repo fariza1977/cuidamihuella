@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CuidaMiHuella – Cuidado y adopción responsable</title>
-  <link rel="stylesheet" href="style-cuidamihuella.css" />
+  <link rel="stylesheet" href="style-cuidamihuella-header.css" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" href="image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
 </head>
 <body>
   <!-- Selector de idioma con banderas -->
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <!-- Hero con fondo de familia y perro -->
+  <!-- Header con foto de animales adoptables -->
   <header class="hero">
     <div class="overlay"></div>
     <nav class="container">
@@ -32,18 +32,18 @@
         <img src="https://i.imgur.com/7YvZJkR.png" alt="CuidaMiHuella" class="logo-img">
       </div>
       <ul class="nav-tabs">
-        <li><a href="#registro" class="nav-link" data-key="nav-register">Registro</a></li>
-        <li><a href="#servicios" class="nav-link" data-key="nav-services">Servicios</a></li>
-        <li><a href="#como-funciona" class="nav-link" data-key="nav-how">Cómo funciona</a></li>
-        <li><a href="#contacto" class="nav-link" data-key="nav-contact">Contacto</a></li>
+        <li><a href="#registro" class="nav-link">Registro</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#como-funciona" class="nav-link">Cómo funciona</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
       </ul>
     </nav>
     <div class="hero-content container">
-      <h1 data-key="hero-title">Tu mascota merece lo mejor</h1>
-      <p data-key="hero-subtitle">Cuidado de confianza, adopción responsable y una comunidad que entiende el vínculo humano-animal.</p>
+      <h1>CuidaMiHuella</h1>
+      <p>Tu mascota merece lo mejor — Cuidado de confianza, adopción responsable y una comunidad que entiende el vínculo humano-animal.</p>
       <div class="hero-buttons">
-        <a href="#registro" class="btn-primary" data-key="hero-btn1">Empieza ahora</a>
-        <a href="mailto:partners@cuidamihuella.com" class="btn-secondary" data-key="hero-btn2">Soy refugio o asociación</a>
+        <a href="#registro" class="btn-primary">Empieza ahora</a>
+        <a href="mailto:partners@cuidamihuella.com" class="btn-secondary">Soy refugio o asociación</a>
       </div>
     </div>
   </header>
@@ -52,29 +52,29 @@
   <section id="registro" class="section">
     <div class="container">
       <div class="section-header">
-        <h2 data-key="register-title">Únete a la comunidad</h2>
-        <p data-key="register-subtitle">Elige tu rol y empieza a cuidar o ser cuidado.</p>
+        <h2>Únete a la comunidad</h2>
+        <p>Elige tu rol y empieza a cuidar o ser cuidado.</p>
       </div>
       <div class="register-types">
         <div class="register-card" onclick="openRegisterModal('cuidador')">
           <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=600&h=400&q=80" alt="Cuidador con perro">
           <div class="register-overlay">
-            <h3 data-key="type1">Cuidador</h3>
-            <p data-key="type1-desc">Gana cuidando con amor y responsabilidad.</p>
+            <h3>Cuidador</h3>
+            <p>Gana cuidando con amor y responsabilidad.</p>
           </div>
         </div>
         <div class="register-card" onclick="openRegisterModal('dueno')">
           <img src="https://images.unsplash.com/photo-1517524387118-e20f0f9e3a55?auto=format&fit=crop&w=600&h=400&q=80" alt="Niña con perro">
           <div class="register-overlay">
-            <h3 data-key="type2">Dueño</h3>
-            <p data-key="type2-desc">Deja a tu mascota en las mejores manos.</p>
+            <h3>Dueño</h3>
+            <p>Deja a tu mascota en las mejores manos.</p>
           </div>
         </div>
         <div class="register-card" onclick="openRegisterModal('refugio')">
           <img src="https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600&h=400&q=80" alt="Refugio con perros">
           <div class="register-overlay">
-            <h3 data-key="type3">Refugio / Asociación</h3>
-            <p data-key="type3-desc">Gestiona adopciones, donaciones y visibilidad.</p>
+            <h3>Refugio / Asociación</h3>
+            <p>Gestiona adopciones, donaciones y visibilidad.</p>
           </div>
         </div>
       </div>
@@ -85,44 +85,44 @@
   <section id="servicios" class="section bg-cream">
     <div class="container">
       <div class="section-header">
-        <h2 data-key="services-title">Nuestros servicios</h2>
-        <p data-key="services-subtitle">Elige el nivel de cuidado perfecto para tu compañero</p>
+        <h2>Nuestros servicios</h2>
+        <p>Elige el nivel de cuidado perfecto para tu compañero</p>
       </div>
       <div class="services-grid">
         <div class="service-card">
           <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&h=400&q=80" alt="Perro en casa">
           <div class="service-body">
             <span class="service-badge basic">Básico</span>
-            <p class="price" data-key="price-basic">10 €/día</p>
+            <p class="price">10 €/día</p>
             <ul>
-              <li data-key="basic-1">Alimentación y paseo</li>
-              <li data-key="basic-2">Compañía afectuosa</li>
+              <li>Alimentación y paseo</li>
+              <li>Compañía afectuosa</li>
             </ul>
-            <p class="service-note" data-key="service-note">💬 Chat tras pago</p>
+            <p class="service-note">💬 Chat tras pago</p>
           </div>
         </div>
         <div class="service-card">
           <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=600&h=400&q=80" alt="Gato cómodo">
           <div class="service-body">
             <span class="service-badge standard">Estándar</span>
-            <p class="price" data-key="price-standard">15 €/día</p>
+            <p class="price">15 €/día</p>
             <ul>
-              <li data-key="std-1">Seguimiento con fotos</li>
-              <li data-key="std-2">Notificaciones diarias</li>
+              <li>Seguimiento con fotos</li>
+              <li>Notificaciones diarias</li>
             </ul>
-            <p class="service-note" data-key="service-note">💬 Chat tras pago</p>
+            <p class="service-note">💬 Chat tras pago</p>
           </div>
         </div>
         <div class="service-card premium">
           <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&h=400&q=80" alt="Perro feliz en jardín">
           <div class="service-body">
             <span class="service-badge premium">Premium</span>
-            <p class="price" data-key="price-premium">20 €/día</p>
+            <p class="price">20 €/día</p>
             <ul>
-              <li data-key="prem-1">Recogida a domicilio</li>
-              <li data-key="prem-2">Guardián verificado (4.8★+)</li>
+              <li>Recogida a domicilio</li>
+              <li>Guardián verificado (4.8★+)</li>
             </ul>
-            <p class="service-note" data-key="service-note">💬 Chat tras pago</p>
+            <p class="service-note">💬 Chat tras pago</p>
           </div>
         </div>
       </div>
@@ -133,29 +133,29 @@
   <section id="como-funciona" class="section bg-soft">
     <div class="container">
       <div class="section-header">
-        <h2 data-key="how-title">Así de simple</h2>
-        <p data-key="how-subtitle">Conexión, confianza y cuidado</p>
+        <h2>Así de simple</h2>
+        <p>Conexión, confianza y cuidado</p>
       </div>
       <div class="steps">
         <div class="step">
           <div class="step-number">1</div>
-          <h3 data-key="step1">Regístrate y explora</h3>
-          <p data-key="step1-desc">Accede a todos los perfiles y fotos. El contacto está bloqueado hasta el pago.</p>
+          <h3>Regístrate y explora</h3>
+          <p>Accede a todos los perfiles y fotos. El contacto está bloqueado hasta el pago.</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h3 data-key="step2">Elige y paga</h3>
-          <p data-key="step2-desc">Selecciona un servicio y realiza el pago seguro.</p>
+          <h3>Elige y paga</h3>
+          <p>Selecciona un servicio y realiza el pago seguro.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <h3 data-key="step3">Chatea y coordina</h3>
-          <p data-key="step3-desc">Acceso inmediato a un chat privado para organizar todo.</p>
+          <h3>Chatea y coordina</h3>
+          <p>Acceso inmediato a un chat privado para organizar todo.</p>
         </div>
         <div class="step">
           <div class="step-number">4</div>
-          <h3 data-key="step4">Cuida con confianza</h3>
-          <p data-key="step4-desc">Seguimiento, reseñas y soporte durante todo el proceso.</p>
+          <h3>Cuida con confianza</h3>
+          <p>Seguimiento, reseñas y soporte durante todo el proceso.</p>
         </div>
       </div>
     </div>
@@ -164,9 +164,9 @@
   <!-- CTA final -->
   <section id="contacto" class="cta-section">
     <div class="container">
-      <h2 data-key="cta-title">Listo para empezar?</h2>
-      <p data-key="cta-subtitle">Regístrate gratis y únete a una comunidad que cuida con el corazón.</p>
-      <a href="#registro" class="btn-primary" data-key="cta-btn1">Crear cuenta</a>
+      <h2>¿Listo para empezar?</h2>
+      <p>Regístrate gratis y únete a una comunidad que cuida con el corazón.</p>
+      <a href="#registro" class="btn-primary">Crear cuenta</a>
     </div>
   </section>
 
@@ -176,16 +176,16 @@
       <div class="footer-content">
         <div class="footer-logo">
           <img src="https://i.imgur.com/7YvZJkR.png" alt="CuidaMiHuella" class="footer-logo-img">
-          <p data-key="footer-copyright">© 2025 CuidaMiHuella – Donde cada huella cuenta.</p>
+          <p>© 2025 CuidaMiHuella – Donde cada huella cuenta.</p>
         </div>
         <div class="footer-links">
-          <h4 data-key="nav-register">Registro</h4>
-          <h4 data-key="nav-services">Servicios</h4>
-          <h4 data-key="nav-how">Cómo funciona</h4>
-          <h4 data-key="nav-contact">Contacto</h4>
+          <h4>Registro</h4>
+          <h4>Servicios</h4>
+          <h4>Cómo funciona</h4>
+          <h4>Contacto</h4>
         </div>
       </div>
-      <p data-key="footer-availability">Disponible en toda España | Próximamente en Europa</p>
+      <p>Disponible en toda España | Próximamente en Europa</p>
     </div>
   </footer>
 
@@ -226,7 +226,7 @@
   </div>
 
   <script>
-    // Función para hacer scroll suave a una sección
+    // Scroll suave
     document.querySelectorAll('.nav-link').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -241,16 +241,7 @@
       });
     });
 
-    // Gestión de idioma con bandera
-    let currentFlag = '🇪🇸';
-    const flagMap = {
-      es: '🇪🇸',
-      fr: '🇫🇷',
-      en: '🇬🇧',
-      de: '🇩🇪',
-      it: '🇮🇹'
-    };
-
+    // Modal
     function openRegisterModal(type) {
       const modal = document.getElementById('registerModal');
       const title = document.getElementById('modalTitle');
@@ -285,39 +276,14 @@
       if (event.target === modal) closeRegisterModal();
     }
 
-    // Cambio de idioma con actualización de bandera
+    // Selector de idioma (sin localStorage para evitar error en vista previa)
+    const flagMap = { es: '🇪🇸', fr: '🇫🇷', en: '🇬🇧', de: '🇩🇪', it: '🇮🇹' };
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.getAttribute('data-lang');
-        setLanguage(lang);
-        currentFlag = flagMap[lang] || '🇪🇸';
-        document.querySelector('.current-flag').textContent = currentFlag;
-        localStorage.setItem('preferred-lang', lang);
+        document.querySelector('.current-flag').textContent = flagMap[lang] || '🇪🇸';
       });
     });
-
-    // Inicialización de idioma
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('preferred-lang') || 'es';
-      setLanguage(savedLang);
-      currentFlag = flagMap[savedLang] || '🇪🇸';
-      document.querySelector('.current-flag').textContent = currentFlag;
-    });
-
-    // Función setLanguage (deberá estar definida en lang.js)
-    function setLanguage(lang) {
-      document.documentElement.lang = lang;
-      const elements = document.querySelectorAll('[data-key]');
-      elements.forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (translations && translations[lang] && translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
-        }
-      });
-    }
   </script>
-
-  <!-- Incluir lang.js aquí o como archivo externo -->
-  <script src="lang.js"></script>
 </body>
 </html>
