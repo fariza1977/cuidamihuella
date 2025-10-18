@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaMiHuella - Adopción Responsable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* style.css */
+        :root {
+            --primary: #2e8b57;
+            --primary-dark: #1e5e3a;
+            --secondary: #4a90e2;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: var(--dark);
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-selector {
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .language-selector select {
+            background: transparent;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            appearance: none;
+            color: var(--dark);
+        }
+
+        .language-selector::after {
+            content: '\f0d7';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1920x1080/4ade80/ffffff?text=Happy+Family+with+Dog');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Value Proposition */
+        .value-prop {
+            background-color: var(--white);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--white);
+            font-size: 32px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .value-card p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        /* Process Section */
+        .process {
+            background-color: var(--light-gray);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(46, 139, 87, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .step p {
+            color: var(--gray);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--white);
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            padding: 40px;
+            color: var(--white);
+            text-align: center;
+            box-shadow: var(--shadow);
+            margin: 0 20px;
+        }
+
+        .testimonial-text {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 40px;
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            top: -20px;
+            left: -10px;
+        }
+
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .testimonial-nav button {
+            background: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .testimonial-nav button:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Shelters CTA */
+        .shelters-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .shelters-cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .shelters-cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+
+        /* Membership Section */
+        .membership {
+            background-color: var(--white);
+        }
+
+        .membership-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .plan {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .plan:hover {
+            border-color: var(--primary);
+            transform: scale(1.03);
+        }
+
+        .plan.popular {
+            border-color: var(--accent);
+        }
+
+        .plan.popular::before {
+            content: 'Más Popular';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .plan-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(46, 139, 87, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 32px;
+        }
+
+        .plan.popular .plan-icon {
+            background: rgba(255, 107, 107, 0.1);
+            color: var(--accent);
+        }
+
+        .plan h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .plan-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .plan-price {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .plan-renewal {
+            color: var(--gray);
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .plan-benefits {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .plan-benefits li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .plan-benefits li i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .value-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--light);
+            border-radius: 15px;
+        }
+
+        .value-item i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .value-item h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 120px 0 80px;
+            }
+            
+            .membership-plans {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-paw"></i>
+                CuidaMiHuella
+            </a>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#membership">Únete al Club</a></li>
+                    <li><a href="#shelters">Para Protectoras</a></li>
+                    <li><a href="#process">Busca a tu Compañero</a></li>
+                    <li><a href="#membership">El Club</a></li>
+                    <li><a href="#footer">Sobre Nosotros</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="es">🇪🇸 Español</option>
+                        <option value="eu">🇪🇺 Euskara</option>
+                        <option value="ca">🇨🇦 Català</option>
+                        <option value="en">🇬🇧 English</option>
+                        <option value="fr">🇫🇷 Français</option>
+                        <option value="de">🇩🇪 Deutsch</option>
+                    </select>
+                </div>
+                <a href="#" class="btn btn-outline">Acceder / Mi Cuenta</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>La Adopción ha Cambiado. Para Siempre.</h1>
+            <p>Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal. Descubre un proceso seguro, con seguro incluido, y una comunidad que te acompaña para toda la vida.</p>
+            <div class="hero-buttons">
+                <a href="#membership" class="btn btn-primary">Descubre el Club</a>
+                <a href="#process" class="btn btn-secondary">Busca a tu Compañero</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="section value-prop">
+        <div class="container">
+            <h2 class="section-title">Un Club para Todos los que Aman a los Animales</h2>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>¿Pensando en Adoptar?</h3>
+                    <p>Elimina el miedo con nuestra "Experiencia de Acogida". Convive con tu futuro compañero durante 3 semanas de forma segura y toma la decisión más importante de tu vida con el corazón y la cabeza.</p>
+                    <a href="#process" class="btn btn-outline">Saber más sobre la Experiencia ></a>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>¿Ya Tienes Mascota?</h3>
+                    <p>Únete a la comunidad de dueños más comprometida de España. Accede a nuestra red de descuentos, foros con expertos, cadena de favores y mucho más. Dale a tu mascota los beneficios que se merece.</p>
+                    <a href="#membership" class="btn btn-outline">Hazte Socio Amigo ></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section process" id="process">
+        <div class="container">
+            <h2 class="section-title">Tu Viaje hacia el Compañero Perfecto, en 3 Pasos Seguros</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Únete al Club y Activa tu Pack</h3>
+                    <p>Por una cuota única de 89€ activas tu "Pack de Bienvenida y Tranquilidad Total". Incluye tu seguro, la desparasitación del animal y un donativo a la protectora.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Vive la Experiencia de Acogida</h3>
+                    <p>Elige un animal y disfrútalo en casa durante 3 semanas. Descubre su verdadero carácter y si sois el match perfecto, con el apoyo de nuestra comunidad.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Celebra tu Éxito</h3>
+                    <p>Formaliza una adopción basada en la realidad, no en una corazonada. La firma final con la protectora es solo un trámite para celebrar lo que ya sabes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">Las Historias que nos Impulsan</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">La "Experiencia de Acogida" fue clave. Descubrimos que necesitábamos un perro tranquilo como Bruno. Sin este proceso, nos habríamos equivocado.</p>
+                    <p class="testimonial-author">— Laura y David, Socios Fundadores y familia de Bruno.</p>
+                </div>
+                <div class="testimonial-nav">
+                    <button id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shelters CTA -->
+    <section class="shelters-cta" id="shelters">
+        <div class="container">
+            <h2>¿Eres una Protectora o Centro de Acogida?</h2>
+            <p>Descubre cómo nuestra plataforma puede ahorrarte horas de trabajo, reducir las devoluciones y generarte una nueva vía de financiación. A coste cero.</p>
+            <a href="#" class="btn btn-primary">Colabora con Nosotros</a>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="section membership" id="membership">
+        <div class="container">
+            <h2 class="section-title">El Club para los que Aman de Verdad a sus Animales</h2>
+            <p class="text-center mb-5">Tanto si buscas a tu nuevo compañero como si ya lo tienes, CuidamiHuella es el ecosistema de confianza, ahorro y apoyo que necesitas. Elige tu camino para entrar.</p>
+            
+            <div class="membership-plans">
+                <div class="plan">
+                    <div class="plan-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>SOCIO FUNDADOR</h3>
+                    <p class="plan-desc">Para los que inician su viaje adoptando con nosotros.</p>
+                    <div class="plan-price">89 €</div>
+                    <p class="plan-renewal">29,90 €/año</p>
+                    <ul class="plan-benefits">
+                        <li><i class="fas fa-check"></i> Acceso a la "Experiencia de Acogida"</li>
+                        <li><i class="fas fa-check"></i> Seguro de RC y Accidentes incluido en el Pack</li>
+                        <li><i class="fas fa-check"></i> Acceso COMPLETO al Club (Descuentos, Expertos, Comunidad)</li>
+                        <li><i class="fas fa-check"></i> Acceso EXCLUSIVO a la "Cadena de Favores" con estatus verificado</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Inicia tu Adopción</a>
+                </div>
+                
+                <div class="plan popular">
+                    <div class="plan-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>SOCIO AMIGO</h3>
+                    <p class="plan-desc">Para los que ya tienen mascota y quieren unirse al club.</p>
+                    <div class="plan-price">39,90 €</div>
+                    <p class="plan-renewal">29,90 €/año (¡Tu lealtad tiene premio!)</p>
+                    <ul class="plan-benefits">
+                        <li><i class="fas fa-check"></i> Acceso COMPLETO a la Red de Descuentos</li>
+                        <li><i class="fas fa-check"></i> Acceso COMPLETO a los Foros de Expertos y Comunidad</li>
+                        <li><i class="fas fa-check"></i> Posibilidad de acceder a la "Cadena de Favores" tras un proceso de verificación</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Hazte Socio Amigo Ahora</a>
+                </div>
+            </div>
+            
+            <h2 class="section-title mt-5">Tu Cuota Anual se Paga Sola. Y Varias Veces.</h2>
+            <div class="value-grid-3">
+                <div class="value-item">
+                    <i class="fas fa-gift"></i>
+                    <h3>Ahorra Dinero</h3>
+                    <p>Solo con el seguro de RC obligatorio incluido en tu renovación, ya has recuperado la inversión. Súmale los cientos de euros que te ahorrarás en veterinarios, tiendas y peluquerías.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Gana Tranquilidad</h3>
+                    <p>Con una sola vez que uses nuestra "Cadena de Favores" para una urgencia, o que resuelvas una duda de salud con un experto sin ir a la clínica, la tranquilidad que ganas no tiene precio.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-paw"></i>
+                    <h3>Pertenece</h3>
+                    <p>Encuentra tu "cuadrilla" de paseo, haz nuevos amigos y forma parte de una comunidad que comparte tus valores. El bienestar de tu mascota y el tuyo propio se multiplicarán.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>CuidaMiHuella</h3>
+                    <p>Zure aztarna zaintzen dugu.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#membership">Únete al Club</a></li>
+                        <li><a href="#shelters">Para Protectoras</a></li>
+                        <li><a href="#process">Busca a tu Compañero</a></li>
+                        <li><a href="#membership">El Club</a></li>
+                        <li><a href="#footer">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Aviso Legal</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Ayuda</h3>
+                    <ul>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Preguntas Frecuentes (FAQ)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 CuidamiHuella. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // lang.js
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Testimonial carousel
+            const testimonials = [
+                {
+                    text: "La \"Experiencia de Acogida\" fue clave. Descubrimos que necesitábamos un perro tranquilo como Bruno. Sin este proceso, nos habríamos equivocado.",
+                    author: "— Laura y David, Socios Fundadores y familia de Bruno."
+                },
+                {
+                    text: "Tener acceso al foro de expertos nos quitó toda la ansiedad de los primeros días. ¡Es como tener un veterinario en el bolsillo!",
+                    author: "— Mikel, Socio Fundador y compañero de Luna."
+                },
+                {
+                    text: "Me uní como \"Socio Amigo\" por los descuentos en veterinarias. En un año me he ahorrado más de 100€. Y he encontrado un grupo de paseo para mi perro los domingos. ¡Increíble!",
+                    author: "— Sofía, Socia Amiga y compañera de Coco."
+                }
+            ];
+            
+            let currentTestimonial = 0;
+            const testimonialText = document.querySelector('.testimonial-text');
+            const testimonialAuthor = document.querySelector('.testimonial-author');
+            
+            function updateTestimonial() {
+                testimonialText.textContent = testimonials[currentTestimonial].text;
+                testimonialAuthor.textContent = testimonials[currentTestimonial].author;
+            }
+            
+            document.getElementById('nextTestimonial').addEventListener('click', function() {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                updateTestimonial();
+            });
+            
+            document.getElementById('prevTestimonial').addEventListener('click', function() {
+                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                updateTestimonial();
+            });
+            
+            // Language selector
+            const languageSelect = document.getElementById('languageSelect');
+            languageSelect.addEventListener('change', function() {
+                // In a real implementation, this would load translations
+                // For this demo, we'll just show an alert
+                alert(`Idioma cambiado a: ${this.options[this.selectedIndex].text}`);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        // Close mobile menu if open
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
