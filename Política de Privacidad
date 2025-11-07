@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - CuidaMiHuella</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdf2f8; }
+        .legal-text { max-width: 80ch; }
+        .legal-text h1 { font-size: 2.25rem; font-weight: 800; color: #5b21b6; margin-bottom: 1.5rem; }
+        .legal-text h2 { font-size: 1.5rem; font-weight: 700; color: #5b21b6; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #ddd6fe; padding-bottom: 0.5rem; }
+        .legal-text p, .legal-text li { font-size: 1rem; line-height: 1.75; color: #374151; margin-bottom: 1.25rem; }
+        .legal-text ul { list-style-type: disc; padding-left: 2rem; }
+        .legal-text a { color: #8b5cf6; text-decoration: underline; }
+        .legal-text a:hover { color: #7c3aed; }
+        .legal-text strong { color: #4c1d95; } /* violet-900 */
+        .back-link { display: inline-block; margin-top: 2rem; padding: 0.75rem 1.5rem; background-color: #8b5cf6; color: white; font-weight: 600; text-decoration: none; border-radius: 0.5rem; transition: background-color 0.3s ease; }
+        .back-link:hover { background-color: #7c3aed; }
+    </style>
+</head>
+<body class="py-12 px-4">
+    <div class="legal-text container mx-auto bg-white p-8 md:p-12 shadow-xl rounded-lg">
+        <h1>Política de Privacidad</h1>
+
+        <h2>1. Información Básica sobre Protección de Datos</h2>
+        <p>De conformidad con lo dispuesto en el <strong>Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016 (RGPD)</strong>, y la <strong>Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD)</strong>, le informamos sobre el tratamiento de sus datos personales.</p>
+        
+        <ul>
+            <li><strong>Responsable del Tratamiento:</strong> [Nombre Completo o Razón Social] ([Tu NIF/CIF])</li>
+            <li><strong>Finalidad:</strong> Gestionar las consultas recibidas a través de los formularios de contacto (general y de protectoras) y, en el futuro, gestionar el registro de usuarios y la comunidad.</li>
+            <li><strong>Legitimación:</strong> El consentimiento expreso del interesado (marcando la casilla de aceptación).</li>
+            <li><strong>Destinatarios:</strong> No se cederán datos a terceros, salvo obligación legal. Los datos de los formularios de contacto se gestionan a través de Formspree (servicio de procesamiento de formularios). [Si se usa Firebase para autenticación en el futuro, se deberá añadir: "Google LLC (Firebase) como encargado de tratamiento para la autenticación de usuarios."]</li>
+            <li><strong>Derechos:</strong> Tiene derecho a acceder, rectificar y suprimir sus datos, así como otros derechos como se explica en la información adicional.</li>
+        </ul>
+
+        <h2>2. Responsable del Tratamiento</h2>
+        <p>El responsable del tratamiento de los datos personales recogidos en el sitio web "CuidaMiHuella" es:</p>
+        <ul>
+            <li><strong>Titular:</strong> [Nombre Completo de la persona física o Razón Social de la asociación]</li>
+            <li><strong>NIF/CIF:</strong> [Tu NIF o el CIF de la asociación]</li>
+            <li><strong>Domicilio Social:</strong> [Tu dirección completa, CP, Ciudad, Provincia]</li>
+            <li><strong>Correo Electrónico:</strong> [Tu email de contacto, ej: contacto@cuidamihuella.com]</li>
+        </ul>
+
+        <h2>3. Finalidad del Tratamiento de sus Datos</h2>
+        <p>Tratamos la información que nos facilita con el fin de atender las solicitudes de información recibidas a través de los formularios de contacto y/o para gestionar la solicitud de colaboración de las protectoras.</p>
+        <p>En caso de que en el futuro se habilite un registro de usuarios, los datos se utilizarán para gestionar su cuenta, permitirle el acceso a las áreas privadas y gestionar su participación en la comunidad.</p>
+        <p>No se tomarán decisiones automatizadas ni se elaborarán perfiles con sus datos personales.</p>
+
+        <h2>4. Legitimación para el Tratamiento</h2>
+        <p>La base legal para el tratamiento de sus datos es el <strong>consentimiento explícito</strong> que nos otorga al marcar la casilla de aceptación de la política de privacidad antes de enviar un formulario, de conformidad con el artículo 6.1.a del RGPD.</p>
+        <p>Puede retirar su consentimiento en cualquier momento, sin que ello afecte a la licitud del tratamiento basado en el consentimiento previo a su retirada.</p>
+
+        <h2>5. Plazo de Conservación de los Datos</h2>
+        <p>Los datos personales proporcionados se conservarán únicamente durante el tiempo necesario para cumplir con la finalidad para la que fueron recogidos y para determinar las posibles responsabilidades que se pudieran derivar de dicha finalidad.</p>
+        <p>En el caso de las consultas, se conservarán hasta que la consulta haya sido resuelta y, posteriormente, durante los plazos de prescripción legal. Si se registra como usuario, sus datos se conservarán mientras mantenga su condición de usuario registrado (es decir, hasta que solicite la baja).</p>
+
+        <h2>6. Comunicación de Datos</h2>
+        <p>Con carácter general, no se comunicarán sus datos personales a terceros, salvo que exista una obligación legal.</p>
+        <p>Para la gestión de los formularios de contacto, este sitio web utiliza los servicios de <strong>Formspree, Inc.</strong> (EE.UU.), que actúa como encargado del tratamiento. Al utilizar los formularios, el usuario consiente la transferencia internacional de sus datos a Formspree en EE.UU. para la única finalidad de procesar el envío del formulario. [Se recomienda revisar la política de privacidad de Formspree].</p>
+
+        <h2>7. Sus Derechos de Protección de Datos</h2>
+        <p>Como interesado, tiene derecho a ejercer los siguientes derechos reconocidos en la LOPDGDD y el RGPD:</p>
+        <ul>
+            <li><strong>Derecho de Acceso (Art. 15 RGPD):</strong> A obtener confirmación sobre si estamos tratando datos personales que le conciernen.</li>
+            <li><strong>Derecho de Rectificación (Art. 16 RGPD):</strong> A solicitar la rectificación de los datos inexactos.</li>
+            <li><strong>Derecho de Supresión (Art. 17 RGPD):</strong> A solicitar la supresión de sus datos ("derecho al olvido") cuando, entre otros motivos, los datos ya no sean necesarios para los fines que fueron recogidos.</li>
+            <li><strong>Derecho a la Limitación del Tratamiento (Art. 18 RGPD):</strong> A solicitar la limitación del tratamiento de sus datos.</li>
+            <li><strong>Derecho a la Portabilidad de los Datos (Art. 20 RGPD):</strong> A recibir los datos personales que le incumban, que nos haya facilitado, en un formato estructurado, de uso común y lectura mecánica.</li>
+            <li><strong>Derecho de Oposición (Art. 21 RGPD):</strong> A oponerse, en cualquier momento, a que datos personales que le conciernan sean objeto de tratamiento.</li>
+        </ul>
+        <p>Puede ejercer estos derechos enviando una comunicación escrita al domicilio social del Titular o a la dirección de correo electrónico [Tu email de contacto], adjuntando una fotocopia de su DNI o documento equivalente.</p>
+        <p>Asimismo, si considera que no hemos atendido correctamente sus derechos, tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong>.</p>
+
+        <h2>8. Medidas de Seguridad</h2>
+        <p>El Titular ha adoptado las medidas de índole técnica y organizativa necesarias para garantizar la seguridad de sus datos y evitar su alteración, pérdida, tratamiento o acceso no autorizado, habida cuenta del estado de la tecnología, la naturaleza de los datos almacenados y los riesgos a que están expuestos.</p>
+
+        <a href="index.html" class="back-link">← Volver a la página principal</a>
+    </div>
+</body>
+</html>
