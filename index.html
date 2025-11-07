@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaMiHuella - Adopción Responsable</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Estilos Personalizados Integrados -->
     <style>
         :root {
             --primary-color: #8b5cf6; /* violet-500 */
@@ -92,6 +96,7 @@
 </head>
 <body class="bg-gray-50">
 
+    <!-- Header -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -127,6 +132,7 @@
                 </div>
             </div>
         </div>
+        <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <a href="#hero" data-key="nav_home" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Inicio</a>
             <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Únete al Club</a>
@@ -140,6 +146,7 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero text-white" id="hero">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[60vh] py-20">
                 <h1 data-key="hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">La Adopción ha Cambiado. Para Siempre.</h1>
@@ -151,6 +158,7 @@
             </div>
         </section>
 
+        <!-- Value Proposition -->
         <section class="py-16 md:py-24 bg-white" id="value-prop">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -173,6 +181,7 @@
             </div>
         </section>
 
+        <!-- Process Section -->
         <section class="py-16 md:py-24" id="process">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -198,6 +207,7 @@
             </div>
         </section>
 
+        <!-- Testimonials -->
         <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -211,6 +221,7 @@
             </div>
         </section>
 
+        <!-- Shelters CTA -->
         <section class="shelters-cta text-white" id="shelters">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 md:py-20">
                 <h2 data-key="shelters_title" class="text-3xl md:text-4xl font-bold mb-4">¿Eres una Protectora o Centro de Acogida?</h2>
@@ -219,6 +230,7 @@
             </div>
         </section>
 
+        <!-- Membership Section -->
         <section class="py-16 md:py-24" id="membership">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -258,6 +270,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer id="footer" class="text-gray-700">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
@@ -282,9 +295,9 @@
                 <div>
                     <h3 data-key="footer_legal_title" class="font-semibold mb-4 uppercase tracking-wider">Legal</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" data-key="legal1">Aviso Legal</a></li>
-                        <li><a href="#" data-key="legal2">Política de Privacidad</a></li>
-                        <li><a href="#" data-key="legal3">Política de Cookies</a></li>
+                        <li><a href="aviso-legal.html" data-key="legal1">Aviso Legal</a></li>
+                        <li><a href="politica-de-privacidad.html" data-key="legal2">Política de Privacidad</a></li>
+                        <li><a href="politica-de-cookies.html" data-key="legal3">Política de Cookies</a></li>
                     </ul>
                 </div>
                 <div>
@@ -301,6 +314,7 @@
         </div>
     </footer>
 
+    <!-- JavaScript Integrado -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         // --- Mobile Menu ---
@@ -407,21 +421,39 @@
         
         translations.eu.testimonial_1_text = "'Harrera Esperientzia' funtsezkoa izan zen. Bruno bezalako txakur lasai bat behar genuela aurkitu genuen. Prozesu hon gabe, huts egingo genukeen.";
         translations.eu.testimonial_1_author = "— Laura eta David, Bazkide Fundatzaileak eta Brunoren familia.";
+        translations.eu.testimonial_2_text = "Bazkide Laguna izateak asko aurreztu digu albaitarietan eta kalitatezko janarian. Komunitatea ikaragarria da, beti dago laguntzeko prest dagoen norbait.";
+        translations.eu.testimonial_2_author = "— Marcos G., Bazkide Laguna eta Lúaren aita.";
+        translations.eu.testimonial_3_text = "Ez nuen inoiz pentsatu adoptatzea hain erraza eta segurua izango zenik. CuidaMiHuellako taldeak urrats guztietan gidatu gintuen. Maiteminduta gaude gure katu berriarekin, Nilorekin!";
+        translations.eu.testimonial_3_author = "— Sofía R., Bazkide Fundatzailea eta Niloren ama.";
+        
         translations.ca.testimonial_1_text = "L''Experiència d'Acollida' va ser clau. Vam descobrir que necessitàvem un gos tranquil com el Bruno. Sense aquest procés, ens hauríem equivocat.";
         translations.ca.testimonial_1_author = "— Laura i David, Socis Fundadors i família del Bruno.";
+        translations.ca.testimonial_2_text = "Ser Soci Amic ens ha estalviat molt en veterinaris i menjar de qualitat. La comunitat és increïble, sempre hi ha algú disposat a ajudar.";
+        translations.ca.testimonial_2_author = "— Marcos G., Soci Amic i pare de la Lúa.";
+        translations.ca.testimonial_3_text = "Mai vaig pensar que adoptar seria tan fàcil i segur. L'equip de CuidaMiHuella ens va guiar a cada pas. Estem enamorats del nostre nou gat, el Nilo!";
+        translations.ca.testimonial_3_author = "— Sofía R., Sòcia Fundadora i mare d'en Nilo.";
+
         translations.fr.testimonial_1_text = "L''Expérience d'Accueil' a été déterminante. Nous avons découvert que nous avions besoin d'un chien calme comme Bruno. Sans ce processus, nous aurions fait une erreur.";
         translations.fr.testimonial_1_author = "— Laura et David, Membres Fondateurs et famille de Bruno.";
+        translations.fr.testimonial_2_text = "Être Membre Ami nous a permis d'économiser beaucoup sur les vétérinaires et la nourriture de qualité. La communauté est incroyable, il y a toujours quelqu'un prêt à aider.";
+        translations.fr.testimonial_2_author = "— Marcos G., Membre Ami et papa de Lúa.";
+        translations.fr.testimonial_3_text = "Je n'aurais jamais cru que l'adoption serait si facile et sûre. L'équipe de CuidaMiHuella nous a guidés à chaque étape. Nous sommes amoureux de notre nouveau chat, Nilo !";
+        translations.fr.testimonial_3_author = "— Sofía R., Membre Fondatrice et maman de Nilo.";
+
         translations.de.testimonial_1_text = "Die 'Pflegeerfahrung' war der Schlüssel. Wir haben entdeckt, dass wir einen ruhigen Hund wie Bruno brauchten. Ohne diesen Prozess hätten wir einen Fehler gemacht.";
         translations.de.testimonial_1_author = "— Laura & David, Gründungsmitglieder und Brunos Familie.";
+        translations.de.testimonial_2_text = "Als Freund-Mitglied haben wir viel bei Tierärzten und hochwertigem Futter gespart. Die Gemeinschaft ist unglaublich, es ist immer jemand bereit zu helfen.";
+        translations.de.testimonial_2_author = "— Marcos G., Freund-Mitglied und Lúas Papa.";
+        translations.de.testimonial_3_text = "Ich hätte nie gedacht, dass eine Adoption so einfach und sicher sein kann. Das Team von CuidaMiHuella hat uns bei jedem Schritt begleitet. Wir sind verliebt in unsere neue Katze Nilo!";
+        translations.de.testimonial_3_author = "— Sofía R., Gründungsmitglied und Nilos Mama.";
+        
         translations.it.testimonial_1_text = "L''Esperienza di Affido' è stata fondamentale. Abbiamo scoperto di aver bisogno di un cane tranquillo come Bruno. Senza questo processo, avremmo sbagliato.";
         translations.it.testimonial_1_author = "— Laura e David, Soci Fondatori e famiglia di Bruno.";
+        translations.it.testimonial_2_text = "Essere Socio Amico ci ha fatto risparmiare molto su veterinari e cibo di qualità. La community è incredibile, c'è sempre qualcuno disposto ad aiutare.";
+        translations.it.testimonial_2_author = "— Marcos G., Socio Amico e papà di Lúa.";
+        translations.it.testimonial_3_text = "Non avrei mai pensato che adottare fosse così facile e sicuro. Il team di CuidaMiHuella ci ha guidato in ogni passo. Siamo innamorati del nostro nuovo gatto, Nilo!";
+        translations.it.testimonial_3_author = "— Sofía R., Socia Fondatrice e mamma di Nilo.";
         
-        // (Añadir aquí el resto de testimonios traducidos para eu, ca, fr, de, it...)
-        translations.eu.testimonial_2_text = "[eu] Ser Socio Amigo nos ha ahorrado un montón en veterinarios...";
-        translations.eu.testimonial_2_author = "[eu] — Marcos G., Socio Amigo y padre de Lúa.";
-        translations.eu.testimonial_3_text = "[eu] Nunca pensé que adoptar sería tan fácil y seguro...";
-        translations.eu.testimonial_3_author = "[eu] — Sofía R., Socia Fundadora y mamá de Nilo.";
-        // ...y así para todos los idiomas.
         
         // --- Language Switcher Logic ---
         const languageSelect = document.getElementById('languageSelect');
