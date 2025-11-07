@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Cookies - CuidaMiHuella</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdf2f8; }
+        .legal-text { max-width: 80ch; }
+        .legal-text h1 { font-size: 2.25rem; font-weight: 800; color: #5b21b6; margin-bottom: 1.5rem; }
+        .legal-text h2 { font-size: 1.5rem; font-weight: 700; color: #5b21b6; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #ddd6fe; padding-bottom: 0.5rem; }
+        .legal-text p, .legal-text li { font-size: 1rem; line-height: 1.75; color: #374151; margin-bottom: 1.25rem; }
+        .legal-text ul { list-style-type: disc; padding-left: 2rem; }
+        .legal-text a { color: #8b5cf6; text-decoration: underline; }
+        .legal-text a:hover { color: #7c3aed; }
+        .legal-text strong { color: #4c1d95; } /* violet-900 */
+        .back-link { display: inline-block; margin-top: 2rem; padding: 0.75rem 1.5rem; background-color: #8b5cf6; color: white; font-weight: 600; text-decoration: none; border-radius: 0.5rem; transition: background-color 0.3s ease; }
+        .back-link:hover { background-color: #7c3aed; }
+    </style>
+</head>
+<body class="py-12 px-4">
+    <div class="legal-text container mx-auto bg-white p-8 md:p-12 shadow-xl rounded-lg">
+        <h1>Política de Cookies</h1>
+        <p>De conformidad con lo dispuesto en el <strong>artículo 22.2 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE)</strong>, y en línea con las directrices del RGPD y la AEPD, este sitio web le informa sobre su política de recogida y tratamiento de cookies.</p>
+
+        <h2>1. ¿Qué son las Cookies?</h2>
+        <p>Una cookie es un pequeño fichero de texto que se almacena en su navegador cuando visita casi cualquier página web. Su utilidad es que la web sea capaz de recordar su visita cuando vuelva a navegar por esa página. Las cookies suelen almacenar información de carácter técnico, preferencias personales, personalización de contenidos, estadísticas de uso, enlaces a redes sociales, acceso a cuentas de usuario, etc.</p>
+        <p>Este sitio web también utiliza <strong>almacenamiento local (LocalStorage)</strong> del navegador, que cumple una función similar a la de una cookie (por ejemplo, para guardar su preferencia de idioma), pero almacena la información directamente en su dispositivo y no caduca al cerrar la sesión.</p>
+
+        <h2>2. Consentimiento</h2>
+        <p>Al acceder a este sitio web por primera vez, se mostrará un aviso de cookies (banner) donde se le informará del uso de las mismas y se le pedirá su consentimiento para las cookies no necesarias. Las cookies técnicas o funcionales, que son esenciales para el funcionamiento de la web, se instalarán por defecto al ser necesarias para el interés legítimo del Titular de ofrecer el servicio.</p>
+
+        <h2>3. Cookies Utilizadas en este Sitio Web</h2>
+        <p>Siguiendo las directrices de la Agencia Española de Protección de Datos, procedemos a detallar el uso de cookies y almacenamiento local que hace esta web:</p>
+        <ul>
+            <li>
+                <strong>Almacenamiento Local (Técnico/Funcional):</strong>
+                <ul>
+                    <li><strong>Nombre:</strong> `selectedLanguage`</li>
+                    <li><strong>Finalidad:</strong> Almacenar el idioma (es, en, eu, ca, etc.) seleccionado por el usuario para mantener su preferencia en futuras visitas. Es estrictamente necesaria para el funcionamiento de la web multi-idioma.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Cookies de Terceros (Servicios Externos):</strong>
+                <ul>
+                    <li><strong>Google Fonts:</strong> Utilizamos fuentes de Google para la tipografía del sitio. Google puede recopilar datos para sus propios fines. Recomendamos revisar la política de privacidad de Google.</li>
+                    <li><strong>Font Awesome:</strong> Utilizamos iconos de Font Awesome (servidos desde un CDN como cdnjs.cloudflare.com). Este servicio puede utilizar cookies para optimizar la entrega del contenido.</li>
+                    <li><strong>[Opcional: Si añades Google Analytics]</strong>
+                        <strong>Google Analytics:</strong> Esta web utiliza Google Analytics, un servicio analítico de web prestado por Google, Inc. Google Analytics utiliza cookies para ayudar al website a analizar el uso que hacen los usuarios del sitio web.
+                        <ul>
+                            <li>Cookies: `_ga`, `_gid`, `_gat`, etc.</li>
+                            <li>Finalidad: Recopilar información anónima sobre la navegación para fines estadísticos (páginas visitadas, tiempo en el sitio, etc.).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>4. Cómo Deshabilitar o Eliminar las Cookies</h2>
+        <p>Usted puede permitir, bloquear o eliminar las cookies instaladas en su equipo (así como borrar los datos del Almacenamiento Local) mediante la configuración de las opciones del navegador instalado en su ordenador.</p>
+        <p>A continuación, le proporcionamos enlaces a las instrucciones de los navegadores más comunes:</p>
+        <ul>
+            <li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+            <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+            <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari (para Mac)</a></li>
+            <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+        </ul>
+        <p>Si desactiva las cookies, es posible que algunas funcionalidades de la web no operen correctamente, como por ejemplo, la preferencia de idioma.</p>
+
+        <h2>5. Cambios en la Política de Cookies</h2>
+        <p>El Titular se reserva el derecho a modificar la presente Política de Cookies en función de nuevas exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos.</p>
+
+        <a href="index.html" class="back-link">← Volver a la página principal</a>
+    </div>
+</body>
+</html>
