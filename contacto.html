@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - CuidaMiHuella</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Estilos Personalizados Integrados -->
+    <style>
+        :root {
+            --primary-color: #8b5cf6; /* violet-500 */
+            --primary-hover: #7c3aed; /* violet-600 */
+            --text-dark: #5b21b6;     /* violet-800 - para títulos */
+            --text-medium: #374151;   /* gray-700 */
+            --bg-light: #fdf2f8;      /* pink-50 */
+            --footer-bg: #eff6ff;     /* blue-50 */
+            --shadow-light: rgba(139, 92, 246, 0.1);
+            --shadow-medium: rgba(139, 92, 246, 0.2);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light); /* Fondo rosa pastel */
+            color: var(--text-medium);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h2.text-gray-800, h3.text-2xl, h2[data-key], h3[data-key] { color: var(--text-dark); }
+
+        /* --- Header y Navegación --- */
+        header nav a { position: relative; padding-bottom: 4px; }
+        header nav a:hover { color: var(--primary-color); }
+        header nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background-color: var(--primary-color);
+            transition: width 0.3s ease-in-out;
+        }
+        header nav a:hover::after { width: 100%; }
+
+        /* --- Botones y Enlaces --- */
+        .bg-blue-600 { background-color: var(--primary-color) !important; }
+        .bg-blue-600:hover { background-color: var(--primary-hover) !important; }
+        .text-blue-600 { color: var(--primary-color) !important; }
+        .hover\:text-blue-600:hover { color: var(--primary-hover) !important; }
+        .border-blue-600 { border-color: var(--primary-color) !important; }
+        .hover\:bg-blue-700:hover { background-color: var(--primary-hover) !important; }
+        .text-violet-600 { color: var(--primary-color); }
+        .border-violet-600 { border-color: var(--primary-color); }
+        .hover\:bg-violet-600:hover { background-color: var(--primary-color); }
+        .text-violet-500 { color: var(--primary-color); }
+        .text-violet-800 { color: var(--text-dark); }
+        .focus\:ring-violet-200:focus { --tw-ring-color: #ddd6fe; } /* violet-200 */
+        .focus\:border-violet-300:focus { border-color: #c4b5fd; } /* violet-300 */
+        .focus\:ring-violet-500:focus { --tw-ring-color: var(--primary-color); }
+        .focus\:border-violet-500:focus { border-color: var(--primary-color); }
+
+
+        /* --- Tarjetas y Efectos --- */
+        .plan, .value-card, .step { transition: all 0.3s ease-in-out; }
+        .plan:hover, .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px var(--shadow-medium);
+        }
+        .bg-pink-50\/30 { background-color: rgba(253, 242, 248, 0.3); }
+
+        /* --- Secciones Específicas --- */
+        .hero-page {
+             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1920x800/e9d5ff/5b21b6?text=Contáctanos');
+             background-size: cover; background-position: center;
+        }
+        #footer { background-color: var(--footer-bg); }
+        footer h3 { color: var(--text-dark); }
+        footer a { color: var(--primary-color); }
+        footer a:hover { color: var(--primary-hover); }
+        footer .social-links a { color: var(--text-medium); }
+        footer .social-links a:hover { color: var(--primary-color); }
+        .border-gray-200 { border-color: #e5e7eb; }
+
+        /* Iconos */
+        .fa-heart, .fa-users, .fa-hand-holding-heart, .fa-home, .fa-medal, .fa-star, .fa-user-friends, .fa-shield-heart, .fa-chart-line, .fa-handshake-angle {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
+                    <i class="fas fa-paw text-violet-500"></i>
+                    <span>CuidaMiHuella</span>
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" data-key="nav_home" class="text-gray-600 font-medium">Inicio</a>
+                    <a href="unete-al-club.html" data-key="nav_join" class="text-gray-600 font-medium">Únete al Club</a>
+                    <a href="para-protectoras.html" data-key="nav_shelters" class="text-gray-600 font-medium">Para Protectoras</a>
+                    <a href="index.html#process" data-key="nav_find" class="text-gray-600 font-medium">Busca a tu Compañero</a>
+                    <a href="contacto.html" data-key="nav_contact" class="text-gray-600 font-medium">Contacto</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="language-selector">
+                        <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50">
+                            <option value="es">🇪🇸 ES</option>
+                            <option value="eu">🏴 EU</option>
+                            <option value="ca">🔵 CA</option>
+                            <option value="en">🇬🇧 EN</option>
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="de">🇩🇪 DE</option>
+                            <option value="it">🇮🇹 IT</option>
+                        </select>
+                    </div>
+                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder / Mi Cuenta</a>
+                    <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <a href="index.html" data-key="nav_home" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Inicio</a>
+            <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Únete al Club</a>
+            <a href="para-protectoras.html" data-key="nav_shelters" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Para Protectoras</a>
+            <a href="index.html#process" data-key="nav_find" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Busca a tu Compañero</a>
+            <a href="contacto.html" data-key="nav_contact" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Contacto</a>
+            <div class="p-4 border-t">
+                <a href="#" data-key="account_btn_mobile" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder / Mi Cuenta</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-page text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[50vh] py-16">
+                <h1 data-key="contact_hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Habla con Nosotros</h1>
+                <p data-key="contact_hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light">¿Tienes preguntas sobre el club, las adopciones o cómo colaborar? Estamos aquí para ayudarte.</p>
+            </div>
+        </section>
+
+        <!-- Formulario de Contacto -->
+        <section class="py-16 md:py-24" id="contact-form">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 data-key="contact_form_title" class="text-3xl md:text-4xl font-bold text-gray-800">Envíanos un Mensaje</h2>
+                        <p data-key="contact_form_subtitle" class="mt-4 text-lg text-gray-600">Rellena el formulario y te responderemos lo antes posible.</p>
+                    </div>
+                    
+                    <!-- Formulario de Formspree -->
+                    <form id="contact-form" action="https://formspree.io/f/TU_ID_CONTACTO_AQUI" method="POST" class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1" data-key="form_contact_name">Tu Nombre</label>
+                                <input type="text" name="nombre" id="contact-name" required class="w-full px-4 py-3 rounded-lg border-gray-300 focus:border-violet-500 focus:ring focus:ring-violet-200" data-key="form_contact_name_placeholder" placeholder="Ej: Alex Martínez">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1" data-key="form_email">Tu Email</label>
+                                <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-lg border-gray-300 focus:border-violet-500 focus:ring focus:ring-violet-200" data-key="form_email_placeholder" placeholder="tu@email.com">
+                            </div>
+                        </div>
+                         <div class="mb-6">
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1" data-key="form_subject">Asunto</label>
+                            <input type="text" name="asunto" id="subject" required class="w-full px-4 py-3 rounded-lg border-gray-300 focus:border-violet-500 focus:ring focus:ring-violet-200" data-key="form_subject_placeholder" placeholder="Ej: Duda sobre Socio Amigo">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1" data-key="form_message">Mensaje</label>
+                            <textarea name="mensaje" id="message" rows="6" required class="w-full px-4 py-3 rounded-lg border-gray-300 focus:border-violet-500 focus:ring focus:ring-violet-200" data-key="form_message_general_placeholder" placeholder="Escribe aquí tu consulta..."></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full text-center bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1" data-key="form_submit_btn_contact">Enviar Mensaje</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="text-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="text-xl font-bold mb-4">CuidaMiHuella</h3>
+                    <p data-key="footer_slogan" class="mb-4">Cuidamos de su huella.</p>
+                    <div class="social-links flex space-x-4">
+                        <a href="#" class="text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-xl"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 data-key="footer_nav_title" class="font-semibold mb-4 uppercase tracking-wider">Navegación</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" data-key="nav_home">Inicio</a></li>
+                        <li><a href="unete-al-club.html" data-key="nav_join">Únete al Club</a></li>
+                        <li><a href="para-protectoras.html" data-key="nav_shelters">Para Protectoras</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 data-key="footer_legal_title" class="font-semibold mb-4 uppercase tracking-wider">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" data-key="legal1">Aviso Legal</a></li>
+                        <li><a href="#" data-key="legal2">Política de Privacidad</a></li>
+                        <li><a href="#" data-key="legal3">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 data-key="footer_help_title" class="font-semibold mb-4 uppercase tracking-wider">Ayuda</h3>
+                    <ul class="space-y-2">
+                        <li><a href="contacto.html" data-key="help1">Contacto</a></li>
+                        <li><a href="#" data-key="help2">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-key="copyright" class="border-t border-gray-200 pt-6 text-center text-sm">
+                © 2025 CuidamiHuella. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Integrado -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Translations Object ---
+        const translations = {
+            "es": {
+                "nav_home": "Inicio", "nav_join": "Únete al Club", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto", "account_btn": "Acceder / Mi Cuenta", "account_btn_mobile": "Acceder / Mi Cuenta",
+                "contact_hero_title": "Habla con Nosotros", "contact_hero_subtitle": "¿Tienes preguntas sobre el club, las adopciones o cómo colaborar? Estamos aquí para ayudarte.",
+                "contact_form_title": "Envíanos un Mensaje", "contact_form_subtitle": "Rellena el formulario y te responderemos lo antes posible.",
+                "form_contact_name": "Tu Nombre", "form_contact_name_placeholder": "Ej: Alex Martínez", "form_email": "Tu Email", "form_email_placeholder": "tu@email.com", "form_subject": "Asunto", "form_subject_placeholder": "Ej: Duda sobre Socio Amigo", "form_message": "Mensaje", "form_message_general_placeholder": "Escribe aquí tu consulta...", "form_submit_btn_contact": "Enviar Mensaje",
+                "footer_slogan": "Cuidamos de su huella.", "footer_nav_title": "Navegación", "footer_legal_title": "Legal", "legal1": "Aviso Legal", "legal2": "Política de Privacidad", "legal3": "Política de Cookies", "footer_help_title": "Ayuda", "help1": "Contacto", "help2": "Preguntas Frecuentes", "copyright": "© 2025 CuidamiHuella. Todos los derechos reservados."
+            },
+            "en": {
+                "nav_home": "Home", "nav_join": "Join the Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact", "account_btn": "Login / My Account", "account_btn_mobile": "Login / My Account",
+                "contact_hero_title": "Talk to Us", "contact_hero_subtitle": "Have questions about the club, adoptions, or how to collaborate? We're here to help.",
+                "contact_form_title": "Send Us a Message", "contact_form_subtitle": "Fill out the form, and we'll get back to you as soon as possible.",
+                "form_contact_name": "Your Name", "form_contact_name_placeholder": "e.g., Alex Martinez", "form_email": "Your Email", "form_email_placeholder": "you@email.com", "form_subject": "Subject", "form_subject_placeholder": "e.g., Question about Friend Member", "form_message": "Message", "form_message_general_placeholder": "Write your query here...", "form_submit_btn_contact": "Send Message",
+                "footer_slogan": "We take care of their pawprint.", "footer_nav_title": "Navigation", "footer_legal_title": "Legal", "legal1": "Legal Notice", "legal2": "Privacy Policy", "legal3": "Cookies Policy", "footer_help_title": "Help", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. All rights reserved."
+            },
+            "eu": {
+                "nav_home": "Hasiera", "nav_join": "Egin Kide", "nav_shelters": "Babesleentzat", "nav_find": "Bilatu Laguna", "nav_contact": "Kontaktua", "account_btn": "Sartu / Nire Kontua", "account_btn_mobile": "Sartu / Nire Kontua",
+                "contact_hero_title": "Hitz Egin Gurekin", "contact_hero_subtitle": "Galderarik daukazu klubari, adopzioei edo nola kolaboratu buruz? Hemen gaude laguntzeko.",
+                "contact_form_title": "Bidali Mezu Bat", "contact_form_subtitle": "Bete formularioa eta ahalik eta azkarren erantzungo dizugu.",
+                "form_contact_name": "Zure Izena", "form_contact_name_placeholder": "Adib: Alex Martinez", "form_email": "Zure Emaila", "form_email_placeholder": "zu@email.com", "form_subject": "Gaia", "form_subject_placeholder": "Adib: Bazkide Lagunari buruzko zalantza", "form_message": "Mezua", "form_message_general_placeholder": "Idatzi zure kontsulta hemen...", "form_submit_btn_contact": "Mezua Bidali",
+                "footer_slogan": "Haien aztarna zaintzen dugu.", "footer_nav_title": "Nabigazioa", "footer_legal_title": "Legezkoa", "legal1": "Lege Oharra", "legal2": "Pribatutasun Politika", "legal3": "Cookie Politika", "footer_help_title": "Laguntza", "help1": "Kontaktua", "help2": "Ohiko Galderak", "copyright": "© 2025 CuidamiHuella. Eskubide guztiak erreserbatuta."
+            },
+            "ca": {
+                "nav_home": "Inici", "nav_join": "Uneix-te al Club", "nav_shelters": "Per a Protectores", "nav_find": "Busca el teu Company", "nav_contact": "Contacte", "account_btn": "Accedir / El Meu Compte", "account_btn_mobile": "Accedir / El Meu Compte",
+                "contact_hero_title": "Parla amb Nosaltres", "contact_hero_subtitle": "Tens preguntes sobre el club, les adopcions o com col·laborar? Som aquí per ajudar-te.",
+                "contact_form_title": "Envia'ns un Missatge", "contact_form_subtitle": "Omple el formulari i et respondrem tan aviat com sigui possible.",
+                "form_contact_name": "El Teu Nom", "form_contact_name_placeholder": "Ex: Alex Martínez", "form_email": "El Teu Email", "form_email_placeholder": "tu@email.com", "form_subject": "Assumpte", "form_subject_placeholder": "Ex: Dubte sobre Soci Amic", "form_message": "Missatge", "form_message_general_placeholder": "Escriu aquí la teva consulta...", "form_submit_btn_contact": "Enviar Missatge",
+                "footer_slogan": "Cuidem de la seva petjada.", "footer_nav_title": "Navegació", "footer_legal_title": "Legal", "legal1": "Avís Legal", "legal2": "Política de Privacitat", "legal3": "Política de Cookies", "footer_help_title": "Ajuda", "help1": "Contacte", "help2": "Preguntes Freqüents", "copyright": "© 2025 CuidamiHuella. Tots els drets reservats."
+            },
+            "fr": {
+                "nav_home": "Accueil", "nav_join": "Rejoindre le Club", "nav_shelters": "Pour les Refuges", "nav_find": "Trouver un Compagnon", "nav_contact": "Contact", "account_btn": "Connexion / Mon Compte", "account_btn_mobile": "Connexion / Mon Compte",
+                "contact_hero_title": "Parlez-nous", "contact_hero_subtitle": "Des questions sur le club, les adoptions ou comment collaborer ? Nous sommes là pour vous aider.",
+                "contact_form_title": "Envoyez-nous un Message", "contact_form_subtitle": "Remplissez le formulaire et nous vous répondrons dès que possible.",
+                "form_contact_name": "Votre Nom", "form_contact_name_placeholder": "Ex : Alex Martinez", "form_email": "Votre Email", "form_email_placeholder": "vous@email.com", "form_subject": "Sujet", "form_subject_placeholder": "Ex : Question sur Membre Ami", "form_message": "Message", "form_message_general_placeholder": "Écrivez votre question ici...", "form_submit_btn_contact": "Envoyer le Message",
+                "footer_slogan": "Nous prenons soin de leur empreinte.", "footer_nav_title": "Navigation", "footer_legal_title": "Légal", "legal1": "Mentions Légales", "legal2": "Politique de Confidentialité", "legal3": "Politique de Cookies", "footer_help_title": "Aide", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Tous droits réservés."
+            },
+            "de": {
+                "nav_home": "Start", "nav_join": "Club beitreten", "nav_shelters": "Für Tierheime", "nav_find": "Begleiter finden", "nav_contact": "Kontakt", "account_btn": "Login / Mein Konto", "account_btn_mobile": "Login / Mein Konto",
+                "contact_hero_title": "Sprechen Sie uns an", "contact_hero_subtitle": "Haben Sie Fragen zum Club, zu Adoptionen oder zur Zusammenarbeit? Wir sind hier, um zu helfen.",
+                "contact_form_title": "Senden Sie uns eine Nachricht", "contact_form_subtitle": "Füllen Sie das Formular aus und wir melden uns so schnell wie möglich bei Ihnen.",
+                "form_contact_name": "Ihr Name", "form_contact_name_placeholder": "Z.B. Alex Martinez", "form_email": "Ihre E-Mail", "form_email_placeholder": "sie@email.com", "form_subject": "Betreff", "form_subject_placeholder": "Z.B. Frage zu Freund-Mitglied", "form_message": "Nachricht", "form_message_general_placeholder": "Schreiben Sie Ihre Anfrage hier...", "form_submit_btn_contact": "Nachricht Senden",
+                "footer_slogan": "Wir kümmern uns um ihre Pfote.", "footer_nav_title": "Navigation", "footer_legal_title": "Rechtliches", "legal1": "Impressum", "legal2": "Datenschutz", "legal3": "Cookie-Richtlinie", "footer_help_title": "Hilfe", "help1": "Kontakt", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Alle Rechte vorbehalten."
+            },
+             "it": {
+                "nav_home": "Inizio", "nav_join": "Unisciti al Club", "nav_shelters": "Per i Rifugi", "nav_find": "Trova il tuo Compagno", "nav_contact": "Contatto", "account_btn": "Accedi / Mio Account", "account_btn_mobile": "Accedi / Mio Account",
+                "contact_hero_title": "Parla con Noi", "contact_hero_subtitle": "Hai domande sul club, sulle adozioni o su come collaborare? Siamo qui per aiutarti.",
+                "contact_form_title": "Inviaci un Messaggio", "contact_form_subtitle": "Compila il modulo e ti risponderemo il prima possibile.",
+                "form_contact_name": "Il Tuo Nome", "form_contact_name_placeholder": "Es: Alex Bianchi", "form_email": "La Tua Email", "form_email_placeholder": "tua@email.com", "form_subject": "Oggetto", "form_subject_placeholder": "Es: Domanda su Socio Amico", "form_message": "Messaggio", "form_message_general_placeholder": "Scrivi qui la tua richiesta...", "form_submit_btn_contact": "Invia Messaggio",
+                "footer_slogan": "Ci prendiamo cura della loro impronta.", "footer_nav_title": "Navigazione", "footer_legal_title": "Legale", "legal1": "Note Legali", "legal2": "Privacy Policy", "legal3": "Cookie Policy", "footer_help_title": "Aiuto", "help1": "Contatto", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Tutti i diritti riservati."
+            }
+        };
+
+        // --- Language Switcher Logic ---
+        const languageSelect = document.getElementById('languageSelect');
+        const changeLanguage = (lang) => {
+            const selectedLang = translations[lang] ? lang : 'es';
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                const placeholderKey = `${key}_placeholder`;
+
+                if (translations[selectedLang][key]) {
+                    el.innerHTML = translations[selectedLang][key];
+                }
+                // Check for placeholder translation
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (translations[selectedLang][placeholderKey]) {
+                        el.placeholder = translations[selectedLang][placeholderKey];
+                    } else if (translations['es'][placeholderKey]) {
+                        el.placeholder = translations['es'][placeholderKey]; // Fallback to Spanish placeholder
+                    }
+                }
+            });
+            localStorage.setItem('selectedLanguage', selectedLang);
+            languageSelect.value = selectedLang;
+        };
+
+        languageSelect.addEventListener('change', (e) => changeLanguage(e.target.value));
+        
+        // --- Initial Load ---
+        const savedLang = localStorage.getItem('selectedLanguage') || 'es';
+        changeLanguage(savedLang);
+    });
+    </script>
+</body>
+</html>
