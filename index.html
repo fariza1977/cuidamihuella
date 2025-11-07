@@ -470,6 +470,9 @@
             renderTestimonial(); // Re-render testimonial when language changes
         };
 
+        // Guardar referencia global para el carrusel
+        window.changeLanguage = changeLanguage;
+
         languageSelect.addEventListener('change', (e) => changeLanguage(e.target.value));
 
         // --- Testimonial Slider Logic ---
