@@ -75,13 +75,12 @@
 
         <h2>1. Datos del Titular</h2>
         <ul>
-            <li><strong>Titular:</strong> [Nombre Completo de la persona física o Razón Social de la asociación]</li>
-            <li><strong>NIF/CIF:</strong> [Tu NIF o el CIF de la asociación]</li>
-            <li><strong>Domicilio Social:</strong> [Tu dirección completa, CP, Ciudad, Provincia]</li>
-            <li><strong>Correo Electrónico:</strong> [Tu email de contacto, ej: contacto@cuidamihuella.com]</li>
+            <li><strong>Titular:</strong> CuidaMiHuella S.L</li>
+            <li><strong>NIF/CIF:</strong> CIF</li>
+            <li><strong>Domicilio Social:</strong> San Julian 12 bajo,48550, Muskiz, Vizkaia</li>
+            <li><strong>Correo Electrónico:</strong> info@cuidamihuella.com</li>
             <li><strong>Actividad:</strong> Plataforma web informativa para la adopción de animales.</li>
         </ul>
-
         <h2>2. Objeto del Sitio Web</h2>
         <p>El sitio web "CuidaMiHuella" (en adelante, "el sitio web") tiene como objeto principal facilitar la conexión entre protectoras de animales y personas interesadas en la adopción responsable, así como ofrecer información y una comunidad de apoyo para dueños de mascotas.</p>
 
