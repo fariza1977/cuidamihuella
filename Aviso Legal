@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Legal - CuidaMiHuella</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf2f8; /* bg-pink-50 */
+        }
+        /* Clase 'prose' de Tailwind para formatear texto legal */
+        .legal-text {
+            max-width: 80ch; /* Ancho de lectura óptimo */
+        }
+        .legal-text h1 {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 800;
+            color: #5b21b6; /* violet-800 */
+            margin-bottom: 1.5rem;
+        }
+        .legal-text h2 {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 700;
+            color: #5b21b6; /* violet-800 */
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ddd6fe; /* violet-200 */
+            padding-bottom: 0.5rem;
+        }
+        .legal-text p, .legal-text li {
+            font-size: 1rem; /* 16px */
+            line-height: 1.75;
+            color: #374151; /* gray-700 */
+            margin-bottom: 1.25rem;
+        }
+        .legal-text ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+        }
+        .legal-text a {
+            color: #8b5cf6; /* violet-500 */
+            text-decoration: underline;
+        }
+        .legal-text a:hover {
+            color: #7c3aed; /* violet-600 */
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #8b5cf6; /* violet-500 */
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem; /* rounded-lg */
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #7c3aed; /* violet-600 */
+        }
+    </style>
+</head>
+<body class="py-12 px-4">
+    <div class="legal-text container mx-auto bg-white p-8 md:p-12 shadow-xl rounded-lg">
+        <h1>Aviso Legal</h1>
+        
+        <p>En cumplimiento del artículo 10 de la <strong>Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE)</strong>, a continuación se exponen los datos identificativos del titular de este sitio web.</p>
+
+        <h2>1. Datos del Titular</h2>
+        <ul>
+            <li><strong>Titular:</strong> [Nombre Completo de la persona física o Razón Social de la asociación]</li>
+            <li><strong>NIF/CIF:</strong> [Tu NIF o el CIF de la asociación]</li>
+            <li><strong>Domicilio Social:</strong> [Tu dirección completa, CP, Ciudad, Provincia]</li>
+            <li><strong>Correo Electrónico:</strong> [Tu email de contacto, ej: contacto@cuidamihuella.com]</li>
+            <li><strong>Actividad:</strong> Plataforma web informativa para la adopción de animales.</li>
+        </ul>
+
+        <h2>2. Objeto del Sitio Web</h2>
+        <p>El sitio web "CuidaMiHuella" (en adelante, "el sitio web") tiene como objeto principal facilitar la conexión entre protectoras de animales y personas interesadas en la adopción responsable, así como ofrecer información y una comunidad de apoyo para dueños de mascotas.</p>
+
+        <h2>3. Condiciones de Uso</h2>
+        <p>El acceso y/o uso de este sitio web atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las Condiciones Generales de Uso aquí reflejadas. El USUARIO se compromete a hacer un uso adecuado de los contenidos y servicios que el Titular ofrece a través de su portal.</p>
+        <p>Queda prohibido el uso del sitio web con fines ilícitos o lesivos, o que, de cualquier forma, puedan causar perjuicio o impedir el normal funcionamiento del mismo.</p>
+
+        <h2>4. Propiedad Intelectual e Industrial</h2>
+        <p>El Titular, por sí o como cesionario, es titular de todos los derechos de propiedad intelectual e industrial de su página web, así como de los elementos contenidos en la misma (a título enunciativo, imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, etc.), titularidad del Titular o bien de sus licenciantes.</p>
+        <p>En virtud de lo dispuesto en los artículos 8 y 17, párrafo segundo, de la Ley de Propiedad Intelectual, quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización del Titular.</p>
+
+        <h2>5. Exclusión de Garantías y Responsabilidad</h2>
+        <p>El Titular no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
+        <p>El Titular no se responsabiliza de la veracidad o exactitud de la información publicada por las protectoras colaboradoras, ni de los acuerdos o procesos de adopción que se lleven a cabo entre las protectoras y los usuarios, actuando "CuidaMiHuella" únicamente como un intermediario informativo.</p>
+
+        <h2>6. Modificaciones</h2>
+        <p>El Titular se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su portal.</p>
+
+        <h2>7. Legislación Aplicable y Jurisdicción</h2>
+        <p>La relación entre el Titular y el USUARIO se regirá por la normativa española vigente y cualquier controversia se someterá a los Juzgados y tribunales de la ciudad de [Tu Ciudad, ej: Madrid], salvo que la Ley aplicable disponga otra cosa.</p>
+
+        <a href="index.html" class="back-link">← Volver a la página principal</a>
+    </div>
+</body>
+</html>
