@@ -33,7 +33,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        h2.text-gray-800, h3.text-2xl, h2[data-key], h3[data-key] { color: var(--text-dark); }
+        h2.text-gray-800, h3.text-2xl, h2[data-key], h1[data-key] { color: var(--text-dark); }
 
         /* --- Header y Navegación --- */
         header nav a { position: relative; padding-bottom: 4px; }
@@ -61,8 +61,11 @@
         .focus\:border-violet-300:focus { border-color: #c4b5fd; } /* violet-300 */
 
         /* --- Tarjetas y Efectos --- */
-        .plan, .value-card, .step { transition: all 0.3s ease-in-out; }
-        .plan:hover, .value-card:hover {
+        .plan { 
+            transition: all 0.3s ease-in-out; 
+            border: 2px solid transparent;
+        }
+        .plan:hover {
             transform: translateY(-8px);
             box-shadow: 0 10px 20px var(--shadow-medium);
         }
@@ -72,13 +75,8 @@
             box-shadow: 0 8px 25px var(--shadow-light);
         }
         .plan.popular:hover { transform: scale(1.08) translateY(-8px); }
-        .bg-pink-50\/30 { background-color: rgba(253, 242, 248, 0.3); }
 
         /* --- Secciones Específicas --- */
-        .hero-page {
-             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1920x800/e9d5ff/5b21b6?text=Bienvenido+al+Club');
-             background-size: cover; background-position: center;
-        }
         #footer { background-color: var(--footer-bg); }
         footer h3 { color: var(--text-dark); }
         footer a { color: var(--primary-color); }
@@ -88,7 +86,7 @@
         .border-gray-200 { border-color: #e5e7eb; }
 
         /* Iconos */
-        .fa-heart, .fa-users, .fa-hand-holding-heart, .fa-home, .fa-medal, .fa-star, .fa-user-friends {
+        .fa-star, .fa-user-friends, .fa-check, .fa-shield-heart, .fa-tags, .fa-comments {
             color: var(--primary-color);
         }
     </style>
@@ -106,7 +104,7 @@
                 
                 <nav class="hidden md:flex space-x-8">
                     <a href="index.html" data-key="nav_home" class="text-gray-600 font-medium">Inicio</a>
-                    <a href="unete-al-club.html" data-key="nav_join" class="text-gray-600 font-medium">Únete al Club</a>
+                    <a href="unete-al-club.html" data-key="nav_join" class="text-gray-600 font-medium text-violet-500 font-bold">Únete al Club</a>
                     <a href="para-protectoras.html" data-key="nav_shelters" class="text-gray-600 font-medium">Para Protectoras</a>
                     <a href="index.html#process" data-key="nav_find" class="text-gray-600 font-medium">Busca a tu Compañero</a>
                     <a href="contacto.html" data-key="nav_contact" class="text-gray-600 font-medium">Contacto</a>
@@ -134,7 +132,7 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <a href="index.html" data-key="nav_home" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Inicio</a>
-            <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Únete al Club</a>
+            <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-violet-600 bg-violet-50 font-bold">Únete al Club</a>
             <a href="para-protectoras.html" data-key="nav_shelters" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Para Protectoras</a>
             <a href="index.html#process" data-key="nav_find" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Busca a tu Compañero</a>
             <a href="contacto.html" data-key="nav_contact" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Contacto</a>
@@ -146,71 +144,88 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-page text-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[50vh] py-16">
-                <h1 data-key="join_hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Elige tu Camino en el Club</h1>
-                <p data-key="join_hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light">Tanto si buscas adoptar como si ya tienes a tu compañero, tenemos un lugar para ti.</p>
+        <section class="bg-white pt-16 md:pt-24 pb-12">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 data-key="join_title" class="text-4xl md:text-5xl font-extrabold mb-4">El Club para los que Aman de Verdad</h1>
+                <p data-key="join_subtitle" class="max-w-3xl mx-auto text-lg md:text-xl text-gray-600">Tanto si buscas a tu nuevo compañero como si ya lo tienes, CuidamiHuella es el ecosistema de confianza, ahorro y apoyo que necesitas. Elige tu camino para entrar.</p>
             </div>
         </section>
 
-        <!-- Planes de Membresía Detallados -->
-        <section class="py-16 md:py-24" id="membership-details">
+        <!-- Membership Plans -->
+        <section class="py-16 md:py-24" id="membership">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Socio Fundador -->
-                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl mb-16 overflow-hidden">
-                    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <div>
-                            <span data-key="founder_tag" class="inline-block bg-violet-100 text-violet-800 text-sm font-semibold px-4 py-1 rounded-full mb-4">Para Futuros Adoptantes</span>
-                            <h2 data-key="founder_title" class="text-3xl md:text-4xl font-bold mb-4">Socio Fundador</h2>
-                            <p data-key="founder_desc_long" class="text-lg text-gray-600 mb-6">El plan de bienvenida para quienes inician su viaje de adopción a través de CuidamiHuella. Activa la 'Experiencia de Acogida' y obtén todas las herramientas para una adopción segura y feliz.</p>
-                            <div class="mb-6">
-                                <span data-key="founder_price" class="text-5xl font-extrabold text-violet-800">89 €</span>
-                                <span data-key="founder_renewal" class="text-gray-500 text-lg ml-2">Pago único</span>
-                            </div>
-                            <h4 data-key="benefits_title_founder" class="text-xl font-bold text-gray-800 mb-3">Beneficios Incluidos:</h4>
-                            <ul class="space-y-3 text-left mb-8">
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit1">Acceso a la 'Experiencia de Acogida' de 3 semanas.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit2">Pack de Bienvenida (Seguro RC y Accidentes, desparasitación).</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit3">Acceso COMPLETO al Club: descuentos, foros y comunidad.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit4">Acceso EXCLUSIVO a la 'Cadena de Favores' con estatus verificado.</span></li>
-                            </ul>
-                            <a href="#" data-key="founder_btn" class="w-full text-center bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">Inicia tu Adopción</a>
+                <div class="flex flex-wrap justify-center items-stretch gap-8">
+                    
+                    <!-- Plan Socio Fundador -->
+                    <div class="plan bg-white p-8 rounded-2xl shadow-xl w-full max-w-md flex flex-col">
+                        <div class="text-4xl mb-4 text-center"><i class="fas fa-star"></i></div>
+                        <h3 data-key="founder_title" class="text-2xl text-center font-bold uppercase tracking-wider">Socio Fundador</h3>
+                        <p data-key="founder_desc" class="text-gray-600 mb-4 text-center">Para los que inician su viaje adoptando con nosotros.</p>
+                        <div class="text-center mb-6">
+                            <span data-key="founder_price" class="text-5xl font-extrabold">89 €</span>
+                            <p data-key="founder_renewal" class="text-gray-500 mt-1 text-sm">Pago único</p>
                         </div>
-                        <div class="hidden md:block">
-                            <img src="https://placehold.co/600x600/f3e8ff/5b21b6?text=Adopción+Segura" alt="Perro feliz siendo adoptado" class="rounded-2xl shadow-lg w-full h-full object-cover">
+                        <p data-key="founder_includes" class="font-semibold text-gray-700 mb-4">Tu Pack de Bienvenida incluye:</p>
+                        <ul class="space-y-3 text-left mb-8 flex-grow">
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit1">Acceso a la 'Experiencia de Acogida' de 3 semanas.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit2">Seguro de Responsabilidad Civil y Accidentes durante la acogida.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit8">Donativo directo a la protectora.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit9">Pack de desparasitación para el animal.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit3">1 Año de Acceso COMPLETO al Club (Descuentos, Expertos, Comunidad).</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit4">Acceso EXCLUSIVO a la 'Cadena de Favores' con estatus verificado.</span></li>
+                        </ul>
+                        <a href="#" data-key="founder_btn" class="w-full mt-auto text-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold text-lg">Inicia tu Adopción</a>
+                    </div>
+                    
+                    <!-- Plan Socio Amigo -->
+                    <div class="plan popular bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md flex flex-col">
+                         <div class="text-4xl mb-4 text-center"><i class="fas fa-user-friends"></i></div>
+                        <h3 data-key="friend_title" class="text-2xl text-center font-bold uppercase tracking-wider">Socio Amigo</h3>
+                        <p data-key="friend_desc" class="text-gray-600 mb-4 text-center">Para los que ya tienen mascota y quieren unirse al club.</p>
+                         <div class="text-center mb-6">
+                            <span data-key="friend_price" class="text-5xl font-extrabold">39,90 €</span>
+                            <p data-key="friend_renewal" class="text-gray-500 mt-1 text-sm">Cuota anual</p>
                         </div>
+                        <p data-key="friend_includes" class="font-semibold text-gray-700 mb-4">Tu membresía anual incluye:</p>
+                        <ul class="space-y-3 text-left mb-8 flex-grow">
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit5">Acceso COMPLETO a la Red de Descuentos (ahorra cientos de euros al año).</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit6">Acceso COMPLETO a los Foros de Expertos (veterinarios, educadores).</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit10">Acceso a la Comunidad de dueños verificados.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit7">Posibilidad de acceder a la 'Cadena de Favores' (tras verificación).</span></li>
+                        </ul>
+                        <a href="#" data-key="friend_btn" class="w-full mt-auto text-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold text-lg">Hazte Socio Amigo Ahora</a>
                     </div>
                 </div>
-
-                <!-- Socio Amigo -->
-                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl overflow-hidden">
-                    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <div class="hidden md:block">
-                            <img src="https://placehold.co/600x600/e0f2fe/0c4a6e?text=Comunidad+de+Mascotas" alt="Persona jugando con su perro" class="rounded-2xl shadow-lg w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <span data-key="friend_tag" class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1 rounded-full mb-4">Para Dueños de Mascotas</span>
-                            <h2 data-key="friend_title" class="text-3xl md:text-4xl font-bold mb-4">Socio Amigo</h2>
-                            <p data-key="friend_desc_long" class="text-lg text-gray-600 mb-6">¿Ya tienes a tu compañero de vida? Únete al Club como Socio Amigo y accede a un universo de ventajas, descuentos y una comunidad que comparte tu pasión por los animales.</p>
-                            <div class="mb-6">
-                                <span data-key="friend_price" class="text-5xl font-extrabold text-violet-800">39,90 €</span>
-                                <span data-key="friend_renewal" class="text-gray-500 text-lg ml-2">Cuota anual</span>
-                            </div>
-                            <h4 data-key="benefits_title_friend" class="text-xl font-bold text-gray-800 mb-3">Beneficios Incluidos:</h4>
-                            <ul class="space-y-3 text-left mb-8">
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit5">Acceso COMPLETO a la Red de Descuentos en marcas, veterinarios y más.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit6">Acceso COMPLETO a los Foros de Expertos (veterinarios, educadores).</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit7">Acceso a la 'Cadena de Favores' (canguros, paseos) tras verificación.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit8">Apoyo continuo de la comunidad CuidamiHuella.</span></li>
-                            </ul>
-                            <a href="#" data-key="friend_btn" class="w-full text-center bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">Hazte Socio Amigo Ahora</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
+
+        <!-- Beneficios del Club -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 data-key="benefits_title" class="text-3xl md:text-4xl font-bold">¿Qué Ganas siendo parte del Club?</h2>
+                    <p data-key="benefits_subtitle" class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">No solo te unes a una plataforma, te unes a un movimiento.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6">
+                        <div class="text-5xl mb-4"><i class="fas fa-shield-heart"></i></div>
+                        <h3 data-key="benefit_title_1" class="text-xl font-bold mb-2">Confianza y Seguridad</h3>
+                        <p data-key="benefit_text_1">Nuestro proceso de 'Experiencia de Acogida' elimina las conjeturas. Sabrás si es el compañero adecuado antes de comprometerte para siempre.</p>
+                    </div>
+                    <div class="p-6">
+                       <div class="text-5xl mb-4"><i class="fas fa-tags"></i></div>
+                        <h3 data-key="benefit_title_2" class="text-xl font-bold mb-2">Ahorro Real</h3>
+                        <p data-key="benefit_text_2">Accede a una red nacional de descuentos en veterinarios, alimentación, accesorios y seguros. La cuota de Socio Amigo se amortiza sola.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-5xl mb-4"><i class="fas fa-comments"></i></div>
+                        <h3 data-key="benefit_title_3" class="text-xl font-bold mb-2">Apoyo de Expertos</h3>
+                        <p data-key="benefit_text_3">¿Dudas sobre comportamiento? ¿Problemas de salud? Nuestros foros con veterinarios y educadores caninos te dan respuestas fiables.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     </main>
 
     <!-- Footer -->
@@ -238,9 +253,9 @@
                 <div>
                     <h3 data-key="footer_legal_title" class="font-semibold mb-4 uppercase tracking-wider">Legal</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" data-key="legal1">Aviso Legal</a></li>
-                        <li><a href="#" data-key="legal2">Política de Privacidad</a></li>
-                        <li><a href="#" data-key="legal3">Política de Cookies</a></li>
+                        <li><a href="aviso-legal.html" data-key="legal1">Aviso Legal</a></li>
+                        <li><a href="politica-de-privacidad.html" data-key="legal2">Política de Privacidad</a></li>
+                        <li><a href="politica-de-cookies.html" data-key="legal3">Política de Cookies</a></li>
                     </ul>
                 </div>
                 <div>
@@ -271,97 +286,98 @@
         const translations = {
             "es": {
                 "nav_home": "Inicio", "nav_join": "Únete al Club", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto", "account_btn": "Acceder / Mi Cuenta", "account_btn_mobile": "Acceder / Mi Cuenta",
-                "join_hero_title": "Elige tu Camino en el Club", "join_hero_subtitle": "Tanto si buscas adoptar como si ya tienes a tu compañero, tenemos un lugar para ti.",
-                "founder_tag": "Para Futuros Adoptantes", "founder_title": "Socio Fundador", "founder_desc_long": "El plan de bienvenida para quienes inician su viaje de adopción a través de CuidamiHuella. Activa la 'Experiencia de Acogida' y obtén todas las herramientas para una adopción segura y feliz.",
-                "founder_price": "89 €", "founder_renewal": "Pago único", "benefits_title_founder": "Beneficios Incluidos:",
-                "benefit1": "Acceso a la 'Experiencia de Acogida' de 3 semanas.", "benefit2": "Pack de Bienvenida (Seguro RC y Accidentes, desparasitación).", "benefit3": "Acceso COMPLETO al Club: descuentos, foros y comunidad.", "benefit4": "Acceso EXCLUSIVO a la 'Cadena de Favores' con estatus verificado.",
-                "founder_btn": "Inicia tu Adopción",
-                "friend_tag": "Para Dueños de Mascotas", "friend_title": "Socio Amigo", "friend_desc_long": "¿Ya tienes a tu compañero de vida? Únete al Club como Socio Amigo y accede a un universo de ventajas, descuentos y una comunidad que comparte tu pasión por los animales.",
-                "friend_price": "39,90 €", "friend_renewal": "Cuota anual", "benefits_title_friend": "Beneficios Incluidos:",
-                "benefit5": "Acceso COMPLETO a la Red de Descuentos en marcas, veterinarios y más.", "benefit6": "Acceso COMPLETO a los Foros de Expertos (veterinarios, educadores).", "benefit7": "Acceso a la 'Cadena de Favores' (canguros, paseos) tras verificación.", "benefit8": "Apoyo continuo de la comunidad CuidamiHuella.",
-                "friend_btn": "Hazte Socio Amigo Ahora",
+                "join_title": "El Club para los que Aman de Verdad", "join_subtitle": "Tanto si buscas a tu nuevo compañero como si ya lo tienes, CuidamiHuella es el ecosistema de confianza, ahorro y apoyo que necesitas. Elige tu camino para entrar.",
+                "founder_title": "SOCIO FUNDADOR", "founder_desc": "Para los que inician su viaje adoptando con nosotros.", "founder_price": "89 €", "founder_renewal": "Pago único", "founder_includes": "Tu Pack de Bienvenida incluye:",
+                "benefit1": "Acceso a la 'Experiencia de Acogida' de 3 semanas.", "benefit2": "Seguro de Responsabilidad Civil y Accidentes durante la acogida.", "benefit8": "Donativo directo a la protectora.", "benefit9": "Pack de desparasitación para el animal.", "benefit3": "1 Año de Acceso COMPLETO al Club (Descuentos, Expertos, Comunidad).", "benefit4": "Acceso EXCLUSIVO a la 'Cadena de Favores' con estatus verificado.", "founder_btn": "Inicia tu Adopción",
+                "friend_title": "SOCIO AMIGO", "friend_desc": "Para los que ya tienen mascota y quieren unirse al club.", "friend_price": "39,90 €", "friend_renewal": "Cuota anual", "friend_includes": "Tu membresía anual incluye:",
+                "benefit5": "Acceso COMPLETO a la Red de Descuentos (ahorra cientos de euros al año).", "benefit6": "Acceso COMPLETO a los Foros de Expertos (veterinarios, educadores).", "benefit10": "Acceso a la Comunidad de dueños verificados.", "benefit7": "Posibilidad de acceder a la 'Cadena de Favores' (tras verificación).", "friend_btn": "Hazte Socio Amigo Ahora",
+                "benefits_title": "¿Qué Ganas siendo parte del Club?", "benefits_subtitle": "No solo te unes a una plataforma, te unes a un movimiento.",
+                "benefit_title_1": "Confianza y Seguridad", "benefit_text_1": "Nuestro proceso de 'Experiencia de Acogida' elimina las conjeturas. Sabrás si es el compañero adecuado antes de comprometerte para siempre.",
+                "benefit_title_2": "Ahorro Real", "benefit_text_2": "Accede a una red nacional de descuentos en veterinarios, alimentación, accesorios y seguros. La cuota de Socio Amigo se amortiza sola.",
+                "benefit_title_3": "Apoyo de Expertos", "benefit_text_3": "¿Dudas sobre comportamiento? ¿Problemas de salud? Nuestros foros con veterinarios y educadores caninos te dan respuestas fiables.",
                 "footer_slogan": "Cuidamos de su huella.", "footer_nav_title": "Navegación", "footer_legal_title": "Legal", "legal1": "Aviso Legal", "legal2": "Política de Privacidad", "legal3": "Política de Cookies", "footer_help_title": "Ayuda", "help1": "Contacto", "help2": "Preguntas Frecuentes", "copyright": "© 2025 CuidamiHuella. Todos los derechos reservados."
             },
             "en": {
                 "nav_home": "Home", "nav_join": "Join the Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact", "account_btn": "Login / My Account", "account_btn_mobile": "Login / My Account",
-                "join_hero_title": "Choose Your Path in the Club", "join_hero_subtitle": "Whether you're looking to adopt or already have a companion, we have a place for you.",
-                "founder_tag": "For Future Adopters", "founder_title": "Founding Member", "founder_desc_long": "The welcome plan for those starting their adoption journey through CuidamiHuella. Activate the 'Fostering Experience' and get all the tools for a safe and happy adoption.",
-                "founder_price": "€89", "founder_renewal": "One-time payment", "benefits_title_founder": "Benefits Included:",
-                "benefit1": "Access to the 3-week 'Fostering Experience'.", "benefit2": "Welcome Pack (Liability & Accident Insurance, deworming).", "benefit3": "FULL Access to the Club: discounts, forums, and community.", "benefit4": "EXCLUSIVE Access to the 'Chain of Favors' with verified status.",
-                "founder_btn": "Start Your Adoption",
-                "friend_tag": "For Pet Owners", "friend_title": "Friend Member", "friend_desc_long": "Already have your life companion? Join the Club as a Friend Member and access a universe of benefits, discounts, and a community that shares your passion for animals.",
-                "friend_price": "€39.90", "friend_renewal": "Annual fee", "benefits_title_friend": "Benefits Included:",
-                "benefit5": "FULL Access to the Discount Network (brands, vets, and more).", "benefit6": "FULL Access to Expert Forums (vets, trainers).", "benefit7": "Access to 'Chain of Favors' (pet sitting, walking) after verification.", "benefit8": "Continuous support from the CuidamiHuella community.",
-                "friend_btn": "Become a Friend Member Now",
+                "join_title": "The Club for Those Who Truly Love", "join_subtitle": "Whether you are looking for your new companion or already have one, CuidamiHuella is your ecosystem of trust, savings, and support. Choose your path to join.",
+                "founder_title": "FOUNDING MEMBER", "founder_desc": "For those who start their journey by adopting with us.", "founder_price": "€89", "founder_renewal": "One-time payment", "founder_includes": "Your Welcome Pack includes:",
+                "benefit1": "Access to the 3-week 'Fostering Experience'.", "benefit2": "Liability and Accident Insurance during fostering.", "benefit8": "Direct donation to the shelter.", "benefit9": "Deworming pack for the animal.", "benefit3": "1 Year FULL Access to the Club (Discounts, Experts, Community).", "benefit4": "EXCLUSIVE access to the 'Chain of Favors' with verified status.", "founder_btn": "Start Your Adoption",
+                "friend_title": "FRIEND MEMBER", "friend_desc": "For those who already have a pet and want to join.", "friend_price": "€39.90", "friend_renewal": "Annual fee", "friend_includes": "Your annual membership includes:",
+                "benefit5": "FULL access to the Discount Network (save hundreds of euros per year).", "benefit6": "FULL access to Expert Forums (vets, trainers).", "benefit10": "Access to the verified owners Community.", "benefit7": "Ability to access the 'Chain of Favors' (after verification).", "friend_btn": "Become a Friend Member Now",
+                "benefits_title": "What Do You Gain by Being Part of the Club?", "benefits_subtitle": "You don't just join a platform, you join a movement.",
+                "benefit_title_1": "Trust and Safety", "benefit_text_1": "Our 'Fostering Experience' process removes the guesswork. You'll know if it's the right companion before committing forever.",
+                "benefit_title_2": "Real Savings", "benefit_text_2": "Access a national network of discounts on vets, food, accessories, and insurance. The Friend Member fee pays for itself.",
+                "benefit_title_3": "Expert Support", "benefit_text_3": "Doubts about behavior? Health issues? Our forums with vets and dog trainers give you reliable answers.",
                 "footer_slogan": "We take care of their pawprint.", "footer_nav_title": "Navigation", "footer_legal_title": "Legal", "legal1": "Legal Notice", "legal2": "Privacy Policy", "legal3": "Cookies Policy", "footer_help_title": "Help", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. All rights reserved."
             },
             "eu": {
                 "nav_home": "Hasiera", "nav_join": "Egin Kide", "nav_shelters": "Babesleentzat", "nav_find": "Bilatu Laguna", "nav_contact": "Kontaktua", "account_btn": "Sartu / Nire Kontua", "account_btn_mobile": "Sartu / Nire Kontua",
-                "join_hero_title": "Aukeratu Zure Bidea Klubean", "join_hero_subtitle": "Adoptatu nahi baduzu edo dagoeneko zure laguna baduzu, zuretzat leku bat dugu.",
-                "founder_tag": "Etorkizuneko Adoptatzaileentzat", "founder_title": "Bazkide Sortzailea", "founder_desc_long": "CuidamiHuellaren bidez adopzio-bidaia hasten dutenentzako ongietorri-plana. Aktibatu 'Harrera Esperientzia' eta lortu adopzio seguru eta zoriontsu baterako tresna guztiak.",
-                "founder_price": "89 €", "founder_renewal": "Ordainketa bakarra", "benefits_title_founder": "Sartutako Abantailak:",
-                "benefit1": "3 asteko 'Harrera Esperientziarako' sarbidea.", "benefit2": "Ongietorri Packa (RC eta Istripu Asegurua, desparasitazioa).", "benefit3": "Sarbide OSOA Klubean: deskontuak, foroak eta komunitatea.", "benefit4": "SARBIDE BAKARRA 'Mesedeen Katera', egiaztatutako egoerarekin.",
-                "founder_btn": "Hasi zure Adopzioa",
-                "friend_tag": "Maskota Jabeentzat", "friend_title": "Bazkide Laguna", "friend_desc_long": "Baduzu zure bizitzako laguna? Egin zaitez Klubeko Bazkide Laguna eta lortu abantailak, deskontuak eta zure pasioa partekatzen duen komunitate bat.",
-                "friend_price": "39,90 €", "friend_renewal": "Urteko kuota", "benefits_title_friend": "Sartutako Abantailak:",
-                "benefit5": "Sarbide OSOA Deskontu Sarera (markak, albaitariak eta gehiago).", "benefit6": "Sarbide OSOA Adituen Foroetara (albaitariak, hezitzaileak).", "benefit7": "'Mesedeen Katera' sarbidea (zaintzaileak, paseoak) egiaztatu ondoren.", "benefit8": "CuidamiHuella komunitatearen etengabeko laguntza.",
-                "friend_btn": "Egin zaitez Bazkide Laguna Orain",
+                "join_title": "Benetan Maite Dutenentzako Kluba", "join_subtitle": "Zure lagun berriaren bila bazabiltza edo jada baduzu, CuidamiHuella zure konfiantza, aurrezki eta laguntza ekosistema da. Aukeratu zure bidea sartzeko.",
+                "founder_title": "BAZKIDE SORTZAILEA", "founder_desc": "Gurekin adoptatuz bidaia hasten dutenentzat.", "founder_price": "89 €", "founder_renewal": "Ordainketa bakarra", "founder_includes": "Zure Ongietorri Packak barne hartzen du:",
+                "benefit1": "3 asteko 'Harrera Esperientziarako' sarbidea.", "benefit2": "Erantzukizun Zibileko eta Istripu Asegurua harreran zehar.", "benefit8": "Dohaintza zuzena babesleari.", "benefit9": "Animaliarentzako desparasitazio packa.", "benefit3": "Urte 1 Klubera SARBIDE OSOA (Deskontuak, Adituak, Komunitatea).", "benefit4": "SARBIDE BAKARRA 'Mesedeen Katera', egiaztatutako estatusarekin.", "founder_btn": "Hasi zure Adopzioa",
+                "friend_title": "BAZKIDE LAGUNA", "friend_desc": "Jada maskota dutenentzat eta batu nahi dutenentzat.", "friend_price": "39,90 €", "friend_renewal": "Urteko kuota", "friend_includes": "Zure urteko kidetzak barne hartzen du:",
+                "benefit5": "DESKONTU SARE OSOAra sarbidea (aurreztu ehunka euro urtean).", "benefit6": "ADITUEN FOROETARA sarbide osoa (albaitariak, hezitzaileak).", "benefit10": "Egiaztatutako jabeen Komunitatera sarbidea.", "benefit7": "'Mesedeen Katera' sartzeko aukera (egiaztatu ondoren).", "friend_btn": "Egin zaitez Bazkide Laguna Orain",
+                "benefits_title": "Zer Irabazten Duzu Klubeko kide Izanda?", "benefits_subtitle": "Ez zara soilik plataforma batera batzen, mugimendu batera batzen zara.",
+                "benefit_title_1": "Konfiantza eta Segurtasuna", "benefit_text_1": "Gure 'Harrera Esperientzia' prozesuak zalantzak kentzen ditu. Betirako konpromisoa hartu aurretik lagun egokia den jakingo duzu.",
+                "benefit_title_2": "Benetako Aurrezkia", "benefit_text_2": "Sartu albaitari, elikagai, osagarri eta aseguruetan deskontu sare nazional batera. Bazkide Lagunaren kuota berez amortizatzen da.",
+                "benefit_title_3": "Adituen Laguntza", "benefit_text_3": "Portaerari buruzko zalantzak? Osasun arazoak? Gure albaitari eta txakur-hezitzaileekin egindako foroek erantzun fidagarriak ematen dizkizute.",
                 "footer_slogan": "Haien aztarna zaintzen dugu.", "footer_nav_title": "Nabigazioa", "footer_legal_title": "Legezkoa", "legal1": "Lege Oharra", "legal2": "Pribatutasun Politika", "legal3": "Cookie Politika", "footer_help_title": "Laguntza", "help1": "Kontaktua", "help2": "Ohiko Galderak", "copyright": "© 2025 CuidamiHuella. Eskubide guztiak erreserbatuta."
             },
             "ca": {
                 "nav_home": "Inici", "nav_join": "Uneix-te al Club", "nav_shelters": "Per a Protectores", "nav_find": "Busca el teu Company", "nav_contact": "Contacte", "account_btn": "Accedir / El Meu Compte", "account_btn_mobile": "Accedir / El Meu Compte",
-                "join_hero_title": "Tria el Teu Camí al Club", "join_hero_subtitle": "Tant si busques adoptar com si ja tens el teu company, tenim un lloc per a tu.",
-                "founder_tag": "Per a Futurs Adoptants", "founder_title": "Soci Fundador", "founder_desc_long": "El pla de benvinguda per als qui inicien el seu viatge d'adopció a través de CuidamiHuella. Activa l''Experiència d'Acollida' i obté totes les eines per a una adopció segura i feliç.",
-                "founder_price": "89 €", "founder_renewal": "Pagament únic", "benefits_title_founder": "Beneficis Inclosos:",
-                "benefit1": "Accés a l''Experiència d'Acollida' de 3 setmanes.", "benefit2": "Pack de Benvinguda (Assegurança RC i Accidents, desparasitació).", "benefit3": "Accés COMPLET al Club: descomptes, fòrums i comunitat.", "benefit4": "Accés EXCLUSIU a la 'Cadena de Favors' amb estatus verificat.",
-                "founder_btn": "Inicia la teva Adopció",
-                "friend_tag": "Per a Propietaris de Mascotes", "friend_title": "Soci Amic", "friend_desc_long": "Ja tens el teu company de vida? Uneix-te al Club com a Soci Amic i accedeix a un univers d'avantatges, descomptes i una comunitat que comparteix la teva passió pels animals.",
-                "friend_price": "39,90 €", "friend_renewal": "Quota anual", "benefits_title_friend": "Beneficis Inclosos:",
-                "benefit5": "Accés COMPLET a la Xarxa de Descomptes en marques, veterinaris i més.", "benefit6": "Accés COMPLET als Fòrums d'Experts (veterinaris, educadors).", "benefit7": "Accés a la 'Cadena de Favors' (cangurs, passejos) després de verificació.", "benefit8": "Suport continu de la comunitat CuidamiHuella.",
-                "friend_btn": "Fes-te Soci Amic Ara",
+                "join_title": "El Club per als que Estimen de Veritat", "join_subtitle": "Tant si busques el teu nou company com si ja en tens un, CuidamiHuella és el teu ecosistema de confiança, estalvi i suport. Tria el teu camí per entrar.",
+                "founder_title": "SOCI FUNDADOR", "founder_desc": "Per als que inicien el seu viatge adoptant amb nosaltres.", "founder_price": "89 €", "founder_renewal": "Pagament únic", "founder_includes": "El teu Pack de Benvinguda inclou:",
+                "benefit1": "Accés a l''Experiència d'Acollida' de 3 setmanes.", "benefit2": "Assegurança de Responsabilitat Civil i Accidents durant l'acollida.", "benefit8": "Donatiu directe a la protectora.", "benefit9": "Pack de desparasitació per a l'animal.", "benefit3": "1 Any d'Accés COMPLET al Club (Descomptes, Experts, Comunitat).", "benefit4": "Accés EXCLUSIU a la 'Cadena de Favors' amb estatus verificat.", "founder_btn": "Inicia la teva Adopció",
+                "friend_title": "SOCI AMIC", "friend_desc": "Per als que ja tenen mascota i volen unir-se.", "friend_price": "39,90 €", "friend_renewal": "Quota anual", "friend_includes": "La teva subscripció anual inclou:",
+                "benefit5": "Accés COMPLET a la Xarxa de Descomptes (estalvia centenars d'euros a l'any).", "benefit6": "Accés COMPLET als Fòrums d'Experts (veterinaris, educadors).", "benefit10": "Accés a la Comunitat de propietaris verificats.", "benefit7": "Possibilitat d'accedir a la 'Cadena de Favors' (després de verificació).", "friend_btn": "Fes-te Soci Amic Ara",
+                "benefits_title": "Què Guanyes formant part del Club?", "benefits_subtitle": "No només t'uneixes a una plataforma, t'uneixes a un moviment.",
+                "benefit_title_1": "Confiança i Seguretat", "benefit_text_1": "El nostre procés d''Experiència d'Acollida' elimina les conjectures. Sabràs si és el company adequat abans de comprometre't per sempre.",
+                "benefit_title_2": "Estalvi Real", "benefit_text_2": "Accedeix a una xarxa nacional de descomptes en veterinaris, alimentació, accessoris i assegurances. La quota de Soci Amic s'amortitza sola.",
+                "benefit_title_3": "Suport d'Experts", "benefit_text_3": "Dubtes sobre comportament? Problemes de salut? Els nostres fòrums amb veterinaris i educadors canins et donen respostes fiables.",
                 "footer_slogan": "Cuidem de la seva petjada.", "footer_nav_title": "Navegació", "footer_legal_title": "Legal", "legal1": "Avís Legal", "legal2": "Política de Privacitat", "legal3": "Política de Cookies", "footer_help_title": "Ajuda", "help1": "Contacte", "help2": "Preguntes Freqüents", "copyright": "© 2025 CuidamiHuella. Tots els drets reservats."
             },
             "fr": {
                 "nav_home": "Accueil", "nav_join": "Rejoindre le Club", "nav_shelters": "Pour les Refuges", "nav_find": "Trouver un Compagnon", "nav_contact": "Contact", "account_btn": "Connexion / Mon Compte", "account_btn_mobile": "Connexion / Mon Compte",
-                "join_hero_title": "Choisissez Votre Voie dans le Club", "join_hero_subtitle": "Que vous cherchiez à adopter ou que vous ayez déjà votre compagnon, nous avons une place pour vous.",
-                "founder_tag": "Pour les Futurs Adoptants", "founder_title": "Membre Fondateur", "founder_desc_long": "Le plan de bienvenue pour ceux qui commencent leur parcours d'adoption via CuidamiHuella. Activez l''Expérience d'Accueil' et obtenez tous les outils pour une adoption sûre et heureuse.",
-                "founder_price": "89 €", "founder_renewal": "Paiement unique", "benefits_title_founder": "Avantages Inclus :",
-                "benefit1": "Accès à l''Expérience d'Accueil' de 3 semaines.", "benefit2": "Pack de Bienvenue (Assurance RC et Accidents, vermifuge).", "benefit3": "Accès COMPLET au Club : réductions, forums et communauté.", "benefit4": "Accès EXCLUSIF à la 'Chaîne de Faveurs' avec statut vérifié.",
-                "founder_btn": "Commencez Votre Adoption",
-                "friend_tag": "Pour les Propriétaires d'Animaux", "friend_title": "Membre Ami", "friend_desc_long": "Vous avez déjà votre compagnon de vie ? Rejoignez le Club en tant que Membre Ami et accédez à un univers d'avantages, de réductions et à une communauté qui partage votre passion pour les animaux.",
-                "friend_price": "39,90 €", "friend_renewal": "Frais annuels", "benefits_title_friend": "Avantages Inclus :",
-                "benefit5": "Accès COMPLET au Réseau de Réductions (marques, vétérinaires, etc.).", "benefit6": "Accès COMPLET aux Forums d'Experts (vétérinaires, éducateurs).", "benefit7": "Accès à la 'Chaîne de Faveurs' (garde, promenades) après vérification.", "benefit8": "Soutien continu de la communauté CuidamiHuella.",
-                "friend_btn": "Devenez Membre Ami Maintenant",
+                "join_title": "Le Club pour Ceux qui Aiment Vraiment", "join_subtitle": "Que vous cherchiez votre nouveau compagnon ou que vous en ayez déjà un, CuidamiHuella est votre écosystème de confiance, d'économies et de soutien. Choisissez votre voie.",
+                "founder_title": "MEMBRE FONDATEUR", "founder_desc": "Pour ceux qui commencent leur voyage en adoptant avec nous.", "founder_price": "89 €", "founder_renewal": "Paiement unique", "founder_includes": "Votre Pack de Bienvenue inclut :",
+                "benefit1": "Accès à l''Expérience d'Accueil' de 3 semaines.", "benefit2": "Assurance Responsabilité Civile et Accidents pendant l'accueil.", "benefit8": "Don direct au refuge.", "benefit9": "Pack vermifuge pour l'animal.", "benefit3": "1 An d'Accès COMPLET au Club (Réductions, Experts, Communauté).", "benefit4": "Accès EXCLUSIF à la 'Chaîne de Faveurs' avec statut vérifié.", "founder_btn": "Commencez Votre Adoption",
+                "friend_title": "MEMBRE AMI", "friend_desc": "Pour ceux qui ont déjà un animal et veulent nous rejoindre.", "friend_price": "39,90 €", "friend_renewal": "Frais annuels", "friend_includes": "Votre adhésion annuelle inclut :",
+                "benefit5": "Accès COMPLET au Réseau de Réductions (économisez des centaines d'euros par an).", "benefit6": "Accès COMPLET aux Forums d'Experts (vétérinaires, éducateurs).", "benefit10": "Accès à la Communauté de propriétaires vérifiés.", "benefit7": "Possibilité d'accéder à la 'Chaîne de Faveurs' (après vérification).", "friend_btn": "Devenez Membre Ami Maintenant",
+                "benefits_title": "Que Gagnez-vous à faire partie du Club ?", "benefits_subtitle": "Vous ne rejoignez pas seulement une plateforme, vous rejoignez un mouvement.",
+                "benefit_title_1": "Confiance et Sécurité", "benefit_text_1": "Notre processus d''Expérience d'Accueil' élimine les incertitudes. Vous saurez si c'est le bon compagnon avant de vous engager pour toujours.",
+                "benefit_title_2": "Économies Réelles", "benefit_text_2": "Accédez à un réseau national de réductions chez les vétérinaires, sur la nourriture, les accessoires et les assurances. Les frais de Membre Ami sont rentabilisés.",
+                "benefit_title_3": "Soutien d'Experts", "benefit_text_3": "Doutes sur le comportement ? Problèmes de santé ? Nos forums avec des vétérinaires et des éducateurs canins vous donnent des réponses fiables.",
                 "footer_slogan": "Nous prenons soin de leur empreinte.", "footer_nav_title": "Navigation", "footer_legal_title": "Légal", "legal1": "Mentions Légales", "legal2": "Politique de Confidentialité", "legal3": "Politique de Cookies", "footer_help_title": "Aide", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Tous droits réservés."
             },
             "de": {
                 "nav_home": "Start", "nav_join": "Club beitreten", "nav_shelters": "Für Tierheime", "nav_find": "Begleiter finden", "nav_contact": "Kontakt", "account_btn": "Login / Mein Konto", "account_btn_mobile": "Login / Mein Konto",
-                "join_hero_title": "Wählen Sie Ihren Weg im Club", "join_hero_subtitle": "Egal, ob Sie adoptieren möchten oder bereits einen Begleiter haben, wir haben einen Platz für Sie.",
-                "founder_tag": "Für zukünftige Adoptierende", "founder_title": "Gründungsmitglied", "founder_desc_long": "Der Willkommensplan für diejenigen, die ihre Adoptionsreise über CuidamiHuella beginnen. Aktivieren Sie die 'Pflegeerfahrung' und erhalten Sie alle Werkzeuge für eine sichere und glückliche Adoption.",
-                "founder_price": "89 €", "founder_renewal": "Einmalzahlung", "benefits_title_founder": "Inkludierte Vorteile:",
-                "benefit1": "Zugang zur 3-wöchigen 'Pflegeerfahrung'.", "benefit2": "Willkommenspaket (Haftpflicht- & Unfallversicherung, Entwurmung).", "benefit3": "VOLLER Zugang zum Club: Rabatte, Foren und Community.", "benefit4": "EXKLUSIVER Zugang zur 'Kette der Gefälligkeiten' mit verifiziertem Status.",
-                "founder_btn": "Adoption starten",
-                "friend_tag": "Für Haustierbesitzer", "friend_title": "Freund-Mitglied", "friend_desc_long": "Haben Sie bereits Ihren Lebensbegleiter? Treten Sie dem Club als Freund-Mitglied bei und erhalten Sie Zugang zu einer Welt voller Vorteile, Rabatte und einer Gemeinschaft, die Ihre Leidenschaft für Tiere teilt.",
-                "friend_price": "39,90 €", "friend_renewal": "Jahresgebühr", "benefits_title_friend": "Inkludierte Vorteile:",
-                "benefit5": "VOLLER Zugang zum Rabattnetzwerk (Marken, Tierärzte etc.).", "benefit6": "VOLLER Zugang zu Expertenforen (Tierärzte, Trainer).", "benefit7": "Zugang zur 'Kette der Gefälligkeiten' (Sitting, Gassi) nach Überprüfung.", "benefit8": "Kontinuierliche Unterstützung durch die CuidamiHuella-Community.",
-                "friend_btn": "Jetzt Freund-Mitglied werden",
+                "join_title": "Der Club für diejenigen, die wirklich lieben", "join_subtitle": "Ob Sie einen neuen Begleiter suchen oder bereits einen haben, CuidamiHuella ist Ihr Ökosystem des Vertrauens, der Ersparnisse und der Unterstützung. Wählen Sie Ihren Weg.",
+                "founder_title": "GRÜNDUNGSMITGLIED", "founder_desc": "Für diejenigen, die ihre Reise mit einer Adoption bei uns beginnen.", "founder_price": "89 €", "founder_renewal": "Einmalzahlung", "founder_includes": "Ihr Willkommenspaket beinhaltet:",
+                "benefit1": "Zugang zur 3-wöchigen 'Pflegeerfahrung'.", "benefit2": "Haftpflicht- & Unfallversicherung während der Pflegezeit.", "benefit8": "Direkte Spende an das Tierheim.", "benefit9": "Entwurmungspaket für das Tier.", "benefit3": "1 Jahr VOLLER Zugang zum Club (Rabatte, Experten, Community).", "benefit4": "EXKLUSIVER Zugang zur 'Kette der Gefälligkeiten' mit verifiziertem Status.", "founder_btn": "Adoption starten",
+                "friend_title": "FREUND-MITGLIED", "friend_desc": "Für diejenigen, die bereits ein Haustier haben und beitreten möchten.", "friend_price": "39,90 €", "friend_renewal": "Jahresgebühr", "friend_includes": "Ihre Jahresmitgliedschaft beinhaltet:",
+                "benefit5": "VOLLER Zugang zum Rabattnetzwerk (sparen Sie Hunderte von Euro pro Jahr).", "benefit6": "VOLLER Zugang zu Expertenforen (Tierärzte, Trainer).", "benefit10": "Zugang zur verifizierten Besitzer-Community.", "benefit7": "Möglichkeit zum Zugang zur 'Kette der Gefälligkeiten' (nach Überprüfung).", "friend_btn": "Jetzt Freund-Mitglied werden",
+                "benefits_title": "Was gewinnen Sie als Teil des Clubs?", "benefits_subtitle": "Sie treten nicht nur einer Plattform bei, Sie treten einer Bewegung bei.",
+                "benefit_title_1": "Vertrauen und Sicherheit", "benefit_text_1": "Unser 'Pflegeerfahrungs'-Prozess beseitigt das Rätselraten. Sie wissen, ob es der richtige Begleiter ist, bevor Sie sich für immer binden.",
+                "benefit_title_2": "Echte Ersparnisse", "benefit_text_2": "Erhalten Sie Zugang zu einem nationalen Rabattnetzwerk für Tierärzte, Futter, Zubehör und Versicherungen. Die Gebühr für Freund-Mitglieder zahlt sich von selbst aus.",
+                "benefit_title_3": "Expertenunterstützung", "benefit_text_3": "Zweifel am Verhalten? Gesundheitsprobleme? Unsere Foren mit Tierärzten und Hundetrainern geben Ihnen zuverlässige Antworten.",
                 "footer_slogan": "Wir kümmern uns um ihre Pfote.", "footer_nav_title": "Navigation", "footer_legal_title": "Rechtliches", "legal1": "Impressum", "legal2": "Datenschutz", "legal3": "Cookie-Richtlinie", "footer_help_title": "Hilfe", "help1": "Kontakt", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Alle Rechte vorbehalten."
             },
              "it": {
                 "nav_home": "Inizio", "nav_join": "Unisciti al Club", "nav_shelters": "Per i Rifugi", "nav_find": "Trova il tuo Compagno", "nav_contact": "Contatto", "account_btn": "Accedi / Mio Account", "account_btn_mobile": "Accedi / Mio Account",
-                "join_hero_title": "Scegli il Tuo Percorso nel Club", "join_hero_subtitle": "Sia che tu stia cercando di adottare o abbia già un compagno, abbiamo un posto per te.",
-                "founder_tag": "Per Futuri Adottanti", "founder_title": "Socio Fondatore", "founder_desc_long": "Il piano di benvenuto per chi inizia il proprio viaggio di adozione tramite CuidamiHuella. Attiva l''Esperienza di Affido' e ottieni tutti gli strumenti per un'adozione sicura e felice.",
-                "founder_price": "89 €", "founder_renewal": "Pagamento unico", "benefits_title_founder": "Benefici Inclusi:",
-                "benefit1": "Accesso all''Esperienza di Affido' di 3 settimane.", "benefit2": "Pack di Benvenuto (Assicurazione RC e Infortuni, sverminazione).", "benefit3": "Accesso COMPLETO al Club: sconti, forum e community.", "benefit4": "Accesso ESCLUSIVO alla 'Catena di Favori' con stato verificato.",
-                "founder_btn": "Inizia la Tua Adozione",
-                "friend_tag": "Per Proprietari di Animali", "friend_title": "Socio Amico", "friend_desc_long": "Hai già il tuo compagno di vita? Unisciti al Club come Socio Amico e accedi a un universo di vantaggi, sconti e una comunità che condivide la tua passione per gli animali.",
-                "friend_price": "39,90 €", "friend_renewal": "Quota annuale", "benefits_title_friend": "Benefici Inclusi:",
-                "benefit5": "Accesso COMPLETO alla Rete di Sconti (marche, veterinari, ecc.).", "benefit6": "Accesso COMPLETO ai Forum di Esperti (veterinari, educatori).", "benefit7": "Accesso alla 'Catena di Favori' (pet sitting, passeggiate) previa verifica.", "benefit8": "Supporto continuo dalla comunità CuidamiHuella.",
-                "friend_btn": "Diventa Socio Amico Ora",
+                "join_title": "Il Club per Chi Ama Davvero", "join_subtitle": "Sia che tu stia cercando il tuo nuovo compagno o ne abbia già uno, CuidamiHuella è il tuo ecosistema di fiducia, risparmio e supporto. Scegli la tua strada per entrare.",
+                "founder_title": "SOCIO FONDATORE", "founder_desc": "Per coloro che iniziano il loro viaggio adottando con noi.", "founder_price": "89 €", "founder_renewal": "Pagamento unico", "founder_includes": "Il tuo Pacchetto di Benvenuto include:",
+                "benefit1": "Accesso all''Esperienza di Affido' di 3 settimane.", "benefit2": "Assicurazione RC e Infortuni durante l'affido.", "benefit8": "Donazione diretta al rifugio.", "benefit9": "Pacchetto sverminazione per l'animale.", "benefit3": "1 Anno di Accesso COMPLETO al Club (Sconti, Esperti, Comunità).", "benefit4": "Accesso ESCLUSIVO alla 'Catena di Favori' con stato verificato.", "founder_btn": "Inizia la Tua Adozione",
+                "friend_title": "SOCIO AMICO", "friend_desc": "Per coloro che hanno già un animale e vogliono unirsi.", "friend_price": "39,90 €", "friend_renewal": "Quota annuale", "friend_includes": "La tua iscrizione annuale include:",
+                "benefit5": "Accesso COMPLETO alla Rete di Sconti (risparmia centinaia di euro all'anno).", "benefit6": "Accesso COMPLETO ai Forum di Esperti (veterinari, educatori).", "benefit10": "Accesso alla Comunità di proprietari verificati.", "benefit7": "Possibilità di accedere alla 'Catena di Favori' (previa verifica).", "friend_btn": "Diventa Socio Amico Ora",
+                "benefits_title": "Cosa Guadagni facendo parte del Club?", "benefits_subtitle": "Non ti unisci solo a una piattaforma, ti unisci a un movimento.",
+                "benefit_title_1": "Fiducia e Sicurezza", "benefit_text_1": "Il nostro processo 'Esperienza di Affido' elimina ogni dubbio. Saprai se è il compagno giusto prima di impegnarti per sempre.",
+                "benefit_title_2": "Risparmio Reale", "benefit_text_2": "Accedi a una rete nazionale di sconti su veterinari, cibo, accessori e assicurazioni. La quota da Socio Amico si ripaga da sola.",
+                "benefit_title_3": "Supporto di Esperti", "benefit_text_3": "Dubbi sul comportamento? Problemi di salute? I nostri forum con veterinari ed educatori cinofili ti danno risposte affidabili.",
                 "footer_slogan": "Ci prendiamo cura della loro impronta.", "footer_nav_title": "Navigazione", "footer_legal_title": "Legale", "legal1": "Note Legali", "legal2": "Privacy Policy", "legal3": "Cookie Policy", "footer_help_title": "Aiuto", "help1": "Contatto", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Tutti i diritti riservati."
             }
         };
 
+        
         // --- Language Switcher Logic ---
         const languageSelect = document.getElementById('languageSelect');
         const changeLanguage = (lang) => {
@@ -377,7 +393,7 @@
         };
 
         languageSelect.addEventListener('change', (e) => changeLanguage(e.target.value));
-        
+
         // --- Initial Load ---
         const savedLang = localStorage.getItem('selectedLanguage') || 'es';
         changeLanguage(savedLang);
