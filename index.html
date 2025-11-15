@@ -4,17 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaMiHuella - Adopción Responsable</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Estilos Personalizados Integrados -->
-    <style>
+    <!-- Estilos Personalizados Integrados --><style>
         :root {
             --primary-color: #8b5cf6; /* violet-500 */
             --primary-hover: #7c3aed; /* violet-600 */
@@ -76,9 +72,19 @@
 
         /* --- Secciones Específicas --- */
         .hero {
-             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1920x1080/d8b4fe/5b21b6?text=Animales+Felices');
+             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://raw.githubusercontent.com/cuenca-mario/CuidaMiHuella/main/images/hero-index.jpg'); /* Imagen 7 */
              background-size: cover; background-position: center;
         }
+        .value-card {
+            background-color: rgba(253, 242, 248, 0.3); /* Base transparente con color pastel */
+        }
+        /* Para el value card de "Pensando en Adoptar" que tendrá la Imagen 5 */
+        .value-card.adopt {
+             background-image: linear-gradient(rgba(253, 242, 248, 0.5), rgba(253, 242, 248, 0.5)), url('https://raw.githubusercontent.com/cuenca-mario/CuidaMiHuella/main/images/value-adopt.jpg'); /* Imagen 5 */
+             background-size: cover; background-position: center;
+             background-blend-mode: overlay; /* Mezcla el color de fondo con la imagen */
+        }
+
         .shelters-cta { background-color: var(--primary-color); }
         #footer { background-color: var(--footer-bg); }
         footer h3 { color: var(--text-dark); }
@@ -96,8 +102,7 @@
 </head>
 <body class="bg-gray-50">
 
-    <!-- Header -->
-    <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
+    <!-- Header --><header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
@@ -132,8 +137,7 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+        <!-- Mobile Menu --><div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <a href="#hero" data-key="nav_home" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Inicio</a>
             <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Únete al Club</a>
             <a href="para-protectoras.html" data-key="nav_shelters" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Para Protectoras</a>
@@ -146,8 +150,7 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero text-white" id="hero">
+        <!-- Hero Section --><section class="hero text-white" id="hero">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[60vh] py-20">
                 <h1 data-key="hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">La Adopción ha Cambiado. Para Siempre.</h1>
                 <p data-key="hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light">Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.</p>
@@ -158,14 +161,13 @@
             </div>
         </section>
 
-        <!-- Value Proposition -->
-        <section class="py-16 md:py-24 bg-white" id="value-prop">
+        <!-- Value Proposition --><section class="py-16 md:py-24 bg-white" id="value-prop">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 data-key="value_title" class="text-3xl md:text-4xl font-bold text-gray-800">Un Club para Todos los que Aman a los Animales</h2>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="value-card bg-pink-50/30 p-8 rounded-xl shadow-lg text-center">
+                    <div class="value-card adopt p-8 rounded-xl shadow-lg text-center text-violet-800">
                         <div class="text-5xl mb-4"><i class="fas fa-heart"></i></div>
                         <h3 data-key="adopt_title" class="text-2xl font-bold mb-3">¿Pensando en Adoptar?</h3>
                         <p data-key="adopt_text" class="mb-6">Elimina el miedo con nuestra 'Experiencia de Acogida'. Convive con tu futuro compañero durante 3 semanas de forma segura.</p>
@@ -181,8 +183,7 @@
             </div>
         </section>
 
-        <!-- Process Section -->
-        <section class="py-16 md:py-24" id="process">
+        <!-- Process Section --><section class="py-16 md:py-24" id="process">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 data-key="process_title" class="text-3xl md:text-4xl font-bold text-gray-800">Tu Viaje hacia el Compañero Perfecto, en 3 Pasos</h2>
@@ -207,8 +208,7 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="py-16 md:py-24 bg-white">
+        <!-- Testimonials --><section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 data-key="testimonials_title" class="text-3xl md:text-4xl font-bold text-gray-800">Las Historias que nos Impulsan</h2>
@@ -221,8 +221,7 @@
             </div>
         </section>
 
-        <!-- Shelters CTA -->
-        <section class="shelters-cta text-white" id="shelters">
+        <!-- Shelters CTA --><section class="shelters-cta text-white" id="shelters">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 md:py-20">
                 <h2 data-key="shelters_title" class="text-3xl md:text-4xl font-bold mb-4">¿Eres una Protectora o Centro de Acogida?</h2>
                 <p data-key="shelters_text" class="max-w-2xl mx-auto text-lg mb-8">Descubre cómo podemos ayudarte a reducir devoluciones y generar una nueva vía de financiación. A coste cero.</p>
@@ -230,8 +229,7 @@
             </div>
         </section>
 
-        <!-- Membership Section -->
-        <section class="py-16 md:py-24" id="membership">
+        <!-- Membership Section --><section class="py-16 md:py-24" id="membership">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 data-key="membership_title" class="text-3xl md:text-4xl font-bold text-gray-800">El Club para los que Aman de Verdad</h2>
@@ -270,8 +268,7 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer id="footer" class="text-gray-700">
+    <!-- Footer --><footer id="footer" class="text-gray-700">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-2 md:col-span-1">
@@ -287,7 +284,7 @@
                 <div>
                     <h3 data-key="footer_nav_title" class="font-semibold mb-4 uppercase tracking-wider">Navegación</h3>
                     <ul class="space-y-2">
-                        <li><a href="#hero" data-key="nav_home">Inicio</a></li>
+                        <li><a href="index.html" data-key="nav_home">Inicio</a></li>
                         <li><a href="unete-al-club.html" data-key="nav_join">Únete al Club</a></li>
                         <li><a href="para-protectoras.html" data-key="nav_shelters">Para Protectoras</a></li>
                     </ul>
@@ -314,8 +311,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript Integrado -->
-    <script>
+    <!-- JavaScript Integrado --><script>
     document.addEventListener('DOMContentLoaded', () => {
         // --- Mobile Menu ---
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -364,7 +360,7 @@
                 "testimonials_title": "Les Històries que ens Impulsen",
                 "shelters_title": "Ets una Protectora o Centre d'Acollida?", "shelters_text": "Descobreix com et podem ajudar a reduir devolucions i generar una nova font de finançament. A cost zero.", "shelters_btn": "Col·labora amb Nosaltres",
                 "membership_title": "El Club per als que Estimen de Veritat", "membership_subtitle": "Tant si busques el teu nou company com si ja en tens un, CuidamiHuella és el teu ecosistema de confiança, estalvi i suport.", "founder_title": "SOCI FUNDADOR", "founder_desc": "Per als que inicien el seu viatge adoptant amb nosaltres.", "founder_price": "89 €", "founder_renewal": "Pagament únic", "benefit1": "Accés a l''Experiència d'Acollida'", "benefit2": "Assegurança de RC i Accidents", "benefit3": "Accés COMPLET al Club", "benefit4": "Accés a la 'Cadena de Favors'", "founder_btn": "Inicia la teva Adopció", "friend_title": "SOCI AMIC", "friend_desc": "Per als que ja tenen mascota i volen unir-se.", "friend_price": "39,90 €", "friend_renewal": "Quota anual", "benefit5": "Xarxa de Descomptes COMPLETA", "benefit6": "Fòrums d'Experts i Comunitat", "benefit7": "Accés a 'Cadena de Favors'", "friend_btn": "Fes-te Soci Amic Ara",
-                "footer_slogan": "Cuidem de la seva petjada.", "footer_nav_title": "Navegació", "footer_legal_title": "Legal", "legal1": "Avís Legal", "legal2": "Política de Privacitat", "legal3": "Política de Cookies", "footer_help_title": "Ajuda", "help1": "Contacte", "help2": "Preguntes Freqüents", "copyright": "© 2025 CuidamiHuella. Tots els drets reservats."
+                "footer_slogan": "Cuidem de la seva petjada.", "footer_nav_title": "Navegación", "footer_legal_title": "Legal", "legal1": "Avís Legal", "legal2": "Política de Privacitat", "legal3": "Política de Cookies", "footer_help_title": "Ajuda", "help1": "Contacte", "help2": "Preguntes Freqüentes", "copyright": "© 2025 CuidamiHuella. Tots els drets reservats."
             },
             "fr": {
                 "nav_home": "Accueil", "nav_join": "Rejoindre le Club", "nav_shelters": "Pour les Refuges", "nav_find": "Trouver un Compagnon", "nav_contact": "Contact", "account_btn": "Connexion / Mon Compte", "account_btn_mobile": "Connexion / Mon Compte",
@@ -383,7 +379,7 @@
                 "process_title": "Ihr Weg zum perfekten Begleiter in 3 Schritten", "step1_title": "1. Beitreten & Paket aktivieren", "step1_text": "Aktivieren Sie Ihr 'Willkommenspaket' mit Versicherung, Entwurmung und einer Spende an das Tierheim.", "step2_title": "2. Die Erfahrung leben", "step2_text": "Wählen Sie ein Tier und genießen Sie es 3 Wochen lang zu Hause. Finden Sie heraus, ob Sie perfekt zusammenpassen.", "step3_title": "3. Feiern Sie Ihren Erfolg", "step3_text": "Schließen Sie eine Adoption ab, die auf der Realität basiert, nicht auf einer Ahnung. Feiern Sie Ihre Verbindung!",
                 "testimonials_title": "Die Geschichten, die uns antreiben",
                 "shelters_title": "Sind Sie ein Tierheim oder eine Rettungsstation?", "shelters_text": "Entdecken Sie, wie wir Ihnen helfen können, Rückgaben zu reduzieren und eine neue Finanzierungsquelle zu erschließen. Kostenlos.", "shelters_btn": "Mit uns zusammenarbeiten",
-                "membership_title": "Der Club für diejenigen, die wirklich lieben", "membership_subtitle": "Ob Sie einen neuen Begleiter suchen oder bereits einen haben, CuidamiHuella ist Ihr Ökosystem des Vertrauens, der Ersparnisse und der Unterstützung.", "founder_title": "GRÜNDUNGSMITGLIED", "founder_desc": "Für diejenigen, die ihre Reise mit einer Adoption bei uns beginnen.", "founder_price": "89 €", "founder_renewal": "Einmalzahlung", "benefit1": "Zugang zur 'Pflegeerfahrung'", "benefit2": "Haftpflicht- & Unfallversicherung", "benefit3": "VOLLER Zugang zum Club", "benefit4": "Zugang zur 'Kette der Gefälligkeiten'", "founder_btn": "Adoption starten", "friend_title": "FREUND-MITGLIED", "friend_desc": "Für diejenigen, die bereits ein Haustier haben und beitreten möchten.", "friend_price": "39,90 €", "friend_renewal": "Jahresgebühr", "benefit5": "VOLLES Rabattnetzwerk", "benefit6": "Expertenforen & Gemeinschaft", "benefit7": "Zugang zur 'Kette der Gefälligkeiten'", "friend_btn": "Jetzt Freund-Mitglied werden",
+                "membership_title": "Der Club für diejenigen, die wirklich lieben", "membership_subtitle": "Ob Sie einen neuen Begleiter suchen oder bereits einen haben, CuidamiHuella ist Ihr Ökosystem des Vertrauens, der Ersparnisse und der Unterstützung.", "founder_title": "GRÜNDUNGSMITGLIED", "founder_desc": "Für diejenigen, die ihre Reise mit einer Adoption bei uns beginnen.", "founder_price": "89 €", "founder_renewal": "Einmalzahlung", "benefit1": "Zugang zur 'Pflegeerfahrung'", "benefit2": "Haftpflicht- & Unfallversicherung", "benefit3": "VOLLER Zugang zum Club", "benefit4": "Zugang zur 'Kette der Gefälligkeiten'", "founder_btn": "Adoption starten", "friend_title": "FREUND-MITGLIED", "friend_desc": "Für diejenigen, die bereits ein Haustier haben und beitreten möchten.", "friend_price": "39,90 €", "friend_renewal": "Jahresgebühr", "benefit5": "VOLLER Rabattnetzwerk", "benefit6": "Expertenforen & Gemeinschaft", "benefit7": "Zugang zur 'Kette der Gefälligkeiten'", "friend_btn": "Jetzt Freund-Mitglied werden",
                 "footer_slogan": "Wir kümmern uns um ihre Pfote.", "footer_nav_title": "Navigation", "footer_legal_title": "Rechtliches", "legal1": "Impressum", "legal2": "Datenschutz", "legal3": "Cookie-Richtlinie", "footer_help_title": "Hilfe", "help1": "Kontakt", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Alle Rechte vorbehalten."
             },
              "it": {
@@ -393,7 +389,7 @@
                 "process_title": "Il Tuo Viaggio verso il Compagno Perfetto, in 3 Passi", "step1_title": "1. Unisciti e Attiva il Tuo Pack", "step1_text": "Attiva il tuo 'Pack di Benvenuto' con assicurazione, sverminazione e donazione al rifugio.", "step2_title": "2. Vivi l'Esperienza", "step2_text": "Scegli un animale e goditelo a casa per 3 settimane. Scopri se siete la coppia perfetta.", "step3_title": "3. Festeggia il Tuo Successo", "step3_text": "Formalizza un'adozione basata sulla realtà, non su un'intuizione. Celebrate il vostro legame!",
                 "testimonials_title": "Le Storie che ci Guidano",
                 "shelters_title": "Sei un Rifugio o un Centro di Soccorso?", "shelters_text": "Scopri come possiamo aiutarti a ridurre le restituzioni e a generare una nuova fonte di finanziamento. A costo zero.", "shelters_btn": "Collabora con Noi",
-                "membership_title": "Il Club per Chi Ama Davvero", "membership_subtitle": "Sia che tu stia cercando il tuo nuovo compagno o ne abbia già uno, CuidamiHuella è il tuo ecosistema di fiducia, risparmio e supporto.", "founder_title": "SOCIO FONDATORE", "founder_desc": "Per coloro che iniziano il loro viaggio adottando con noi.", "founder_price": "89 €", "founder_renewal": "Pagamento unico", "benefit1": "Accesso all''Esperienza di Affido'", "benefit2": "Assicurazione RC e Infortuni", "benefit3": "Accesso COMPLETO al Club", "benefit4": "Accesso alla 'Catena di Favori'", "founder_btn": "Inizia la Tua Adozione", "friend_title": "SOCIO AMICO", "friend_desc": "Per coloro che hanno già un animale e vogliono unirsi.", "friend_price": "39,90 €", "friend_renewal": "Quota annuale", "benefit5": "Rete di Sconti COMPLETA", "benefit6": "Forum di Esperti e Comunità", "benefit7": "Accesso alla 'Catena di Favori'", "friend_btn": "Diventa Socio Amico Ora",
+                "membership_title": "Il Club per Chi Ama Davvero", "membership_subtitle": "Sia che tu stia cercando il tuo nuovo compagno o ne abbia già uno, CuidamiHuella è il tuo ecosistema di fiducia, risparmio e supporto.", "founder_title": "SOCIO FONDATORE", "founder_desc": "Per coloro che iniziano il loro viaggio adottando con noi.", "founder_price": "89 €", "founder_renewal": "Pagamento unico", "benefit1": "Acceso all''Esperienza di Affido'", "benefit2": "Assicurazione RC e Infortuni", "benefit3": "Accesso COMPLETO al Club", "benefit4": "Accesso alla 'Catena di Favori'", "founder_btn": "Inizia la Tua Adozione", "friend_title": "SOCIO AMICO", "friend_desc": "Per coloro che hanno già un animale e vogliono unirsi.", "friend_price": "39,90 €", "friend_renewal": "Quota annuale", "benefit5": "Rete di Sconti COMPLETA", "benefit6": "Forum di Esperti e Comunità", "benefit7": "Accesso alla 'Catena di Favori'", "friend_btn": "Diventa Socio Amico Ora",
                 "footer_slogan": "Ci prendiamo cura della loro impronta.", "footer_nav_title": "Navigazione", "footer_legal_title": "Legale", "legal1": "Note Legali", "legal2": "Privacy Policy", "legal3": "Cookie Policy", "footer_help_title": "Aiuto", "help1": "Contatto", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Tutti i diritti riservati."
             }
         };
@@ -445,7 +441,7 @@
         translations.de.testimonial_2_text = "Als Freund-Mitglied haben wir viel bei Tierärzten und hochwertigem Futter gespart. Die Gemeinschaft ist unglaublich, es ist immer jemand bereit zu helfen.";
         translations.de.testimonial_2_author = "— Marcos G., Freund-Mitglied und Lúas Papa.";
         translations.de.testimonial_3_text = "Ich hätte nie gedacht, dass eine Adoption so einfach und sicher sein kann. Das Team von CuidaMiHuella hat uns bei jedem Schritt begleitet. Wir sind verliebt in unsere neue Katze Nilo!";
-        translations.de.testimonial_3_author = "— Sofía R., Gründungsmitglied und Nilos Mama.";
+        translations.de.de.testimonial_3_author = "— Sofía R., Gründungsmitglied und Nilos Mama.";
         
         translations.it.testimonial_1_text = "L''Esperienza di Affido' è stata fondamentale. Abbiamo scoperto di aver bisogno di un cane tranquillo come Bruno. Senza questo processo, avremmo sbagliato.";
         translations.it.testimonial_1_author = "— Laura e David, Soci Fondatori e famiglia di Bruno.";
