@@ -14,6 +14,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #fdf2f8; /* bg-pink-50 */
+            color: #374151; /* gray-700 */
         }
         /* Clase 'prose' de Tailwind para formatear texto legal */
         .legal-text {
@@ -44,6 +45,7 @@
             list-style-type: disc;
             padding-left: 2rem;
         }
+        /* Estilo general de enlaces */
         .legal-text a {
             color: #8b5cf6; /* violet-500 */
             text-decoration: underline;
@@ -51,19 +53,31 @@
         .legal-text a:hover {
             color: #7c3aed; /* violet-600 */
         }
-        .back-link {
+        
+        /* CORRECCIÓN: Estilo específico para el botón de volver */
+        /* Usamos !important para asegurar que el texto sea blanco sobre el fondo morado */
+        a.back-link {
             display: inline-block;
             margin-top: 2rem;
             padding: 0.75rem 1.5rem;
             background-color: #8b5cf6; /* violet-500 */
-            color: white;
+            color: #ffffff !important; /* Texto blanco forzado */
             font-weight: 600;
             text-decoration: none;
             border-radius: 0.5rem; /* rounded-lg */
             transition: background-color 0.3s ease;
         }
-        .back-link:hover {
+        a.back-link:hover {
             background-color: #7c3aed; /* violet-600 */
+            color: #ffffff !important;
+        }
+        
+        /* Contenedor centrado para el botón */
+        .button-container {
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 2rem;
         }
     </style>
 </head>
@@ -75,12 +89,13 @@
 
         <h2>1. Datos del Titular</h2>
         <ul>
-            <li><strong>Titular:</strong> CuidaMiHuella S.L</li>
-            <li><strong>NIF/CIF:</strong> CIF</li>
-            <li><strong>Domicilio Social:</strong> San Julian 12 bajo,48550, Muskiz, Vizkaia</li>
+            <li><strong>Titular:</strong> CuidaMiHuella S.L.</li>
+            <li><strong>NIF/CIF:</strong> B-12345678</li>
+            <li><strong>Domicilio Social:</strong> Calle Uribitarte nº 6, 48001, Bilbao (Vizcaya), España</li>
             <li><strong>Correo Electrónico:</strong> info@cuidamihuella.com</li>
             <li><strong>Actividad:</strong> Plataforma web informativa para la adopción de animales.</li>
         </ul>
+
         <h2>2. Objeto del Sitio Web</h2>
         <p>El sitio web "CuidaMiHuella" (en adelante, "el sitio web") tiene como objeto principal facilitar la conexión entre protectoras de animales y personas interesadas en la adopción responsable, así como ofrecer información y una comunidad de apoyo para dueños de mascotas.</p>
 
@@ -89,20 +104,22 @@
         <p>Queda prohibido el uso del sitio web con fines ilícitos o lesivos, o que, de cualquier forma, puedan causar perjuicio o impedir el normal funcionamiento del mismo.</p>
 
         <h2>4. Propiedad Intelectual e Industrial</h2>
-        <p>El Titular, por sí o como cesionario, es titular de todos los derechos de propiedad intelectual e industrial de su página web, así como de los elementos contenidos en la misma (a título enunciativo, imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, etc.), titularidad del Titular o bien de sus licenciantes.</p>
-        <p>En virtud de lo dispuesto en los artículos 8 y 17, párrafo segundo, de la Ley de Propiedad Intelectual, quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización del Titular.</p>
+        <p>CuidaMiHuella S.L., por sí o como cesionario, es titular de todos los derechos de propiedad intelectual e industrial de su página web, así como de los elementos contenidos en la misma (a título enunciativo, imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, etc.), titularidad del Titular o bien de sus licenciantes.</p>
+        <p>En virtud de lo dispuesto en los artículos 8 y 17, párrafo segundo, de la Ley de Propiedad Intelectual, quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización de CuidaMiHuella S.L.</p>
 
         <h2>5. Exclusión de Garantías y Responsabilidad</h2>
-        <p>El Titular no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
-        <p>El Titular no se responsabiliza de la veracidad o exactitud de la información publicada por las protectoras colaboradoras, ni de los acuerdos o procesos de adopción que se lleven a cabo entre las protectoras y los usuarios, actuando "CuidaMiHuella" únicamente como un intermediario informativo.</p>
+        <p>CuidaMiHuella S.L. no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
+        <p>CuidaMiHuella S.L. no se responsabiliza de la veracidad o exactitud de la información publicada por las protectoras colaboradoras, ni de los acuerdos o procesos de adopción que se lleven a cabo entre las protectoras y los usuarios, actuando "CuidaMiHuella" únicamente como un intermediario informativo.</p>
 
         <h2>6. Modificaciones</h2>
-        <p>El Titular se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su portal.</p>
+        <p>CuidaMiHuella S.L. se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su portal.</p>
 
         <h2>7. Legislación Aplicable y Jurisdicción</h2>
-        <p>La relación entre el Titular y el USUARIO se regirá por la normativa española vigente y cualquier controversia se someterá a los Juzgados y tribunales de la ciudad de [Tu Ciudad, ej: Madrid], salvo que la Ley aplicable disponga otra cosa.</p>
+        <p>La relación entre CuidaMiHuella S.L. y el USUARIO se regirá por la normativa española vigente y cualquier controversia se someterá a los Juzgados y tribunales de la ciudad de Bilbao (Vizcaya), salvo que la Ley aplicable disponga otra cosa.</p>
 
-        <a href="index.html" class="back-link">← Volver a la página principal</a>
+        <div class="button-container">
+            <a href="index.html" class="back-link">← Volver a la Página Principal</a>
+        </div>
     </div>
 </body>
 </html>
