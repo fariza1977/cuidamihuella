@@ -11,72 +11,186 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fdf2f8; }
-        .legal-text { max-width: 80ch; }
-        .legal-text h1 { font-size: 2.25rem; font-weight: 800; color: #5b21b6; margin-bottom: 1.5rem; }
-        .legal-text h2 { font-size: 1.5rem; font-weight: 700; color: #5b21b6; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #ddd6fe; padding-bottom: 0.5rem; }
-        .legal-text p, .legal-text li { font-size: 1rem; line-height: 1.75; color: #374151; margin-bottom: 1.25rem; }
-        .legal-text ul { list-style-type: disc; padding-left: 2rem; }
-        .legal-text a { color: #8b5cf6; text-decoration: underline; }
-        .legal-text a:hover { color: #7c3aed; }
-        .legal-text strong { color: #4c1d95; } /* violet-900 */
-        .back-link { display: inline-block; margin-top: 2rem; padding: 0.75rem 1.5rem; background-color: #8b5cf6; color: white; font-weight: 600; text-decoration: none; border-radius: 0.5rem; transition: background-color 0.3s ease; }
-        .back-link:hover { background-color: #7c3aed; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf2f8; /* bg-pink-50 */
+            color: #374151; /* gray-700 */
+        }
+        .legal-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #5b21b6; /* violet-800 */
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 4px solid #ddd6fe;
+            padding-bottom: 1rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4c1d95; /* violet-900 */
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: #8b5cf6; /* violet-500 */
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #5b21b6;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        strong {
+            color: #1f2937; /* gray-800 */
+        }
+        code {
+            background-color: #f3f4f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            color: #d946ef; /* fuchsia-500 */
+        }
+        .law-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #8b5cf6;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            background-color: #8b5cf6;
+            color: white;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #7c3aed;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #4c1d95;
+        }
     </style>
 </head>
-<body class="py-12 px-4">
-    <div class="legal-text container mx-auto bg-white p-8 md:p-12 shadow-xl rounded-lg">
+<body class="py-12 px-4 md:px-8">
+
+    <div class="legal-container bg-white p-8 md:p-16 shadow-2xl rounded-xl">
         <h1>Política de Cookies</h1>
-        <p>De conformidad con lo dispuesto en el <strong>artículo 22.2 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE)</strong>, y en línea con las directrices del RGPD y la AEPD, este sitio web le informa sobre su política de recogida y tratamiento de cookies.</p>
 
-        <h2>1. ¿Qué son las Cookies?</h2>
-        <p>Una cookie es un pequeño fichero de texto que se almacena en su navegador cuando visita casi cualquier página web. Su utilidad es que la web sea capaz de recordar su visita cuando vuelva a navegar por esa página. Las cookies suelen almacenar información de carácter técnico, preferencias personales, personalización de contenidos, estadísticas de uso, enlaces a redes sociales, acceso a cuentas de usuario, etc.</p>
-        <p>Este sitio web también utiliza <strong>almacenamiento local (LocalStorage)</strong> del navegador, que cumple una función similar a la de una cookie (por ejemplo, para guardar su preferencia de idioma), pero almacena la información directamente en su dispositivo y no caduca al cerrar la sesión.</p>
+        <p>En cumplimiento con lo dispuesto en el artículo 22.2 de la <strong>Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE)</strong>, y siguiendo las directrices de la <strong>Agencia Española de Protección de Datos (AEPD)</strong> y el <strong>Reglamento General de Protección de Datos (RGPD)</strong>, le informamos sobre la política de recogida y tratamiento de cookies de <strong>CuidaMiHuella</strong>.</p>
 
-        <h2>2. Consentimiento</h2>
-        <p>Al acceder a este sitio web por primera vez, se mostrará un aviso de cookies (banner) donde se le informará del uso de las mismas y se le pedirá su consentimiento para las cookies no necesarias. Las cookies técnicas o funcionales, que son esenciales para el funcionamiento de la web, se instalarán por defecto al ser necesarias para el interés legítimo del Titular de ofrecer el servicio.</p>
+        <h2>1. ¿Qué son las cookies?</h2>
+        <p>Una cookie es un fichero que se descarga en su ordenador al acceder a determinadas páginas web. Las cookies permiten a una página web, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.</p>
 
-        <h2>3. Cookies Utilizadas en este Sitio Web</h2>
-        <p>Siguiendo las directrices de la Agencia Española de Protección de Datos, procedemos a detallar el uso de cookies y almacenamiento local que hace esta web:</p>
+        <h2>2. Tipos de cookies utilizadas en esta web</h2>
+        <p>Esta página web utiliza cookies propias y de terceros con fines puramente técnicos y funcionales para garantizar el correcto funcionamiento del sitio. A continuación, detallamos las cookies que utilizamos:</p>
+
+        <h3>2.1. Cookies Técnicas y de Personalización (Exentas de consentimiento)</h3>
+        <p>Son aquellas que permiten al usuario la navegación a través de la página web y la utilización de las diferentes opciones o servicios que en ella existen. Según el artículo 22.2 de la LSSI, estas cookies no requieren el consentimiento del usuario porque son estrictamente necesarias para la prestación del servicio.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Proveedor</th>
+                    <th>Finalidad</th>
+                    <th>Duración</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>selectedLanguage</code></td>
+                    <td>CuidaMiHuella (LocalStorage)</td>
+                    <td>Almacena la preferencia de idioma del usuario (es, en, eu, etc.) para mostrar la web en el idioma correcto en futuras visitas.</td>
+                    <td>Persistente</td>
+                </tr>
+                <tr>
+                    <td><code>fs-cc</code>, <code>fs-uid</code></td>
+                    <td>Formspree</td>
+                    <td>Cookies técnicas utilizadas por nuestro proveedor de formularios para gestionar el envío seguro y prevenir el spam (CAPTCHA).</td>
+                    <td>Sesión</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.2. Cookies de Análisis o Publicitarias</h3>
+        <div class="law-box">
+            <strong>Importante:</strong> Actualmente, este sitio web <strong>NO utiliza</strong> cookies de análisis (como Google Analytics), cookies publicitarias ni cookies de rastreo de comportamiento. No recopilamos datos de navegación de nuestros usuarios con fines comerciales.
+        </div>
+        <p>En caso de que en el futuro decidamos implementar este tipo de cookies, actualizaremos esta política y solicitaremos su consentimiento explícito mediante un banner de cookies antes de su instalación.</p>
+
+        <h2>3. Transferencias Internacionales de Datos</h2>
+        <p>Las cookies utilizadas en este sitio web son principalmente técnicas. Sin embargo, utilizamos servicios de terceros que podrían realizar transferencias internacionales de datos:</p>
         <ul>
-            <li>
-                <strong>Almacenamiento Local (Técnico/Funcional):</strong>
-                <ul>
-                    <li><strong>Nombre:</strong> `selectedLanguage`</li>
-                    <li><strong>Finalidad:</strong> Almacenar el idioma (es, en, eu, ca, etc.) seleccionado por el usuario para mantener su preferencia en futuras visitas. Es estrictamente necesaria para el funcionamiento de la web multi-idioma.</li>
-                </ul>
-            </li>
-            <li>
-                <strong>Cookies de Terceros (Servicios Externos):</strong>
-                <ul>
-                    <li><strong>Google Fonts:</strong> Utilizamos fuentes de Google para la tipografía del sitio. Google puede recopilar datos para sus propios fines. Recomendamos revisar la política de privacidad de Google.</li>
-                    <li><strong>Font Awesome:</strong> Utilizamos iconos de Font Awesome (servidos desde un CDN como cdnjs.cloudflare.com). Este servicio puede utilizar cookies para optimizar la entrega del contenido.</li>
-                    <li><strong>[Opcional: Si añades Google Analytics]</strong>
-                        <strong>Google Analytics:</strong> Esta web utiliza Google Analytics, un servicio analítico de web prestado por Google, Inc. Google Analytics utiliza cookies para ayudar al website a analizar el uso que hacen los usuarios del sitio web.
-                        <ul>
-                            <li>Cookies: `_ga`, `_gid`, `_gat`, etc.</li>
-                            <li>Finalidad: Recopilar información anónima sobre la navegación para fines estadísticos (páginas visitadas, tiempo en el sitio, etc.).</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+            <li><strong>Google Fonts y Font Awesome:</strong> Utilizamos fuentes e iconos servidos por Google y Cloudflare. Al cargar estos recursos, su dirección IP podría ser transferida a los servidores de estas compañías en Estados Unidos para la entrega técnica del contenido. Estas transferencias están amparadas por las cláusulas contractuales tipo aprobadas por la Comisión Europea o marcos de privacidad vigentes.</li>
         </ul>
 
-        <h2>4. Cómo Deshabilitar o Eliminar las Cookies</h2>
-        <p>Usted puede permitir, bloquear o eliminar las cookies instaladas en su equipo (así como borrar los datos del Almacenamiento Local) mediante la configuración de las opciones del navegador instalado en su ordenador.</p>
-        <p>A continuación, le proporcionamos enlaces a las instrucciones de los navegadores más comunes:</p>
+        <h2>4. Desactivación y Eliminación de Cookies</h2>
+        <p>Usted puede permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador. Al desactivar cookies, algunos servicios disponibles podrían dejar de estar operativos (por ejemplo, la web podría no recordar su idioma preferido).</p>
+        <p>A continuación, le ofrecemos enlaces donde encontrará información sobre cómo puede activar sus preferencias en los principales navegadores:</p>
+        
         <ul>
-            <li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
-            <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
-            <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari (para Mac)</a></li>
-            <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+            <li><strong>Google Chrome:</strong> <a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" rel="noopener noreferrer">Configuración de cookies en Chrome</a></li>
+            <li><strong>Mozilla Firefox:</strong> <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">Configuración de cookies en Firefox</a></li>
+            <li><strong>Safari:</strong> <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Configuración de cookies en Safari</a></li>
+            <li><strong>Microsoft Edge:</strong> <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">Configuración de cookies en Edge</a></li>
         </ul>
-        <p>Si desactiva las cookies, es posible que algunas funcionalidades de la web no operen correctamente, como por ejemplo, la preferencia de idioma.</p>
 
-        <h2>5. Cambios en la Política de Cookies</h2>
-        <p>El Titular se reserva el derecho a modificar la presente Política de Cookies en función de nuevas exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos.</p>
+        <h2>5. Aceptación de la Política de Cookies</h2>
+        <p>Al ser las cookies utilizadas estrictamente necesarias para el funcionamiento técnico de la web (selección de idioma y seguridad de formularios), se entiende que usted acepta su uso al navegar por el portal, conforme a la normativa vigente que exime de la obligación de bloquear este tipo de cookies técnicas.</p>
 
-        <a href="index.html" class="back-link">← Volver a la página principal</a>
+        <h2>6. Actualización de la Política de Cookies</h2>
+        <p>Es posible que actualicemos la Política de Cookies de nuestro sitio web. Le recomendamos revisar esta política cada vez que acceda a nuestro sitio web con el objetivo de estar adecuadamente informado sobre cómo y para qué usamos las cookies.</p>
+
+        <div class="text-center">
+            <a href="index.html" class="back-button">← Volver a la Página Principal</a>
+        </div>
     </div>
+
 </body>
 </html>
