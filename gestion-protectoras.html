@@ -19,6 +19,9 @@
         .card-animal:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .file-upload { border: 2px dashed #cbd5e1; transition: all 0.3s; }
         .file-upload:hover { border-color: #8b5cf6; background-color: #f5f3ff; }
+        /* Estilos para el Modal */
+        .modal { transition: opacity 0.3s ease-in-out; }
+        .modal-content { transition: transform 0.3s ease-in-out; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
@@ -139,6 +142,52 @@
         </div>
     </main>
 
+    <!-- MODAL DE INTERESADOS (El Ojo) -->
+    <div id="visitors-modal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden transform scale-95 opacity-0 transition-all duration-300">
+            <div class="bg-violet-600 p-4 flex justify-between items-center text-white">
+                <h3 class="font-bold text-lg"><i class="fas fa-users mr-2"></i> Interesados en <span id="modal-animal-name"></span></h3>
+                <button onclick="closeModal()" class="hover:text-violet-200 text-2xl leading-none">&times;</button>
+            </div>
+            <div class="p-6 max-h-[60vh] overflow-y-auto" id="visitors-list">
+                <!-- Lista de visitantes simulada -->
+                <div class="flex items-center justify-between p-3 border-b border-gray-100 hover:bg-gray-50">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">JP</div>
+                        <div>
+                            <p class="font-bold text-sm text-gray-800">Juan Pérez</p>
+                            <p class="text-xs text-gray-500">Hace 2 horas</p>
+                        </div>
+                    </div>
+                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold">Socio Amigo</span>
+                </div>
+                <div class="flex items-center justify-between p-3 border-b border-gray-100 hover:bg-gray-50">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold">MG</div>
+                        <div>
+                            <p class="font-bold text-sm text-gray-800">María García</p>
+                            <p class="text-xs text-gray-500">Hace 5 horas</p>
+                        </div>
+                    </div>
+                     <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full font-bold">Interesado</span>
+                </div>
+                 <div class="text-center mt-4">
+                    <p class="text-sm text-gray-400 italic">No hay más visitas recientes.</p>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 text-right">
+                <button onclick="closeModal()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 text-sm font-bold">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-violet-50 text-gray-700 py-12 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4 font-bold">CuidaMiHuella</p>
+            <p class="text-sm">© 2025 Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const loginScreen = document.getElementById('login-screen');
@@ -153,7 +202,7 @@
                 {id: 1, name: 'Toby', breed: 'Mestizo', age: '3 años', health: 'Sano', desc: 'Muy bueno', photo: 'https://placehold.co/400x300/e9d5ff/5b21b6?text=Toby'}
             ];
 
-            // 1. LOGIN LÓGICA
+            // 1. LÓGICA DE LOGIN
             if(localStorage.getItem('ch_logged_in') === 'true') {
                 showDashboard();
             }
@@ -175,7 +224,7 @@
                 renderAnimals();
             }
 
-            // 2. PREVIEW FOTO
+            // 2. PREVIEW DE FOTO
             photoInput.addEventListener('change', (e) => {
                 const file = e.target.files[0];
                 if(file) {
@@ -205,17 +254,37 @@
                 animals.unshift(newAnimal);
                 localStorage.setItem('ch_animals', JSON.stringify(animals));
                 
-                // Reset form
                 e.target.reset();
                 photoPreview.src = '';
                 photoPreview.classList.add('hidden');
                 uploadUi.classList.remove('hidden');
                 
                 renderAnimals();
-                alert('Animal publicado con éxito.');
+                alert('Ficha publicada correctamente.');
             });
 
-            // 4. RENDERIZAR GRID
+            // 4. MODAL DE VISITANTES (EL OJO)
+            const modal = document.getElementById('visitors-modal');
+            const modalContent = modal.querySelector('.modal-content');
+            
+            window.viewVisitors = (name) => {
+                document.getElementById('modal-animal-name').textContent = name;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            };
+
+            window.closeModal = () => {
+                modalContent.classList.remove('scale-100', 'opacity-100');
+                modalContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            };
+
+            // 5. BORRAR ANIMAL
             window.deleteAnimal = (id) => {
                 if(confirm('¿Seguro que quieres eliminar esta ficha?')) {
                     animals = animals.filter(a => a.id !== id);
@@ -224,10 +293,7 @@
                 }
             };
 
-            window.adoptAnimal = (name) => {
-                alert('Has seleccionado a ' + name + '. \nLos usuarios verán un botón de "Solicitar Adopción" aquí.');
-            };
-
+            // 6. RENDERIZAR ANIMALES
             function renderAnimals() {
                 animalsGrid.innerHTML = '';
                 if(animals.length === 0) {
@@ -238,25 +304,34 @@
 
                 animals.forEach(animal => {
                     const card = document.createElement('div');
-                    card.className = 'card-animal bg-white rounded-xl shadow-md overflow-hidden flex flex-col';
+                    card.className = 'card-animal bg-white rounded-xl shadow-md overflow-hidden flex flex-col relative group';
+                    
+                    // Botones exclusivos para protectora (Ojo y Borrar)
                     card.innerHTML = `
                         <div class="relative h-48">
                             <img src="${animal.photo}" class="w-full h-full object-cover">
-                            <button onclick="deleteAnimal(${animal.id})" class="absolute top-2 right-2 bg-white/90 text-red-500 p-2 rounded-full hover:bg-red-100 shadow-sm transition" title="Borrar">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-3">
+                                <button onclick="viewVisitors('${animal.name}')" class="bg-white text-violet-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-violet-50 shadow-lg transition transform hover:scale-110" title="Ver Interesados">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button onclick="deleteAnimal(${animal.id})" class="bg-white text-red-500 w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-50 shadow-lg transition transform hover:scale-110" title="Borrar Ficha">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="p-4 flex-grow flex flex-col">
                             <div class="flex justify-between items-start mb-2">
                                 <h4 class="text-xl font-bold text-gray-800">${animal.name}</h4>
                                 <span class="text-xs font-bold bg-violet-100 text-violet-700 px-2 py-1 rounded-full">${animal.age}</span>
                             </div>
-                            <p class="text-sm text-gray-500 mb-1"><strong>Raza:</strong> ${animal.breed}</p>
-                            <p class="text-sm text-gray-500 mb-3"><strong>Salud:</strong> ${animal.health}</p>
-                            <p class="text-sm text-gray-600 italic mb-4 flex-grow">"${animal.desc}"</p>
-                            <button onclick="adoptAnimal('${animal.name}')" class="w-full border-2 border-violet-500 text-violet-600 font-bold py-2 rounded-lg hover:bg-violet-50 transition flex items-center justify-center">
-                                <i class="far fa-heart mr-2"></i> Ver como Cliente
-                            </button>
+                            <p class="text-xs text-gray-500 mb-1"><strong>Raza:</strong> ${animal.breed}</p>
+                            <p class="text-xs text-gray-500 mb-2"><strong>Salud:</strong> ${animal.health}</p>
+                            <p class="text-sm text-gray-600 italic mb-4 flex-grow border-t pt-2 mt-1 border-gray-100">"${animal.desc}"</p>
+                            
+                            <!-- Botón visible: Elegir (Vista Cliente) -->
+                            <div class="w-full bg-gray-100 text-gray-600 font-bold py-2 rounded-lg flex items-center justify-center text-sm">
+                                <i class="far fa-heart mr-2"></i> Vista Cliente: Elegir
+                            </div>
                         </div>
                     `;
                     animalsGrid.appendChild(card);
