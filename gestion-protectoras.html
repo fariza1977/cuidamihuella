@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Gestión - CuidaMiHuella</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdf2f8; color: #374151; }
+        .btn-primary { background-color: #8b5cf6; color: white; }
+        .btn-primary:hover { background-color: #7c3aed; }
+        .card-animal { transition: all 0.3s; }
+        .card-animal:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .file-upload { border: 2px dashed #cbd5e1; transition: all 0.3s; }
+        .file-upload:hover { border-color: #8b5cf6; background-color: #f5f3ff; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
+                <i class="fas fa-paw text-violet-500"></i><span>CuidaMiHuella</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <span id="user-badge" class="hidden md:inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold border border-green-200">
+                    <i class="fas fa-check-circle mr-1"></i> Protectora Verificada
+                </span>
+                <a href="para-protectoras.html" class="text-sm text-gray-500 hover:text-violet-600">Volver a Info</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- LOGIN SCREEN (Visible si no estás logueado) -->
+        <div id="login-screen" class="flex items-center justify-center py-20 px-4">
+            <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full border border-violet-100">
+                <div class="text-center mb-8">
+                    <div class="inline-block p-4 rounded-full bg-violet-100 mb-4">
+                        <i class="fas fa-user-shield text-4xl text-violet-600"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Acceso Protectoras</h1>
+                    <p class="text-gray-500 text-sm mt-2">Introduce tus credenciales para gestionar tus animales.</p>
+                </div>
+                <form id="login-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Email</label>
+                        <input type="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent outline-none" placeholder="protectora@ejemplo.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Contraseña</label>
+                        <input type="password" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent outline-none" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold text-lg shadow-md hover:shadow-lg transition">Entrar al Panel</button>
+                </form>
+                <p class="text-center text-xs text-gray-400 mt-6">* Demo: Usa cualquier email y contraseña.</p>
+            </div>
+        </div>
+
+        <!-- DASHBOARD (Visible solo tras login) -->
+        <div id="dashboard" class="hidden container mx-auto px-4 py-8">
+            
+            <div class="flex justify-between items-end mb-8 border-b pb-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-violet-900">Gestión de Animales</h2>
+                    <p class="text-gray-600">Sube, edita o elimina las fichas de tus animales en adopción.</p>
+                </div>
+                <button id="logout-btn" class="text-red-500 hover:text-red-700 font-medium text-sm underline">Cerrar Sesión</button>
+            </div>
+
+            <!-- Formulario de Alta -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-12">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-plus-circle text-violet-500 mr-2"></i> Publicar Nuevo Animal
+                </h3>
+                <form id="add-animal-form" class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                    
+                    <!-- Foto Upload -->
+                    <div class="md:col-span-4">
+                        <div class="file-upload relative h-64 rounded-lg bg-gray-50 flex flex-col items-center justify-center overflow-hidden">
+                            <input type="file" id="photo-input" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                            <div id="upload-ui" class="text-center p-4">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-sm text-gray-500 font-medium">Sube una foto</p>
+                                <p class="text-xs text-gray-400">Click o arrastrar</p>
+                            </div>
+                            <img id="photo-preview" class="hidden absolute inset-0 w-full h-full object-cover z-0">
+                        </div>
+                    </div>
+
+                    <!-- Datos del Animal -->
+                    <div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Nombre</label>
+                            <input type="text" id="animal-name" required class="w-full p-2 border rounded bg-gray-50 focus:bg-white focus:ring-2 focus:ring-violet-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Raza</label>
+                            <input type="text" id="animal-breed" placeholder="Ej: Labrador" required class="w-full p-2 border rounded bg-gray-50 focus:bg-white outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Edad</label>
+                            <input type="text" id="animal-age" placeholder="Ej: 2 años" required class="w-full p-2 border rounded bg-gray-50 focus:bg-white outline-none">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Vacunas / Salud</label>
+                            <input type="text" id="animal-health" placeholder="Ej: Vacunado, chip y desparasitado" class="w-full p-2 border rounded bg-gray-50 focus:bg-white outline-none">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Descripción / Carácter</label>
+                            <textarea id="animal-desc" rows="2" placeholder="Breve historia y carácter..." class="w-full p-2 border rounded bg-gray-50 focus:bg-white outline-none"></textarea>
+                        </div>
+                        <div class="md:col-span-2 pt-2">
+                            <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold shadow hover:shadow-md transition">
+                                Publicar Ficha
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Grid de Animales -->
+            <h3 class="text-xl font-bold text-gray-800 mb-6">Mis Animales Publicados</h3>
+            <div id="animals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Las tarjetas se generan aquí -->
+            </div>
+             <div id="empty-state" class="hidden text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
+                <i class="fas fa-dog text-4xl text-gray-300 mb-3"></i>
+                <p class="text-gray-500">Aún no has subido ningún animal.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginScreen = document.getElementById('login-screen');
+            const dashboard = document.getElementById('dashboard');
+            const animalsGrid = document.getElementById('animals-grid');
+            const photoInput = document.getElementById('photo-input');
+            const photoPreview = document.getElementById('photo-preview');
+            const uploadUi = document.getElementById('upload-ui');
+            const emptyState = document.getElementById('empty-state');
+            
+            let animals = JSON.parse(localStorage.getItem('ch_animals')) || [
+                {id: 1, name: 'Toby', breed: 'Mestizo', age: '3 años', health: 'Sano', desc: 'Muy bueno', photo: 'https://placehold.co/400x300/e9d5ff/5b21b6?text=Toby'}
+            ];
+
+            // 1. LOGIN LÓGICA
+            if(localStorage.getItem('ch_logged_in') === 'true') {
+                showDashboard();
+            }
+
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                localStorage.setItem('ch_logged_in', 'true');
+                showDashboard();
+            });
+
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('ch_logged_in');
+                location.reload();
+            });
+
+            function showDashboard() {
+                loginScreen.classList.add('hidden');
+                dashboard.classList.remove('hidden');
+                renderAnimals();
+            }
+
+            // 2. PREVIEW FOTO
+            photoInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if(file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        photoPreview.src = e.target.result;
+                        photoPreview.classList.remove('hidden');
+                        uploadUi.classList.add('hidden');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // 3. AÑADIR ANIMAL
+            document.getElementById('add-animal-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newAnimal = {
+                    id: Date.now(),
+                    name: document.getElementById('animal-name').value,
+                    breed: document.getElementById('animal-breed').value,
+                    age: document.getElementById('animal-age').value,
+                    health: document.getElementById('animal-health').value,
+                    desc: document.getElementById('animal-desc').value,
+                    photo: photoPreview.src && !photoPreview.classList.contains('hidden') ? photoPreview.src : 'https://placehold.co/400x300/e2e8f0/64748b?text=Sin+Foto'
+                };
+                
+                animals.unshift(newAnimal);
+                localStorage.setItem('ch_animals', JSON.stringify(animals));
+                
+                // Reset form
+                e.target.reset();
+                photoPreview.src = '';
+                photoPreview.classList.add('hidden');
+                uploadUi.classList.remove('hidden');
+                
+                renderAnimals();
+                alert('Animal publicado con éxito.');
+            });
+
+            // 4. RENDERIZAR GRID
+            window.deleteAnimal = (id) => {
+                if(confirm('¿Seguro que quieres eliminar esta ficha?')) {
+                    animals = animals.filter(a => a.id !== id);
+                    localStorage.setItem('ch_animals', JSON.stringify(animals));
+                    renderAnimals();
+                }
+            };
+
+            window.adoptAnimal = (name) => {
+                alert('Has seleccionado a ' + name + '. \nLos usuarios verán un botón de "Solicitar Adopción" aquí.');
+            };
+
+            function renderAnimals() {
+                animalsGrid.innerHTML = '';
+                if(animals.length === 0) {
+                    emptyState.classList.remove('hidden');
+                    return;
+                }
+                emptyState.classList.add('hidden');
+
+                animals.forEach(animal => {
+                    const card = document.createElement('div');
+                    card.className = 'card-animal bg-white rounded-xl shadow-md overflow-hidden flex flex-col';
+                    card.innerHTML = `
+                        <div class="relative h-48">
+                            <img src="${animal.photo}" class="w-full h-full object-cover">
+                            <button onclick="deleteAnimal(${animal.id})" class="absolute top-2 right-2 bg-white/90 text-red-500 p-2 rounded-full hover:bg-red-100 shadow-sm transition" title="Borrar">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                        <div class="p-4 flex-grow flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-xl font-bold text-gray-800">${animal.name}</h4>
+                                <span class="text-xs font-bold bg-violet-100 text-violet-700 px-2 py-1 rounded-full">${animal.age}</span>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-1"><strong>Raza:</strong> ${animal.breed}</p>
+                            <p class="text-sm text-gray-500 mb-3"><strong>Salud:</strong> ${animal.health}</p>
+                            <p class="text-sm text-gray-600 italic mb-4 flex-grow">"${animal.desc}"</p>
+                            <button onclick="adoptAnimal('${animal.name}')" class="w-full border-2 border-violet-500 text-violet-600 font-bold py-2 rounded-lg hover:bg-violet-50 transition flex items-center justify-center">
+                                <i class="far fa-heart mr-2"></i> Ver como Cliente
+                            </button>
+                        </div>
+                    `;
+                    animalsGrid.appendChild(card);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
