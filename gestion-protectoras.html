@@ -202,7 +202,7 @@
                 {id: 1, name: 'Toby', breed: 'Mestizo', age: '3 años', health: 'Sano', desc: 'Muy bueno', photo: 'https://placehold.co/400x300/e9d5ff/5b21b6?text=Toby'}
             ];
 
-            // 1. LÓGICA DE LOGIN
+            // 1. LOGIN LÓGICA
             if(localStorage.getItem('ch_logged_in') === 'true') {
                 showDashboard();
             }
@@ -224,7 +224,7 @@
                 renderAnimals();
             }
 
-            // 2. PREVIEW DE FOTO
+            // 2. PREVIEW FOTO
             photoInput.addEventListener('change', (e) => {
                 const file = e.target.files[0];
                 if(file) {
