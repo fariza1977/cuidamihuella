@@ -75,13 +75,6 @@
         .bg-pink-50\/30 { background-color: rgba(253, 242, 248, 0.3); }
 
         /* --- Secciones Específicas --- */
-        .hero {
-             /* FOTO DE PORTADA: imagen1.jpg */
-             /* Asegúrate de que imagen1.jpg está en la misma carpeta que este archivo */
-             background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('imagen1.jpg');
-             background-size: cover; 
-             background-position: center;
-        }
         .shelters-cta { background-color: var(--primary-color); }
         #footer { background-color: var(--footer-bg); }
         footer h3 { color: var(--text-dark); }
@@ -150,10 +143,18 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero text-white" id="hero">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[60vh] py-20">
-                <h1 data-key="hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg">La Adopción ha Cambiado. Para Siempre.</h1>
-                <p data-key="hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light drop-shadow-md">Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.</p>
+        <!-- CAMBIO: Estructura modificada para usar <img> tag y asegurar que no se corte nada -->
+        <section id="hero" class="relative w-full bg-gray-900">
+            <!-- Imagen de fondo que ocupa el 100% del ancho, altura automática -->
+            <img src="imagen1.jpg" alt="Familia feliz CuidamiHuella" class="w-full h-auto min-h-[500px] object-cover md:object-contain lg:w-full lg:h-auto relative z-0">
+            
+            <!-- Capa oscura para leer el texto (opcional, puedes quitarla o hacerla más suave) -->
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+            <!-- Contenido centrado sobre la imagen -->
+            <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
+                <h1 data-key="hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight text-white drop-shadow-lg">La Adopción ha Cambiado. Para Siempre.</h1>
+                <p data-key="hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light text-white drop-shadow-md">Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="unete-al-club.html" data-key="hero_btn1" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200 transition transform hover:scale-105 shadow-lg">Descubre el Club</a>
                     <a href="#process" data-key="hero_btn2" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition transform hover:scale-105 shadow-lg">Busca a tu Compañero</a>
@@ -430,37 +431,37 @@
         
         translations.eu.testimonial_1_text = "'Harrera Esperientzia' funtsezkoa izan zen. Bruno bezalako txakur lasai bat behar genuela aurkitu genuen. Prozesu hon gabe, huts egingo genukeen.";
         translations.eu.testimonial_1_author = "— Laura eta David, Bazkide Fundatzaileak eta Brunoren familia.";
-        translations.eu.testimonial_2_text = "Bazkide Laguna izateak asko aurreztu digu albaitarietan eta kalitatezko janarian. Komunitatea ikaragarria da, beti dago laguntzeko prest dagoen norbait.";
+        translations.eu.testimonial_2_text = "Bazkide Laguna izateak asko aurreztu digu albaitarietan eta kalitatezko janarian. Komunitatea sinestezina da, beti dago norbait laguntzeko prest.";
         translations.eu.testimonial_2_author = "— Marcos G., Bazkide Laguna eta Lúaren aita.";
-        translations.eu.testimonial_3_text = "Ez nuen inoiz pentsatu adoptatzea hain erraza eta segurua izango zenik. CuidaMiHuellako taldeak urrats guztietan gidatu gintuen. Maiteminduta gaude gure katu berriarekin, Nilorekin!";
+        translations.eu.testimonial_3_text = "Inoiz ez nuen pentsatu adoptatzea hain erraza eta segurua izango zenik. CuidaMiHuellako taldeak pauso guztietan gidatu gintuen. Maiteminduta gaude gure katu berriarekin, Nilorekin!";
         translations.eu.testimonial_3_author = "— Sofía R., Bazkide Fundatzailea eta Niloren ama.";
         
         translations.ca.testimonial_1_text = "L''Experiència d'Acollida' va ser clau. Vam descobrir que necessitàvem un gos tranquil com el Bruno. Sense aquest procés, ens hauríem equivocat.";
         translations.ca.testimonial_1_author = "— Laura i David, Socis Fundadors i família del Bruno.";
-        translations.ca.testimonial_2_text = "Ser Soci Amic ens ha estalviat molt en veterinaris i menjar de qualitat. La comunitat és increïble, sempre hi ha algú disposat a ajudar.";
+        translations.ca.testimonial_2_text = "Ser Soci Amic ens ha estalviat un munt en veterinaris i menjar de qualitat. La comunitat és increïble, sempre hi ha algú disposat a ajudar.";
         translations.ca.testimonial_2_author = "— Marcos G., Soci Amic i pare de la Lúa.";
-        translations.ca.testimonial_3_text = "Mai vaig pensar que adoptar seria tan fàcil i segur. L'equip de CuidaMiHuella ens va guiar a cada pas. Estem enamorats del nostre nou gat, el Nilo!";
+        translations.ca.testimonial_3_text = "Mai vaig pensar que adoptar seria tan fàcil i segur. L'equip de CuidaMiHuella ens va guiar en cada pas. Estem enamorats del nostre nou gat, el Nilo!";
         translations.ca.testimonial_3_author = "— Sofía R., Sòcia Fundadora i mare d'en Nilo.";
 
         translations.fr.testimonial_1_text = "L''Expérience d'Accueil' a été déterminante. Nous avons découvert que nous avions besoin d'un chien calme comme Bruno. Sans ce processus, nous aurions fait une erreur.";
         translations.fr.testimonial_1_author = "— Laura et David, Membres Fondateurs et famille de Bruno.";
         translations.fr.testimonial_2_text = "Être Membre Ami nous a permis d'économiser beaucoup sur les vétérinaires et la nourriture de qualité. La communauté est incroyable, il y a toujours quelqu'un prêt à aider.";
-        translations.fr.testimonial_2_author = "— Marcos G., Membre Ami et papa de Lúa.";
-        translations.fr.testimonial_3_text = "Je n'aurais jamais cru que l'adoption serait si facile et sûre. L'équipe de CuidaMiHuella nous a guidés à chaque étape. Nous sommes amoureux de notre nouveau chat, Nilo !";
+        translations.fr.testimonial_2_author = "— Marcos G., Membre Ami et père de Lúa.";
+        translations.fr.testimonial_3_text = "Je n'aurais jamais pensé que l'adoption serait si facile et sûre. L'équipe de CuidaMiHuella nous a guidés à chaque étape. Nous sommes amoureux de notre nouveau chat, Nilo !";
         translations.fr.testimonial_3_author = "— Sofía R., Membre Fondatrice et maman de Nilo.";
 
         translations.de.testimonial_1_text = "Die 'Pflegeerfahrung' war der Schlüssel. Wir haben entdeckt, dass wir einen ruhigen Hund wie Bruno brauchten. Ohne diesen Prozess hätten wir einen Fehler gemacht.";
         translations.de.testimonial_1_author = "— Laura & David, Gründungsmitglieder und Brunos Familie.";
-        translations.de.testimonial_2_text = "Als Freund-Mitglied haben wir viel bei Tierärzten und hochwertigem Futter gespart. Die Gemeinschaft ist unglaublich, es ist immer jemand bereit zu helfen.";
-        translations.de.testimonial_2_author = "— Marcos G., Freund-Mitglied und Lúas Papa.";
-        translations.de.testimonial_3_text = "Ich hätte nie gedacht, dass eine Adoption so einfach und sicher sein kann. Das Team von CuidaMiHuella hat uns bei jedem Schritt begleitet. Wir sind verliebt in unsere neue Katze Nilo!";
-        translations.de.testimonial_3_author = "— Sofía R., Gründungsmitglied und Nilos Mama.";
+        translations.de.testimonial_2_text = "Als Freund-Mitglied haben wir viel bei Tierärzten und hochwertigem Futter gespart. Die Gemeinschaft ist unglaublich, es gibt immer jemanden, der bereit ist zu helfen.";
+        translations.de.testimonial_2_author = "— Marcos G., Freund-Mitglied und Lúas Vater.";
+        translations.de.testimonial_3_text = "Ich hätte nie gedacht, dass eine Adoption so einfach und sicher sein kann. Das Team von CuidaMiHuella hat uns bei jedem Schritt begleitet. Wir sind in unsere neue Katze, Nilo, verliebt!";
+        translations.de.testimonial_3_author = "— Sofía R., Gründungsmitglied und Nilos Mutter.";
 
         translations.it.testimonial_1_text = "L''Esperienza di Affido' è stata fondamentale. Abbiamo scoperto di aver bisogno di un cane tranquillo come Bruno. Senza questo processo, avremmo sbagliato.";
         translations.it.testimonial_1_author = "— Laura e David, Soci Fondatori e famiglia di Bruno.";
-        translations.it.testimonial_2_text = "Essere Socio Amico ci ha fatto risparmiare molto su veterinari e cibo di qualità. La community è incredibile, c'è sempre qualcuno disposto ad aiutare.";
+        translations.it.testimonial_2_text = "Essere Socio Amico ci ha fatto risparmiare un sacco su veterinari e cibo di qualità. La comunità è incredibile, c'è sempre qualcuno disposto ad aiutare.";
         translations.it.testimonial_2_author = "— Marcos G., Socio Amico e papà di Lúa.";
-        translations.it.testimonial_3_text = "Non avrei mai pensato che adottare fosse così facile e sicuro. Il team di CuidaMiHuella ci ha guidato in ogni passo. Siamo innamorati del nostro nuovo gatto, Nilo!";
+        translations.it.testimonial_3_text = "Non avrei mai pensato che adottare sarebbe stato così facile e sicuro. Il team di CuidaMiHuella ci ha guidato in ogni passo. Siamo innamorati del nostro nuovo gatto, Nilo!";
         translations.it.testimonial_3_author = "— Sofía R., Socia Fondatrice e mamma di Nilo.";
         
         
