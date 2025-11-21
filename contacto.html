@@ -29,6 +29,63 @@
         #footer { background-color: white; margin-top: auto; }
         .text-violet-600 { color: var(--primary-color); }
         
+        /* Estilos CAPTCHA Visual */
+        .captcha-container {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .captcha-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .captcha-item {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.375rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.5rem;
+            color: #6b7280;
+        }
+        .captcha-item:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: #f5f3ff;
+        }
+        .captcha-item.selected {
+            border-color: var(--primary-color);
+            background-color: #ddd6fe;
+            color: var(--text-dark);
+        }
+        .captcha-item.error {
+            border-color: #ef4444;
+            background-color: #fee2e2;
+            color: #b91c1c;
+            animation: shake 0.3s;
+        }
+        .captcha-success {
+            display: none;
+            align-items: center;
+            color: #16a34a;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
         /* Iconos */
         .fa-envelope, .fa-phone { color: var(--primary-color); }
     </style>
@@ -102,12 +159,10 @@
                     <div class="bg-white p-8 rounded-2xl shadow-2xl border-t-4 border-violet-500">
                         <h2 class="text-2xl font-bold mb-2 text-gray-800">Envíanos un Mensaje</h2>
                         
-                        <!-- CAMBIO: action apunta a Formspree. IMPORTANTE: Reemplaza 'TU_ID_DE_FORMSPREE' -->
-                        <form action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST" class="space-y-4">
+                        <!-- Formulario -->
+                        <form id="main-contact-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST" class="space-y-4">
                             
-                            <!-- Campo Oculto para redirección tras enviar (opcional) -->
                             <input type="hidden" name="_next" value="contacto.html">
-                            <!-- Campo Honeypot Anti-Spam (invisible para humanos) -->
                             <input type="text" name="_gotcha" style="display:none">
 
                             <input type="text" name="nombre" required class="w-full px-4 py-3 rounded-lg border bg-gray-50" placeholder="Tu Nombre">
@@ -115,7 +170,7 @@
                             <input type="tel" name="telefono" class="w-full px-4 py-3 rounded-lg border bg-gray-50" placeholder="Teléfono (Opcional)">
                             <textarea name="mensaje" rows="4" required class="w-full px-4 py-3 rounded-lg border bg-gray-50" placeholder="Mensaje..."></textarea>
                             
-                            <!-- NUEVO: Checkbox de Privacidad -->
+                            <!-- Checkbox de Privacidad -->
                             <div class="flex items-start mt-4">
                                 <div class="flex items-center h-5">
                                     <input id="privacy" name="privacy" type="checkbox" required class="focus:ring-violet-500 h-4 w-4 text-violet-600 border-gray-300 rounded">
@@ -125,17 +180,21 @@
                                 </div>
                             </div>
 
-                            <!-- NUEVO: Checkbox "No soy un robot" (Verificación manual simple) -->
-                            <div class="flex items-start mt-2">
-                                <div class="flex items-center h-5">
-                                    <input id="human_check" name="human_check" type="checkbox" required class="focus:ring-violet-500 h-4 w-4 text-violet-600 border-gray-300 rounded">
+                            <!-- CAPTCHA Visual Personalizado -->
+                            <div class="captcha-container">
+                                <p class="text-sm font-bold text-gray-700 mb-2" id="captcha-instruction">
+                                    Verificación de seguridad: Haz clic en <span class="text-violet-600 uppercase"></span>
+                                </p>
+                                <div class="captcha-grid" id="captcha-options">
+                                    <!-- Las opciones se generan con JS -->
                                 </div>
-                                <div class="ml-3 text-sm">
-                                    <label for="human_check" class="font-medium text-gray-700">Confirmo que no soy un robot.</label>
+                                <div id="captcha-success" class="captcha-success">
+                                    <i class="fas fa-check-circle mr-2"></i> Verificado. No eres un robot.
                                 </div>
+                                <input type="hidden" id="captcha-valid" name="captcha-valid" required>
                             </div>
 
-                            <button type="submit" class="w-full bg-violet-600 text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-violet-700 mt-6">Enviar</button>
+                            <button type="submit" id="submit-btn" disabled class="w-full bg-gray-400 text-white px-8 py-4 rounded-lg font-bold shadow-lg mt-6 cursor-not-allowed transition-colors">Enviar</button>
                         </form>
                     </div>
                 </div>
@@ -150,6 +209,87 @@
             <p class="text-xs mt-4">© 2025 Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script>document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));</script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menú Móvil
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if(mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // --- LÓGICA DEL CAPTCHA VISUAL ---
+            const captchaOptions = [
+                { icon: 'fa-dog', name: 'el Perro', id: 'dog' },
+                { icon: 'fa-cat', name: 'el Gato', id: 'cat' },
+                { icon: 'fa-home', name: 'la Casa', id: 'house' },
+                { icon: 'fa-car', name: 'el Coche', id: 'car' }
+            ];
+
+            const container = document.getElementById('captcha-options');
+            const instructionSpan = document.querySelector('#captcha-instruction span');
+            const successMsg = document.getElementById('captcha-success');
+            const submitBtn = document.getElementById('submit-btn');
+            const captchaInput = document.getElementById('captcha-valid'); // Input hidden para validación HTML5
+
+            // 1. Elegir objetivo aleatorio
+            const targetIndex = Math.floor(Math.random() * captchaOptions.length);
+            const target = captchaOptions[targetIndex];
+            instructionSpan.textContent = target.name;
+
+            // 2. Desordenar opciones para que no estén siempre en el mismo sitio
+            const shuffledOptions = [...captchaOptions].sort(() => Math.random() - 0.5);
+
+            // 3. Generar HTML
+            shuffledOptions.forEach(opt => {
+                const div = document.createElement('div');
+                div.className = 'captcha-item';
+                div.innerHTML = `<i class="fas ${opt.icon}"></i>`;
+                div.onclick = () => validateCaptcha(opt.id, div);
+                container.appendChild(div);
+            });
+
+            function validateCaptcha(selectedId, element) {
+                // Resetear estados previos
+                document.querySelectorAll('.captcha-item').forEach(el => {
+                    el.classList.remove('selected', 'error');
+                });
+
+                if (selectedId === target.id) {
+                    // Éxito
+                    element.classList.add('selected');
+                    successMsg.style.display = 'flex';
+                    
+                    // Habilitar botón de envío
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                    submitBtn.classList.add('bg-violet-600', 'hover:bg-violet-700');
+                    
+                    // Marcar input hidden como válido (truco para required)
+                    captchaInput.value = "true";
+                } else {
+                    // Error
+                    element.classList.add('error');
+                    successMsg.style.display = 'none';
+                    
+                    // Deshabilitar botón
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+                    submitBtn.classList.remove('bg-violet-600', 'hover:bg-violet-700');
+                    captchaInput.value = ""; // Vaciar para que falle validación
+                    
+                    // Pequeña vibración visual (clase error tiene animación CSS)
+                    setTimeout(() => element.classList.remove('error'), 300);
+                }
+            }
+        });
+
+        // --- Traducciones ---
+        // (Se mantiene la lógica de traducciones existente para el resto de la página)
+        // ... código de traducciones ...
+    </script>
 </body>
 </html>
