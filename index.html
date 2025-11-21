@@ -20,14 +20,24 @@
             --primary-hover: #7c3aed; /* violet-600 */
             --text-dark: #5b21b6;     /* violet-800 - para títulos */
             --text-medium: #374151;   /* gray-700 */
+            --bg-light: #fdf2f8;      /* pink-50 */
             --footer-bg: #eff6ff;     /* blue-50 */
+            --shadow-light: rgba(139, 92, 246, 0.1);
+            --shadow-medium: rgba(139, 92, 246, 0.2);
         }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-medium);
-            /* Fondo general para asegurar que no haya espacios blancos feos si la imagen carga lento */
-            background-color: #fdf2f8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            
+            /* CONFIGURACIÓN DEL FONDO COMPLETO (Huellas) */
+            background-image: linear-gradient(rgba(237, 233, 254, 0.85), rgba(237, 233, 254, 0.85)), url('imagen2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             min-h-screen;
             display: flex;
             flex-direction: column;
@@ -60,7 +70,6 @@
         .focus\:border-violet-300:focus { border-color: #c4b5fd; } 
 
         /* --- Secciones Específicas --- */
-        /* El main crece para empujar el footer si hay poco contenido */
         main { flex-grow: 1; display: flex; flex-direction: column; }
         
         #footer { background-color: white; } 
@@ -131,12 +140,11 @@
     <main>
         <!-- Hero Section -->
         <section id="hero" class="relative w-full h-[90vh] lg:h-screen overflow-hidden">
-            <!-- IMAGEN DE FONDO: Forzada a ocupar todo el espacio sin cortar (puede distorsionarse ligeramente si la pantalla es muy diferente) -->
-            <!-- 'object-fill' estira la imagen. 'w-full h-full' ocupa todo el contenedor -->
-            <img src="imagen1.jpg" alt="Familia feliz CuidaMiHuella" class="absolute inset-0 w-full h-full object-fill z-0">
+            <!-- IMAGEN DE FONDO CORREGIDA: object-cover para evitar estiramiento -->
+            <img src="imagen1.jpg" alt="Familia feliz CuidaMiHuella" class="absolute inset-0 w-full h-full object-cover object-center z-0">
             
             <!-- Capa oscura para el texto -->
-            <div class="absolute inset-0 bg-black/30 z-10"></div>
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
 
             <!-- Contenido centrado -->
             <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
@@ -215,9 +223,8 @@
             "en": {
                 "nav_home": "Home", "nav_join": "The CuidaMiHuella Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact", "account_btn": "Login / My Account", "account_btn_mobile": "Login / My Account",
                 "hero_title": "Adoption Has Changed. Forever.", "hero_subtitle": "Welcome to CuidaMiHuella, the club that transforms the fear of adopting into the certainty of having found your ideal companion.", "hero_btn1": "Discover the Club", "hero_btn2": "Find Your Companion",
-                "footer_slogan": "We take care of their pawprint.", "footer_nav_title": "Navigation", "footer_legal_title": "Legal", "legal1": "Legal Notice", "legal2": "Privacy Policy", "legal3": "Cookies Policy", "footer_help_title": "Help", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidaMiHuella. All rights reserved."
+                "footer_slogan": "We take care of their pawprint.", "footer_nav_title": "Navigation", "footer_legal_title": "Legal", "legal1": "Legal Notice", "legal2": "Privacy Policy", "legal3": "Cookies Policy", "footer_help_title": "Help", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. All rights reserved."
             },
-            // Resto de idiomas (abreviados para mantener el código manejable)
              "eu": { "nav_home": "Hasiera", "nav_join": "CuidaMiHuella Kluba", "nav_shelters": "Babesleentzat", "nav_find": "Bilatu Laguna", "nav_contact": "Kontaktua", "account_btn": "Sartu / Nire Kontua", "hero_title": "Adopzioa Aldatu Da.", "footer_slogan": "Haien aztarna zaintzen dugu." },
              "ca": { "nav_home": "Inici", "nav_join": "El Club CuidaMiHuella", "nav_shelters": "Per a Protectores", "nav_find": "Busca el teu Company", "nav_contact": "Contacte", "account_btn": "Accedir / El Meu Compte", "hero_title": "L'Adopció ha Canviat.", "footer_slogan": "Cuidem de la seva petjada." },
              "fr": { "nav_home": "Accueil", "nav_join": "Le Club CuidaMiHuella", "nav_shelters": "Pour les Refuges", "nav_find": "Trouver un Compagnon", "nav_contact": "Contact", "account_btn": "Connexion", "hero_title": "L'Adoption a Changé.", "footer_slogan": "Nous prenons soin de leur empreinte." },
