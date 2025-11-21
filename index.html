@@ -22,8 +22,6 @@
             --text-medium: #374151;   /* gray-700 */
             --bg-light: #fdf2f8;      /* pink-50 */
             --footer-bg: #eff6ff;     /* blue-50 */
-            --shadow-light: rgba(139, 92, 246, 0.1);
-            --shadow-medium: rgba(139, 92, 246, 0.2);
         }
         html { scroll-behavior: smooth; }
         body {
@@ -59,27 +57,13 @@
         .bg-blue-600 { background-color: var(--primary-color) !important; }
         .bg-blue-600:hover { background-color: var(--primary-hover) !important; }
         .text-blue-600 { color: var(--primary-color) !important; }
-        .hover\:text-blue-600:hover { color: var(--primary-hover) !important; }
-        .border-blue-600 { border-color: var(--primary-color) !important; }
-        .hover\:bg-blue-700:hover { background-color: var(--primary-hover) !important; }
         .text-violet-600 { color: var(--primary-color); }
-        .border-violet-600 { border-color: var(--primary-color); }
-        .hover\:bg-violet-600:hover { background-color: var(--primary-color); }
-        .text-violet-500 { color: var(--primary-color); }
-        .text-violet-800 { color: var(--text-dark); }
-        .focus\:ring-violet-200:focus { --tw-ring-color: #ddd6fe; } /* violet-200 */
-        .focus\:border-violet-300:focus { border-color: #c4b5fd; } /* violet-300 */
+        .focus\:ring-violet-200:focus { --tw-ring-color: #ddd6fe; }
+        .focus\:border-violet-300:focus { border-color: #c4b5fd; }
 
         /* --- Secciones Específicas --- */
-        /* El main debe crecer para empujar el footer abajo si hay poco contenido */
+        /* El main crece para empujar el footer si hay poco contenido */
         main { flex-grow: 1; }
-        
-        /* Hero ajustado para no cortar imagen */
-        .hero img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
         
         #footer { background-color: white; } /* Footer sólido */
         footer h3 { color: var(--text-dark); }
@@ -97,7 +81,7 @@
 </head>
 <body class="bg-gray-50">
 
-    <!-- Header Unificado -->
+    <!-- Header -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -108,7 +92,7 @@
                 
                 <nav class="hidden md:flex space-x-8">
                     <a href="#hero" data-key="nav_home" class="text-violet-600 font-bold">Inicio</a>
-                    <!-- CAMBIO: Texto actualizado -->
+                    <!-- TEXTO CAMBIADO: El Club CuidaMiHuella -->
                     <a href="unete-al-club.html" data-key="nav_join" class="text-gray-600 font-medium hover:text-violet-600 transition">El Club CuidaMiHuella</a>
                     <a href="para-protectoras.html" data-key="nav_shelters" class="text-gray-600 font-medium hover:text-violet-600 transition">Para Protectoras</a>
                     <a href="unete-al-club.html" data-key="nav_find" class="text-gray-600 font-medium hover:text-violet-600 transition">Busca a tu Compañero</a>
@@ -149,9 +133,9 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="relative w-full">
+        <section id="hero" class="relative w-full h-screen md:h-[80vh] min-h-[500px]">
             <!-- Imagen de familia: imagen1.jpg -->
-            <img src="imagen1.jpg" alt="Familia feliz CuidaMiHuella" class="w-full h-auto min-h-[400px] object-cover md:object-contain lg:w-full lg:h-auto relative z-0">
+            <img src="imagen1.jpg" alt="Familia feliz CuidaMiHuella" class="w-full h-full object-cover relative z-0">
             
             <!-- Capa oscura para el texto -->
             <div class="absolute inset-0 bg-black/40 z-10"></div>
@@ -167,7 +151,7 @@
             </div>
         </section>
 
-        <!-- SECCIONES ELIMINADAS para simplicidad en index, según petición previa -->
+        <!-- SECCIONES ELIMINADAS: Value, Process, Testimonials, Shelters, Membership -->
         
     </main>
 
@@ -221,9 +205,11 @@
         // --- Mobile Menu ---
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        if(mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
         // --- Translations Object ---
         const translations = {
