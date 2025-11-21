@@ -18,7 +18,7 @@
         :root {
             --primary-color: #8b5cf6; /* violet-500 */
             --primary-hover: #7c3aed; /* violet-600 */
-            --text-dark: #5b21b6;     /* violet-800 - para títulos */
+            --text-dark: #5b21b6;     /* violet-800 */
             --text-medium: #374151;   /* gray-700 */
             --bg-light: #fdf2f8;      /* pink-50 */
             --footer-bg: #eff6ff;     /* blue-50 */
@@ -28,7 +28,7 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light); /* Fondo rosa pastel */
+            background-color: var(--bg-light);
             color: var(--text-medium);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -57,9 +57,7 @@
         .hover\:bg-violet-600:hover { background-color: var(--primary-color); }
         .text-violet-500 { color: var(--primary-color); }
         .text-violet-800 { color: var(--text-dark); }
-        .focus\:ring-violet-200:focus { --tw-ring-color: #ddd6fe; } /* violet-200 */
-        .focus\:border-violet-300:focus { border-color: #c4b5fd; } /* violet-300 */
-
+        
         /* --- Tarjetas y Efectos --- */
         .plan, .value-card, .step { transition: all 0.3s ease-in-out; }
         .plan:hover, .value-card:hover {
@@ -75,6 +73,10 @@
         .bg-pink-50\/30 { background-color: rgba(253, 242, 248, 0.3); }
 
         /* --- Secciones Específicas --- */
+        .hero {
+             background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('imagen1.jpg');
+             background-size: cover; background-position: center;
+        }
         .shelters-cta { background-color: var(--primary-color); }
         #footer { background-color: var(--footer-bg); }
         footer h3 { color: var(--text-dark); }
@@ -83,7 +85,7 @@
         footer .social-links a { color: var(--text-medium); }
         footer .social-links a:hover { color: var(--primary-color); }
         .border-gray-200 { border-color: #e5e7eb; }
-
+        
         /* Iconos */
         .fa-heart, .fa-users, .fa-hand-holding-heart, .fa-home, .fa-medal, .fa-star, .fa-user-friends {
             color: var(--primary-color);
@@ -103,24 +105,49 @@
                 
                 <nav class="hidden md:flex space-x-8">
                     <a href="#hero" data-key="nav_home" class="text-violet-600 font-bold">Inicio</a>
-                    <a href="unete-al-club.html" data-key="nav_join" class="text-gray-600 font-medium hover:text-violet-600 transition">Únete al Club</a>
+                    <a href="unete-al-club.html" data-key="nav_join" class="text-gray-600 font-medium hover:text-violet-600 transition">El club CuidaMiHuella</a>
                     <a href="para-protectoras.html" data-key="nav_shelters" class="text-gray-600 font-medium hover:text-violet-600 transition">Para Protectoras</a>
                     <a href="#process" data-key="nav_find" class="text-gray-600 font-medium hover:text-violet-600 transition">Busca a tu Compañero</a>
                     <a href="contacto.html" data-key="nav_contact" class="text-gray-600 font-medium hover:text-violet-600 transition">Contacto</a>
                 </nav>
                 
                 <div class="flex items-center space-x-4">
-                    <div class="language-selector">
-                        <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50">
-                            <option value="es">🇪🇸 ES</option>
-                            <option value="eu">🏴 EU</option>
-                            <option value="ca">🔵 CA</option>
-                            <option value="en">🇬🇧 EN</option>
-                            <option value="fr">🇫🇷 FR</option>
-                            <option value="de">🇩🇪 DE</option>
-                            <option value="it">🇮🇹 IT</option>
-                        </select>
+                    <!-- Nuevo Selector de Idioma -->
+                    <div class="relative group z-50">
+                        <button id="langBtn" class="flex items-center space-x-2 bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 focus:outline-none">
+                            <span id="currentLangIcon" class="text-xl">🇪🇸</span>
+                            <span id="currentLangText" class="font-medium text-sm">ES</span>
+                            <i class="fas fa-chevron-down text-xs text-gray-400 ml-1 transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Dropdown -->
+                        <div class="absolute right-0 mt-2 w-40 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden hidden group-hover:block transform origin-top-right transition-all">
+                            <div class="py-1 grid grid-cols-1 gap-0.5 p-1">
+                                <button onclick="window.changeLanguage('es')" class="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-violet-50 hover:text-violet-700 rounded-lg transition-colors text-left">
+                                    <span class="mr-3 text-lg">🇪🇸</span> Español
+                                </button>
+                                <button onclick="window.changeLanguage('eu')" class="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-violet-50 hover:text-violet-700 rounded-lg transition-colors text-left">
+                                    <span class="mr-3 text-lg">🏁</span> Euskara
+                                </button>
+                                <button onclick="window.changeLanguage('ca')" class="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-violet-50 hover:text-violet-700 rounded-lg transition-colors text-left">
+                                    <span class="mr-3 text-lg">🌊</span> Català
+                                </button>
+                                <button onclick="window.changeLanguage('en')" class="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-violet-50 hover:text-violet-700 rounded-lg transition-colors text-left">
+                                    <span class="mr-3 text-lg">🇬🇧</span> English
+                                </button>
+                                <button onclick="window.changeLanguage('fr')" class="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-violet-50 hover:text-violet-700 rounded-lg transition-colors text-left">
+                                    <span class="mr-3 text-lg">🇫🇷</span> Français
+                                </button>
+                                <button onclick="window.changeLanguage('de')" class="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-violet-50 hover:text-violet-700 rounded-lg transition-colors text-left">
+                                    <span class="mr-3 text-lg">🇩🇪</span> Deutsch
+                                </button>
+                                <button onclick="window.changeLanguage('it')" class="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-violet-50 hover:text-violet-700 rounded-lg transition-colors text-left">
+                                    <span class="mr-3 text-lg">🇮🇹</span> Italiano
+                                </button>
+                            </div>
+                        </div>
                     </div>
+                    <!-- Fin Selector -->
+
                     <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder / Mi Cuenta</a>
                     <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
                         <i class="fas fa-bars"></i>
@@ -131,7 +158,7 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <a href="#hero" data-key="nav_home" class="block py-3 px-4 text-violet-600 font-bold bg-gray-50">Inicio</a>
-            <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Únete al Club</a>
+            <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">El club CuidaMiHuella</a>
             <a href="para-protectoras.html" data-key="nav_shelters" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Para Protectoras</a>
             <a href="#process" data-key="nav_find" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Busca a tu Compañero</a>
             <a href="contacto.html" data-key="nav_contact" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Contacto</a>
@@ -143,18 +170,12 @@
 
     <main>
         <!-- Hero Section -->
-        <!-- CAMBIO: Estructura modificada para usar <img> tag y asegurar que no se corte nada -->
         <section id="hero" class="relative w-full bg-gray-900">
-            <!-- Imagen de fondo que ocupa el 100% del ancho, altura automática -->
-            <img src="imagen1.jpg" alt="Familia feliz CuidamiHuella" class="w-full h-auto min-h-[500px] object-cover md:object-contain lg:w-full lg:h-auto relative z-0">
-            
-            <!-- Capa oscura para leer el texto (opcional, puedes quitarla o hacerla más suave) -->
+            <img src="imagen1.jpg" alt="Familia feliz CuidaMiHuella" class="w-full h-auto min-h-[500px] object-cover md:object-contain lg:w-full lg:h-auto relative z-0">
             <div class="absolute inset-0 bg-black/40 z-10"></div>
-
-            <!-- Contenido centrado sobre la imagen -->
             <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
                 <h1 data-key="hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight text-white drop-shadow-lg">La Adopción ha Cambiado. Para Siempre.</h1>
-                <p data-key="hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light text-white drop-shadow-md">Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.</p>
+                <p data-key="hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light text-white drop-shadow-md">Bienvenido a CuidaMiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="unete-al-club.html" data-key="hero_btn1" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200 transition transform hover:scale-105 shadow-lg">Descubre el Club</a>
                     <a href="#process" data-key="hero_btn2" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition transform hover:scale-105 shadow-lg">Busca a tu Compañero</a>
@@ -174,7 +195,6 @@
                         <div class="text-5xl mb-4"><i class="fas fa-heart"></i></div>
                         <h3 data-key="adopt_title" class="text-2xl font-bold mb-3">¿Pensando en Adoptar?</h3>
                         <p data-key="adopt_text" class="mb-6 flex-grow">Elimina el miedo con nuestra 'Experiencia de Acogida'. Convive con tu futuro compañero durante 3 semanas de forma segura.</p>
-                        <!-- FOTO: imagen5.jpg (Mujer con perro) -->
                         <img src="imagen5.jpg" alt="Experiencia de Acogida" class="rounded-lg mb-6 shadow-md w-full h-64 object-cover" onerror="this.style.display='none'">
                         <a href="#process" data-key="adopt_link" class="font-semibold text-blue-600 hover:underline mt-auto">Saber más sobre la Experiencia ></a>
                     </div>
@@ -183,7 +203,6 @@
                         <div class="text-5xl mb-4"><i class="fas fa-users"></i></div>
                         <h3 data-key="pet_owner_title" class="text-2xl font-bold mb-3">¿Ya Tienes Mascota?</h3>
                         <p data-key="pet_owner_text" class="mb-6 flex-grow">Únete a la comunidad de dueños más comprometida. Accede a descuentos, foros con expertos y mucho más.</p>
-                        <!-- FOTO: imagen3.jpg (Gente en el parque) -->
                         <img src="imagen3.jpg" alt="Comunidad en parque" class="rounded-lg mb-6 shadow-md w-full h-64 object-cover" onerror="this.style.display='none'">
                         <a href="unete-al-club.html" data-key="pet_owner_link" class="font-semibold text-blue-600 hover:underline mt-auto">Hazte Socio Amigo ></a>
                     </div>
@@ -281,29 +300,29 @@
     </main>
 
     <!-- Footer -->
-    <footer id="footer" class="text-gray-700">
+    <footer id="footer" class="text-gray-700 border-t border-gray-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-2 md:col-span-1">
                     <h3 class="text-xl font-bold mb-4">CuidaMiHuella</h3>
                     <p data-key="footer_slogan" class="mb-4">Cuidamos de su huella.</p>
                     <div class="social-links flex space-x-4">
-                        <a href="#" class="text-xl"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-xl"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-xl"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-xl hover:text-violet-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-xl hover:text-violet-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-xl hover:text-violet-600 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-xl hover:text-violet-600 transition"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div>
-                    <h3 data-key="footer_nav_title" class="font-semibold mb-4 uppercase tracking-wider">Navegación</h3>
+                    <h3 data-key="footer_nav_title" class="font-semibold mb-4 uppercase tracking-wider text-violet-800">Navegación</h3>
                     <ul class="space-y-2">
                         <li><a href="#hero" data-key="nav_home">Inicio</a></li>
-                        <li><a href="unete-al-club.html" data-key="nav_join">Únete al Club</a></li>
+                        <li><a href="unete-al-club.html" data-key="nav_join">El club CuidaMiHuella</a></li>
                         <li><a href="para-protectoras.html" data-key="nav_shelters">Para Protectoras</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 data-key="footer_legal_title" class="font-semibold mb-4 uppercase tracking-wider">Legal</h3>
+                    <h3 data-key="footer_legal_title" class="font-semibold mb-4 uppercase tracking-wider text-violet-800">Legal</h3>
                     <ul class="space-y-2">
                         <li><a href="aviso-legal.html" data-key="legal1">Aviso Legal</a></li>
                         <li><a href="politica-de-privacidad.html" data-key="legal2">Política de Privacidad</a></li>
@@ -311,7 +330,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 data-key="footer_help_title" class="font-semibold mb-4 uppercase tracking-wider">Ayuda</h3>
+                    <h3 data-key="footer_help_title" class="font-semibold mb-4 uppercase tracking-wider text-violet-800">Ayuda</h3>
                     <ul class="space-y-2">
                         <li><a href="contacto.html" data-key="help1">Contacto</a></li>
                         <li><a href="#" data-key="help2">Preguntas Frecuentes</a></li>
@@ -333,12 +352,20 @@
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+        
+        // Language Map for Flag Icons
+        const flagMap = {
+            'es': '🇪🇸', 'eu': '🏁', 'ca': '🌊', 'en': '🇬🇧', 'fr': '🇫🇷', 'de': '🇩🇪', 'it': '🇮🇹'
+        };
+        const langNameMap = {
+            'es': 'ES', 'eu': 'EU', 'ca': 'CA', 'en': 'EN', 'fr': 'FR', 'de': 'DE', 'it': 'IT'
+        };
 
         // --- Translations Object ---
         const translations = {
             "es": {
-                "nav_home": "Inicio", "nav_join": "Únete al Club", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto", "account_btn": "Acceder / Mi Cuenta", "account_btn_mobile": "Acceder / Mi Cuenta",
-                "hero_title": "La Adopción ha Cambiado. Para Siempre.", "hero_subtitle": "Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal. Descubre un proceso seguro, con seguro incluido, y una comunidad que te acompaña para toda la vida.", "hero_btn1": "Descubre el Club", "hero_btn2": "Busca a tu Compañero",
+                "nav_home": "Inicio", "nav_join": "El club CuidaMiHuella", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto", "account_btn": "Acceder / Mi Cuenta", "account_btn_mobile": "Acceder / Mi Cuenta",
+                "hero_title": "La Adopción ha Cambiado. Para Siempre.", "hero_subtitle": "Bienvenido a CuidaMiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.", "hero_btn1": "Descubre el Club", "hero_btn2": "Busca a tu Compañero",
                 "value_title": "Un Club para Todos los que Aman a los Animales", "adopt_title": "¿Pensando en Adoptar?", "adopt_text": "Elimina el miedo con nuestra 'Experiencia de Acogida'. Convive con tu futuro compañero durante 3 semanas de forma segura.", "adopt_link": "Saber más >", "pet_owner_title": "¿Ya Tienes Mascota?", "pet_owner_text": "Únete a la comunidad de dueños más comprometida. Accede a descuentos, foros con expertos y mucho más.", "pet_owner_link": "Hazte Socio Amigo >",
                 "process_title": "Tu Viaje hacia el Compañero Perfecto, en 3 Pasos", "step1_title": "1. Únete y Activa tu Pack", "step1_text": "Activa tu 'Pack de Bienvenida' con seguro, desparasitación y donativo a la protectora.", "step2_title": "2. Vive la Experiencia", "step2_text": "Elige un animal y disfrútalo en casa durante 3 semanas. Descubre si sois el match perfecto.", "step3_title": "3. Celebra tu Éxito", "step3_text": "Formaliza una adopción basada en la realidad, no en una corazonada. ¡Celebra vuestro vínculo!",
                 "testimonials_title": "Las Historias que nos Impulsan",
@@ -347,7 +374,7 @@
                 "footer_slogan": "Cuidamos de su huella.", "footer_nav_title": "Navegación", "footer_legal_title": "Legal", "legal1": "Aviso Legal", "legal2": "Política de Privacidad", "legal3": "Política de Cookies", "footer_help_title": "Ayuda", "help1": "Contacto", "help2": "Preguntas Frecuentes", "copyright": "© 2025 CuidamiHuella. Todos los derechos reservados."
             },
             "en": {
-                "nav_home": "Home", "nav_join": "Join the Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact", "account_btn": "Login / My Account", "account_btn_mobile": "Login / My Account",
+                "nav_home": "Home", "nav_join": "The CuidaMiHuella Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact", "account_btn": "Login / My Account", "account_btn_mobile": "Login / My Account",
                 "hero_title": "Adoption Has Changed. Forever.", "hero_subtitle": "Welcome to CuidamiHuella, the club that transforms the fear of adopting into the certainty of having found your ideal companion.", "hero_btn1": "Discover the Club", "hero_btn2": "Find Your Companion",
                 "value_title": "A Club for Everyone Who Loves Animals", "adopt_title": "Thinking of Adopting?", "adopt_text": "Eliminate fear with our 'Fostering Experience'. Live with your future companion for 3 weeks safely.", "adopt_link": "Learn more >", "pet_owner_title": "Already Have a Pet?", "pet_owner_text": "Join the most committed community of owners. Access discounts, expert forums, and much more.", "pet_owner_link": "Become a Friend Member >",
                 "process_title": "Your Journey to the Perfect Companion, in 3 Steps", "step1_title": "1. Join & Activate Your Pack", "step1_text": "Activate your 'Welcome Pack' with insurance, deworming, and a donation to the shelter.", "step2_title": "2. Live the Experience", "step2_text": "Choose an animal and enjoy it at home for 3 weeks. Discover if you are the perfect match.", "step3_title": "3. Celebrate Your Success", "step3_text": "Formalize an adoption based on reality, not a hunch. Celebrate your bond!",
@@ -357,7 +384,7 @@
                 "footer_slogan": "We take care of their pawprint.", "footer_nav_title": "Navigation", "footer_legal_title": "Legal", "legal1": "Legal Notice", "legal2": "Privacy Policy", "legal3": "Cookies Policy", "footer_help_title": "Help", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. All rights reserved."
             },
             "eu": {
-                "nav_home": "Hasiera", "nav_join": "Egin Kide", "nav_shelters": "Babesleentzat", "nav_find": "Bilatu Laguna", "nav_contact": "Kontaktua", "account_btn": "Sartu / Nire Kontua", "account_btn_mobile": "Sartu / Nire Kontua",
+                "nav_home": "Hasiera", "nav_join": "CuidaMiHuella Kluba", "nav_shelters": "Babesleentzat", "nav_find": "Bilatu Laguna", "nav_contact": "Kontaktua", "account_btn": "Sartu / Nire Kontua", "account_btn_mobile": "Sartu / Nire Kontua",
                 "hero_title": "Adopzioa Aldatu Da. Betirako.", "hero_subtitle": "Ongi etorri CuidamiHuellara, adoptatzeko beldurra zure lagun ideala aurkitzearen ziurtasun bihurtzen duen kluba.", "hero_btn1": "Ezagutu Kluba", "hero_btn2": "Bilatu zure Laguna",
                 "value_title": "Animaliak Maite Dituzten Guztientzako Kluba", "adopt_title": "Adoptatzea Pentsatzen?", "adopt_text": "Kendu beldurra gure 'Harrera Esperientziarekin'. Bizi zure etorkizuneko lagunarekin 3 astez modu seguruan.", "adopt_link": "Gehiago jakin >", "pet_owner_title": "Maskota Daukazu Jada?", "pet_owner_text": "Bat egin jabeen komunitate konprometituenarekin. Lortu deskontuak, adituen foroak eta gehiago.", "pet_owner_link": "Egin zaitez Bazkide Laguna >",
                 "process_title": "Zure Bidaia Lagun Perfektuarengana, 3 Pasotan", "step1_title": "1. Bat Egin eta Aktibatu Zure Packa", "step1_text": "Aktibatu zure 'Ongietorri Packa' aseguruarekin, desparasitazioarekin eta babesleari dohaintzarekin.", "step2_title": "2. Bizi Esperientzia", "step2_text": "Aukeratu animalia bat eta gozatu etxean 3 astez. Ea bat-etortze perfektua zareten ikusi.", "step3_title": "3. Ospa Ezazu Zure Arrakasta", "step3_text": "Formalizatu errealitatean oinarritutako adopzio bat, ez susmo batean. Ospatu zuen lotura!",
@@ -367,7 +394,7 @@
                 "footer_slogan": "Haien aztarna zaintzen dugu.", "footer_nav_title": "Nabigazioa", "footer_legal_title": "Legezkoa", "legal1": "Lege Oharra", "legal2": "Pribatutasun Politika", "legal3": "Cookie Politika", "footer_help_title": "Laguntza", "help1": "Kontaktua", "help2": "Ohiko Galderak", "copyright": "© 2025 CuidamiHuella. Eskubide guztiak erreserbatuta."
             },
             "ca": {
-                "nav_home": "Inici", "nav_join": "Uneix-te al Club", "nav_shelters": "Per a Protectores", "nav_find": "Busca el teu Company", "nav_contact": "Contacte", "account_btn": "Accedir / El Meu Compte", "account_btn_mobile": "Accedir / El Meu Compte",
+                "nav_home": "Inici", "nav_join": "El club CuidaMiHuella", "nav_shelters": "Per a Protectores", "nav_find": "Busca el teu Company", "nav_contact": "Contacte", "account_btn": "Accedir / El Meu Compte", "account_btn_mobile": "Accedir / El Meu Compte",
                 "hero_title": "L'Adopció ha Canviat. Per Sempre.", "hero_subtitle": "Benvingut a CuidamiHuella, el club que transforma la por d'adoptar en la certesa d'haver trobat el teu company ideal.", "hero_btn1": "Descobreix el Club", "hero_btn2": "Busca el teu Company",
                 "value_title": "Un Club per a Tothom que Estima els Animals", "adopt_title": "Pensant a Adoptar?", "adopt_text": "Elimina la por amb la nostra 'Experiència d'Acollida'. Conviu amb el teu futur company durant 3 setmanes de forma segura.", "adopt_link": "Saber-ne més >", "pet_owner_title": "Ja Tens Mascota?", "pet_owner_text": "Uneix-te a la comunitat de propietaris més compromesa. Accedeix a descomptes, fòrums d'experts i molt més.", "pet_owner_link": "Fes-te Soci Amic >",
                 "process_title": "El Teu Viatge cap al Company Perfecte, en 3 Passos", "step1_title": "1. Uneix-te i Activa el Teu Pack", "step1_text": "Activa el teu 'Pack de Benvinguda' amb assegurança, desparasitació i donatiu a la protectora.", "step2_title": "2. Viu l'Experiència", "step2_text": "Tria un animal i gaudeix-lo a casa durant 3 setmanes. Descobreix si sou la parella perfecta.", "step3_title": "3. Celebra el Teu Èxit", "step3_text": "Formalitza una adopció basada en la realitat, no en una intuïció. Celebra el vostre vincle!",
@@ -377,7 +404,7 @@
                 "footer_slogan": "Cuidem de la seva petjada.", "footer_nav_title": "Navegació", "footer_legal_title": "Legal", "legal1": "Avís Legal", "legal2": "Política de Privacitat", "legal3": "Política de Cookies", "footer_help_title": "Ajuda", "help1": "Contacte", "help2": "Preguntes Freqüents", "copyright": "© 2025 CuidamiHuella. Tots els drets reservats."
             },
             "fr": {
-                "nav_home": "Accueil", "nav_join": "Rejoindre le Club", "nav_shelters": "Pour les Refuges", "nav_find": "Trouver un Compagnon", "nav_contact": "Contact", "account_btn": "Connexion / Mon Compte", "account_btn_mobile": "Connexion / Mon Compte",
+                "nav_home": "Accueil", "nav_join": "Le club CuidaMiHuella", "nav_shelters": "Pour les Refuges", "nav_find": "Trouver un Compagnon", "nav_contact": "Contact", "account_btn": "Connexion / Mon Compte", "account_btn_mobile": "Connexion / Mon Compte",
                 "hero_title": "L'Adoption a Changé. Pour Toujours.", "hero_subtitle": "Bienvenue chez CuidamiHuella, le club qui transforme la peur d'adopter en la certitude d'avoir trouvé votre compagnon idéal.", "hero_btn1": "Découvrez le Club", "hero_btn2": "Trouvez un Compagnon",
                 "value_title": "Un Club pour Tous Ceux qui Aiment les Animaux", "adopt_title": "Pensez-vous à Adopter ?", "adopt_text": "Éliminez la peur avec notre 'Expérience d'Accueil'. Vivez avec votre futur compagnon pendant 3 semaines en toute sécurité.", "adopt_link": "En savoir plus >", "pet_owner_title": "Vous avez déjà un Animal ?", "pet_owner_text": "Rejoignez la communauté de propriétaires la plus engagée. Accédez à des réductions, des forums d'experts et bien plus.", "pet_owner_link": "Devenez Membre Ami >",
                 "process_title": "Votre Voyage vers le Compagnon Parfait, en 3 Étapes", "step1_title": "1. Rejoignez et Activez Votre Pack", "step1_text": "Activez votre 'Pack de Bienvenue' avec assurance, vermifuge et don au refuge.", "step2_title": "2. Vivez l'Expérience", "step2_text": "Choisissez un animal et profitez-en chez vous pendant 3 semaines. Découvrez si vous êtes faits l'un pour l'autre.", "step3_title": "3. Célébrez Votre Succès", "step3_text": "Officialisez une adoption basée sur la réalité, pas sur une intuition. Célébrez votre lien !",
@@ -387,7 +414,7 @@
                 "footer_slogan": "Nous prenons soin de leur empreinte.", "footer_nav_title": "Navigation", "footer_legal_title": "Légal", "legal1": "Mentions Légales", "legal2": "Politique de Confidentialité", "legal3": "Politique de Cookies", "footer_help_title": "Aide", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Tous droits réservés."
             },
             "de": {
-                "nav_home": "Start", "nav_join": "Club beitreten", "nav_shelters": "Für Tierheime", "nav_find": "Begleiter finden", "nav_contact": "Kontakt", "account_btn": "Login / Mein Konto", "account_btn_mobile": "Login / Mein Konto",
+                "nav_home": "Start", "nav_join": "Der CuidaMiHuella Club", "nav_shelters": "Für Tierheime", "nav_find": "Begleiter finden", "nav_contact": "Kontakt", "account_btn": "Login / Mein Konto", "account_btn_mobile": "Login / Mein Konto",
                 "hero_title": "Adoption hat sich verändert. Für immer.", "hero_subtitle": "Willkommen bei CuidamiHuella, dem Club, der die Angst vor der Adoption in die Gewissheit verwandelt, den idealen Begleiter gefunden zu haben.", "hero_btn1": "Club entdecken", "hero_btn2": "Begleiter finden",
                 "value_title": "Ein Club für alle, die Tiere lieben", "adopt_title": "Denken Sie über eine Adoption nach?", "adopt_text": "Überwinden Sie die Angst mit unserer 'Pflegeerfahrung'. Leben Sie 3 Wochen lang sicher mit Ihrem zukünftigen Begleiter.", "adopt_link": "Mehr erfahren >", "pet_owner_title": "Haben Sie bereits ein Haustier?", "pet_owner_text": "Treten Sie der engagiertesten Gemeinschaft von Besitzern bei. Erhalten Sie Zugang zu Rabatten, Expertenforen und vielem mehr.", "pet_owner_link": "Freund-Mitglied werden >",
                 "process_title": "Ihr Weg zum perfekten Begleiter in 3 Schritten", "step1_title": "1. Beitreten & Paket aktivieren", "step1_text": "Aktivieren Sie Ihr 'Willkommenspaket' mit Versicherung, Entwurmung und einer Spende an das Tierheim.", "step2_title": "2. Die Erfahrung leben", "step2_text": "Wählen Sie ein Tier und genießen Sie es 3 Wochen lang zu Hause. Finden Sie heraus, ob Sie perfekt zusammenpassen.", "step3_title": "3. Feiern Sie Ihren Erfolg", "step3_text": "Schließen Sie eine Adoption ab, die auf der Realität basiert, nicht auf einer Ahnung. Feiern Sie Ihre Verbindung!",
@@ -397,7 +424,7 @@
                 "footer_slogan": "Wir kümmern uns um ihre Pfote.", "footer_nav_title": "Navigation", "footer_legal_title": "Rechtliches", "legal1": "Impressum", "legal2": "Datenschutz", "legal3": "Cookie-Richtlinie", "footer_help_title": "Hilfe", "help1": "Kontakt", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. Alle Rechte vorbehalten."
             },
              "it": {
-                "nav_home": "Inizio", "nav_join": "Unisciti al Club", "nav_shelters": "Per i Rifugi", "nav_find": "Trova il tuo Compagno", "nav_contact": "Contatto", "account_btn": "Accedi / Mio Account", "account_btn_mobile": "Accedi / Mio Account",
+                "nav_home": "Inizio", "nav_join": "Il club CuidaMiHuella", "nav_shelters": "Per i Rifugi", "nav_find": "Trova il tuo Compagno", "nav_contact": "Contatto", "account_btn": "Accedi / Mio Account", "account_btn_mobile": "Accedi / Mio Account",
                 "hero_title": "L'Adozione è Cambiata. Per Sempre.", "hero_subtitle": "Benvenuto in CuidamiHuella, il club che trasforma la paura di adottare nella certezza di aver trovato il tuo compagno ideale.", "hero_btn1": "Scopri il Club", "hero_btn2": "Trova il tuo Compagno",
                 "value_title": "Un Club per Tutti Coloro che Amano gli Animali", "adopt_title": "Stai Pensando di Adottare?", "adopt_text": "Elimina la paura con la nostra 'Esperienza di Affido'. Convivi con il tuo futuro compagno per 3 settimane in sicurezza.", "adopt_link": "Scopri di più >", "pet_owner_title": "Hai già un Animale?", "pet_owner_text": "Unisciti alla comunità di proprietari più impegnata. Accedi a sconti, forum di esperti e molto altro.", "pet_owner_link": "Diventa Socio Amico >",
                 "process_title": "Il Tuo Viaggio verso il Compagno Perfetto, in 3 Passi", "step1_title": "1. Unisciti e Attiva il Tuo Pack", "step1_text": "Attiva il tuo 'Pack di Benvenuto' con assicurazione, sverminazione e donazione al rifugio.", "step2_title": "2. Vivi l'Esperienza", "step2_text": "Scegli un animale e goditelo a casa per 3 settimane. Scopri se siete la coppia perfetta.", "step3_title": "3. Festeggia il Tuo Successo", "step3_text": "Formalizza un'adozione basata sulla realtà, non su un'intuizione. Celebrate il vostro legame!",
@@ -408,63 +435,6 @@
             }
         };
 
-        const testimonials = [
-            { text_key: "testimonial_1_text", author_key: "testimonial_1_author" },
-            { text_key: "testimonial_2_text", author_key: "testimonial_2_author" },
-            { text_key: "testimonial_3_text", author_key: "testimonial_3_author" }
-        ];
-        
-        // --- Translations for Testimonials ---
-        translations.es.testimonial_1_text = "La 'Experiencia de Acogida' fue clave. Descubrimos que necesitábamos un perro tranquilo como Bruno. Sin este proceso, nos habríamos equivocado.";
-        translations.es.testimonial_1_author = "— Laura y David, Socios Fundadores y familia de Bruno.";
-        translations.es.testimonial_2_text = "Ser Socio Amigo nos ha ahorrado un montón en veterinarios y comida de calidad. La comunidad es increíble, siempre hay alguien dispuesto a ayudar.";
-        translations.es.testimonial_2_author = "— Marcos G., Socio Amigo y padre de Lúa.";
-        translations.es.testimonial_3_text = "Nunca pensé que adoptar sería tan fácil y seguro. El equipo de CuidaMiHuella nos guió en cada paso. ¡Estamos enamorados de nuestro nuevo gato, Nilo!";
-        translations.es.testimonial_3_author = "— Sofía R., Socia Fundadora y mamá de Nilo.";
-        
-        translations.en.testimonial_1_text = "The 'Fostering Experience' was key. We discovered we needed a calm dog like Bruno. Without this process, we would have made a mistake.";
-        translations.en.testimonial_1_author = "— Laura & David, Founding Members and Bruno's family.";
-        translations.en.testimonial_2_text = "Being a Friend Member has saved us a lot on vets and quality food. The community is incredible, there's always someone willing to help.";
-        translations.en.testimonial_2_author = "— Marcos G., Friend Member and Lúa's dad.";
-        translations.en.testimonial_3_text = "I never thought adopting would be so easy and safe. The CuidaMiHuella team guided us every step of the way. We are in love with our new cat, Nilo!";
-        translations.en.testimonial_3_author = "— Sofía R., Founding Member and Nilo's mom.";
-        
-        translations.eu.testimonial_1_text = "'Harrera Esperientzia' funtsezkoa izan zen. Bruno bezalako txakur lasai bat behar genuela aurkitu genuen. Prozesu hon gabe, huts egingo genukeen.";
-        translations.eu.testimonial_1_author = "— Laura eta David, Bazkide Fundatzaileak eta Brunoren familia.";
-        translations.eu.testimonial_2_text = "Bazkide Laguna izateak asko aurreztu digu albaitarietan eta kalitatezko janarian. Komunitatea sinestezina da, beti dago norbait laguntzeko prest.";
-        translations.eu.testimonial_2_author = "— Marcos G., Bazkide Laguna eta Lúaren aita.";
-        translations.eu.testimonial_3_text = "Inoiz ez nuen pentsatu adoptatzea hain erraza eta segurua izango zenik. CuidaMiHuellako taldeak pauso guztietan gidatu gintuen. Maiteminduta gaude gure katu berriarekin, Nilorekin!";
-        translations.eu.testimonial_3_author = "— Sofía R., Bazkide Fundatzailea eta Niloren ama.";
-        
-        translations.ca.testimonial_1_text = "L''Experiència d'Acollida' va ser clau. Vam descobrir que necessitàvem un gos tranquil com el Bruno. Sense aquest procés, ens hauríem equivocat.";
-        translations.ca.testimonial_1_author = "— Laura i David, Socis Fundadors i família del Bruno.";
-        translations.ca.testimonial_2_text = "Ser Soci Amic ens ha estalviat un munt en veterinaris i menjar de qualitat. La comunitat és increïble, sempre hi ha algú disposat a ajudar.";
-        translations.ca.testimonial_2_author = "— Marcos G., Soci Amic i pare de la Lúa.";
-        translations.ca.testimonial_3_text = "Mai vaig pensar que adoptar seria tan fàcil i segur. L'equip de CuidaMiHuella ens va guiar en cada pas. Estem enamorats del nostre nou gat, el Nilo!";
-        translations.ca.testimonial_3_author = "— Sofía R., Sòcia Fundadora i mare d'en Nilo.";
-
-        translations.fr.testimonial_1_text = "L''Expérience d'Accueil' a été déterminante. Nous avons découvert que nous avions besoin d'un chien calme comme Bruno. Sans ce processus, nous aurions fait une erreur.";
-        translations.fr.testimonial_1_author = "— Laura et David, Membres Fondateurs et famille de Bruno.";
-        translations.fr.testimonial_2_text = "Être Membre Ami nous a permis d'économiser beaucoup sur les vétérinaires et la nourriture de qualité. La communauté est incroyable, il y a toujours quelqu'un prêt à aider.";
-        translations.fr.testimonial_2_author = "— Marcos G., Membre Ami et père de Lúa.";
-        translations.fr.testimonial_3_text = "Je n'aurais jamais pensé que l'adoption serait si facile et sûre. L'équipe de CuidaMiHuella nous a guidés à chaque étape. Nous sommes amoureux de notre nouveau chat, Nilo !";
-        translations.fr.testimonial_3_author = "— Sofía R., Membre Fondatrice et maman de Nilo.";
-
-        translations.de.testimonial_1_text = "Die 'Pflegeerfahrung' war der Schlüssel. Wir haben entdeckt, dass wir einen ruhigen Hund wie Bruno brauchten. Ohne diesen Prozess hätten wir einen Fehler gemacht.";
-        translations.de.testimonial_1_author = "— Laura & David, Gründungsmitglieder und Brunos Familie.";
-        translations.de.testimonial_2_text = "Als Freund-Mitglied haben wir viel bei Tierärzten und hochwertigem Futter gespart. Die Gemeinschaft ist unglaublich, es gibt immer jemanden, der bereit ist zu helfen.";
-        translations.de.testimonial_2_author = "— Marcos G., Freund-Mitglied und Lúas Vater.";
-        translations.de.testimonial_3_text = "Ich hätte nie gedacht, dass eine Adoption so einfach und sicher sein kann. Das Team von CuidaMiHuella hat uns bei jedem Schritt begleitet. Wir sind in unsere neue Katze, Nilo, verliebt!";
-        translations.de.testimonial_3_author = "— Sofía R., Gründungsmitglied und Nilos Mutter.";
-
-        translations.it.testimonial_1_text = "L''Esperienza di Affido' è stata fondamentale. Abbiamo scoperto di aver bisogno di un cane tranquillo come Bruno. Senza questo processo, avremmo sbagliato.";
-        translations.it.testimonial_1_author = "— Laura e David, Soci Fondatori e famiglia di Bruno.";
-        translations.it.testimonial_2_text = "Essere Socio Amico ci ha fatto risparmiare un sacco su veterinari e cibo di qualità. La comunità è incredibile, c'è sempre qualcuno disposto ad aiutare.";
-        translations.it.testimonial_2_author = "— Marcos G., Socio Amico e papà di Lúa.";
-        translations.it.testimonial_3_text = "Non avrei mai pensato che adottare sarebbe stato così facile e sicuro. Il team di CuidaMiHuella ci ha guidato in ogni passo. Siamo innamorati del nostro nuovo gatto, Nilo!";
-        translations.it.testimonial_3_author = "— Sofía R., Socia Fondatrice e mamma di Nilo.";
-        
-        
         // --- Language Switcher Logic ---
         const languageSelect = document.getElementById('languageSelect');
         const changeLanguage = (lang) => {
@@ -476,14 +446,21 @@
                 }
             });
             localStorage.setItem('selectedLanguage', selectedLang);
-            languageSelect.value = selectedLang;
+            
+            // Update UI
+            const currentLangIcon = document.getElementById('currentLangIcon');
+            const currentLangText = document.getElementById('currentLangText');
+            const flagMap = { 'es': '🇪🇸', 'eu': '🏁', 'ca': '🌊', 'en': '🇬🇧', 'fr': '🇫🇷', 'de': '🇩🇪', 'it': '🇮🇹' };
+            const langNameMap = { 'es': 'ES', 'eu': 'EU', 'ca': 'CA', 'en': 'EN', 'fr': 'FR', 'de': 'DE', 'it': 'IT' };
+            
+            if(currentLangIcon) currentLangIcon.textContent = flagMap[selectedLang];
+            if(currentLangText) currentLangText.textContent = langNameMap[selectedLang];
+
             renderTestimonial(); // Re-render testimonial when language changes
         };
-
-        // Guardar referencia global para el carrusel
+        
+        // Expose globally for onclick events
         window.changeLanguage = changeLanguage;
-
-        languageSelect.addEventListener('change', (e) => changeLanguage(e.target.value));
 
         // --- Testimonial Slider Logic ---
         let currentTestimonial = 0;
@@ -494,7 +471,7 @@
         function renderTestimonial() {
             if (!container) return; // Don't run on pages without testimonials
             const testimonial = testimonials[currentTestimonial];
-            const lang = languageSelect.value;
+            const lang = localStorage.getItem('selectedLanguage') || 'es';
             const text = translations[lang][testimonial.text_key] || translations['es'][testimonial.text_key];
             const author = translations[lang][testimonial.author_key] || translations['es'][testimonial.author_key];
             
