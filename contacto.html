@@ -62,6 +62,12 @@
         .bg-pink-50\/30 { background-color: rgba(253, 242, 248, 0.3); }
 
         /* --- Secciones Específicas --- */
+        .hero-page {
+             /* CAMBIO: Usando imagen2.jpg para el fondo de la cabecera de contacto */
+             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imagen2.jpg');
+             background-size: cover; 
+             background-position: center;
+        }
         #footer { background-color: var(--footer-bg); }
         footer h3 { color: var(--text-dark); }
         footer a { color: var(--primary-color); }
@@ -78,17 +84,25 @@
 </head>
 <body class="bg-gray-50">
 
-    <main class="pt-8"> <!-- Añadido padding superior para separar del borde -->
+    <main class="pt-0"> <!-- Eliminado padding superior ya que hay hero -->
         
-        <!-- Enlace de navegación simple para volver (ya que no hay menú ni hero) -->
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-            <a href="index.html" class="text-violet-600 hover:text-violet-800 font-bold flex items-center">
-                <i class="fas fa-arrow-left mr-2"></i> Volver al Inicio
-            </a>
-        </div>
+        <!-- Hero Section -->
+        <section class="hero-page text-white relative">
+            <!-- Botón volver flotante sobre el hero para mejor estética -->
+            <div class="absolute top-6 left-6 z-20">
+                 <a href="index.html" class="inline-block bg-white/90 text-violet-600 px-4 py-2 rounded-full font-bold hover:bg-white transition shadow-lg text-sm backdrop-blur-sm">
+                    <i class="fas fa-arrow-left mr-2"></i> Volver al Inicio
+                </a>
+            </div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[50vh] py-16 relative z-10">
+                <h1 data-key="contact_hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg">Estamos aquí para ti</h1>
+                <p data-key="contact_hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light drop-shadow-md">Resolvemos tus dudas, te explicamos cómo funciona el club y escuchamos tus sugerencias.</p>
+            </div>
+        </section>
 
         <!-- Información y Formulario -->
-        <section class="pb-16 md:pb-24 bg-white" id="contact-content">
+        <section class="py-16 md:py-24 bg-white" id="contact-content">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -96,7 +110,7 @@
                     <!-- Columna Izquierda: Información de Contacto -->
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-4xl font-bold text-violet-900 mb-4" data-key="info_title">Nuestra Información</h1>
+                            <h1 class="text-3xl font-bold text-violet-900 mb-4" data-key="info_title">Nuestra Información</h1>
                             <p class="text-gray-600 text-lg mb-8" data-key="info_subtitle">Puedes encontrarnos o contactarnos directamente a través de los siguientes canales:</p>
                         </div>
 
@@ -123,10 +137,11 @@
                             </div>
                         </div>
                         
-                        <!-- Imagen decorativa -->
+                        <!-- Imagen decorativa lateral (opcional, ya que la imagen principal está de fondo) -->
+                        <!-- Dejamos esta oculta o usamos otra si prefieres, por ahora la mantengo como decorativa -->
                         <div class="hidden lg:block mt-8 rounded-xl overflow-hidden shadow-lg h-64">
-                             <!-- Usando imagen2.jpg -->
-                             <img src="imagen2.jpg" alt="Cuidado animal" class="w-full h-full object-cover transform hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/e0e7ff/3730a3?text=CuidaMiHuella'; this.onerror=null;">
+                             <!-- Reutilizamos imagen2.jpg aquí también para consistencia visual o podríamos usar otra -->
+                             <img src="imagen2.jpg" alt="Cuidado animal" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
                         </div>
                     </div>
 
@@ -235,13 +250,11 @@
     <!-- JavaScript Integrado -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        
-        // No mobile menu logic needed as header is removed
-
         // --- Translations Object ---
         const translations = {
             "es": {
                 "nav_home": "Inicio", "nav_join": "Únete al Club", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto",
+                "contact_hero_title": "Estamos aquí para ti", "contact_hero_subtitle": "Resolvemos tus dudas, te explicamos cómo funciona el club y escuchamos tus sugerencias.",
                 "info_title": "Nuestra Información", "info_subtitle": "Puedes encontrarnos o contactarnos directamente a través de los siguientes canales:", "info_email_desc": "Para consultas generales, soporte y colaboraciones.", "info_phone_title": "Teléfonos", "info_phone_desc": "Horario de atención: Lunes a Viernes de 9:00 a 18:00.",
                 "contact_form_title": "Envíanos un Mensaje", "contact_form_desc": "¿Tienes dudas sobre cómo adoptar o cómo funciona el Club? Escríbenos y te responderemos en menos de 24h.",
                 "form_contact_name": "Tu Nombre", "form_contact_name_placeholder": "Ej: Alex Martínez", "form_email": "Tu Email", "form_email_placeholder": "tu@email.com", "form_subject": "Asunto", "form_subject_placeholder": "Ej: Duda sobre Socio Amigo", "form_message": "Mensaje", "form_message_general_placeholder": "Escribe aquí tu consulta...", "form_submit_btn_contact": "Enviar Mensaje",
@@ -250,17 +263,18 @@
             },
             "en": {
                 "nav_home": "Home", "nav_join": "Join the Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact",
+                "contact_hero_title": "We are here for you", "contact_hero_subtitle": "We answer your questions, explain how the club works, and listen to your suggestions.",
                 "info_title": "Our Information", "info_subtitle": "You can find us or contact us directly through the following channels:", "info_email_desc": "For general inquiries, support, and collaborations.", "info_phone_title": "Phones", "info_phone_desc": "Business hours: Monday to Friday from 9:00 to 18:00.",
                 "contact_form_title": "Send Us a Message", "contact_form_desc": "Have questions about how to adopt or how the Club works? Write to us and we will reply in less than 24h.",
                 "form_contact_name": "Your Name", "form_contact_name_placeholder": "e.g., Alex Martinez", "form_email": "Your Email", "form_email_placeholder": "you@email.com", "form_subject": "Subject", "form_subject_placeholder": "e.g., Question about Friend Member", "form_message": "Message", "form_message_general_placeholder": "Write your query here...", "form_submit_btn_contact": "Send Message",
                 "faq_title": "Quick FAQ", "faq_q1": "How does the Club work?", "faq_a1": "You join by paying a one-time (Adopter) or annual (Friend Member) fee and access exclusive services, insurance, and discounts.", "faq_q2": "What is the Fostering Experience?", "faq_a2": "It is a 3-week trial period with insurance included to ensure you and the animal fit before adopting.", "faq_q3": "Do you collaborate with shelters?", "faq_a3": "Yes! We help shelters manage adoptions and obtain extra funding at no cost to them.",
                 "footer_slogan": "We take care of their pawprint.", "footer_nav_title": "Navigation", "footer_legal_title": "Legal", "legal1": "Legal Notice", "legal2": "Privacy Policy", "legal3": "Cookies Policy", "footer_help_title": "Help", "help1": "Contact", "help2": "FAQ", "copyright": "© 2025 CuidamiHuella. All rights reserved."
             },
-             "eu": { "nav_contact": "Kontaktua", "info_title": "Gure Informazioa", "contact_form_title": "Bidali Mezu Bat", "form_submit_btn_contact": "Bidali" },
-             "ca": { "nav_contact": "Contacte", "info_title": "La Nostra Informació", "contact_form_title": "Envia'ns un Missatge", "form_submit_btn_contact": "Enviar" },
-             "fr": { "nav_contact": "Contact", "info_title": "Nos Informations", "contact_form_title": "Envoyez-nous un Message", "form_submit_btn_contact": "Envoyer" },
-             "de": { "nav_contact": "Kontakt", "info_title": "Unsere Informationen", "contact_form_title": "Senden Sie uns eine Nachricht", "form_submit_btn_contact": "Senden" },
-             "it": { "nav_contact": "Contatto", "info_title": "Le Nostre Informazioni", "contact_form_title": "Inviaci un Messaggio", "form_submit_btn_contact": "Invia" }
+             "eu": { "nav_contact": "Kontaktua", "contact_hero_title": "Hemen gaude zuretzat", "info_title": "Gure Informazioa", "contact_form_title": "Bidali Mezu Bat", "form_submit_btn_contact": "Bidali" },
+             "ca": { "nav_contact": "Contacte", "contact_hero_title": "Som aquí per a tu", "info_title": "La Nostra Informació", "contact_form_title": "Envia'ns un Missatge", "form_submit_btn_contact": "Enviar" },
+             "fr": { "nav_contact": "Contact", "contact_hero_title": "Nous sommes là pour vous", "info_title": "Nos Informations", "contact_form_title": "Envoyez-nous un Message", "form_submit_btn_contact": "Envoyer" },
+             "de": { "nav_contact": "Kontakt", "contact_hero_title": "Wir sind für Sie da", "info_title": "Unsere Informationen", "contact_form_title": "Senden Sie uns eine Nachricht", "form_submit_btn_contact": "Senden" },
+             "it": { "nav_contact": "Contatto", "contact_hero_title": "Siamo qui per te", "info_title": "Le Nostre Informazioni", "contact_form_title": "Inviaci un Messaggio", "form_submit_btn_contact": "Invia" }
         };
 
         // --- Language Switcher Logic ---
