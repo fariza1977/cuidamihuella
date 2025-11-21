@@ -19,7 +19,7 @@
             --text-dark: #5b21b6; --text-medium: #374151;
             --bg-light: #fdf2f8; --footer-bg: #eff6ff;
         }
-        /* CONFIGURACIÓN DEL FONDO COMPLETO */
+        /* CONFIGURACIÓN DEL FONDO COMPLETO (Huellas) */
         body { 
             font-family: 'Inter', sans-serif; 
             color: var(--text-medium);
@@ -109,6 +109,7 @@
     <main>
         <!-- Hero Section -->
         <section class="relative w-full bg-gray-900 h-[60vh] min-h-[500px]">
+             <!-- Imagen de cabecera: imagen6.jpg -->
              <img src="imagen6.jpg" alt="Refugio colaborador" class="absolute inset-0 w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg" data-key="shelter_hero_title">Colabora con Nosotros</h1>
@@ -128,7 +129,7 @@
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700" data-key="benefits_subtitle">Nuestra plataforma no es solo un escaparate, es un filtro de calidad.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Tarjetas con fondo semitransparente para que se vea el fondo de huellas -->
+                    <!-- Tarjetas con fondo blanco semitransparente -->
                     <div class="text-center p-8 card-hover bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-white">
                         <i class="fas fa-shield-heart text-6xl mb-6"></i>
                         <h3 class="text-2xl font-bold mb-3" data-key="benefit1_title">Sin Devoluciones</h3>
@@ -156,7 +157,7 @@
                         <h2 class="text-3xl font-bold mb-4" data-key="form_title">Solicitar Alta</h2>
                         <p class="text-gray-600 mb-8" data-key="form_subtitle">Rellena tus datos. Una vez verificado, te daremos acceso a tu panel privado.</p>
                         
-                        <!-- Formulario con lógica de redirección segura -->
+                        <!-- Formulario con lógica de redirección segura a gestion-protectoras.html -->
                         <form id="solicitudForm" class="space-y-4">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_shelter_name">Nombre de la Protectora</label>
@@ -209,50 +210,34 @@
                 });
             }
 
-            // Manejo del formulario de solicitud
+            // Manejo del formulario de solicitud con redirección
             const form = document.getElementById('solicitudForm');
             if(form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     alert('¡Solicitud enviada! En breve recibirás tus credenciales.');
-                    // Redirección segura
+                    // Redirección a la página de gestión
                     try {
                         window.location.href = 'gestion-protectoras.html';
                     } catch(err) {
                         console.error("Redirection blocked:", err);
-                        alert("Redirección bloqueada por el entorno de prueba. En la web real irías al panel de gestión.");
+                        alert("Redirección bloqueada. En la web real irías a gestion-protectoras.html");
                     }
                 });
             }
 
-            // Traducciones básicas (se pueden expandir igual que en index.html)
+            // Traducciones (Breve ejemplo para funcionalidad básica)
             const translations = {
-                "es": {
-                    "shelter_hero_title": "Colabora con Nosotros",
-                    "shelter_hero_subtitle": "Descubre cómo CuidaMiHuella puede transformar tu protectora: menos devoluciones, más financiación y adoptantes mejor preparados. A coste cero.",
-                    "benefits_title": "Adopciones de Calidad, Menos Trabajo",
-                    "join_btn_hero": "Unirse Ahora",
-                    "login_btn_hero": "Ya soy Colaborador"
-                },
-                "en": {
-                    "shelter_hero_title": "Collaborate with Us",
-                    "shelter_hero_subtitle": "Discover how CuidaMiHuella can transform your shelter: fewer returns, more funding, and better-prepared adopters. At zero cost.",
-                    "benefits_title": "Quality Adoptions, Less Work",
-                    "join_btn_hero": "Join Now",
-                    "login_btn_hero": "I'm already a Partner"
-                }
-                // ... resto de idiomas ...
+                "es": { "join_btn_hero": "Unirse Ahora", "login_btn_hero": "Ya soy Colaborador" },
+                "en": { "join_btn_hero": "Join Now", "login_btn_hero": "I'm already a Partner" }
             };
             
-            // Lógica simple de idioma
             const languageSelect = document.getElementById('languageSelect');
             if(languageSelect) {
                 languageSelect.addEventListener('change', (e) => {
                     const lang = e.target.value;
                     const t = translations[lang] || translations['es'];
-                    // Actualizar textos clave...
-                    // (Para brevedad, el código completo de traducción está en index.html, 
-                    // aquí mantenemos la estructura funcional básica)
+                    // Lógica de traducción completa está en index.html
                 });
             }
         });
