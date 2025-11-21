@@ -28,10 +28,17 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light); /* Fondo rosa pastel */
             color: var(--text-medium);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            
+            /* CONFIGURACIÓN DEL FONDO COMPLETO */
+            background-image: linear-gradient(rgba(237, 233, 254, 0.85), rgba(237, 233, 254, 0.85)), url('imagen2.jpg'); /* Capa violeta pastel sobre la imagen */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* El fondo se queda quieto al hacer scroll */
+            background-repeat: no-repeat;
+            min-h-screen;
         }
         h1, h2, h3 { color: var(--text-dark); }
         h2.text-gray-800, h3.text-2xl, h2[data-key] { color: var(--text-dark); }
@@ -59,16 +66,9 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px var(--shadow-medium);
         }
-        .bg-pink-50\/30 { background-color: rgba(253, 242, 248, 0.3); }
 
         /* --- Secciones Específicas --- */
-        .hero-page {
-             /* CAMBIO: Usando imagen2.jpg para el fondo de la cabecera de contacto */
-             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imagen2.jpg');
-             background-size: cover; 
-             background-position: center;
-        }
-        #footer { background-color: var(--footer-bg); }
+        #footer { background-color: white; /* Footer blanco para contraste */ }
         footer h3 { color: var(--text-dark); }
         footer a { color: var(--primary-color); }
         footer a:hover { color: var(--primary-hover); }
@@ -82,162 +82,190 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
 
-    <main class="pt-0"> <!-- Eliminado padding superior ya que hay hero -->
-        
-        <!-- Hero Section -->
-        <section class="hero-page text-white relative">
-            <!-- Botón volver flotante sobre el hero para mejor estética -->
-            <div class="absolute top-6 left-6 z-20">
-                 <a href="index.html" class="inline-block bg-white/90 text-violet-600 px-4 py-2 rounded-full font-bold hover:bg-white transition shadow-lg text-sm backdrop-blur-sm">
-                    <i class="fas fa-arrow-left mr-2"></i> Volver al Inicio
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
+                    <i class="fas fa-paw text-violet-500"></i>
+                    <span>CuidaMiHuella</span>
                 </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" data-key="nav_home" class="text-gray-600 font-medium hover:text-violet-600 transition">Inicio</a>
+                    <a href="unete-al-club.html" data-key="nav_join" class="text-gray-600 font-medium hover:text-violet-600 transition">Únete al Club</a>
+                    <a href="para-protectoras.html" data-key="nav_shelters" class="text-gray-600 font-medium hover:text-violet-600 transition">Para Protectoras</a>
+                    <a href="index.html#process" data-key="nav_find" class="text-gray-600 font-medium hover:text-violet-600 transition">Busca a tu Compañero</a>
+                    <a href="contacto.html" data-key="nav_contact" class="text-violet-600 font-bold">Contacto</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="language-selector">
+                        <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 bg-white">
+                            <option value="es">🇪🇸 ES</option>
+                            <option value="eu">🏴 EU</option>
+                            <option value="ca">🔵 CA</option>
+                            <option value="en">🇬🇧 EN</option>
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="de">🇩🇪 DE</option>
+                            <option value="it">🇮🇹 IT</option>
+                        </select>
+                    </div>
+                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder / Mi Cuenta</a>
+                    <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
-            
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[50vh] py-16 relative z-10">
-                <h1 data-key="contact_hero_title" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg">Estamos aquí para ti</h1>
-                <p data-key="contact_hero_subtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light drop-shadow-md">Resolvemos tus dudas, te explicamos cómo funciona el club y escuchamos tus sugerencias.</p>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <a href="index.html" data-key="nav_home" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Inicio</a>
+            <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Únete al Club</a>
+            <a href="para-protectoras.html" data-key="nav_shelters" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Para Protectoras</a>
+            <a href="index.html#process" data-key="nav_find" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Busca a tu Compañero</a>
+            <a href="contacto.html" data-key="nav_contact" class="block py-3 px-4 text-violet-600 font-bold bg-violet-50">Contacto</a>
+            <div class="p-4 border-t">
+                <a href="#" data-key="account_btn_mobile" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder / Mi Cuenta</a>
             </div>
-        </section>
+        </div>
+    </header>
+
+    <main class="pt-12 pb-12"> <!-- Padding para separar del header y footer -->
+        
+        <!-- Título Principal de la Página -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
+             <h1 class="text-4xl md:text-5xl font-extrabold text-violet-900 mb-4 drop-shadow-sm" data-key="contact_hero_title">Estamos aquí para ti</h1>
+             <p class="max-w-2xl mx-auto text-lg text-gray-700 font-medium" data-key="contact_hero_subtitle">Resolvemos tus dudas, te explicamos cómo funciona el club y escuchamos tus sugerencias.</p>
+        </div>
 
         <!-- Información y Formulario -->
-        <section class="py-16 md:py-24 bg-white" id="contact-content">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8" id="contact-content">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Columna Izquierda: Información de Contacto -->
+                <div class="space-y-6">
+                    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white">
+                        <h2 class="text-2xl font-bold text-violet-900 mb-6" data-key="info_title">Nuestra Información</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-violet-100 p-3 rounded-full">
+                                    <i class="fas fa-envelope text-2xl text-violet-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg">Email</h3>
+                                    <p class="text-violet-700 font-medium text-lg"><a href="mailto:info@cuidamihuella.com" class="hover:underline">info@cuidamihuella.com</a></p>
+                                    <p class="text-sm text-gray-500" data-key="info_email_desc">Para consultas generales, soporte y colaboraciones.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-violet-100 p-3 rounded-full">
+                                    <i class="fas fa-phone text-2xl text-violet-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg" data-key="info_phone_title">Teléfonos</h3>
+                                    <div class="flex flex-col">
+                                        <a href="tel:+34699556077" class="text-violet-700 font-medium text-lg hover:underline">+34 699 55 60 77</a>
+                                        <a href="tel:+34606655034" class="text-violet-700 font-medium text-lg hover:underline">+34 606 65 50 34</a>
+                                    </div>
+                                    <p class="text-sm text-gray-500" data-key="info_phone_desc">Horario de atención: Lunes a Viernes de 9:00 a 18:00.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <!-- Columna Izquierda: Información de Contacto -->
-                    <div class="space-y-8">
-                        <div>
-                            <h1 class="text-3xl font-bold text-violet-900 mb-4" data-key="info_title">Nuestra Información</h1>
-                            <p class="text-gray-600 text-lg mb-8" data-key="info_subtitle">Puedes encontrarnos o contactarnos directamente a través de los siguientes canales:</p>
-                        </div>
-
-                        <div class="info-card bg-pink-50 p-6 rounded-xl border border-pink-100 flex items-start space-x-4">
-                            <div class="bg-white p-3 rounded-full shadow-sm">
-                                <i class="fas fa-envelope text-2xl text-violet-500"></i>
+                    <!-- FAQ Rápido en tarjeta -->
+                    <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4" data-key="faq_title">Preguntas Frecuentes</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="font-bold text-violet-700 text-sm" data-key="faq_q1">¿Cómo funciona el Club?</h3>
+                                <p class="text-sm text-gray-600" data-key="faq_a1">Te unes pagando una cuota única (Adoptante) o anual (Socio Amigo) y accedes a servicios, seguros y descuentos exclusivos.</p>
                             </div>
                             <div>
-                                <h3 class="font-bold text-gray-800 text-lg mb-1">Email</h3>
-                                <p class="text-violet-700 font-medium"><a href="mailto:info@cuidamihuella.com" class="hover:underline">info@cuidamihuella.com</a></p>
-                                <p class="text-sm text-gray-500 mt-1" data-key="info_email_desc">Para consultas generales, soporte y colaboraciones.</p>
+                                <h3 class="font-bold text-violet-700 text-sm" data-key="faq_q2">¿Qué es la Experiencia de Acogida?</h3>
+                                <p class="text-sm text-gray-600" data-key="faq_a2">Es un periodo de prueba de 3 semanas con seguro incluido para asegurar que tú y el animal encajáis antes de adoptar.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="info-card bg-blue-50 p-6 rounded-xl border border-blue-100 flex items-start space-x-4">
-                            <div class="bg-white p-3 rounded-full shadow-sm">
-                                <i class="fas fa-phone text-2xl text-violet-500"></i>
+                <!-- Columna Derecha: Formulario -->
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-2xl border-t-4 border-violet-500">
+                    <h2 data-key="contact_form_title" class="text-2xl font-bold mb-2 text-gray-800">Envíanos un Mensaje</h2>
+                    <p class="text-gray-600 mb-8 text-sm" data-key="contact_form_desc">¿Tienes dudas sobre cómo adoptar o cómo funciona el Club? Escríbenos y te responderemos en menos de 24h.</p>
+                    
+                    <!-- Formulario Funcional de Formspree -->
+                    <form id="contact-form" action="https://formspree.io/f/TU_ID_CONTACTO_AQUI" method="POST">
+                        <div class="space-y-5">
+                            <div>
+                                <label for="contact-name" class="block text-sm font-bold text-gray-700 mb-1" data-key="form_contact_name">Tu Nombre</label>
+                                <input type="text" name="nombre" id="contact-name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition bg-gray-50 focus:bg-white" data-key="form_contact_name_placeholder" placeholder="Ej: Alex Martínez">
                             </div>
                             <div>
-                                <h3 class="font-bold text-gray-800 text-lg mb-1" data-key="info_phone_title">Teléfonos</h3>
-                                <p class="text-violet-700 font-medium"><a href="tel:+34699556077" class="hover:underline">+34 699 55 60 77</a></p>
-                                <p class="text-violet-700 font-medium"><a href="tel:+34606655034" class="hover:underline">+34 606 65 50 34</a></p>
-                                <p class="text-sm text-gray-500 mt-1" data-key="info_phone_desc">Horario de atención: Lunes a Viernes de 9:00 a 18:00.</p>
+                                <label for="email" class="block text-sm font-bold text-gray-700 mb-1" data-key="form_email">Tu Email</label>
+                                <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition bg-gray-50 focus:bg-white" data-key="form_email_placeholder" placeholder="tu@email.com">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-bold text-gray-700 mb-1" data-key="form_subject">Asunto</label>
+                                <input type="text" name="asunto" id="subject" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition bg-gray-50 focus:bg-white" data-key="form_subject_placeholder" placeholder="Ej: Duda sobre Socio Amigo">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-bold text-gray-700 mb-1" data-key="form_message">Mensaje</label>
+                                <textarea name="mensaje" id="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition bg-gray-50 focus:bg-white" data-key="form_message_general_placeholder" placeholder="Escribe aquí tu consulta..."></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full text-center bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1" data-key="form_submit_btn_contact">Enviar Mensaje</button>
                             </div>
                         </div>
-                        
-                        <!-- Imagen decorativa lateral (opcional, ya que la imagen principal está de fondo) -->
-                        <!-- Dejamos esta oculta o usamos otra si prefieres, por ahora la mantengo como decorativa -->
-                        <div class="hidden lg:block mt-8 rounded-xl overflow-hidden shadow-lg h-64">
-                             <!-- Reutilizamos imagen2.jpg aquí también para consistencia visual o podríamos usar otra -->
-                             <img src="imagen2.jpg" alt="Cuidado animal" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
-                        </div>
-                    </div>
-
-                    <!-- Columna Derecha: Formulario -->
-                    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-2xl border border-gray-100">
-                        <h2 data-key="contact_form_title" class="text-2xl font-bold mb-6 text-gray-800">Envíanos un Mensaje</h2>
-                        <p class="text-gray-600 mb-8 text-sm" data-key="contact_form_desc">¿Tienes dudas sobre cómo adoptar o cómo funciona el Club? Escríbenos y te responderemos en menos de 24h.</p>
-                        
-                        <!-- Formulario Funcional de Formspree -->
-                        <form id="contact-form" action="https://formspree.io/f/TU_ID_CONTACTO_AQUI" method="POST">
-                            <div class="space-y-5">
-                                <div>
-                                    <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1" data-key="form_contact_name">Tu Nombre</label>
-                                    <input type="text" name="nombre" id="contact-name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition" data-key="form_contact_name_placeholder" placeholder="Ej: Alex Martínez">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1" data-key="form_email">Tu Email</label>
-                                    <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition" data-key="form_email_placeholder" placeholder="tu@email.com">
-                                </div>
-                                <div>
-                                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-1" data-key="form_subject">Asunto</label>
-                                    <input type="text" name="asunto" id="subject" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition" data-key="form_subject_placeholder" placeholder="Ej: Duda sobre Socio Amigo">
-                                </div>
-                                <div>
-                                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1" data-key="form_message">Mensaje</label>
-                                    <textarea name="mensaje" id="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition" data-key="form_message_general_placeholder" placeholder="Escribe aquí tu consulta..."></textarea>
-                                </div>
-                                <div>
-                                    <button type="submit" class="w-full text-center bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1" data-key="form_submit_btn_contact">Enviar Mensaje</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
+                    </form>
                 </div>
-            </div>
-        </section>
 
-        <!-- Sección FAQ Rápido -->
-        <section class="bg-violet-50 py-16">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-bold mb-8" data-key="faq_title">Preguntas Frecuentes Rápidas</h2>
-                <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="font-bold text-lg mb-2 text-violet-700" data-key="faq_q1">¿Cómo funciona el Club?</h3>
-                        <p class="text-sm text-gray-600" data-key="faq_a1">Te unes pagando una cuota única (Adoptante) o anual (Socio Amigo) y accedes a servicios, seguros y descuentos exclusivos.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="font-bold text-lg mb-2 text-violet-700" data-key="faq_q2">¿Qué es la Experiencia de Acogida?</h3>
-                        <p class="text-sm text-gray-600" data-key="faq_a2">Es un periodo de prueba de 3 semanas con seguro incluido para asegurar que tú y el animal encajáis antes de adoptar.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="font-bold text-lg mb-2 text-violet-700" data-key="faq_q3">¿Colaboráis con protectoras?</h3>
-                        <p class="text-sm text-gray-600" data-key="faq_a3">¡Sí! Ayudamos a protectoras a gestionar adopciones y obtener financiación extra sin coste para ellas.</p>
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
 
     </main>
 
     <!-- Footer -->
-    <footer id="footer" class="text-gray-700">
+    <footer id="footer" class="text-gray-700 border-t border-gray-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-2 md:col-span-1">
                     <h3 class="text-xl font-bold mb-4">CuidaMiHuella</h3>
                     <p data-key="footer_slogan" class="mb-4">Cuidamos de su huella.</p>
                     <div class="social-links flex space-x-4">
-                        <a href="#" class="text-xl"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-xl"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-xl"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-xl hover:text-violet-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-xl hover:text-violet-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-xl hover:text-violet-600 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-xl hover:text-violet-600 transition"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div>
-                    <h3 data-key="footer_nav_title" class="font-semibold mb-4 uppercase tracking-wider">Navegación</h3>
+                    <h3 data-key="footer_nav_title" class="font-semibold mb-4 uppercase tracking-wider text-violet-800">Navegación</h3>
                     <ul class="space-y-2">
-                        <li><a href="index.html" data-key="nav_home">Inicio</a></li>
-                        <li><a href="unete-al-club.html" data-key="nav_join">Únete al Club</a></li>
-                        <li><a href="para-protectoras.html" data-key="nav_shelters">Para Protectoras</a></li>
+                        <li><a href="index.html" data-key="nav_home" class="hover:text-violet-600">Inicio</a></li>
+                        <li><a href="unete-al-club.html" data-key="nav_join" class="hover:text-violet-600">Únete al Club</a></li>
+                        <li><a href="para-protectoras.html" data-key="nav_shelters" class="hover:text-violet-600">Para Protectoras</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 data-key="footer_legal_title" class="font-semibold mb-4 uppercase tracking-wider">Legal</h3>
+                    <h3 data-key="footer_legal_title" class="font-semibold mb-4 uppercase tracking-wider text-violet-800">Legal</h3>
                     <ul class="space-y-2">
-                        <li><a href="aviso-legal.html" data-key="legal1">Aviso Legal</a></li>
-                        <li><a href="politica-de-privacidad.html" data-key="legal2">Política de Privacidad</a></li>
-                        <li><a href="politica-de-cookies.html" data-key="legal3">Política de Cookies</a></li>
+                        <li><a href="aviso-legal.html" data-key="legal1" class="hover:text-violet-600">Aviso Legal</a></li>
+                        <li><a href="politica-de-privacidad.html" data-key="legal2" class="hover:text-violet-600">Política de Privacidad</a></li>
+                        <li><a href="politica-de-cookies.html" data-key="legal3" class="hover:text-violet-600">Política de Cookies</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 data-key="footer_help_title" class="font-semibold mb-4 uppercase tracking-wider">Ayuda</h3>
+                    <h3 data-key="footer_help_title" class="font-semibold mb-4 uppercase tracking-wider text-violet-800">Ayuda</h3>
                     <ul class="space-y-2">
-                        <li><a href="contacto.html" data-key="help1">Contacto</a></li>
-                        <li><a href="#" data-key="help2">Preguntas Frecuentes</a></li>
+                        <li><a href="contacto.html" data-key="help1" class="text-violet-600 font-bold">Contacto</a></li>
+                        <li><a href="#" data-key="help2" class="hover:text-violet-600">Preguntas Frecuentes</a></li>
                     </ul>
                 </div>
             </div>
@@ -250,10 +278,17 @@
     <!-- JavaScript Integrado -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
         // --- Translations Object ---
         const translations = {
             "es": {
-                "nav_home": "Inicio", "nav_join": "Únete al Club", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto",
+                "nav_home": "Inicio", "nav_join": "Únete al Club", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto", "account_btn": "Acceder / Mi Cuenta", "account_btn_mobile": "Acceder / Mi Cuenta",
                 "contact_hero_title": "Estamos aquí para ti", "contact_hero_subtitle": "Resolvemos tus dudas, te explicamos cómo funciona el club y escuchamos tus sugerencias.",
                 "info_title": "Nuestra Información", "info_subtitle": "Puedes encontrarnos o contactarnos directamente a través de los siguientes canales:", "info_email_desc": "Para consultas generales, soporte y colaboraciones.", "info_phone_title": "Teléfonos", "info_phone_desc": "Horario de atención: Lunes a Viernes de 9:00 a 18:00.",
                 "contact_form_title": "Envíanos un Mensaje", "contact_form_desc": "¿Tienes dudas sobre cómo adoptar o cómo funciona el Club? Escríbenos y te responderemos en menos de 24h.",
@@ -262,7 +297,7 @@
                 "footer_slogan": "Cuidamos de su huella.", "footer_nav_title": "Navegación", "footer_legal_title": "Legal", "legal1": "Aviso Legal", "legal2": "Política de Privacidad", "legal3": "Política de Cookies", "footer_help_title": "Ayuda", "help1": "Contacto", "help2": "Preguntas Frecuentes", "copyright": "© 2025 CuidamiHuella. Todos los derechos reservados."
             },
             "en": {
-                "nav_home": "Home", "nav_join": "Join the Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact",
+                "nav_home": "Home", "nav_join": "Join the Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact", "account_btn": "Login / My Account", "account_btn_mobile": "Login / My Account",
                 "contact_hero_title": "We are here for you", "contact_hero_subtitle": "We answer your questions, explain how the club works, and listen to your suggestions.",
                 "info_title": "Our Information", "info_subtitle": "You can find us or contact us directly through the following channels:", "info_email_desc": "For general inquiries, support, and collaborations.", "info_phone_title": "Phones", "info_phone_desc": "Business hours: Monday to Friday from 9:00 to 18:00.",
                 "contact_form_title": "Send Us a Message", "contact_form_desc": "Have questions about how to adopt or how the Club works? Write to us and we will reply in less than 24h.",
@@ -279,6 +314,11 @@
 
         // --- Language Switcher Logic ---
         const savedLang = localStorage.getItem('selectedLanguage') || 'es';
+        const languageSelect = document.getElementById('languageSelect');
+        
+        // Set initial value
+        if(languageSelect) languageSelect.value = savedLang;
+
         const changeLanguage = (lang) => {
             const selectedLang = translations[lang] ? lang : 'es';
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -300,8 +340,14 @@
                     }
                 }
             });
+            localStorage.setItem('selectedLanguage', selectedLang);
+            if(languageSelect) languageSelect.value = selectedLang;
         };
 
+        if(languageSelect) {
+            languageSelect.addEventListener('change', (e) => changeLanguage(e.target.value));
+        }
+        
         changeLanguage(savedLang);
     });
     </script>
