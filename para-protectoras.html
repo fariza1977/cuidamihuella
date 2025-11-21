@@ -33,9 +33,12 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             min-h-screen;
+            display: flex;
+            flex-direction: column;
         }
         
         h1, h2, h3 { color: var(--text-dark); }
+        h2.text-gray-800, h3.text-2xl, h2[data-key] { color: var(--text-dark); }
         
         /* Estilos personalizados */
         header nav a { position: relative; padding-bottom: 4px; }
@@ -53,7 +56,37 @@
         .fa-shield-heart, .fa-users-viewfinder, .fa-hand-holding-dollar, .fa-hand-holding-heart, .fa-home, .fa-medal { color: var(--primary-color); }
         
         /* Footer Sólido */
-        #footer { background-color: white; }
+        #footer { background-color: white; margin-top: auto; }
+        .text-violet-600 { color: var(--primary-color); }
+
+        /* Estilo Simulación reCAPTCHA */
+        .recaptcha-box {
+            background-color: #f9fafb;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-top: 15px;
+            width: 100%;
+            max-width: 300px;
+        }
+        .recaptcha-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #c1c1c1;
+            border-radius: 2px;
+            background-color: #fff;
+            cursor: pointer;
+            margin-right: 12px;
+        }
+        .recaptcha-checkbox:checked {
+            background-color: #fff;
+            border-color: #c1c1c1;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%230F9D58' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+            background-size: 100% 100%;
+        }
     </style>
 </head>
 <body>
@@ -66,12 +99,14 @@
                     <i class="fas fa-paw text-violet-500"></i><span>CuidaMiHuella</span>
                 </a>
                 <nav class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-gray-600 font-medium hover:text-violet-600">Inicio</a>
-                    <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600">El Club CuidaMiHuella</a>
-                    <a href="para-protectoras.html" class="text-violet-600 font-bold border-b-2 border-violet-600">Para Protectoras</a>
+                    <a href="index.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_home">Inicio</a>
+                    <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_join">El Club CuidaMiHuella</a>
+                    <a href="para-protectoras.html" class="text-violet-600 font-bold border-b-2 border-violet-600 transition" data-key="nav_shelters">Para Protectoras</a>
+                    <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_find">Busca a tu Compañero</a>
+                    <a href="contacto.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_contact">Contacto</a>
                     <!-- Enlace al panel de gestión -->
-                    <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300">
-                        <i class="fas fa-lock mr-1"></i> Acceso Área Privada
+                    <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300 flex items-center">
+                        <i class="fas fa-lock mr-2"></i> <span data-key="private_access">Acceso Área Privada</span>
                     </a>
                 </nav>
                 
@@ -79,15 +114,15 @@
                     <div class="language-selector">
                         <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 bg-white">
                             <option value="es">🇪🇸 ES</option>
-                            <option value="eu">🏴 EU</option>
-                            <option value="ca">🔵 CA</option>
                             <option value="en">🇬🇧 EN</option>
+                            <option value="eu">🏁 EU</option>
+                            <option value="ca">🌊 CA</option>
                             <option value="fr">🇫🇷 FR</option>
                             <option value="de">🇩🇪 DE</option>
                             <option value="it">🇮🇹 IT</option>
                         </select>
                     </div>
-                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder / Mi Cuenta</a>
+                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder</a>
                     <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -96,27 +131,29 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2">
-            <a href="index.html" class="block py-2 text-gray-600">Inicio</a>
-            <a href="unete-al-club.html" class="block py-2 text-gray-600">Únete al Club</a>
-            <a href="para-protectoras.html" class="block py-2 font-bold text-violet-600">Para Protectoras</a>
-            <a href="gestion-protectoras.html" class="block py-2 font-bold text-violet-600">Acceso Área Privada</a>
+            <a href="index.html" class="block py-2 text-gray-600" data-key="nav_home">Inicio</a>
+            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_join">El Club CuidaMiHuella</a>
+            <a href="para-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="nav_shelters">Para Protectoras</a>
+            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_find">Busca a tu Compañero</a>
+            <a href="contacto.html" class="block py-2 text-gray-600" data-key="nav_contact">Contacto</a>
+            <a href="gestion-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="private_access">Acceso Área Privada</a>
             <div class="p-4 border-t">
-                <a href="#" data-key="account_btn_mobile" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder / Mi Cuenta</a>
+                <a href="#" data-key="account_btn" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder</a>
             </div>
         </div>
     </header>
 
-    <main>
+    <main class="flex-grow">
         <!-- Hero Section -->
         <section class="relative w-full bg-gray-900 h-[60vh] min-h-[500px]">
              <!-- Imagen de cabecera: imagen6.jpg -->
              <img src="imagen6.jpg" alt="Refugio colaborador" class="absolute inset-0 w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg" data-key="shelter_hero_title">Colabora con Nosotros</h1>
-                <p data-key="shelter_hero_subtitle" class="max-w-3xl mx-auto text-lg md:text-xl text-white drop-shadow-md mb-8">Descubre cómo CuidaMiHuella puede transformar tu protectora: menos devoluciones, más financiación y adoptantes mejor preparados. A coste cero.</p>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-white drop-shadow-md mb-8" data-key="shelter_hero_subtitle">Descubre cómo CuidaMiHuella puede transformar tu protectora: menos devoluciones, más financiación y adoptantes mejor preparados. A coste cero.</p>
                 <div class="flex space-x-4">
-                    <a href="#colabora" class="btn-primary px-8 py-3 rounded-full font-bold text-lg shadow-lg transform hover:scale-105 transition" data-key="join_btn_hero">Unirse Ahora</a>
-                    <a href="gestion-protectoras.html" class="bg-white text-violet-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 transition" data-key="login_btn_hero">Ya soy Colaborador</a>
+                    <a href="#colabora" class="btn-primary px-8 py-3 rounded-full font-bold text-lg shadow-lg transform hover:scale-105 transition text-center" data-key="join_btn_hero">Unirse Ahora</a>
+                    <a href="gestion-protectoras.html" class="bg-white text-violet-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 transition text-center" data-key="login_btn_hero">Ya soy Colaborador</a>
                 </div>
             </div>
         </section>
@@ -125,7 +162,7 @@
         <section class="py-16 md:py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold" data-key="benefits_title">Adopciones de Calidad, Menos Trabajo</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold" data-key="benefits_title">Adopciones de Calidad, Menos Trabajo para Ti</h2>
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700" data-key="benefits_subtitle">Nuestra plataforma no es solo un escaparate, es un filtro de calidad.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -154,32 +191,56 @@
             <div class="container mx-auto px-4">
                 <div class="max-w-5xl mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden md:flex border border-white">
                     <div class="md:w-1/2 p-8 md:p-12">
-                        <h2 class="text-3xl font-bold mb-4" data-key="form_title">Solicitar Alta</h2>
+                        <!-- CAMBIO: Título actualizado -->
+                        <h2 class="text-3xl font-bold mb-4" data-key="form_title">Unirse ahora</h2>
                         <p class="text-gray-600 mb-8" data-key="form_subtitle">Rellena tus datos. Una vez verificado, te daremos acceso a tu panel privado.</p>
                         
-                        <!-- Formulario con lógica de redirección segura a gestion-protectoras.html -->
+                        <!-- Formulario con lógica de redirección segura -->
                         <form id="solicitudForm" class="space-y-4">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_shelter_name">Nombre de la Protectora</label>
-                                <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none">
+                                <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_contact_name">Persona de Contacto</label>
-                                <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none">
+                                <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_email">Correo Electrónico</label>
-                                <input type="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none">
+                                <input type="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
-                            <div>
+                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_phone">Teléfono (Opcional)</label>
-                                <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none">
+                                <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
+
+                            <!-- NUEVO: Checkbox de Privacidad -->
+                            <div class="flex items-start mt-4">
+                                <div class="flex items-center h-5">
+                                    <input id="privacy" name="privacy" type="checkbox" required class="focus:ring-violet-500 h-4 w-4 text-violet-600 border-gray-300 rounded">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="privacy" class="font-medium text-gray-700">He leído y acepto la <a href="politica-de-privacidad.html" class="text-violet-600 hover:underline">política de privacidad</a>.</label>
+                                </div>
+                            </div>
+
+                            <!-- NUEVO: Simulación Visual de reCAPTCHA -->
+                            <div class="recaptcha-box">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="human_check" name="human_check" required class="recaptcha-checkbox">
+                                    <label for="human_check" class="text-sm text-gray-700 font-medium cursor-pointer">No soy un robot</label>
+                                </div>
+                                <div class="ml-auto flex flex-col items-center justify-center text-xs text-gray-400">
+                                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="w-6 h-6 opacity-70">
+                                    <span style="font-size: 9px;">reCAPTCHA</span>
+                                </div>
+                            </div>
+
                             <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold shadow-lg mt-4 transform hover:-translate-y-1 transition" data-key="form_submit">Enviar Solicitud</button>
                         </form>
                     </div>
                     <div class="md:w-1/2 relative h-64 md:h-auto">
-                        <!-- CAMBIO: Usando imagen8.jpg junto al formulario -->
+                        <!-- Imagen Lateral: imagen8.jpg -->
                         <img src="imagen8.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Equipo refugio" onerror="this.src='https://placehold.co/600x800/ddd6fe/5b21b6?text=Unete+al+Equipo'; this.onerror=null;">
                     </div>
                 </div>
@@ -189,58 +250,101 @@
 
     <footer id="footer" class="border-t py-8 mt-12 text-center text-gray-600">
         <div class="container mx-auto">
-            <p class="font-bold mb-2 text-lg text-violet-800">CuidaMiHuella</p>
-            <div class="space-x-4 text-sm mb-4">
-                <a href="aviso-legal.html" class="hover:text-violet-600 underline">Aviso Legal</a>
-                <a href="politica-de-privacidad.html" class="hover:text-violet-600 underline">Privacidad</a>
-                <a href="politica-de-cookies.html" class="hover:text-violet-600 underline">Cookies</a>
-            </div>
-            <p class="text-xs">© 2025 Todos los derechos reservados.</p>
+            <p class="font-bold mb-2">CuidaMiHuella</p>
+            <div class="space-x-4 text-sm"><a href="aviso-legal.html">Legal</a><a href="politica-de-privacidad.html">Privacidad</a><a href="politica-de-cookies.html">Cookies</a></div>
+            <p class="text-xs mt-4">© 2025 Todos los derechos reservados.</p>
         </div>
     </footer>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Menú móvil
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            if(mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if(mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
-            // Manejo del formulario de solicitud con redirección
-            const form = document.getElementById('solicitudForm');
-            if(form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('¡Solicitud enviada! En breve recibirás tus credenciales.');
-                    // Redirección a la página de gestión
-                    try {
-                        window.location.href = 'gestion-protectoras.html';
-                    } catch(err) {
-                        console.error("Redirection blocked:", err);
-                        alert("Redirección bloqueada. En la web real irías a gestion-protectoras.html");
-                    }
-                });
-            }
+        // Manejo del formulario de solicitud con redirección
+        const form = document.getElementById('solicitudForm');
+        if(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('¡Solicitud enviada! En breve recibirás tus credenciales.');
+                // Redirección segura
+                try {
+                    window.location.href = 'gestion-protectoras.html';
+                } catch(err) {
+                    console.error("Redirection blocked:", err);
+                    alert("Redirección bloqueada. En la web real irías a gestion-protectoras.html");
+                }
+            });
+        }
 
-            // Traducciones (Breve ejemplo para funcionalidad básica)
-            const translations = {
-                "es": { "join_btn_hero": "Unirse Ahora", "login_btn_hero": "Ya soy Colaborador" },
-                "en": { "join_btn_hero": "Join Now", "login_btn_hero": "I'm already a Partner" }
-            };
-            
-            const languageSelect = document.getElementById('languageSelect');
-            if(languageSelect) {
-                languageSelect.addEventListener('change', (e) => {
-                    const lang = e.target.value;
-                    const t = translations[lang] || translations['es'];
-                    // Lógica de traducción completa está en index.html
-                });
-            }
-        });
+        // --- Traducciones ---
+        const translations = {
+            "es": {
+                "nav_home": "Inicio", "nav_join": "El Club CuidaMiHuella", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto", "account_btn": "Acceder", "private_access": "Acceso Área Privada",
+                "shelter_hero_title": "Colabora con Nosotros", "shelter_hero_subtitle": "Descubre cómo CuidaMiHuella puede transformar tu protectora: menos devoluciones, más financiación y adoptantes mejor preparados. A coste cero.",
+                "benefits_title": "Adopciones de Calidad, Menos Trabajo", "benefits_subtitle": "Nuestra plataforma no es solo un escaparate, es un filtro de calidad.",
+                "benefit1_title": "Sin Devoluciones", "benefit1_text": "La 'Experiencia de Acogida' asegura que la adopción es definitiva.",
+                "benefit2_title": "Adoptantes Serios", "benefit2_text": "Usuarios verificados que han pagado una cuota de compromiso.",
+                "benefit3_title": "Financiación Extra", "benefit3_text": "Recibe donativos por cada pack de bienvenida activado.",
+                "form_title": "Unirse ahora", // CAMBIO APLICADO
+                "form_subtitle": "Rellena tus datos. Una vez verificado, te daremos acceso a tu panel privado.",
+                "form_shelter_name": "Nombre de la Protectora", "form_contact_name": "Persona de Contacto", "form_email": "Correo Electrónico", "form_phone": "Teléfono (Opcional)", "form_submit": "Enviar Solicitud",
+                "join_btn_hero": "Unirse Ahora", "login_btn_hero": "Ya soy Colaborador",
+                "footer_slogan": "Cuidamos de su huella.", "footer_nav_title": "Navegación", "footer_legal_title": "Legal", "legal1": "Aviso Legal", "legal2": "Política de Privacidad", "legal3": "Política de Cookies", "footer_help_title": "Ayuda", "help1": "Contacto", "help2": "Preguntas Frecuentes"
+            },
+            "en": {
+                "nav_home": "Home", "nav_join": "The CuidaMiHuella Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact", "account_btn": "Login", "private_access": "Private Area Access",
+                "shelter_hero_title": "Collaborate with Us", "shelter_hero_subtitle": "Discover how CuidaMiHuella can transform your shelter: fewer returns, more funding, and better-prepared adopters. At zero cost.",
+                "benefits_title": "Quality Adoptions, Less Work", "benefits_subtitle": "Our platform isn't just a showcase, it's a quality filter.",
+                "benefit1_title": "No Returns", "benefit1_text": "The 'Fostering Experience' ensures the adoption is definitive.",
+                "benefit2_title": "Serious Adopters", "benefit2_text": "Verified users who have paid a commitment fee.",
+                "benefit3_title": "Extra Funding", "benefit3_text": "Receive donations for every activated welcome pack.",
+                "form_title": "Join Now",
+                "form_subtitle": "Fill in your details. Once verified, we will give you access to your private panel.",
+                "form_shelter_name": "Shelter Name", "form_contact_name": "Contact Person", "form_email": "Email Address", "form_phone": "Phone (Optional)", "form_submit": "Submit Request",
+                "join_btn_hero": "Join Now", "login_btn_hero": "I'm already a Partner",
+                "footer_slogan": "We take care of their pawprint.", "footer_nav_title": "Navigation", "footer_legal_title": "Legal", "legal1": "Legal Notice", "legal2": "Privacy Policy", "legal3": "Cookies Policy", "footer_help_title": "Help", "help1": "Contact", "help2": "FAQ"
+            },
+            // Se mantienen el resto de idiomas con la misma estructura (abreviados para no extender demasiado)
+             "eu": { "nav_home": "Hasiera", "nav_join": "CuidaMiHuella Kluba", "nav_shelters": "Babesleentzat", "nav_find": "Bilatu Laguna", "nav_contact": "Kontaktua", "account_btn": "Sartu", "private_access": "Eremu Pribatua" },
+             "ca": { "nav_home": "Inici", "nav_join": "El Club CuidaMiHuella", "nav_shelters": "Per a Protectores", "nav_find": "Busca el teu Company", "nav_contact": "Contacte", "account_btn": "Accedir", "private_access": "Accés Àrea Privada" },
+             "fr": { "nav_home": "Accueil", "nav_join": "Le Club CuidaMiHuella", "nav_shelters": "Pour les Refuges", "nav_find": "Trouver un Compagnon", "nav_contact": "Contact", "account_btn": "Connexion", "private_access": "Accès Privé" },
+             "de": { "nav_home": "Start", "nav_join": "Der CuidaMiHuella Club", "nav_shelters": "Für Tierheime", "nav_find": "Begleiter finden", "nav_contact": "Kontakt", "account_btn": "Anmelden", "private_access": "Privater Bereich" },
+             "it": { "nav_home": "Inizio", "nav_join": "Il Club CuidaMiHuella", "nav_shelters": "Per i Rifugi", "nav_find": "Trova Compagno", "nav_contact": "Contatto", "account_btn": "Accedi", "private_access": "Area Privata" }
+        };
+
+        // --- Language Switcher Logic ---
+        const savedLang = localStorage.getItem('selectedLanguage') || 'es';
+        const languageSelect = document.getElementById('languageSelect');
+        
+        if(languageSelect) languageSelect.value = savedLang;
+
+        const changeLanguage = (lang) => {
+            const selectedLang = translations[lang] ? lang : 'es';
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[selectedLang][key]) {
+                    el.innerHTML = translations[selectedLang][key];
+                } else if (translations['es'][key]) {
+                     el.innerHTML = translations['es'][key]; // Fallback
+                }
+            });
+            localStorage.setItem('selectedLanguage', selectedLang);
+            if(languageSelect) languageSelect.value = selectedLang;
+        };
+
+        if(languageSelect) {
+            languageSelect.addEventListener('change', (e) => changeLanguage(e.target.value));
+        }
+        
+        changeLanguage(savedLang);
+    });
     </script>
 </body>
 </html>
