@@ -4,251 +4,213 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaMiHuella - Adopción Responsable</title>
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#8b5cf6',
-                        'primary-hover': '#7c3aed',
-                        'primary-dark': '#5b21b6',
-                    }
-                }
-            }
-        }
-    </script>
-
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --primary-color: #8b5cf6; /* violet-500 */
+            --primary-hover: #7c3aed; /* violet-600 */
+            --text-dark: #5b21b6;     /* violet-800 - para títulos */
+            --text-medium: #374151;   /* gray-700 */
+            --footer-bg: #eff6ff;     /* blue-50 */
+        }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(rgba(237, 233, 254, 0.92), rgba(237, 233, 254, 0.92)), 
-                        url('imagen2.jpg') center/cover fixed no-repeat;
-            min-height: 100vh;
+            color: var(--text-medium);
+            /* FONDO HUELLAS */
+            background-image: linear-gradient(rgba(237, 233, 254, 0.85), rgba(237, 233, 254, 0.85)), url('imagen2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-h-screen;
             display: flex;
             flex-direction: column;
         }
+        h2.text-gray-800, h3.text-2xl, h2[data-key] { color: var(--text-dark); }
 
-        /* Subrayado elegante en menú desktop */
-        header nav a {
-            position: relative;
-            padding-bottom: 4px;
-        }
+        /* --- Header y Navegación --- */
+        header nav a { position: relative; padding-bottom: 4px; }
+        header nav a:hover { color: var(--primary-color); }
         header nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px; left: 0;
-            width: 0; height: 3px;
-            background: #8b5cf6;
-            border-radius: 2px;
-            transition: width 0.3s ease;
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background-color: var(--primary-color);
+            transition: width 0.3s ease-in-out;
         }
         header nav a:hover::after { width: 100%; }
-        header nav a:hover { color: #8b5cf6 !important; }
+
+        /* --- Botones y Enlaces --- */
+        .bg-blue-600 { background-color: var(--primary-color) !important; }
+        .bg-blue-600:hover { background-color: var(--primary-hover) !important; }
+        .text-blue-600 { color: var(--primary-color) !important; }
+        .hover\:text-blue-600:hover { color: var(--primary-hover) !important; }
+        .border-blue-600 { border-color: var(--primary-color) !important; }
+        .hover\:bg-blue-700:hover { background-color: var(--primary-hover) !important; }
+        .text-violet-600 { color: var(--primary-color); }
+        .border-violet-600 { border-color: var(--primary-color); }
+        .hover\:bg-violet-600:hover { background-color: var(--primary-color); }
+        .text-violet-500 { color: var(--primary-color); }
+        .text-violet-800 { color: var(--text-dark); }
+        .focus\:ring-violet-200:focus { --tw-ring-color: #ddd6fe; } 
+        .focus\:border-violet-300:focus { border-color: #c4b5fd; } 
+
+        /* --- Secciones Específicas --- */
+        main { flex-grow: 1; display: flex; flex-direction: column; }
+        
+        #footer { background-color: white; } 
+        footer h3 { color: var(--text-dark); }
+        footer a { color: var(--primary-color); }
+        footer a:hover { color: var(--primary-hover); }
+        footer .social-links a { color: var(--text-medium); }
+        footer .social-links a:hover { color: var(--primary-color); }
+        .border-gray-200 { border-color: #e5e7eb; }
+
+        /* Iconos */
+        .fa-heart, .fa-users, .fa-hand-holding-heart, .fa-home, .fa-medal, .fa-star, .fa-user-friends {
+            color: var(--primary-color);
+        }
     </style>
 </head>
-<body class="text-gray-700">
+<body class="bg-gray-50">
 
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
+    <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-3 text-2xl font-black">
-                    <i class="fas fa-paw text-4xl text-primary"></i>
-                    <span class="text-primary-dark">CuidaMiHuella</span>
+                <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
+                    <i class="fas fa-paw text-violet-500"></i>
+                    <span>CuidaMiHuella</span>
                 </a>
                 
-                <!-- Menú desktop -->
-                <nav class="hidden md:flex space-x-8 text-lg font-medium">
-                    <a href="#hero" data-key="nav_home" class="hover:text-primary transition">Inicio</a>
-                    <a href="unete-al-club.html" data-key="nav_join" class="hover:text-primary transition">El Club</a>
-                    <a href="para-protectoras.html" data-key="nav_shelters" class="hover:text-primary transition">Para Protectoras</a>
-                    <a href="unete-al-club.html" data-key="nav_find" class="hover:text-primary transition">Busca Compañero</a>
-                    <a href="contacto.html" data-key="nav_contact" class="hover:text-primary transition">Contacto</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#hero" data-key="nav_home" class="text-violet-600 font-bold">Inicio</a>
+                    <a href="unete-al-club.html" data-key="nav_join" class="text-gray-600 font-medium hover:text-violet-600 transition">El Club CuidaMiHuella</a>
+                    <a href="para-protectoras.html" data-key="nav_shelters" class="text-gray-600 font-medium hover:text-violet-600 transition">Para Protectoras</a>
+                    <a href="unete-al-club.html" data-key="nav_find" class="text-gray-600 font-medium hover:text-violet-600 transition">Busca a tu Compañero</a>
+                    <a href="contacto.html" data-key="nav_contact" class="text-gray-600 font-medium hover:text-violet-600 transition">Contacto</a>
                 </nav>
                 
-                <!-- Selector de idioma + botón cuenta + menú móvil -->
                 <div class="flex items-center space-x-4">
-                    <!-- Botones de idioma con banderas (¡preciosos!) -->
-                    <div class="flex bg-gray-100 rounded-xl p-1 shadow-inner">
-                        <button data-lang="es" class="lang-btn active-lang flex items-center gap-2 px-4 py-2 rounded-lg transition font-medium">
-                            <span class="text-xl">ES</span>
-                        </button>
-                        <button data-lang="en" class="lang-btn flex items-center gap-2 px-4 py-2 rounded-lg transition font-medium hover:bg-white">
-                            <span class="text-xl">EN</span>
-                        </button>
-                        <button data-lang="eu" class="lang-btn flex items-center gap-2 px-4 py-2 rounded-lg transition font-medium hover:bg-white">
-                            <span class="text-xl">EU</span>
-                        </button>
-                        <button data-lang="ca" class="lang-btn flex items-center gap-2 px-4 py-2 rounded-lg transition font-medium hover:bg-white">
-                            <span class="text-xl">CA</span>
-                        </button>
-                        <button data-lang="fr" class="lang-btn flex items-center gap-2 px-4 py-2 rounded-lg transition font-medium hover:bg-white">
-                            <span class="text-xl">FR</span>
-                        </button>
+                    <div class="language-selector">
+                        <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 bg-white">
+                            <option value="es">🇪🇸 ES</option>
+                            <option value="eu">🏴 EU</option>
+                            <option value="ca">🔵 CA</option>
+                            <option value="en">🇬🇧 EN</option>
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="de">🇩🇪 DE</option>
+                            <option value="it">🇮🇹 IT</option>
+                        </select>
                     </div>
-
-                    <a href="#" data-key="account_btn" class="hidden sm:block px-6 py-2.5 border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition">
-                        Mi Cuenta
-                    </a>
-                    
-                    <button id="mobileMenuBtn" class="md:hidden text-3xl text-gray-700">
+                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder / Mi Cuenta</a>
+                    <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- Menú móvil -->
+        <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-            <div class="py-4 space-y-1">
-                <a href="#hero" data-key="nav_home" class="block py-3 px-6 font-bold bg-gray-50">Inicio</a>
-                <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-6 hover:bg-gray-50">El Club</a>
-                <a href="para-protectoras.html" data-key="nav_shelters" class="block py-3 px-6 hover:bg-gray-50">Para Protectoras</a>
-                <a href="unete-al-club.html" data-key="nav_find" class="block py-3 px-6 hover:bg-gray-50">Busca Compañero</a>
-                <a href="contacto.html" data-key="nav_contact" class="block py-3 px-6 hover:bg-gray-50">Contacto</a>
-            </div>
+            <a href="#hero" data-key="nav_home" class="block py-3 px-4 text-violet-600 font-bold bg-gray-50">Inicio</a>
+            <a href="unete-al-club.html" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">El Club CuidaMiHuella</a>
+            <a href="para-protectoras.html" data-key="nav_shelters" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Para Protectoras</a>
+            <a href="unete-al-club.html" data-key="nav_find" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Busca a tu Compañero</a>
+            <a href="contacto.html" data-key="nav_contact" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Contacto</a>
             <div class="p-4 border-t">
-                <a href="#" data-key="account_btn_mobile" class="block text-center bg-primary text-white py-3 rounded-lg font-bold">
-                    Mi Cuenta
-                </a>
+                <a href="#" data-key="account_btn_mobile" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder / Mi Cuenta</a>
             </div>
         </div>
     </header>
 
-    <!-- HERO 100% PANTALLA COMPLETA - IMAGEN SIN RECORTES -->
-    <section id="hero" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <!-- Imagen que se adapta perfectamente sin cortar nada -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('imagen1.jpg');"></div>
-        
-        <!-- Degradado oscuro para mejor legibilidad -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
-        
-        <!-- Contenido centrado -->
-        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
-            <h1 data-key="hero_title" class="text-5xl sm:text-6xl md:text-7xl font-black text-white leading-tight mb-6 drop-shadow-2xl">
-                La Adopción ha Cambiado.<br>
-                <span class="text-violet-400">Para Siempre.</span>
-            </h1>
-            <p data-key="hero_subtitle" class="text-lg sm:text-xl md:text-2xl text-white/90 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
-                Bienvenido a CuidaMiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="unete-al-club.html" data-key="hero_btn1" class="bg-white text-primary px-10 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-2xl">
-                    Descubre el Club
-                </a>
-                <a href="unete-al-club.html" data-key="hero_btn2" class="border-4 border-white text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-white hover:text-primary transition transform hover:scale-105 shadow-2xl">
-                    Busca a tu Compañero
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-white mt-auto border-t">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-                <div class="col-span-2 md:col-span-1">
-                    <h3 class="text-3xl font-black mb-4 text-primary-dark">CuidaMiHuella</h3>
-                    <p data-key="footer_slogan" class="mb-6 text-gray-600 text-lg">Cuidamos de su huella.</p>
-                    <div class="flex space-x-6 text-2xl">
-                        <a href="#" class="hover:text-primary transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 data-key="footer_nav_title" class="font-bold uppercase tracking-wider mb-4 text-primary">Navegación</h4>
-                    <ul class="space-y-3">
-                        <li><a href="index.html" data-key="nav_home" class="hover:text-primary transition">Inicio</a></li>
-                        <li><a href="unete-al-club.html" data-key="nav_join" class="hover:text-primary transition">El Club</a></li>
-                        <li><a href="para-protectoras.html" data-key="nav_shelters" class="hover:text-primary transition">Para Protectoras</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 data-key="footer_legal_title" class="font-bold uppercase tracking-wider mb-4 text-primary">Legal</h4>
-                    <ul class="space-y-3">
-                        <li><a href="aviso-legal.html" data-key="legal1" class="hover:text-primary transition">Aviso Legal</a></li>
-                        <li><a href="politica-de-privacidad.html" data-key="legal2" class="hover:text-primary transition">Privacidad</a></li>
-                        <li><a href="politica-de-cookies.html" data-key="legal3" class="hover:text-primary transition">Cookies</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 data-key="footer_help_title" class="font-bold uppercase tracking-wider mb-4 text-primary">Ayuda</h4>
-                    <ul class="space-y-3">
-                        <li><a href="contacto.html" data-key="help1" class="hover:text-primary transition">Contacto</a></li>
-                        <li><a href="#" data-key="help2" class="hover:text-primary transition">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
+    <main>
+        <!-- Hero Section -->
+        <!-- CORRECCIÓN: Quitamos h-screen y dejamos que la imagen defina la altura -->
+        <section id="hero" class="relative w-full">
+            <!-- Imagen 1: Se mostrará entera sin recortes -->
+            <img src="imagen1.jpg" alt="Familia feliz CuidaMiHuella" class="w-full h-auto block relative z-0">
             
-            <div class="border-t pt-6 text-center text-sm text-gray-500">
-                <span data-key="copyright">© 2025 CuidaMiHuella. Todos los derechos reservados.</span>
+            <!-- Capa oscura para el texto -->
+            <div class="absolute inset-0 bg-black/30 z-10"></div>
+
+            <!-- Contenido centrado -->
+            <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
+                <h1 data-key="hero_title" class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-white drop-shadow-lg">La Adopción ha Cambiado. Para Siempre.</h1>
+                <p data-key="hero_subtitle" class="max-w-3xl text-base md:text-xl mb-8 font-light text-white drop-shadow-md">Bienvenido a CuidaMiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="unete-al-club.html" data-key="hero_btn1" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold shadow-lg hover:bg-gray-100 transition transform hover:scale-105 text-sm md:text-base">Descubre el Club</a>
+                    <a href="unete-al-club.html" data-key="hero_btn2" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-600 transition transform hover:scale-105 shadow-lg text-sm md:text-base">Busca a tu Compañero</a>
+                </div>
             </div>
+        </section>
+    </main>
+
+    <footer id="footer" class="py-12 text-center text-gray-600 border-t">
+        <div class="container mx-auto px-4">
+             <p class="mb-4 font-bold text-violet-800">CuidaMiHuella</p>
+             <div class="space-x-4 text-sm mb-4">
+                <a href="aviso-legal.html" class="hover:text-violet-600 underline">Aviso Legal</a>
+                <a href="politica-de-privacidad.html" class="hover:text-violet-600 underline">Privacidad</a>
+                <a href="politica-de-cookies.html" class="hover:text-violet-600 underline">Cookies</a>
+             </div>
+             <p class="text-xs">© 2025 Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Menú móvil
-            document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
-                document.getElementById('mobileMenu').classList.toggle('hidden');
-            });
-
-            // Traducciones completas
-            const translations = {
-                es: { nav_home: "Inicio", nav_join: "El Club", nav_shelters: "Para Protectoras", nav_find: "Busca Compañero", nav_contact: "Contacto", account_btn: "Mi Cuenta", account_btn_mobile: "Mi Cuenta", hero_title: "La Adopción ha Cambiado.<br><span class='text-violet-400'>Para Siempre.</span>", hero_subtitle: "Bienvenido a CuidaMiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.", hero_btn1: "Descubre el Club", hero_btn2: "Busca a tu Compañero", footer_slogan: "Cuidamos de su huella.", footer_nav_title: "Navegación", footer_legal_title: "Legal", footer_help_title: "Ayuda", legal1: "Aviso Legal", legal2: "Política de Privacidad", legal3: "Política de Cookies", help1: "Contacto", help2: "Preguntas Frecuentes", copyright: "© 2025 CuidaMiHuella. Todos los derechos reservados." },
-                en: { nav_home: "Home", nav_join: "The Club", nav_shelters: "For Shelters", nav_find: "Find Companion", nav_contact: "Contact", account_btn: "My Account", account_btn_mobile: "My Account", hero_title: "Adoption Has Changed.<br><span class='text-violet-400'>Forever.</span>", hero_subtitle: "Welcome to CuidaMiHuella, the club that turns fear of adopting into certainty of finding your perfect companion.", hero_btn1: "Discover the Club", hero_btn2: "Find Your Companion", footer_slogan: "We take care of their pawprint.", footer_nav_title: "Navigation", footer_legal_title: "Legal", footer_help_title: "Help", legal1: "Legal Notice", legal2: "Privacy Policy", legal3: "Cookies Policy", help1: "Contact", help2: "FAQ", copyright: "© 2025 CuidaMiHuella. All rights reserved." },
-                eu: { nav_home: "Hasiera", nav_join: "Kluba", nav_shelters: "Babesleentzat", nav_find: "Laguna Bilatu", nav_contact: "Kontaktua", account_btn: "Nire Kontua", hero_title: "Adopzioa Aldatu Da.", footer_slogan: "Haien aztarna zaintzen dugu.", copyright: "© 2025 CuidaMiHuella. Eskubide guztiak erreserbatuta." },
-                ca: { nav_home: "Inici", nav_join: "El Club", nav_shelters: "Per a Protectores", nav_find: "Cerca Company", nav_contact: "Contacte", account_btn: "El Meu Compte", hero_title: "L'Adopció ha Canviat.", footer_slogan: "Cuidem de la seva petjada.", copyright: "© 2025 CuidaMiHuella. Tots els drets reservats." },
-                fr: { nav_home: "Accueil", nav_join: "Le Club", nav_shelters: "Pour les Refuges", nav_find: "Trouver Compagnon", nav_contact: "Contact", account_btn: "Mon Compte", hero_title: "L'Adoption a Changé. Pour Toujours.", footer_slogan: "Nous prenons soin de leur empreinte.", copyright: "© 2025 CuidaMiHuella. Tous droits réservés." }
-            };
-
-            // Cambio de idioma con botones bonitos
-            const savedLang = localStorage.getItem('lang') || 'es';
-
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if (btn.dataset.lang === savedLang) {
-                    btn.classList.add('active-lang', 'bg-white', 'shadow-md');
-                }
-                btn.addEventListener('click', () => {
-                    const lang = btn.dataset.lang;
-                    
-                    // Cambiar estilo activo
-                    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active-lang', 'bg-white', 'shadow-md'));
-                    btn.classList.add('active-lang', 'bg-white', 'shadow-md');
-                    
-                    // Traducir
-                    document.querySelectorAll('[data-key]').forEach(el => {
-                        const key = el.dataset.key;
-                        if (translations[lang] && translations[lang][key]) {
-                            el.innerHTML = translations[lang][key];
-                        }
-                    });
-                    
-                    localStorage.setItem('lang', lang);
-                });
-            });
-
-            // Cargar idioma guardado al inicio
-            if (savedLang && savedLang !== 'es') {
-                document.querySelector(`[data-lang="${savedLang}"]`)?.click();
-            }
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
         });
+
+        // --- Traducciones Object ---
+        const translations = {
+            "es": {
+                "nav_home": "Inicio", "nav_join": "El Club CuidaMiHuella", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto", "account_btn": "Acceder / Mi Cuenta", "account_btn_mobile": "Acceder / Mi Cuenta",
+                "hero_title": "La Adopción ha Cambiado. Para Siempre.", "hero_subtitle": "Bienvenido a CuidaMiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal.", "hero_btn1": "Descubre el Club", "hero_btn2": "Busca a tu Compañero"
+            },
+            "en": {
+                "nav_home": "Home", "nav_join": "The CuidaMiHuella Club", "nav_shelters": "For Shelters", "nav_find": "Find your Companion", "nav_contact": "Contact", "account_btn": "Login / My Account", "account_btn_mobile": "Login / My Account",
+                "hero_title": "Adoption Has Changed. Forever.", "hero_subtitle": "Welcome to CuidaMiHuella, the club that transforms the fear of adopting into the certainty of having found your ideal companion.", "hero_btn1": "Discover the Club", "hero_btn2": "Find Your Companion"
+            },
+             "eu": { "nav_home": "Hasiera", "nav_join": "CuidaMiHuella Kluba", "nav_shelters": "Babesleentzat", "nav_find": "Bilatu Laguna", "nav_contact": "Kontaktua", "account_btn": "Sartu / Nire Kontua", "hero_title": "Adopzioa Aldatu Da." },
+             "ca": { "nav_home": "Inici", "nav_join": "El Club CuidaMiHuella", "nav_shelters": "Per a Protectores", "nav_find": "Busca el teu Company", "nav_contact": "Contacte", "account_btn": "Accedir / El Meu Compte", "hero_title": "L'Adopció ha Canviat." },
+             "fr": { "nav_home": "Accueil", "nav_join": "Le Club CuidaMiHuella", "nav_shelters": "Pour les Refuges", "nav_find": "Trouver un Compagnon", "nav_contact": "Contact", "account_btn": "Connexion", "hero_title": "L'Adoption a Changé." },
+             "de": { "nav_home": "Start", "nav_join": "Der CuidaMiHuella Club", "nav_shelters": "Für Tierheime", "nav_find": "Begleiter finden", "nav_contact": "Kontakt", "account_btn": "Anmelden", "hero_title": "Adoption hat sich verändert." },
+             "it": { "nav_home": "Inizio", "nav_join": "Il Club CuidaMiHuella", "nav_shelters": "Per i Rifugi", "nav_find": "Trova Compagno", "nav_contact": "Contatto", "account_btn": "Accedi", "hero_title": "L'Adozione è Cambiata." }
+        };
+
+        // --- Language Switcher Logic ---
+        const savedLang = localStorage.getItem('selectedLanguage') || 'es';
+        const languageSelect = document.getElementById('languageSelect');
+        
+        if(languageSelect) languageSelect.value = savedLang;
+
+        const changeLanguage = (lang) => {
+            const selectedLang = translations[lang] ? lang : 'es';
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[selectedLang][key]) {
+                    el.innerHTML = translations[selectedLang][key];
+                } else if (translations['es'][key]) {
+                     el.innerHTML = translations['es'][key]; 
+                }
+            });
+            localStorage.setItem('selectedLanguage', selectedLang);
+            if(languageSelect) languageSelect.value = selectedLang;
+        };
+
+        if(languageSelect) {
+            languageSelect.addEventListener('change', (e) => changeLanguage(e.target.value));
+        }
+        
+        changeLanguage(savedLang);
     </script>
 </body>
 </html>
