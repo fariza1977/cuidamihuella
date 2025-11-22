@@ -50,7 +50,7 @@
         
         /* Efecto Hover Tarjetas */
         .card-hover { transition: all 0.3s ease-in-out; }
-        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.15); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2); }
         
         /* Iconos */
         .fa-shield-heart, .fa-users-viewfinder, .fa-hand-holding-dollar, .fa-hand-holding-heart, .fa-home, .fa-medal { color: var(--primary-color); }
@@ -59,9 +59,18 @@
         #footer { background-color: white; margin-top: auto; }
         .text-violet-600 { color: var(--primary-color); }
 
-        /* Ajuste Hero para imagen completa */
-        .hero-image-container { position: relative; width: 100%; height: auto; overflow: hidden; }
-        .hero-image-container img { width: 100%; height: auto; display: block; object-fit: contain; }
+        /* AJUSTE IMAGEN HERO (Sin cortes) */
+        .hero-full {
+            position: relative;
+            width: 100%;
+            height: auto; /* Altura automática según la imagen */
+            overflow: hidden;
+        }
+        .hero-full img {
+            width: 100%;
+            height: auto; /* Mantiene proporción original */
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +85,8 @@
                 <nav class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_home">Inicio</a>
                     <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_join">El Club CuidaMiHuella</a>
+                    <a href="para-protectoras.html" class="text-violet-600 font-bold border-b-2 border-violet-600 transition" data-key="nav_shelters">Para Protectoras</a>
+                    <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_find">Busca a tu Compañero</a>
                     <a href="contacto.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_contact">Contacto</a>
                     <!-- Enlace al panel de gestión -->
                     <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300 flex items-center">
@@ -95,6 +106,7 @@
                             <option value="it">🇮🇹 IT</option>
                         </select>
                     </div>
+                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder</a>
                     <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -105,14 +117,19 @@
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2">
             <a href="index.html" class="block py-2 text-gray-600" data-key="nav_home">Inicio</a>
             <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_join">El Club CuidaMiHuella</a>
+            <a href="para-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="nav_shelters">Para Protectoras</a>
+            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_find">Busca a tu Compañero</a>
             <a href="contacto.html" class="block py-2 text-gray-600" data-key="nav_contact">Contacto</a>
             <a href="gestion-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="private_access">Acceso Área Privada</a>
+            <div class="p-4 border-t">
+                <a href="#" data-key="account_btn" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder</a>
+            </div>
         </div>
     </header>
 
     <main class="flex-grow">
-        <!-- Hero Section -->
-        <section class="hero-image-container relative">
+        <!-- Hero Section AJUSTADO -->
+        <section class="hero-full relative">
              <!-- Imagen de cabecera: imagen6.jpg SIN CORTES -->
              <img src="imagen6.jpg" alt="Refugio colaborador">
              
@@ -140,7 +157,7 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     
                     <!-- Tarjeta 1: Sin Devoluciones (Pastel Rosa) -->
-                    <div class="text-center p-8 card-hover bg-pink-50 rounded-2xl shadow-xl border border-pink-100">
+                    <div class="text-center p-8 card-hover bg-pink-50/90 backdrop-blur-sm rounded-2xl shadow-xl border border-pink-100">
                         <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
                             <i class="fas fa-shield-heart text-3xl text-pink-500"></i>
                         </div>
@@ -151,7 +168,7 @@
                     </div>
 
                     <!-- Tarjeta 2: Adoptantes Serios (Pastel Azul/Violeta) -->
-                    <div class="text-center p-8 card-hover bg-violet-50 rounded-2xl shadow-xl border border-violet-100">
+                    <div class="text-center p-8 card-hover bg-violet-50/90 backdrop-blur-sm rounded-2xl shadow-xl border border-violet-100">
                         <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
                             <i class="fas fa-users-viewfinder text-3xl text-violet-500"></i>
                         </div>
@@ -162,7 +179,7 @@
                     </div>
 
                     <!-- Tarjeta 3: Financiación Extra (Pastel Azul) -->
-                    <div class="text-center p-8 card-hover bg-blue-50 rounded-2xl shadow-xl border border-blue-100">
+                    <div class="text-center p-8 card-hover bg-blue-50/90 backdrop-blur-sm rounded-2xl shadow-xl border border-blue-100">
                         <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
                             <i class="fas fa-hand-holding-dollar text-3xl text-blue-500"></i>
                         </div>
@@ -184,7 +201,7 @@
                         <h2 class="text-3xl font-bold mb-4" data-key="form_title">Unirse ahora</h2>
                         <p class="text-gray-600 mb-8" data-key="form_subtitle">Rellena tus datos. Una vez verificado, te daremos acceso a tu panel privado.</p>
                         
-                        <!-- Formulario -->
+                        <!-- Formulario con lógica de redirección segura -->
                         <form id="solicitudForm" class="space-y-4">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_shelter_name">Nombre de la Protectora</label>
@@ -202,8 +219,8 @@
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_phone">Teléfono (Opcional)</label>
                                 <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
-
-                            <!-- Checkbox de Privacidad -->
+                            
+                             <!-- Checkbox de Privacidad -->
                             <div class="flex items-start mt-4">
                                 <div class="flex items-center h-5">
                                     <input id="privacy" name="privacy" type="checkbox" required class="focus:ring-violet-500 h-4 w-4 text-violet-600 border-gray-300 rounded">
@@ -214,13 +231,13 @@
                             </div>
 
                             <!-- Simulación Visual de reCAPTCHA -->
-                            <div class="recaptcha-box">
+                            <div class="flex items-center p-3 bg-gray-50 border rounded-md mt-4 w-max shadow-sm">
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="human_check" name="human_check" required class="recaptcha-checkbox">
-                                    <label for="human_check" class="text-sm text-gray-700 font-medium cursor-pointer">No soy un robot</label>
+                                    <input type="checkbox" id="human_check" name="human_check" required class="w-6 h-6 border-gray-300 rounded focus:ring-violet-500 cursor-pointer">
+                                    <label for="human_check" class="ml-2 text-sm text-gray-700 font-medium cursor-pointer">No soy un robot</label>
                                 </div>
-                                <div class="ml-auto flex flex-col items-center justify-center text-xs text-gray-400">
-                                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="w-6 h-6 opacity-70">
+                                <div class="ml-6 flex flex-col items-center justify-center text-xs text-gray-400">
+                                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="w-8 h-8 opacity-70">
                                     <span style="font-size: 9px;">reCAPTCHA</span>
                                 </div>
                             </div>
