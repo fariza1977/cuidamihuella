@@ -6,151 +6,118 @@
     <title>Busca a tu Compañero - CuidaMiHuella</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(rgba(237, 233, 254, 0.9), rgba(237, 233, 254, 0.9)), url('imagen2.jpg') center/cover fixed;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .card-animal:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(139,92,246,0.25); transition: all 0.3s; }
-        .tag { padding: 0.35rem 0.8rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
-        .tag-age { background:#dbeafe; color:#1e40af; }
-        .tag-health { background:#dcfce7; color:#166534; }
+        body {font-family:'Inter',sans-serif;background:linear-gradient(rgba(237,233,254,0.94),rgba(237,233,254,0.94)),url('imagen2.jpg') center/cover fixed;min-height:100vh;margin:0;display:flex;flex-direction:column;}
+        .card:hover{transform:translateY(-12px);box-shadow:0 25px 50px rgba(139,92,246,0.35);transition:all .4s;}
+        .tag{padding:6px 14px;border-radius:999px;font-weight:700;font-size:13px;}
+        .tag-age{background:#dbeafe;color:#1e40af;}
+        .tag-health{background:#dcfce7;color:#166534;}
     </style>
 </head>
 <body class="text-gray-700">
 
     <!-- HEADER -->
-    <header class="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 text-2xl font-bold text-violet-800">
+    <header class="bg-white/95 backdrop-blur-lg shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 text-3xl font-black text-violet-800">
                 <i class="fas fa-paw text-violet-600"></i> CuidaMiHuella
             </a>
-            <nav class="hidden md:flex gap-8">
-                <a href="index.html" class="hover:text-violet-600 font-medium">Inicio</a>
-                <a href="unete-al-club.html" class="hover:text-violet-600 font-medium">El Club</a>
-                <a href="para-protectoras.html" class="hover:text-violet-600 font-medium">Para Protectoras</a>
-                <a href="busca-companero.html" class="text-violet-600 font-bold border-b-4 border-violet-600 pb-1">Busca a tu Compañero</a>
-                <a href="contacto.html" class="hover:text-violet-600 font-medium">Contacto</a>
+            <nav class="hidden md:flex gap-10 text-lg font-semibold">
+                <a href="index.html" class="hover:text-violet-600">Inicio</a>
+                <a href="unete-al-club.html" class="hover:text-violet-600">El Club</a>
+                <a href="para-protectoras.html" class="hover:text-violet-600">Para Protectoras</a>
+                <a href="busca-companero.html" class="text-violet-700 font-black border-b-4 border-violet-700 pb-1">Busca a tu Compañero</a>
+                <a href="contacto.html" class="hover:text-violet-600">Contacto</a>
             </nav>
-            <button id="mobileMenuBtn" class="md:hidden text-3xl"><i class="fas fa-bars"></i></button>
+            <button id="menuBtn" class="md:hidden text-3xl"><i class="fas fa-bars"></i></button>
         </div>
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-            <a href="index.html" class="block py-3 px-6 hover:bg-violet-50">Inicio</a>
-            <a href="busca-companero.html" class="block py-3 px-6 bg-violet-50 font-bold text-violet-600">Busca a tu Compañero</a>
-            <a href="contacto.html" class="block py-3 px-6 hover:bg-violet-50">Contacto</a>
+        <div id="mobileNav" class="hidden md:hidden bg-white border-t">
+            <a href="busca-companero.html" class="block py-4 px-8 bg-violet-100 font-bold text-violet-700 text-center text-xl">Busca a tu Compañero</a>
         </div>
     </header>
 
-    <!-- MAIN -->
-    <main class="flex-1 py-12">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-violet-900 mb-4">
-                Encuentra a tu Compañero Ideal
-            </h1>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-                Estos son los animales que esperan una segunda oportunidad con todo el cariño del mundo.
-            </p>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-1 container mx-auto px-6 py-16 text-center">
+        <h1 class="text-5xl md:text-6xl font-black text-violet-900 mb-6">¡Encuentra a tu mejor amigo!</h1>
+        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">Todos estos peludos están deseando un hogar lleno de amor. ¡Elige al que te robe el corazón!</p>
 
-            <!-- FILTROS -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button class="filter-btn px-8 py-3 rounded-full font-bold bg-violet-600 text-white shadow-lg">Todos</button>
-                <button class="filter-btn px-8 py-3 rounded-full font-medium bg-white border-2 border-gray-300 hover:border-violet-400">Perros</button>
-                <button class="filter-btn px-8 py-3 rounded-full font-medium bg-white border-2 border-gray-300 hover:border-violet-400">Gatos</button>
-                <button class="filter-btn px-8 py-3 rounded-full font-medium bg-white border-2 border-gray-300 hover:border-violet-400">Cachorros</button>
-            </div>
+        <!-- FILTROS -->
+        <div class="flex flex-wrap justify-center gap-5 mb-16">
+            <button class="filter px-10 py-4 rounded-full font-bold bg-violet-600 text-white shadow-xl">Todos</button>
+            <button class="filter px-10 py-4 rounded-full font-bold bg-white border-2 border-gray-400 hover:border-violet-600">Perros</button>
+            <button class="filter px-10 py-4 rounded-full font-bold bg-white border-2 border-gray-400 hover:border-violet-600">Gatos</button>
+            <button class="filter px-10 py-4 rounded-full font-bold bg-white border-2 border-gray-400 hover:border-violet-600">Cachorros</button>
+        </div>
 
-            <!-- GRID -->
-            <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Aquí se cargan los animales con JS -->
-            </div>
+        <!-- GRID DE ANIMALES -->
+        <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            <!-- Se llenan con JavaScript -->
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-white py-8 text-center text-sm text-gray-600 border-t">
-        © 2025 CuidaMiHuella – Todos los derechos reservados
+    <footer class="bg-white py-8 text-center border-t">
+        <p class="text-gray-600">© 2025 CuidaMiHuella – Con amor para los peludos</p>
     </footer>
 
     <!-- SCRIPT 100% FUNCIONAL -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const grid = document.getElementById("grid");
-            const filterBtns = document.querySelectorAll(".filter-btn");
-            const mobileBtn = document.getElementById("mobileMenuBtn");
-            const mobileMenu = document.getElementById("mobileMenu");
+            const filters = document.querySelectorAll(".filter");
+            const menuBtn = document.getElementById("menuBtn");
+            const mobileNav = document.getElementById("mobileNav");
 
-            // Menú móvil
-            mobileBtn.onclick = () => mobileMenu.classList.toggle("hidden");
+            menuBtn.onclick = () => mobileNav.classList.toggle("hidden");
 
-            // Datos (localStorage o mock)
-            let animals = JSON.parse(localStorage.getItem("ch_animals")) || [
-                {name:"Bruno", species:"perro", breed:"Mestizo", age:"2 años", health:"Vacunado", desc:"Pura energía y amor. Ideal para familias activas.", photo:"https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600"},
-                {name:"Mía", species:"gato", breed:"Europeo", age:"5 meses", health:"Desparasitada", desc:"Ronroneadora y muy mimosa. Le encanta el sol.", photo:"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"},
-                {name:"Rocky", species:"perro", breed:"Pastor Alemán", age:"5 años", health:"Esterilizado", desc:"Fiel y protector. Un gran compañero.", photo:"https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=600"},
-                {name:"Lola", species:"perro", breed:"Podenco", age:"1 año", health:"Sana", desc:"Tímida al inicio, luego muy cariñosa.", photo:"https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600"},
-                {name:"Nieve", species:"gato", breed:"Persa", age:"3 años", health:"Vacunada", desc:"Elegante y tranquila. Perfecta para hogares relajados.", photo:"https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=600"},
-                {name:"Max", species:"perro", breed:"Labrador", age:"8 meses", health:"Cachorro sano", desc:"¡Un torbellino de alegría!", photo:"https://images.unsplash.com/photo-1605639156481-244775d6f803?w=600"}
+            // Animales (mock si no hay datos)
+            const animals = [
+                {name:"Bruno",species:"perro",breed:"Mestizo",age:"2 años",health:"Vacunado",desc:"Súper juguetón y cariñoso",photo:"https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600"},
+                {name:"Mía",species:"gato",breed:"Europeo",age:"6 meses",health:"Desparasitada",desc:"Ronroneadora profesional",photo:"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"},
+                {name:"Rocky",species:"perro",breed:"Pastor Alemán",age:"4 años",health:"Esterilizado",desc:"Fiel y protector",photo:"https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=600"},
+                {name:"Lola",species:"perro",breed:"Podenco",age:"1 año",health:"Sana",desc:"Tímida pero muy dulce",photo:"https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600"},
+                {name:"Nieve",species:"gato",breed:"Persa",age:"3 años",health:"Vacunada",desc:"Elegante y tranquila",photo:"https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=600"},
+                {name:"Max",species:"perro",breed:"Labrador",age:"9 meses",health:"Cachorro sano",desc:"¡Puro amor en movimiento!",photo:"https://images.unsplash.com/photo-1605639156481-244775d6f803?w=600"}
             ];
 
-            // Renderizar
-            function mostrar(animales) {
-                grid.innerHTML = animales.length === 0 
-                    ? `<p class="col-span-4 text-center text-xl text-gray-500 py-20">No hay animales con este filtro aún</p>`
-                    : "";
-
-                animales.forEach(a => {
+            function mostrar(lista) {
+                grid.innerHTML = lista.length === 0 ? "<p class='col-span-4 text-2xl text-gray-500 py-20'>No hay animales con este filtro</p>" : "";
+                lista.forEach(a => {
                     const card = document.createElement("div");
-                    card.className = "card-animal bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col";
+                    card.className = "card bg-white rounded-3xl shadow-2xl overflow-hidden";
                     card.innerHTML = `
-                        <div class="h-64 overflow-hidden relative group">
-                            <img src="${a.photo}" alt="${a.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-                            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition">
-                                <h3 class="text-2xl font-bold">${a.name}</h3>
-                                <p class="text-sm">${a.breed}</p>
-                            </div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-1">
-                            <div class="flex gap-2 mb-3 flex-wrap">
+                        <img src="${a.photo}" alt="${a.name}" class="w-full h-64 object-cover">
+                        <div class="p-8 text-center">
+                            <h3 class="text-3xl font-black text-violet-900 mb-2">${a.name}</h3>
+                            <p class="text-gray-600 text-lg mb-4">${a.breed}</p>
+                            <div class="flex justify-center gap-3 mb-6">
                                 <span class="tag tag-age">${a.age}</span>
                                 <span class="tag tag-health">${a.health}</span>
                             </div>
-                            <p class="text-gray-600 text-sm flex-1">"${a.desc}"</p>
-                            <a href="unete-al-club.html" class="mt-6 block text-center bg-violet-600 text-white py-3 rounded-xl font-bold hover:bg-violet-700 transition">
-                                Elegir a ${a.name}
-                            </a>
+                            <p class="text-gray-600 mb-8">"${a.desc}"</p>
+                            <div class="bg-violet-600 text-white py-4 rounded-xl font-bold text-xl cursor-pointer hover:bg-violet-700 transition">
+                                Quiero conocer a ${a.name}
+                            </div>
                         </div>
                     `;
                     grid.appendChild(card);
                 });
             }
 
-            // Filtros
-            filterBtns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    filterBtns.forEach(b => {
-                        b.classList.remove("bg-violet-600", "text-white");
-                        b.classList.add("bg-white", "border-2", "border-gray-300");
-                    });
-                    btn.classList.add("bg-violet-600", "text-white");
-                    btn.classList.remove("bg-white", "border-2", "border-gray-300");
-
-                    const filtro = btn.textContent.trim();
+            filters.forEach(btn => {
+                btn.onclick = () => {
+                    filters.forEach(b => { b.classList.remove("bg-violet-600","text-white"); b.classList.add("bg-white","border-2","border-gray-400"); });
+                    btn.classList.add("bg-violet-600","text-white"); btn.classList.remove("bg-white","border-2");
+                    const f = btn.textContent.trim();
                     let filtrados = animals;
-
-                    if (filtro === "Perros") filtrados = animals.filter(a => a.species === "perro");
-                    else if (filtro === "Gatos") filtrados = animals.filter(a => a.species === "gato");
-                    else if (filtro === "Cachorros") filtrados = animals.filter(a => a.age.includes("mes") || a.age.includes("Cachorro"));
-
+                    if (f==="Perros") filtrados = animals.filter(a=>a.species==="perro");
+                    if (f==="Gatos") filtrados = animals.filter(a=>a.species==="gato");
+                    if (f==="Cachorros") filtrados = animals.filter(a=>a.age.includes("mes"));
                     mostrar(filtrados);
-                });
+                };
             });
 
-            // Cargar todos al inicio
             mostrar(animals);
         });
     </script>
