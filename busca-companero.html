@@ -56,7 +56,7 @@
         #footer { background-color: white; margin-top: auto; }
         .text-violet-600 { color: var(--primary-color); }
 
-        /* Estilos específicos para la ficha */
+        /* Etiquetas de estado */
         .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
         .tag-age { background-color: #dbeafe; color: #1e40af; } /* Azul */
         .tag-health { background-color: #dcfce7; color: #166534; } /* Verde */
@@ -64,7 +64,7 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header Unificado -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -85,6 +85,11 @@
                         <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 bg-white">
                             <option value="es">🇪🇸 ES</option>
                             <option value="en">🇬🇧 EN</option>
+                            <option value="eu">🏁 EU</option>
+                            <option value="ca">🌊 CA</option>
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="de">🇩🇪 DE</option>
+                            <option value="it">🇮🇹 IT</option>
                         </select>
                     </div>
                     <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder</a>
@@ -101,6 +106,9 @@
             <a href="para-protectoras.html" class="block py-2 text-gray-600" data-key="nav_shelters">Para Protectoras</a>
             <a href="busca-companero.html" class="block py-2 font-bold text-violet-600" data-key="nav_find">Busca a tu Compañero</a>
             <a href="contacto.html" class="block py-2 text-gray-600" data-key="nav_contact">Contacto</a>
+            <div class="p-4 border-t">
+                <a href="#" data-key="account_btn" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder</a>
+            </div>
         </div>
     </header>
 
@@ -110,38 +118,69 @@
             <!-- Título de la sección -->
             <div class="text-center mb-16">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-violet-900 mb-4 drop-shadow-sm">Encuentra a tu Compañero Ideal</h1>
-                <p class="max-w-2xl mx-auto text-lg text-gray-700">Estos son los animales que esperan una segunda oportunidad. Han sido cuidados y evaluados por nuestras protectoras colaboradoras.</p>
+                <p class="max-w-2xl mx-auto text-lg text-gray-700 font-medium">Estos son los animales que esperan una segunda oportunidad. Han sido cuidados y evaluados por nuestras protectoras colaboradoras.</p>
             </div>
 
-            <!-- Filtros (Visuales para demo) -->
+            <!-- Filtros (Visuales) -->
             <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button class="px-6 py-2 bg-violet-600 text-white rounded-full font-bold shadow-md hover:bg-violet-700 transition">Todos</button>
-                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200">Perros</button>
-                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200">Gatos</button>
-                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200">Cachorros</button>
+                <button class="px-6 py-2 bg-violet-600 text-white rounded-full font-bold shadow-md hover:bg-violet-700 transition transform hover:-translate-y-1">Todos</button>
+                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200 hover:border-violet-200">Perros</button>
+                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200 hover:border-violet-200">Gatos</button>
+                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200 hover:border-violet-200">Cachorros</button>
             </div>
 
-            <!-- Grid de Animales (Público) -->
+            <!-- Grid de Animales (Dinámico) -->
             <div id="public-animals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Aquí se inyectan los animales dinámicamente mediante JS -->
+                <!-- Aquí se inyectan los animales mediante JS -->
             </div>
 
-            <!-- Mensaje de carga / vacío -->
+            <!-- Mensaje de carga -->
             <div id="loading-msg" class="text-center text-gray-500 py-12 hidden">
                 <p>Cargando compañeros...</p>
             </div>
         </div>
     </main>
 
+    <!-- Footer Unificado -->
     <footer id="footer" class="border-t py-8 mt-12 text-center text-gray-600">
-        <div class="container mx-auto">
-            <p class="font-bold mb-2 text-lg text-violet-800">CuidaMiHuella</p>
-            <div class="space-x-4 text-sm mb-4">
-                <a href="aviso-legal.html" class="hover:text-violet-600 underline">Aviso Legal</a>
-                <a href="politica-de-privacidad.html" class="hover:text-violet-600 underline">Privacidad</a>
-                <a href="politica-de-cookies.html" class="hover:text-violet-600 underline">Cookies</a>
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 text-left">
+                <div>
+                    <h3 class="font-bold text-violet-800 mb-4">CuidaMiHuella</h3>
+                    <p class="text-sm mb-4">Cuidamos de su huella.</p>
+                    <div class="flex space-x-4 text-xl text-violet-600">
+                        <i class="fab fa-facebook-f cursor-pointer hover:text-violet-800"></i>
+                        <i class="fab fa-instagram cursor-pointer hover:text-violet-800"></i>
+                        <i class="fab fa-twitter cursor-pointer hover:text-violet-800"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-violet-800 mb-4 text-sm uppercase">Navegación</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-violet-600">Inicio</a></li>
+                        <li><a href="unete-al-club.html" class="hover:text-violet-600">El Club</a></li>
+                        <li><a href="para-protectoras.html" class="hover:text-violet-600">Protectoras</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-violet-800 mb-4 text-sm uppercase">Legal</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="aviso-legal.html" class="hover:text-violet-600">Aviso Legal</a></li>
+                        <li><a href="politica-de-privacidad.html" class="hover:text-violet-600">Privacidad</a></li>
+                        <li><a href="politica-de-cookies.html" class="hover:text-violet-600">Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-violet-800 mb-4 text-sm uppercase">Ayuda</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="contacto.html" class="hover:text-violet-600">Contacto</a></li>
+                        <li><a href="#" class="hover:text-violet-600">FAQ</a></li>
+                    </ul>
+                </div>
             </div>
-            <p class="text-xs">© 2025 Todos los derechos reservados.</p>
+            <div class="border-t border-violet-200 pt-6 text-xs">
+                © 2025 CuidaMiHuella. Todos los derechos reservados.
+            </div>
         </div>
     </footer>
     
@@ -159,12 +198,12 @@
         // --- LÓGICA DE VISUALIZACIÓN DE ANIMALES ---
         const grid = document.getElementById('public-animals-grid');
         
-        // 1. Recuperar datos (simula base de datos)
-        // Intenta leer lo que las protectoras han subido en 'gestion-protectoras.html'
+        // 1. Intentar recuperar datos del LocalStorage (lo que suben las protectoras)
+        // La clave 'ch_animals' es la que usamos en gestion-protectoras.html
         let animals = JSON.parse(localStorage.getItem('ch_animals'));
 
-        // 2. Datos de respaldo (Mock Data)
-        // Si no hay nada guardado (primera visita), mostramos algunos ejemplos bonitos
+        // 2. Datos de Ejemplo (Mock Data)
+        // Si no hay datos guardados, mostramos estos para que la web no se vea vacía
         if (!animals || animals.length === 0) {
             animals = [
                 {
@@ -193,6 +232,15 @@
                     health: 'Esterilizado',
                     desc: 'Un compañero fiel y protector. Muy obediente y tranquilo, perfecto para hacer compañía.',
                     photo: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+                },
+                {
+                    id: 104,
+                    name: 'Lola',
+                    breed: 'Podenco',
+                    age: '1 año',
+                    health: 'Sana',
+                    desc: 'Lola es un poco tímida al principio pero muy dulce. Le encantan los mimos y dormir en el sofá.',
+                    photo: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
                 }
             ];
         }
@@ -201,14 +249,14 @@
         grid.innerHTML = '';
         animals.forEach(animal => {
             const card = document.createElement('div');
-            card.className = 'card-animal bg-white rounded-2xl shadow-md overflow-hidden flex flex-col border border-gray-100 group';
+            card.className = 'card-animal bg-white/90 backdrop-blur-sm rounded-2xl shadow-md overflow-hidden flex flex-col border border-white group';
             
             card.innerHTML = `
                 <div class="relative h-64 overflow-hidden">
                     <img src="${animal.photo}" alt="${animal.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4">
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4 pt-12">
                         <h3 class="text-white text-2xl font-bold">${animal.name}</h3>
-                        <p class="text-white/90 text-sm">${animal.breed}</p>
+                        <p class="text-white/90 text-sm font-medium">${animal.breed}</p>
                     </div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col">
@@ -222,8 +270,9 @@
                     </div>
 
                     <div class="mt-auto pt-4 border-t border-gray-100">
+                        <!-- Botón "Elegir" que lleva al inicio de la adopción (unete-al-club) -->
                         <a href="unete-al-club.html" class="w-full block text-center bg-violet-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-violet-700 transition transform hover:-translate-y-1 flex items-center justify-center group-hover:shadow-violet-200">
-                            <i class="fas fa-heart mr-2 animate-pulse"></i> Elegir (Iniciar Adopción)
+                            <i class="fas fa-heart mr-2 animate-pulse"></i> Elegir
                         </a>
                     </div>
                 </div>
@@ -231,12 +280,23 @@
             grid.appendChild(card);
         });
 
-        // Traducciones básicas
+        // Traducciones (Resumidas para mantener funcionalidad básica)
         const translations = {
-            "es": { "nav_find": "Busca a tu Compañero", "join_btn_hero": "Unirse Ahora" },
-            "en": { "nav_find": "Find Companion", "join_btn_hero": "Join Now" }
+            "es": { "nav_find": "Busca a tu Compañero" },
+            "en": { "nav_find": "Find Companion" }
         };
-        // ... (resto de lógica de idioma igual que en index)
+        
+        const languageSelect = document.getElementById('languageSelect');
+        if(languageSelect) {
+            languageSelect.addEventListener('change', (e) => {
+                const lang = e.target.value;
+                const t = translations[lang] || translations['es'];
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (t[key]) el.innerHTML = t[key];
+                });
+            });
+        }
     });
     </script>
 </body>
