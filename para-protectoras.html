@@ -50,7 +50,7 @@
         
         /* Efecto Hover Tarjetas */
         .card-hover { transition: all 0.3s ease-in-out; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.15); }
         
         /* Iconos */
         .fa-shield-heart, .fa-users-viewfinder, .fa-hand-holding-dollar, .fa-hand-holding-heart, .fa-home, .fa-medal { color: var(--primary-color); }
@@ -63,38 +63,40 @@
         .hero-full {
             position: relative;
             width: 100%;
-            height: auto; /* Altura automática según la imagen */
+            height: auto;
             overflow: hidden;
         }
         .hero-full img {
             width: 100%;
-            height: auto; /* Mantiene proporción original */
+            height: auto;
             display: block;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header ESPECÍFICO y LIMPIO para Protectoras -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
                     <i class="fas fa-paw text-violet-500"></i><span>CuidaMiHuella</span>
                 </a>
+                
+                <!-- MENÚ DE ESCRITORIO: Solo los elementos solicitados -->
                 <nav class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_home">Inicio</a>
                     <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_join">El Club CuidaMiHuella</a>
-                    <a href="para-protectoras.html" class="text-violet-600 font-bold border-b-2 border-violet-600 transition" data-key="nav_shelters">Para Protectoras</a>
-                    <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_find">Busca a tu Compañero</a>
                     <a href="contacto.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_contact">Contacto</a>
-                    <!-- Enlace al panel de gestión -->
-                    <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300 flex items-center">
+                    
+                    <!-- Botón destacado de Acceso Privado -->
+                    <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300 flex items-center shadow-sm">
                         <i class="fas fa-lock mr-2"></i> <span data-key="private_access">Acceso Área Privada</span>
                     </a>
                 </nav>
                 
                 <div class="flex items-center space-x-4">
+                    <!-- Solo Selector de Idioma y Menú Móvil (Sin botón genérico 'Acceder') -->
                     <div class="language-selector">
                         <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 bg-white">
                             <option value="es">🇪🇸 ES</option>
@@ -106,24 +108,19 @@
                             <option value="it">🇮🇹 IT</option>
                         </select>
                     </div>
-                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder</a>
                     <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2">
-            <a href="index.html" class="block py-2 text-gray-600" data-key="nav_home">Inicio</a>
-            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_join">El Club CuidaMiHuella</a>
-            <a href="para-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="nav_shelters">Para Protectoras</a>
-            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_find">Busca a tu Compañero</a>
-            <a href="contacto.html" class="block py-2 text-gray-600" data-key="nav_contact">Contacto</a>
-            <a href="gestion-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="private_access">Acceso Área Privada</a>
-            <div class="p-4 border-t">
-                <a href="#" data-key="account_btn" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder</a>
-            </div>
+        
+        <!-- Menú Móvil: También limpio -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2 shadow-lg">
+            <a href="index.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_home">Inicio</a>
+            <a href="unete-al-club.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_join">El Club CuidaMiHuella</a>
+            <a href="contacto.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_contact">Contacto</a>
+            <a href="gestion-protectoras.html" class="block py-3 px-4 mt-2 bg-violet-100 text-violet-700 font-bold rounded-lg text-center" data-key="private_access">Acceso Área Privada</a>
         </div>
     </header>
 
@@ -133,7 +130,6 @@
              <!-- Imagen de cabecera: imagen6.jpg SIN CORTES -->
              <img src="imagen6.jpg" alt="Refugio colaborador">
              
-             <!-- Capa oscura para leer el texto -->
              <div class="absolute inset-0 bg-black/40 z-10"></div>
 
             <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
@@ -146,7 +142,7 @@
             </div>
         </section>
 
-        <!-- Sección de Beneficios (Rediseñada) -->
+        <!-- Sección de Beneficios (Rediseñada con colores pastel) -->
         <section class="py-16 md:py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
@@ -167,7 +163,7 @@
                         </p>
                     </div>
 
-                    <!-- Tarjeta 2: Adoptantes Serios (Pastel Azul/Violeta) -->
+                    <!-- Tarjeta 2: Adoptantes Serios (Pastel Violeta) -->
                     <div class="text-center p-8 card-hover bg-violet-50/90 backdrop-blur-sm rounded-2xl shadow-xl border border-violet-100">
                         <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
                             <i class="fas fa-users-viewfinder text-3xl text-violet-500"></i>
@@ -202,25 +198,31 @@
                         <p class="text-gray-600 mb-8" data-key="form_subtitle">Rellena tus datos. Una vez verificado, te daremos acceso a tu panel privado.</p>
                         
                         <!-- Formulario con lógica de redirección segura -->
-                        <form id="solicitudForm" class="space-y-4">
+                        <!-- RECUERDA CAMBIAR TU_NUEVO_ID_DE_FORMSPREE -->
+                        <form action="https://formspree.io/f/TU_NUEVO_ID_DE_FORMSPREE" method="POST" class="space-y-4">
+                            <!-- Redirección automática tras envío exitoso -->
+                            <input type="hidden" name="_next" value="gestion-protectoras.html">
+                            <!-- Campo anti-spam -->
+                            <input type="text" name="_gotcha" style="display:none">
+
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_shelter_name">Nombre de la Protectora</label>
-                                <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
+                                <input type="text" name="nombre_protectora" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_contact_name">Persona de Contacto</label>
-                                <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
+                                <input type="text" name="persona_contacto" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_email">Correo Electrónico</label>
-                                <input type="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
+                                <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
                              <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_phone">Teléfono (Opcional)</label>
-                                <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
+                                <input type="tel" name="telefono" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
-                            
-                             <!-- Checkbox de Privacidad -->
+
+                            <!-- Checkbox de Privacidad -->
                             <div class="flex items-start mt-4">
                                 <div class="flex items-center h-5">
                                     <input id="privacy" name="privacy" type="checkbox" required class="focus:ring-violet-500 h-4 w-4 text-violet-600 border-gray-300 rounded">
@@ -230,19 +232,20 @@
                                 </div>
                             </div>
 
-                            <!-- Simulación Visual de reCAPTCHA -->
-                            <div class="flex items-center p-3 bg-gray-50 border rounded-md mt-4 w-max shadow-sm">
+                            <!-- Simulación Visual de reCAPTCHA (CUADRO CON DIBUJO) -->
+                            <div class="recaptcha-box">
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="human_check" name="human_check" required class="w-6 h-6 border-gray-300 rounded focus:ring-violet-500 cursor-pointer">
-                                    <label for="human_check" class="ml-2 text-sm text-gray-700 font-medium cursor-pointer">No soy un robot</label>
+                                    <input type="checkbox" id="human_check" name="human_check" required class="recaptcha-checkbox">
+                                    <label for="human_check" class="text-sm text-gray-700 font-medium cursor-pointer">No soy un robot</label>
                                 </div>
-                                <div class="ml-6 flex flex-col items-center justify-center text-xs text-gray-400">
+                                <div class="ml-auto flex flex-col items-center justify-center text-xs text-gray-400">
                                     <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="w-8 h-8 opacity-70">
                                     <span style="font-size: 9px;">reCAPTCHA</span>
+                                    <span style="font-size: 8px;">Privacidad - Términos</span>
                                 </div>
                             </div>
 
-                            <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold shadow-lg mt-4 transform hover:-translate-y-1 transition" data-key="form_submit">Enviar Solicitud</button>
+                            <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold shadow-lg mt-6 transform hover:-translate-y-1 transition" data-key="form_submit">Enviar Solicitud</button>
                         </form>
                     </div>
                     <div class="md:w-1/2 relative h-64 md:h-auto">
@@ -270,22 +273,6 @@
         if(mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
-            });
-        }
-
-        // Manejo del formulario de solicitud con redirección
-        const form = document.getElementById('solicitudForm');
-        if(form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('¡Solicitud enviada! En breve recibirás tus credenciales.');
-                // Redirección segura
-                try {
-                    window.location.href = 'gestion-protectoras.html';
-                } catch(err) {
-                    console.error("Redirection blocked:", err);
-                    alert("Redirección bloqueada. En la web real irías a gestion-protectoras.html");
-                }
             });
         }
 
