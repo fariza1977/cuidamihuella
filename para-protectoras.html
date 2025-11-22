@@ -91,27 +91,29 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header Simplificado -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
                 <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
                     <i class="fas fa-paw text-violet-500"></i><span>CuidaMiHuella</span>
                 </a>
-                <nav class="hidden md:flex space-x-8 items-center">
+                
+                <!-- Menú Desktop -->
+                <nav class="hidden md:flex space-x-6 items-center">
                     <a href="index.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_home">Inicio</a>
-                    <!-- CAMBIO: Texto actualizado -->
                     <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_join">El Club CuidaMiHuella</a>
-                    <a href="para-protectoras.html" class="text-violet-600 font-bold border-b-2 border-violet-600 transition" data-key="nav_shelters">Para Protectoras</a>
-                    <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_find">Busca a tu Compañero</a>
                     <a href="contacto.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_contact">Contacto</a>
-                    <!-- Enlace al panel de gestión -->
-                    <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300 flex items-center">
+                    
+                    <!-- Botón destacado de Acceso Privado -->
+                    <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300 flex items-center shadow-sm">
                         <i class="fas fa-lock mr-2"></i> <span data-key="private_access">Acceso Área Privada</span>
                     </a>
                 </nav>
                 
                 <div class="flex items-center space-x-4">
+                    <!-- Solo Selector de Idioma y Menú Móvil (Sin botón genérico 'Acceder') -->
                     <div class="language-selector">
                         <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 bg-white">
                             <option value="es">🇪🇸 ES</option>
@@ -123,24 +125,19 @@
                             <option value="it">🇮🇹 IT</option>
                         </select>
                     </div>
-                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder</a>
                     <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2">
-            <a href="index.html" class="block py-2 text-gray-600" data-key="nav_home">Inicio</a>
-            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_join">El Club CuidaMiHuella</a>
-            <a href="para-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="nav_shelters">Para Protectoras</a>
-            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_find">Busca a tu Compañero</a>
-            <a href="contacto.html" class="block py-2 text-gray-600" data-key="nav_contact">Contacto</a>
-            <a href="gestion-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="private_access">Acceso Área Privada</a>
-            <div class="p-4 border-t">
-                <a href="#" data-key="account_btn" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder</a>
-            </div>
+        
+        <!-- Menú Móvil: También limpio -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2 shadow-lg">
+            <a href="index.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_home">Inicio</a>
+            <a href="unete-al-club.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_join">El Club CuidaMiHuella</a>
+            <a href="contacto.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_contact">Contacto</a>
+            <a href="gestion-protectoras.html" class="block py-3 px-4 mt-2 bg-violet-100 text-violet-700 font-bold rounded-lg text-center" data-key="private_access">Acceso Área Privada</a>
         </div>
     </header>
 
@@ -215,7 +212,7 @@
                                 <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
 
-                            <!-- NUEVO: Checkbox de Privacidad -->
+                            <!-- Checkbox de Privacidad -->
                             <div class="flex items-start mt-4">
                                 <div class="flex items-center h-5">
                                     <input id="privacy" name="privacy" type="checkbox" required class="focus:ring-violet-500 h-4 w-4 text-violet-600 border-gray-300 rounded">
@@ -225,7 +222,7 @@
                                 </div>
                             </div>
 
-                            <!-- NUEVO: Simulación Visual de reCAPTCHA -->
+                            <!-- Simulación Visual de reCAPTCHA -->
                             <div class="recaptcha-box">
                                 <div class="flex items-center">
                                     <input type="checkbox" id="human_check" name="human_check" required class="recaptcha-checkbox">
@@ -284,65 +281,24 @@
             });
         }
 
-        // --- Traducciones ---
+        // --- Traducciones (Ejemplo básico para mantener funcionalidad) ---
         const translations = {
-            "es": {
-                "nav_home": "Inicio", "nav_join": "El Club CuidaMiHuella", "nav_shelters": "Para Protectoras", "nav_find": "Busca a tu Compañero", "nav_contact": "Contacto", "account_btn": "Acceder", "private_access": "Acceso Área Privada",
-                "shelter_hero_title": "Colabora con Nosotros", "shelter_hero_subtitle": "Descubre cómo CuidaMiHuella puede transformar tu protectora: menos devoluciones, más financiación y adoptantes mejor preparados. A coste cero.",
-                "benefits_title": "Adopciones de Calidad, Menos Trabajo para Ti", "benefits_subtitle": "Nuestra plataforma no es solo un escaparate, es un filtro de calidad.",
-                "benefit1_title": "Sin Devoluciones", "benefit1_text": "La 'Experiencia de Acogida' asegura que la adopción es definitiva.",
-                "benefit2_title": "Adoptantes Serios", "benefit2_text": "Usuarios verificados que han pagado una cuota de compromiso.",
-                "benefit3_title": "Financiación Extra", "benefit3_text": "Recibe donativos por cada pack de bienvenida activado.",
-                "form_title": "Unirse ahora", "form_subtitle": "Rellena tus datos. Una vez verificado, te daremos acceso a tu panel privado.",
-                "form_shelter_name": "Nombre de la Protectora", "form_contact_name": "Persona de Contacto", "form_email": "Correo Electrónico", "form_phone": "Teléfono (Opcional)", "form_submit": "Enviar Solicitud",
-                "join_btn_hero": "Unirse Ahora", "login_btn_hero": "Ya soy Colaborador",
-                "footer_slogan": "Cuidamos de su huella.", "footer_nav_title": "Navegación", "footer_legal_title": "Legal", "legal1": "Aviso Legal", "legal2": "Política de Privacidad", "legal3": "Política de Cookies", "footer_help_title": "Ayuda", "help1": "Contacto", "help2": "Preguntas Frecuentes"
-            },
-            "en": {
-                "nav_home": "Home", "nav_join": "The CuidaMiHuella Club", "nav_shelters": "For Shelters", "nav_find": "Find Companion", "nav_contact": "Contact", "account_btn": "Login", "private_access": "Private Area Access",
-                "shelter_hero_title": "Collaborate with Us", "shelter_hero_subtitle": "Discover how CuidaMiHuella can transform your shelter: fewer returns, more funding, and better-prepared adopters. At zero cost.",
-                "benefits_title": "Quality Adoptions, Less Work", "benefits_subtitle": "Our platform isn't just a showcase, it's a quality filter.",
-                "benefit1_title": "No Returns", "benefit1_text": "The 'Fostering Experience' ensures the adoption is definitive.",
-                "benefit2_title": "Serious Adopters", "benefit2_text": "Verified users who have paid a commitment fee.",
-                "benefit3_title": "Extra Funding", "benefit3_text": "Receive donations for every activated welcome pack.",
-                "form_title": "Join Now", "form_subtitle": "Fill in your details. Once verified, we will give you access to your private panel.",
-                "form_shelter_name": "Shelter Name", "form_contact_name": "Contact Person", "form_email": "Email Address", "form_phone": "Phone (Optional)", "form_submit": "Submit Request",
-                "join_btn_hero": "Join Now", "login_btn_hero": "I'm already a Partner",
-                "footer_slogan": "We take care of their pawprint.", "footer_nav_title": "Navigation", "footer_legal_title": "Legal", "legal1": "Legal Notice", "legal2": "Privacy Policy", "legal3": "Cookies Policy", "footer_help_title": "Help", "help1": "Contact", "help2": "FAQ"
-            },
-            // Se mantienen el resto de idiomas con la misma estructura
-             "eu": { "nav_home": "Hasiera", "nav_join": "CuidaMiHuella Kluba", "nav_contact": "Kontaktua", "private_access": "Eremu Pribatua" },
-             "ca": { "nav_home": "Inici", "nav_join": "El Club CuidaMiHuella", "nav_contact": "Contacte", "private_access": "Accés Àrea Privada" },
-             "fr": { "nav_home": "Accueil", "nav_join": "Le Club CuidaMiHuella", "nav_contact": "Contact", "private_access": "Accès Privé" },
-             "de": { "nav_home": "Start", "nav_join": "Der CuidaMiHuella Club", "nav_contact": "Kontakt", "private_access": "Privater Bereich" },
-             "it": { "nav_home": "Inizio", "nav_join": "Il Club CuidaMiHuella", "nav_contact": "Contatto", "private_access": "Area Privata" }
+            "es": { "join_btn_hero": "Unirse Ahora", "login_btn_hero": "Ya soy Colaborador", "shelter_hero_title": "Colabora con Nosotros", "benefits_title": "Adopciones de Calidad, Menos Trabajo para Ti", "form_title": "Unirse ahora", "form_submit": "Enviar Solicitud" },
+            "en": { "join_btn_hero": "Join Now", "login_btn_hero": "I'm already a Partner", "shelter_hero_title": "Collaborate with Us", "benefits_title": "Quality Adoptions, Less Work for You", "form_title": "Join Now", "form_submit": "Submit Request" }
         };
-
-        // --- Language Switcher Logic ---
-        const savedLang = localStorage.getItem('selectedLanguage') || 'es';
+        
         const languageSelect = document.getElementById('languageSelect');
-        
-        if(languageSelect) languageSelect.value = savedLang;
-
-        const changeLanguage = (lang) => {
-            const selectedLang = translations[lang] ? lang : 'es';
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (translations[selectedLang][key]) {
-                    el.innerHTML = translations[selectedLang][key];
-                } else if (translations['es'][key]) {
-                     el.innerHTML = translations['es'][key]; // Fallback
-                }
-            });
-            localStorage.setItem('selectedLanguage', selectedLang);
-            if(languageSelect) languageSelect.value = selectedLang;
-        };
-
         if(languageSelect) {
-            languageSelect.addEventListener('change', (e) => changeLanguage(e.target.value));
+            languageSelect.addEventListener('change', (e) => {
+                const lang = e.target.value;
+                const t = translations[lang] || translations['es'];
+                // Actualización básica de textos clave
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (t[key]) el.innerHTML = t[key];
+                });
+            });
         }
-        
-        changeLanguage(savedLang);
     });
     </script>
 </body>
