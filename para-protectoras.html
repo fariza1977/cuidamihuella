@@ -71,11 +71,40 @@
             height: auto;
             display: block;
         }
+
+         /* Estilo Simulación reCAPTCHA */
+         .recaptcha-box {
+            background-color: #f9fafb;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-top: 15px;
+            width: 100%;
+            max-width: 300px;
+        }
+        .recaptcha-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #c1c1c1;
+            border-radius: 2px;
+            background-color: #fff;
+            cursor: pointer;
+            margin-right: 12px;
+        }
+        .recaptcha-checkbox:checked {
+            background-color: #fff;
+            border-color: #c1c1c1;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%230F9D58' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+            background-size: 100% 100%;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header ESPECÍFICO y LIMPIO para Protectoras -->
+    <!-- Header ESPECÍFICO para Protectoras (LIMPIO) -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -125,9 +154,9 @@
     </header>
 
     <main class="flex-grow">
-        <!-- Hero Section AJUSTADO -->
+        <!-- Hero Section (Imagen completa sin cortes) -->
         <section class="hero-full relative">
-             <!-- Imagen de cabecera: imagen6.jpg SIN CORTES -->
+             <!-- Imagen 6 ajustada al 100% ancho -->
              <img src="imagen6.jpg" alt="Refugio colaborador">
              
              <div class="absolute inset-0 bg-black/40 z-10"></div>
@@ -197,29 +226,23 @@
                         <h2 class="text-3xl font-bold mb-4" data-key="form_title">Unirse ahora</h2>
                         <p class="text-gray-600 mb-8" data-key="form_subtitle">Rellena tus datos. Una vez verificado, te daremos acceso a tu panel privado.</p>
                         
-                        <!-- Formulario con lógica de redirección segura -->
-                        <!-- RECUERDA CAMBIAR TU_NUEVO_ID_DE_FORMSPREE -->
-                        <form action="https://formspree.io/f/TU_NUEVO_ID_DE_FORMSPREE" method="POST" class="space-y-4">
-                            <!-- Redirección automática tras envío exitoso -->
-                            <input type="hidden" name="_next" value="gestion-protectoras.html">
-                            <!-- Campo anti-spam -->
-                            <input type="text" name="_gotcha" style="display:none">
-
+                        <!-- Formulario con lógica de redirección -->
+                        <form id="solicitudForm" class="space-y-4">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_shelter_name">Nombre de la Protectora</label>
-                                <input type="text" name="nombre_protectora" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
+                                <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_contact_name">Persona de Contacto</label>
-                                <input type="text" name="persona_contacto" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
+                                <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_email">Correo Electrónico</label>
-                                <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
+                                <input type="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
                              <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_phone">Teléfono (Opcional)</label>
-                                <input type="tel" name="telefono" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
+                                <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none bg-white">
                             </div>
 
                             <!-- Checkbox de Privacidad -->
@@ -232,7 +255,7 @@
                                 </div>
                             </div>
 
-                            <!-- Simulación Visual de reCAPTCHA (CUADRO CON DIBUJO) -->
+                            <!-- Simulación Visual de reCAPTCHA -->
                             <div class="recaptcha-box">
                                 <div class="flex items-center">
                                     <input type="checkbox" id="human_check" name="human_check" required class="recaptcha-checkbox">
@@ -241,7 +264,6 @@
                                 <div class="ml-auto flex flex-col items-center justify-center text-xs text-gray-400">
                                     <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="w-8 h-8 opacity-70">
                                     <span style="font-size: 9px;">reCAPTCHA</span>
-                                    <span style="font-size: 8px;">Privacidad - Términos</span>
                                 </div>
                             </div>
 
@@ -267,7 +289,6 @@
     
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Mobile Menu ---
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         if(mobileMenuBtn) {
@@ -276,7 +297,21 @@
             });
         }
 
-        // --- Traducciones ---
+        const form = document.getElementById('solicitudForm');
+        if(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('¡Solicitud enviada! En breve recibirás tus credenciales.');
+                try {
+                    window.location.href = 'gestion-protectoras.html';
+                } catch(err) {
+                    console.error("Redirection blocked:", err);
+                    alert("Redirección bloqueada. En la web real irías a gestion-protectoras.html");
+                }
+            });
+        }
+
+        // Traducciones básicas
         const translations = {
             "es": { "join_btn_hero": "Unirse Ahora", "login_btn_hero": "Ya soy Colaborador", "shelter_hero_title": "Colabora con Nosotros", "benefits_title": "Adopciones de Calidad, Menos Trabajo para Ti", "form_title": "Unirse ahora", "form_submit": "Enviar Solicitud" },
             "en": { "join_btn_hero": "Join Now", "login_btn_hero": "I'm already a Partner", "shelter_hero_title": "Collaborate with Us", "benefits_title": "Quality Adoptions, Less Work for You", "form_title": "Join Now", "form_submit": "Submit Request" }
