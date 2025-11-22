@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacto - CuidaMiHuella</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -39,7 +42,7 @@
             align-items: center;
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
             margin-top: 10px;
-            width: 100%; /* Opcional: ajustar ancho */
+            width: 100%;
             max-width: 300px;
         }
         .recaptcha-checkbox {
@@ -60,9 +63,39 @@
         
         /* Iconos */
         .fa-envelope, .fa-phone { color: var(--primary-color); }
+
+        /* --- BOTÓN FLOTANTE WHATSAPP (NUEVO) --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
+
+    <!-- Botón WhatsApp Flotante -->
+    <a href="https://wa.me/34699556077" target="_blank" class="whatsapp-float" title="Chat en WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Header Unificado -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
@@ -131,7 +164,7 @@
                     <div class="bg-white p-8 rounded-2xl shadow-2xl border-t-4 border-violet-500">
                         <h2 class="text-2xl font-bold mb-2 text-gray-800">Envíanos un Mensaje</h2>
                         
-                        <!-- Formulario -->
+                        <!-- Formulario Funcional de Formspree -->
                         <!-- RECUERDA CAMBIAR TU_ID_DE_FORMSPREE POR TU ID REAL -->
                         <form id="main-contact-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST" class="space-y-4">
                             
@@ -176,36 +209,14 @@
     <footer id="footer" class="py-8 text-center text-gray-600 border-t">
         <div class="container mx-auto">
             <p class="font-bold mb-2">CuidaMiHuella</p>
-            <div class="space-x-4 text-sm"><a href="aviso-legal.html">Legal</a><a href="politica-de-privacidad.html">Privacidad</a></div>
+            <div class="space-x-4 text-sm"><a href="aviso-legal.html">Legal</a><a href="politica-de-privacidad.html">Privacidad</a><a href="politica-de-cookies.html">Cookies</a></div>
             <p class="text-xs mt-4">© 2025 Todos los derechos reservados.</p>
         </div>
     </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Menú Móvil
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            if(mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
 
-            // --- Traducciones ---
-            // (Se mantiene la lógica de traducciones existente para el resto de la página)
-            const translations = {
-                "es": { "nav_contact": "Contacto", "info_title": "Nuestra Información", "form_submit_btn_contact": "Enviar" },
-                "en": { "nav_contact": "Contact", "info_title": "Our Information", "form_submit_btn_contact": "Send" }
-            };
-            
-            const languageSelect = document.getElementById('languageSelect');
-            if(languageSelect) {
-                languageSelect.addEventListener('change', (e) => {
-                    const lang = e.target.value;
-                    // Lógica de traducción simple para mantener la consistencia
-                });
-            }
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
         });
     </script>
 </body>
