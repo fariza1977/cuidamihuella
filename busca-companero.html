@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busca a tu Compañero - CuidaMiHuella</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #8b5cf6; --primary-hover: #7c3aed;
+            --text-dark: #5b21b6; --text-medium: #374151;
+            --bg-light: #fdf2f8; --footer-bg: #eff6ff;
+        }
+        /* CONFIGURACIÓN DEL FONDO COMPLETO (Huellas) */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: var(--text-medium);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            
+            /* Fondo imagen2.jpg con capa violeta pastel */
+            background-image: linear-gradient(rgba(237, 233, 254, 0.85), rgba(237, 233, 254, 0.85)), url('imagen2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-h-screen;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3 { color: var(--text-dark); }
+        h2.text-gray-800, h3.text-2xl, h2[data-key] { color: var(--text-dark); }
+        
+        /* Estilos personalizados */
+        header nav a { position: relative; padding-bottom: 4px; }
+        header nav a:hover { color: var(--primary-color); }
+        header nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.3s ease-in-out; }
+        header nav a:hover::after { width: 100%; }
+        
+        /* Efecto Hover Tarjetas */
+        .card-animal { transition: all 0.3s ease-in-out; }
+        .card-animal:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2); }
+        
+        /* Footer Sólido */
+        #footer { background-color: white; margin-top: auto; }
+        .text-violet-600 { color: var(--primary-color); }
+
+        /* Etiquetas de estado */
+        .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        .tag-age { background-color: #dbeafe; color: #1e40af; } /* Azul */
+        .tag-health { background-color: #dcfce7; color: #166534; } /* Verde */
+    </style>
+</head>
+<body>
+
+    <!-- Header Unificado -->
+    <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
+                    <i class="fas fa-paw text-violet-500"></i><span>CuidaMiHuella</span>
+                </a>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_home">Inicio</a>
+                    <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_join">El Club CuidaMiHuella</a>
+                    <a href="para-protectoras.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_shelters">Para Protectoras</a>
+                    <!-- Pestaña Activa y Destacada -->
+                    <a href="busca-companero.html" class="text-violet-600 font-bold border-b-2 border-violet-600 transition" data-key="nav_find">Busca a tu Compañero</a>
+                    <a href="contacto.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_contact">Contacto</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="language-selector">
+                        <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 bg-white">
+                            <option value="es">🇪🇸 ES</option>
+                            <option value="en">🇬🇧 EN</option>
+                        </select>
+                    </div>
+                    <a href="#" data-key="account_btn" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder</a>
+                    <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2">
+            <a href="index.html" class="block py-2 text-gray-600" data-key="nav_home">Inicio</a>
+            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_join">El Club CuidaMiHuella</a>
+            <a href="para-protectoras.html" class="block py-2 text-gray-600" data-key="nav_shelters">Para Protectoras</a>
+            <a href="busca-companero.html" class="block py-2 font-bold text-violet-600" data-key="nav_find">Busca a tu Compañero</a>
+            <a href="contacto.html" class="block py-2 text-gray-600" data-key="nav_contact">Contacto</a>
+            <div class="p-4 border-t">
+                <a href="#" data-key="account_btn" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Título de la sección -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-violet-900 mb-4 drop-shadow-sm">Encuentra a tu Compañero Ideal</h1>
+                <p class="max-w-2xl mx-auto text-lg text-gray-700 font-medium">Estos son los animales que esperan una segunda oportunidad. Han sido cuidados y evaluados por nuestras protectoras colaboradoras.</p>
+            </div>
+
+            <!-- Filtros (Visuales) -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="px-6 py-2 bg-violet-600 text-white rounded-full font-bold shadow-md hover:bg-violet-700 transition transform hover:-translate-y-1">Todos</button>
+                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200 hover:border-violet-200">Perros</button>
+                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200 hover:border-violet-200">Gatos</button>
+                <button class="px-6 py-2 bg-white text-gray-600 rounded-full font-medium shadow-sm hover:bg-violet-50 transition border border-gray-200 hover:border-violet-200">Cachorros</button>
+            </div>
+
+            <!-- Grid de Animales (Dinámico) -->
+            <div id="public-animals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Aquí se inyectan los animales mediante JS -->
+            </div>
+
+            <!-- Mensaje de carga -->
+            <div id="loading-msg" class="text-center text-gray-500 py-12 hidden">
+                <p>Cargando compañeros...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Unificado -->
+    <footer id="footer" class="border-t py-8 mt-12 text-center text-gray-600">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 text-left">
+                <div>
+                    <h3 class="font-bold text-violet-800 mb-4">CuidaMiHuella</h3>
+                    <p class="text-sm mb-4">Cuidamos de su huella.</p>
+                    <div class="flex space-x-4 text-xl text-violet-600">
+                        <i class="fab fa-facebook-f cursor-pointer hover:text-violet-800"></i>
+                        <i class="fab fa-instagram cursor-pointer hover:text-violet-800"></i>
+                        <i class="fab fa-twitter cursor-pointer hover:text-violet-800"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-violet-800 mb-4 text-sm uppercase">Navegación</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-violet-600">Inicio</a></li>
+                        <li><a href="unete-al-club.html" class="hover:text-violet-600">El Club CuidaMiHuella</a></li>
+                        <li><a href="para-protectoras.html" class="hover:text-violet-600">Para Protectoras</a></li>
+                        <li><a href="busca-companero.html" class="hover:text-violet-600 font-bold">Busca a tu Compañero</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-violet-800 mb-4 text-sm uppercase">Legal</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="aviso-legal.html" class="hover:text-violet-600">Aviso Legal</a></li>
+                        <li><a href="politica-de-privacidad.html" class="hover:text-violet-600">Privacidad</a></li>
+                        <li><a href="politica-de-cookies.html" class="hover:text-violet-600">Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-violet-800 mb-4 text-sm uppercase">Ayuda</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="contacto.html" class="hover:text-violet-600">Contacto</a></li>
+                        <li><a href="#" class="hover:text-violet-600">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-violet-200 pt-6 text-xs">
+                © 2025 CuidaMiHuella. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Menú Móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if(mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // --- LÓGICA DE VISUALIZACIÓN DE ANIMALES ---
+        const grid = document.getElementById('public-animals-grid');
+        
+        // 1. Intentar recuperar datos del LocalStorage (lo que suben las protectoras)
+        // La clave 'ch_animals' es la que usamos en gestion-protectoras.html
+        let animals = JSON.parse(localStorage.getItem('ch_animals'));
+
+        // 2. Datos de Ejemplo (Mock Data) para que no se vea vacío
+        // Si la protectora no ha subido nada aún, mostramos estos ejemplos
+        if (!animals || animals.length === 0) {
+            animals = [
+                {
+                    id: 101,
+                    name: 'Bruno',
+                    breed: 'Mestizo',
+                    age: '2 años',
+                    health: 'Vacunado y sano',
+                    desc: 'Bruno es pura energía y amor. Le encanta correr por la playa y jugar con la pelota. Ideal para familias activas.',
+                    photo: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+                },
+                {
+                    id: 102,
+                    name: 'Mía',
+                    breed: 'Gato Común',
+                    age: '4 meses',
+                    health: 'Desparasitada',
+                    desc: 'Pequeña, curiosa y muy ronroneadora. Busca un hogar tranquilo donde echarse siestas al sol.',
+                    photo: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+                },
+                {
+                    id: 103,
+                    name: 'Rocky',
+                    breed: 'Pastor Alemán',
+                    age: '5 años',
+                    health: 'Esterilizado',
+                    desc: 'Un compañero fiel y protector. Muy obediente y tranquilo, perfecto para hacer compañía.',
+                    photo: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+                },
+                {
+                    id: 104,
+                    name: 'Lola',
+                    breed: 'Podenco',
+                    age: '1 año',
+                    health: 'Sana',
+                    desc: 'Lola es un poco tímida al principio pero muy dulce. Le encantan los mimos y dormir en el sofá.',
+                    photo: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+                }
+            ];
+        }
+
+        // 3. Renderizar Tarjetas
+        grid.innerHTML = '';
+        animals.forEach(animal => {
+            const card = document.createElement('div');
+            card.className = 'card-animal bg-white/90 backdrop-blur-sm rounded-2xl shadow-md overflow-hidden flex flex-col border border-white group';
+            
+            card.innerHTML = `
+                <div class="relative h-64 overflow-hidden">
+                    <img src="${animal.photo}" alt="${animal.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4 pt-12">
+                        <h3 class="text-white text-2xl font-bold">${animal.name}</h3>
+                        <p class="text-white/90 text-sm font-medium">${animal.breed}</p>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex gap-2 mb-4">
+                        <span class="tag tag-age">${animal.age}</span>
+                        <span class="tag tag-health truncate max-w-[150px]">${animal.health}</span>
+                    </div>
+                    
+                    <div class="mb-6 flex-grow">
+                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">"${animal.desc}"</p>
+                    </div>
+
+                    <div class="mt-auto pt-4 border-t border-gray-100">
+                        <!-- Botón "Elegir" que lleva al inicio de la adopción (unete-al-club) -->
+                        <a href="unete-al-club.html" class="w-full block text-center bg-violet-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-violet-700 transition transform hover:-translate-y-1 flex items-center justify-center group-hover:shadow-violet-200">
+                            <i class="fas fa-heart mr-2 animate-pulse"></i> Elegir
+                        </a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Traducciones (Resumidas)
+        const translations = {
+            "es": { "nav_find": "Busca a tu Compañero", "nav_join": "El Club CuidaMiHuella" },
+            "en": { "nav_find": "Find Companion", "nav_join": "The Club" }
+        };
+        
+        const languageSelect = document.getElementById('languageSelect');
+        if(languageSelect) {
+            languageSelect.addEventListener('change', (e) => {
+                const lang = e.target.value;
+                const t = translations[lang] || translations['es'];
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (t[key]) el.innerHTML = t[key];
+                });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
