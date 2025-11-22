@@ -50,7 +50,7 @@
         
         /* Efecto Hover Tarjetas */
         .card-hover { transition: all 0.3s ease-in-out; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.15); }
         
         /* Iconos */
         .fa-shield-heart, .fa-users-viewfinder, .fa-hand-holding-dollar, .fa-hand-holding-heart, .fa-home, .fa-medal { color: var(--primary-color); }
@@ -59,61 +59,31 @@
         #footer { background-color: white; margin-top: auto; }
         .text-violet-600 { color: var(--primary-color); }
 
-        /* Estilo Simulación reCAPTCHA */
-        .recaptcha-box {
-            background-color: #f9fafb;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            margin-top: 15px;
-            width: 100%;
-            max-width: 300px;
-        }
-        .recaptcha-checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #c1c1c1;
-            border-radius: 2px;
-            background-color: #fff;
-            cursor: pointer;
-            margin-right: 12px;
-        }
-        .recaptcha-checkbox:checked {
-            background-color: #fff;
-            border-color: #c1c1c1;
-            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%230F9D58' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-            background-size: 100% 100%;
-        }
+        /* Ajuste Hero para imagen completa */
+        .hero-image-container { position: relative; width: 100%; height: auto; overflow: hidden; }
+        .hero-image-container img { width: 100%; height: auto; display: block; object-fit: contain; }
     </style>
 </head>
 <body>
 
-    <!-- Header Simplificado -->
+    <!-- Header -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
                 <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
                     <i class="fas fa-paw text-violet-500"></i><span>CuidaMiHuella</span>
                 </a>
-                
-                <!-- Menú Desktop -->
-                <nav class="hidden md:flex space-x-6 items-center">
+                <nav class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_home">Inicio</a>
                     <a href="unete-al-club.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_join">El Club CuidaMiHuella</a>
                     <a href="contacto.html" class="text-gray-600 font-medium hover:text-violet-600 transition" data-key="nav_contact">Contacto</a>
-                    
-                    <!-- Botón destacado de Acceso Privado -->
-                    <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300 flex items-center shadow-sm">
+                    <!-- Enlace al panel de gestión -->
+                    <a href="gestion-protectoras.html" class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full font-bold hover:bg-violet-200 transition text-sm border border-violet-300 flex items-center">
                         <i class="fas fa-lock mr-2"></i> <span data-key="private_access">Acceso Área Privada</span>
                     </a>
                 </nav>
                 
                 <div class="flex items-center space-x-4">
-                    <!-- Solo Selector de Idioma y Menú Móvil (Sin botón genérico 'Acceder') -->
                     <div class="language-selector">
                         <select id="languageSelect" class="border-gray-300 rounded-md shadow-sm py-1 px-2 text-sm focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 bg-white">
                             <option value="es">🇪🇸 ES</option>
@@ -131,21 +101,24 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Menú Móvil: También limpio -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2 shadow-lg">
-            <a href="index.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_home">Inicio</a>
-            <a href="unete-al-club.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_join">El Club CuidaMiHuella</a>
-            <a href="contacto.html" class="block py-2 text-gray-600 hover:text-violet-600" data-key="nav_contact">Contacto</a>
-            <a href="gestion-protectoras.html" class="block py-3 px-4 mt-2 bg-violet-100 text-violet-700 font-bold rounded-lg text-center" data-key="private_access">Acceso Área Privada</a>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t p-4 space-y-2">
+            <a href="index.html" class="block py-2 text-gray-600" data-key="nav_home">Inicio</a>
+            <a href="unete-al-club.html" class="block py-2 text-gray-600" data-key="nav_join">El Club CuidaMiHuella</a>
+            <a href="contacto.html" class="block py-2 text-gray-600" data-key="nav_contact">Contacto</a>
+            <a href="gestion-protectoras.html" class="block py-2 font-bold text-violet-600" data-key="private_access">Acceso Área Privada</a>
         </div>
     </header>
 
     <main class="flex-grow">
         <!-- Hero Section -->
-        <section class="relative w-full bg-gray-900 h-[60vh] min-h-[500px]">
-             <!-- Imagen de cabecera: imagen6.jpg -->
-             <img src="imagen6.jpg" alt="Refugio colaborador" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <section class="hero-image-container relative">
+             <!-- Imagen de cabecera: imagen6.jpg SIN CORTES -->
+             <img src="imagen6.jpg" alt="Refugio colaborador">
+             
+             <!-- Capa oscura para leer el texto -->
+             <div class="absolute inset-0 bg-black/40 z-10"></div>
+
             <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg" data-key="shelter_hero_title">Colabora con Nosotros</h1>
                 <p class="max-w-3xl mx-auto text-lg md:text-xl text-white drop-shadow-md mb-8" data-key="shelter_hero_subtitle">Descubre cómo CuidaMiHuella puede transformar tu protectora: menos devoluciones, más financiación y adoptantes mejor preparados. A coste cero.</p>
@@ -156,30 +129,49 @@
             </div>
         </section>
 
-        <!-- Beneficios -->
+        <!-- Sección de Beneficios (Rediseñada) -->
         <section class="py-16 md:py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold" data-key="benefits_title">Adopciones de Calidad, Menos Trabajo para Ti</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700" data-key="benefits_subtitle">Nuestra plataforma no es solo un escaparate, es un filtro de calidad.</p>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700" data-key="benefits_subtitle">Nuestra plataforma no es solo un escaparate, es un filtro de calidad diseñado para el bienestar animal.</p>
                 </div>
+                
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Tarjetas con fondo blanco semitransparente -->
-                    <div class="text-center p-8 card-hover bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-white">
-                        <i class="fas fa-shield-heart text-6xl mb-6"></i>
-                        <h3 class="text-2xl font-bold mb-3" data-key="benefit1_title">Sin Devoluciones</h3>
-                        <p class="text-gray-600" data-key="benefit1_text">La "Experiencia de Acogida" asegura que la adopción es definitiva.</p>
+                    
+                    <!-- Tarjeta 1: Sin Devoluciones (Pastel Rosa) -->
+                    <div class="text-center p-8 card-hover bg-pink-50 rounded-2xl shadow-xl border border-pink-100">
+                        <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fas fa-shield-heart text-3xl text-pink-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-pink-900" data-key="benefit1_title">Sin Devoluciones</h3>
+                        <p class="text-gray-700 leading-relaxed" data-key="benefit1_text">
+                            Olvídate de las adopciones fallidas. Nuestra exclusiva "Experiencia de Acogida" de 3 semanas con seguro incluido permite validar la convivencia real antes de firmar. Garantizamos adopciones definitivas y felices.
+                        </p>
                     </div>
-                    <div class="text-center p-8 card-hover bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-white">
-                        <i class="fas fa-users-viewfinder text-6xl mb-6"></i>
-                        <h3 class="text-2xl font-bold mb-3" data-key="benefit2_title">Adoptantes Serios</h3>
-                        <p class="text-gray-600" data-key="benefit2_text">Usuarios verificados que han pagado una cuota de compromiso.</p>
+
+                    <!-- Tarjeta 2: Adoptantes Serios (Pastel Azul/Violeta) -->
+                    <div class="text-center p-8 card-hover bg-violet-50 rounded-2xl shadow-xl border border-violet-100">
+                        <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fas fa-users-viewfinder text-3xl text-violet-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-violet-900" data-key="benefit2_title">Adoptantes Serios</h3>
+                        <p class="text-gray-700 leading-relaxed" data-key="benefit2_text">
+                            Filtramos a los curiosos. Nuestros usuarios pagan una cuota para unirse al Club, demostrando un compromiso real y capacidad económica desde el primer momento. Te conectamos solo con familias preparadas.
+                        </p>
                     </div>
-                    <div class="text-center p-8 card-hover bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-white">
-                        <i class="fas fa-hand-holding-dollar text-6xl mb-6"></i>
-                        <h3 class="text-2xl font-bold mb-3" data-key="benefit3_title">Financiación Extra</h3>
-                        <p class="text-gray-600" data-key="benefit3_text">Recibe donativos por cada pack de bienvenida activado.</p>
+
+                    <!-- Tarjeta 3: Financiación Extra (Pastel Azul) -->
+                    <div class="text-center p-8 card-hover bg-blue-50 rounded-2xl shadow-xl border border-blue-100">
+                        <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
+                            <i class="fas fa-hand-holding-dollar text-3xl text-blue-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-blue-900" data-key="benefit3_title">Financiación Extra</h3>
+                        <p class="text-gray-700 leading-relaxed" data-key="benefit3_text">
+                            Recibe ingresos adicionales sin esfuerzo. Por cada "Pack de Bienvenida" que active un adoptante al elegir uno de vuestros animales, la protectora recibe un donativo directo. Todo a coste cero para vosotros.
+                        </p>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -189,11 +181,10 @@
             <div class="container mx-auto px-4">
                 <div class="max-w-5xl mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden md:flex border border-white">
                     <div class="md:w-1/2 p-8 md:p-12">
-                        <!-- CAMBIO: Título actualizado -->
                         <h2 class="text-3xl font-bold mb-4" data-key="form_title">Unirse ahora</h2>
                         <p class="text-gray-600 mb-8" data-key="form_subtitle">Rellena tus datos. Una vez verificado, te daremos acceso a tu panel privado.</p>
                         
-                        <!-- Formulario con lógica de redirección segura -->
+                        <!-- Formulario -->
                         <form id="solicitudForm" class="space-y-4">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1" data-key="form_shelter_name">Nombre de la Protectora</label>
@@ -281,7 +272,7 @@
             });
         }
 
-        // --- Traducciones (Ejemplo básico para mantener funcionalidad) ---
+        // --- Traducciones ---
         const translations = {
             "es": { "join_btn_hero": "Unirse Ahora", "login_btn_hero": "Ya soy Colaborador", "shelter_hero_title": "Colabora con Nosotros", "benefits_title": "Adopciones de Calidad, Menos Trabajo para Ti", "form_title": "Unirse ahora", "form_submit": "Enviar Solicitud" },
             "en": { "join_btn_hero": "Join Now", "login_btn_hero": "I'm already a Partner", "shelter_hero_title": "Collaborate with Us", "benefits_title": "Quality Adoptions, Less Work for You", "form_title": "Join Now", "form_submit": "Submit Request" }
@@ -292,7 +283,6 @@
             languageSelect.addEventListener('change', (e) => {
                 const lang = e.target.value;
                 const t = translations[lang] || translations['es'];
-                // Actualización básica de textos clave
                 document.querySelectorAll('[data-key]').forEach(el => {
                     const key = el.getAttribute('data-key');
                     if (t[key]) el.innerHTML = t[key];
